@@ -19,7 +19,7 @@
     <style>
         :root {
             --gold: #D4AF37;
-            --gold-hover: #FFD700;
+            --gold-hover: #d3ab24;
             --dark: #0A0A0A;
             --darker: #050505;
             --lighter: #1A1A1A;
@@ -222,7 +222,7 @@
 
         .section-title {
             text-align: center;
-            margin-bottom: 1rem;
+            margin: 5rem;
         }
 
         .section-title h2 {
@@ -442,15 +442,14 @@ aspect-ratio: 7712/5141;
         /* Footer */
         footer {
             background-color: var(--darker);
-            padding: 4rem 0 2rem;
-            margin-top: 4rem;
+            padding: 1rem;
             border-top: 1px solid rgba(212, 175, 55, 0.1);
         }
 
         .footer-content {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
+            margin: 1rem auto;
+            padding: 1rem;
             text-align: center;
         }
 
@@ -526,7 +525,7 @@ aspect-ratio: 7712/5141;
             }
 
             .section-title h2 {
-                font-size: 1rem;
+                font-size: 4rem;
             }
         }
 
@@ -555,9 +554,10 @@ aspect-ratio: 7712/5141;
         }
         
         .social-icons {
+            max-width: 500px;
             list-style: none;
-            padding: 0;
-            margin: 0;
+            padding: 0 auto;
+            margin: 0 auto;
             display: flex;
             justify-content: center;
             margin-top: 20px;
@@ -565,8 +565,7 @@ aspect-ratio: 7712/5141;
         }
 
         .social-icons li {
-            margin-right: 10px;
-            padding-bottom: 20px;
+            padding: 2%;
 
         }
 
@@ -574,12 +573,12 @@ aspect-ratio: 7712/5141;
             width: 35px;
             height: 35px;
             border-radius: 50%;
-            margin: 5px;
             box-shadow: 2px 2px 7px var(--gold);/* Add a text shadow with offset, blur radius, and color */
 
         }       .call-btn {
             display: inline-block;
             padding: 10px 20px;
+            margin-top:20px ;
             color: #fff;
             background-color: #000;
             text-decoration: none;
@@ -717,8 +716,7 @@ aspect-ratio: 7712/5141;
     <section data-aos="fade-up">
         <div class="container"data-aos="zoom-in">
             <div class="section-title">
-                <h2>Contact Me</h2>
-                <p>Feel free to reach out to me for collaborations, projects, or inquiries!</p>
+                <p>If you have any comments, please send them to me!</p>
             </div>
            
                                  <div class="form-group">
@@ -744,7 +742,7 @@ aspect-ratio: 7712/5141;
         </div>
     </section>
     <section id="contact" class="company-info"data-aos="fade-up">
-        <p>For more information about me, Contact:</p>
+        <p>For more information about me:</p>
         <a href="tel:01091602558" class="call-btn" onclick="callNumber()">Call Now</a>
 
         <ul class="social-icons">
@@ -759,12 +757,7 @@ aspect-ratio: 7712/5141;
     </section>
     <footer>
         <div class="footer-content">
-            <div class="social-links">
-                <a href="#" class="fas fa-facebook"></a>
-                <a href="#" class="fas fa-twitter"></a>
-                <a href="#" class="fas fa-linkedin"></a>
-            </div>
-            <p class="footer-text">© 2024 Abdelrahman Ibrahim. All rights reserved. <a href="#">Privacy Policy</a></p>
+            <p class="footer-text">© 2024 Abdelrahman Ibrahim. All rights reserved.</p>
         </div>
     </footer>
 
