@@ -602,6 +602,23 @@ aspect-ratio: 7712/5141;
             box-shadow: 2px 2px 10px var(--gold);/* Add a text shadow with offset, blur radius, and color */
 
         }
+        .not-published {
+    font-size: 14px; /* Optional: Adjust font size */
+    font-weight: bold; /* Optional: Make the text bold */
+    margin: 10px 0; /* Optional: Add some margin for spacing */
+}
+        .download-links {
+    display: flex;
+    gap: 10px;
+     padding: 20px 5px ;
+    justify-content: space-around;
+}
+.download-icon {
+    width: 100px;
+    height: 40px;
+        border-radius: 7px ;
+}
+
     </style>
 </head>
 <body>
@@ -690,6 +707,8 @@ aspect-ratio: 7712/5141;
                     <div class="project-info">
                         <h3>Home Delivery App</h3>
                         <p>This app was created to help customers order food and track deliveries. It took 7 months to build two apps: one for customers and another for restaurants. The system was built with React, MongoDB, and HTML. It also tracked income, expenses, and deliveries. Unfortunately, the project stopped due to a lack of funding.</p>
+                        <p class="not-published">app not published yet.</p>
+                       
                         <div class="project-tags">
                             <span class="project-tag">React Native</span>
                             <span class="project-tag">HTML</span>
@@ -704,6 +723,7 @@ aspect-ratio: 7712/5141;
                     <div class="project-info">
                         <h3>Smart Home System</h3>
                         <p>This project aimed to control home devices remotely using Arduino. The design was done with SolidWorks and built using 3D printing. It took 5 months to complete, using React Native for the interface and PCB printing for the circuit boards. Despite advanced features, the project stopped due to funding issues.</p>
+                        <p class="not-published">app not published yet.</p>
                         <div class="project-tags">
                             <span class="project-tag">React Native</span>
                             <span class="project-tag">SolidWorks</span>
@@ -719,7 +739,18 @@ aspect-ratio: 7712/5141;
                     <div class="project-info">
                         <h3>Islamic App</h3>
                         <p>This is a modern app designed for Muslims worldwide. It is my first project in Flutter and is currently under development. The app includes live updates and useful features for Muslims. It is available on Google Play and has received great feedback with many downloads.</p>
-                        <a href="https://play.google.com/store/apps/details?id=com.arab.salamspace" target="_blank" style="color: rgb(85, 85, 255);">Download Link</a>
+                        
+                        <!-- Download Links -->
+                        <div class="download-links">
+                            <a href="https://play.google.com/store/apps/details?id=com.arab.salamspace" target="_blank" class="download-link">
+                                <img src="images/gp.png" alt="Android Download" class="download-icon">
+                             </a>
+                            <a href="https://apps.apple.com/app/id6740785701" target="_blank" class="download-link">
+                                <img src="images/ios.png" alt="iOS Download" class="download-icon">
+                             </a>
+                        </div>
+                
+                        <!-- Project Tags -->
                         <div class="project-tags">
                             <span class="project-tag">Flutter</span>
                             <span class="project-tag">Dart</span>
@@ -728,6 +759,7 @@ aspect-ratio: 7712/5141;
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
         
