@@ -1,0 +1,23 @@
+[debug] [2025-04-05T16:05:50.420Z] ----------------------------------------------------------------------
+[debug] [2025-04-05T16:05:50.424Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\3bdel\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2025-04-05T16:05:50.425Z] CLI Version:   13.35.1
+[debug] [2025-04-05T16:05:50.425Z] Platform:      win32
+[debug] [2025-04-05T16:05:50.425Z] Node Version:  v22.11.0
+[debug] [2025-04-05T16:05:50.426Z] Time:          Sat Apr 05 2025 18:05:50 GMT+0200 (Eastern European Standard Time)
+[debug] [2025-04-05T16:05:50.426Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-04-05T16:05:50.431Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[error] 
+[error] Error: Not in a Firebase app directory (could not locate firebase.json)
+[debug] [2025-04-05T16:05:51.033Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2025-04-05T16:05:51.034Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2025-04-05T16:05:51.351Z] Error: EBUSY: resource busy or locked, unlink 'D:\Projects\- Html -\MyWebsite\firebase-debug.log'
+    at Object.unlinkSync (node:fs:1871:11)
+    at process.<anonymous> (C:\Users\3bdel\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js:82:12)
+    at process.emit (node:events:530:35)
+    at process.exit (node:internal/process/per_thread:183:15)
+    at Timeout._onTimeout (C:\Users\3bdel\AppData\Roaming\npm\node_modules\firebase-tools\lib\errorOut.js:20:17)
+    at listOnTimeout (node:internal/timers:594:17)
+    at process.processTimers (node:internal/timers:529:7)
+[error] 
+[error] Error: An unexpected error has occurred.
