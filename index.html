@@ -1,27 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abdelrahman Ibrahim</title>
-      <link rel="icon" href="web_icon/favicon.ico" sizes="any">
-      <link rel="apple-touch-icon" href="web_icon/apple-touch-icon.png">
-      <meta name="google-site-verification" content="XVud6-PKmwSqxKBFSzk9TYPXhGc-bAXyASk9xFbzPkA" />
-<!-- Open Graph Meta Tags for Facebook and other social platforms -->
-<meta property="og:title" content="Abdelrahman Ibrahim">
-<meta property="og:description" content="Flutter Developer & UI/UX Designer">
-<meta property="og:image" content="images/33.png">
-<meta property="og:url" content="https://3bdelrahman-ibrahim.github.io/Portfolio">
-<meta property="og:type" content="website">
+    <link rel="icon" href="web_icon/favicon.ico" sizes="any">
+    <link rel="apple-touch-icon" href="web_icon/apple-touch-icon.png">
+    <meta name="google-site-verification" content="XVud6-PKmwSqxKBFSzk9TYPXhGc-bAXyASk9xFbzPkA" />
+    <!-- Open Graph Meta Tags for Facebook and other social platforms -->
+    <meta property="og:title" content="Abdelrahman Ibrahim">
+    <meta property="og:description" content="Flutter Developer & UI/UX Designer">
+    <meta property="og:image" content="images/33.png">
+    <meta property="og:url" content="https://3bdelrahman-ibrahim.github.io/Portfolio">
+    <meta property="og:type" content="website">
 
-<!-- Twitter Card Meta Tags -->
-<meta name="twitter:title" content="Abdelrahman Ibrahim">
-<meta name="twitter:description" content="Flutter Developer & UI/UX Designer">
-<meta name="twitter:image" content="images/33.png">
-<meta name="twitter:card" content="summary_large_image">
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:title" content="Abdelrahman Ibrahim">
+    <meta name="twitter:description" content="Flutter Developer & UI/UX Designer">
+    <meta name="twitter:image" content="images/33.png">
+    <meta name="twitter:card" content="summary_large_image">
 
-<!-- Optional: Add additional metadata -->
-<meta name="author" content="Abdelrahman Ibrahim">
+    <!-- Optional: Add additional metadata -->
+    <meta name="author" content="Abdelrahman Ibrahim">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.8.0/firebase-app.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.8.0/firebase-database.min.js"></script>
@@ -29,7 +30,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-  
+
     <style>
         :root {
             --gold: #D4AF37;
@@ -130,83 +131,92 @@
 
         /* Hero Section */
         .hero {
-        display: flex;
-        align-items: center;
-        justify-content: space-between; /* صورة على اليمين والنص على الشمال */
-        min-height: 100vh;
-        padding: 1rem;
-        flex-direction: row-reverse;
-        
-        
-    }
-
-    .hero-content {
-        max-width: 50%; /* تقليل عرض النص */
-        text-align: left; /* جعل النص يبدأ من اليسار */
-        padding: 5%;
-    }
-
-    .hero-content h1 {
-        font-family: 'Poppins', sans-serif;
-        font-size: 3rem;
-    margin-bottom: 1.5rem;
-}
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem;
+            flex-direction: row-reverse;
 
 
-    .hero-content h2 {
-        color: var(--gold);
-        font-size: 1.8rem;
-        margin-bottom: 1.5rem;
-    }
-
-    .hero-content p {
-        font-size: 1.2rem;
-        margin-bottom: 2rem;
-        color: rgba(224, 224, 224, 0.9);
-    }
-
-    .cta-button {
-        text-decoration: none;
-        background-color: var(--gold);
-        color: #fff;
-        padding: 10px 20px;
-        border-radius: 5px;
-        font-size: 1.1rem;
-    }
-
-    .hero-image {
-        width: 40%;
-        max-height: 80%;
-        border-radius: 15px;
-        object-fit: cover;
-        margin-top: 10%;
-        -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
-
-    }
-
-    /* استجابة الأجهزة الصغيرة */
-    @media (max-width: 768px) {
-        .hero {
-            flex-direction: column-reverse ; /* النص والصورة فوق بعض */
-            text-align: center;            margin-top: 100px;
-
-            
         }
 
         .hero-content {
-            max-width: 100%;
-            margin-top: 2rem;
+            max-width: 50%;
+            /* تقليل عرض النص */
+            text-align: left;
+            /* جعل النص يبدأ من اليسار */
+            padding: 5%;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+        .hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+
+        .hero-content h2 {
+            color: var(--gold);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: rgba(224, 224, 224, 0.9);
+        }
+
+        .cta-button {
+            text-decoration: none;
+            background-color: var(--gold);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1.1rem;
         }
 
         .hero-image {
-            width: 70%;
-            max-height: 60%;
-            margin-top: 100px;
+            width: 40%;
+            max-height: 80%;
+            border-radius: 15px;
+            object-fit: cover;
+            margin-top: 10%;
+            -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+            mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
 
         }
-    }
- 
+
+        @media (min-width: 769px) {
+            .hero {
+                min-height: 100vh;
+            }
+        }
+
+        /* استجابة الأجهزة الصغيرة */
+        @media (max-width: 768px) {
+            .hero {
+                flex-direction: column-reverse;
+                /* النص والصورة فوق بعض */
+                text-align: center;
+                margin-top: 40px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+                margin-top: 40px;
+            }
+
+            .hero-image {
+                width: 70%;
+                max-height: 60%;
+                margin-top: 40px;
+
+            }
+        }
+
         .cta-button {
             background-color: var(--gold);
             color: var(--dark);
@@ -230,7 +240,7 @@
 
         /* Sections */
         section {
-            padding: 1rem ;
+            padding: 1rem;
         }
 
         .section-title {
@@ -255,6 +265,7 @@
         /* Skills Grid */
         .skills-grid {
             display: grid;
+            justify-content: center;
             grid-template-columns: repeat(auto-fit, minmax(220px, 320px));
             gap: 2.5rem;
             max-width: 1200px;
@@ -315,6 +326,7 @@
         /* Projects */
         .projects-grid {
             display: grid;
+            justify-content: center;
             grid-template-columns: repeat(auto-fit, minmax(220px, 320px));
             gap: 2.5rem;
             max-width: 1200px;
@@ -339,10 +351,10 @@
 
         .project-image {
             width: 100%;
-aspect-ratio: 7712/5141;
+            aspect-ratio: 7712/5141;
             object-fit: cover;
             transition: transform 0.5s ease;
- 
+
         }
 
         .project-card:hover .project-image {
@@ -510,6 +522,7 @@ aspect-ratio: 7712/5141;
                 transform: translateX(100%);
                 opacity: 0;
             }
+
             to {
                 transform: translateX(0);
                 opacity: 1;
@@ -522,7 +535,7 @@ aspect-ratio: 7712/5141;
                 grid-template-columns: 1fr;
                 gap: 2rem;
             }
-            
+
             .contact-section {
                 padding: 1rem;
             }
@@ -533,7 +546,7 @@ aspect-ratio: 7712/5141;
                 display: none;
             }
 
-         
+
 
             section {
                 padding: 1rem 0;
@@ -544,7 +557,7 @@ aspect-ratio: 7712/5141;
             }
         }
 
-       
+
 
         .footer-text a {
             color: var(--gold);
@@ -554,6 +567,7 @@ aspect-ratio: 7712/5141;
         .footer-text a:hover {
             color: var(--gold-hover);
         }
+
         .company-info {
             margin: 10px auto;
             color: #ffffff;
@@ -567,7 +581,7 @@ aspect-ratio: 7712/5141;
             padding: 10px;
 
         }
-        
+
         .social-icons {
             max-width: 500px;
             list-style: none;
@@ -588,39 +602,49 @@ aspect-ratio: 7712/5141;
             width: 35px;
             height: 35px;
             border-radius: 50%;
-            box-shadow: 2px 2px 7px var(--gold);/* Add a text shadow with offset, blur radius, and color */
+            box-shadow: 2px 2px 7px var(--gold);
+            /* Add a text shadow with offset, blur radius, and color */
 
-        }       .call-btn {
+        }
+
+        .call-btn {
             display: inline-block;
             padding: 10px 20px;
-            margin-top:20px ;
+            margin-top: 20px;
             color: #fff;
             background-color: #000;
             text-decoration: none;
             border-radius: 5px;
-            transition:  0.3s ease;
-            box-shadow: 2px 2px 10px var(--gold);/* Add a text shadow with offset, blur radius, and color */
+            transition: 0.3s ease;
+            box-shadow: 2px 2px 10px var(--gold);
+            /* Add a text shadow with offset, blur radius, and color */
 
         }
-        .not-published {
-    font-size: 14px; /* Optional: Adjust font size */
-    font-weight: bold; /* Optional: Make the text bold */
-    margin: 10px 0; /* Optional: Add some margin for spacing */
-}
-        .download-links {
-    display: flex;
-    gap: 10px;
-     padding: 20px 5px ;
-    justify-content: space-around;
-}
-.download-icon {
-    width: 100px;
-    height: 35px;
-        border-radius: 7px ;
-}
 
+        .not-published {
+            font-size: 14px;
+            /* Optional: Adjust font size */
+            font-weight: bold;
+            /* Optional: Make the text bold */
+            margin: 10px 0;
+            /* Optional: Add some margin for spacing */
+        }
+
+        .download-links {
+            display: flex;
+            gap: 10px;
+            padding: 20px 5px;
+            justify-content: space-around;
+        }
+
+        .download-icon {
+            width: 100px;
+            height: 35px;
+            border-radius: 7px;
+        }
     </style>
 </head>
+
 <body>
     <nav>
         <div class="nav-content">
@@ -634,83 +658,85 @@ aspect-ratio: 7712/5141;
         </div>
     </nav>
 
-    <section class="hero" data-aos="fade-down"> 
-        <img src="images/0.png" alt="Hero Image" class="hero-image"data-aos="zoom-in">
+    <section class="hero" data-aos="fade-down">
+        <img src="images/0.png" alt="Hero Image" class="hero-image" data-aos="zoom-in">
         <div class="hero-content">
-            <h1>Abdelrahman<br> Ibrahim</h1>
+            <h1>Abdelrahman<br>Ibrahim</h1>
             <h2>Flutter Developer & UI/UX Designer</h2>
             <p>We bring new ideas and smart solutions to your projects.</p>
             <!-- <a href="#contact" class="cta-button">Get In Touch</a> -->
         </div>
     </section>
-    
 
-    <section id="about"data-aos="fade-up">
-        <div class="container"data-aos="zoom-in">
+
+    <section id="about" data-aos="fade-up">
+        <div class="container" data-aos="zoom-in">
             <div class="section-title">
                 <h2>About Me</h2>
-                <p>I am a Flutter developer who loves creating efficient and user-friendly mobile apps. I focus on delivering smart solutions that meet users' needs.</p>            </div>
+                <p>I am a Flutter developer who loves creating efficient and user-friendly mobile apps. I focus on
+                    delivering smart solutions that meet users' needs.</p>
+            </div>
         </div>
     </section>
     <section id="skills" data-aos="fade-up">
         <div class="container" data-aos="zoom-in">
             <div class="section-title">
                 <h2>Skills</h2>
-                <p>Here are 7 key skills I specialize in:</p>
+                <p>Here are some of the skills I have acquired over the years:</p>
             </div>
             <div class="skills-grid">
                 <div class="skill-card" data-aos="zoom-in">
                     <i class="fas fa-mobile-alt"></i>
                     <h3>Flutter Development</h3>
-                    <p>Building cross-platform apps using Flutter with clean architecture and modern UI/UX.</p>
+                    <p>Creating cross-platform apps using Flutter with clean architecture and scalable structure.</p>
                 </div>
                 <div class="skill-card" data-aos="zoom-in">
                     <i class="fas fa-paint-brush"></i>
                     <h3>UI/UX Design</h3>
-                    <p>Designing user-centered interfaces with attention to detail, responsiveness, and accessibility.</p>
+                    <p>Designing beautiful, modern, and responsive interfaces using Flutter's widget system.</p>
                 </div>
                 <div class="skill-card" data-aos="zoom-in">
-                    <i class="fas fa-database"></i>
-                    <h3>Database Integration</h3>
-                    <p>Working with Firebase, Supabase, and MongoDB to manage real-time data efficiently.</p>
-                </div>
-                <div class="skill-card" data-aos="zoom-in">
-                    <i class="fas fa-microchip"></i>
-                    <h3>Arduino & IoT</h3>
-                    <p>Building smart systems using sensors and microcontrollers to automate real-world tasks.</p>
+                    <i class="fas fa-cloud"></i>
+                    <h3>Supabase & Firebase</h3>
+                    <p>Integrating cloud backends to manage auth, database, and real-time data effectively.</p>
                 </div>
                 <div class="skill-card" data-aos="zoom-in">
                     <i class="fas fa-code"></i>
-                    <h3>Web Development</h3>
-                    <p>Creating responsive websites using HTML, CSS, and JavaScript frameworks like React.</p>
+                    <h3>State Management</h3>
+                    <p>Using Riverpod, Bloc, and Provider for clean and reactive state management in Flutter apps.</p>
                 </div>
                 <div class="skill-card" data-aos="zoom-in">
-                    <i class="fas fa-language"></i>
-                    <h3>Multilingual Apps</h3>
-                    <p>Developing apps with bilingual support (Arabic/English) for global accessibility.</p>
+                    <i class="fas fa-robot"></i>
+                    <h3>IoT & Arduino</h3>
+                    <p>Building smart connected systems using Flutter for UI and Arduino for hardware control.</p>
                 </div>
                 <div class="skill-card" data-aos="zoom-in">
-                    <i class="fas fa-lightbulb"></i>
-                    <h3>Problem Solving</h3>
-                    <p>Analyzing requirements and providing practical tech-based solutions for real-life problems.</p>
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Analytics & Performance</h3>
+                    <p>Using Firebase Analytics & performance tools to monitor and improve app usage and speed.</p>
+                </div>
+                <div class="skill-card" data-aos="zoom-in">
+                    <i class="fas fa-tools"></i>
+                    <h3>Deployment</h3>
+                    <p>Publishing apps to Google Play and App Store, handling builds, icons, splash, and versions.</p>
                 </div>
             </div>
         </div>
     </section>
-    
+
+
     <section id="projects" data-aos="fade-up">
         <div class="container" data-aos="zoom-in">
             <div class="section-title">
                 <h2>My Projects</h2>
                 <p>Here are some of the projects I worked on, with clear technical highlights:</p>
             </div>
-         
+
             <div class="projects-grid">
                 <div class="project-card" data-aos="zoom-in">
-                    <img src="images/23.png" alt="Smart Home System" class="project-image">
+                    <img src="images/22.png" alt="Smart Home System" class="project-image">
                     <div class="project-info">
                         <h3>Smart Home System</h3>
-                        <p>First tech system using Arduino & React.</p>
                         <ul>
                             <li>Developed with React Native.</li>
                             <li>Integrated with Arduino for control.</li>
@@ -729,11 +755,11 @@ aspect-ratio: 7712/5141;
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="project-card" data-aos="zoom-in">
-                    <img src="images/24.png" alt="Islamic App" class="project-image">
+                    <img src="images/23.png" alt="Salam Space" class="project-image">
                     <div class="project-info">
-                        <h3>Islamic App</h3>
+                        <h3>Salam Space</h3>
                         <ul>
                             <li>First Flutter app for Muslims.</li>
                             <li>Built with Flutter & Dart.</li>
@@ -744,7 +770,8 @@ aspect-ratio: 7712/5141;
                             <li>Positive feedback for usability.</li>
                         </ul>
                         <div class="download-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.arab.salamspace" target="_blank" class="download-link">
+                            <a href="https://play.google.com/store/apps/details?id=com.arab.salamspace" target="_blank"
+                                class="download-link">
                                 <img src="images/gp.png" alt="Android Download" class="download-icon">
                             </a>
                             <a href="https://apps.apple.com/app/id6740785701" target="_blank" class="download-link">
@@ -753,17 +780,18 @@ aspect-ratio: 7712/5141;
                         </div>
                         <div class="project-tags">
                             <span class="project-tag">Flutter</span>
-                            <span class="project-tag">Mobile App</span>
                             <span class="project-tag">Dart</span>
+                            <span class="project-tag">State Management</span>
+
                             <span class="project-tag">Islamic</span>
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="project-card" data-aos="zoom-in">
-                    <img src="images/22.png" alt="Home Delivery App" class="project-image">
+                    <img src="images/24.png" alt="Delivery App" class="project-image">
                     <div class="project-info">
-                        <h3>Home Delivery App</h3>
+                        <h3>Delivery App</h3>
                         <ul>
                             <li>Created for a local restaurant.</li>
                             <li>Under testing phase, not used.</li>
@@ -774,67 +802,76 @@ aspect-ratio: 7712/5141;
                             <li>Improved data modeling skills.</li>
                         </ul>
                         <div class="download-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.restauranttest.egypt" target="_blank" class="download-link">
+                            <a href="https://play.google.com/store/apps/details?id=com.restauranttest.egypt"
+                                target="_blank" class="download-link">
                                 <img src="images/gp.png" alt="Android Download" class="download-icon">
                             </a>
                             <a href="#" class="download-link" onclick="alert('Coming soon on iOS Store')">
                                 <img src="images/ios.png" alt="iOS Download" class="download-icon">
-                            </a>                              
+                            </a>
                         </div>
                         <div class="project-tags">
-                            <span class="project-tag">Flutter</span>
-                            <span class="project-tag">MongoDB</span>
+                            <span class="project-tag">Flutter</span>     
+                            <span class="project-tag">Mobile App</span>
+
                             <span class="project-tag">Delivery System</span>
+                            <span class="project-tag">Supabase</span>
                         </div>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </section>
-    
+
 
     <section data-aos="fade-up">
-        <div class="container"data-aos="zoom-in">
+        <div class="container" data-aos="zoom-in">
             <div class="section-title">
                 <p>If you have any comments, please send them to me!</p>
             </div>
-           
-                                 <div class="form-group">
-    
-                     </div>
-                         <div class="contact-form">
-                            <form id="contactForm">
-                                <div class="form-group">
-                                    <label for="name">Name</label>
-                                    <input type="text" id="name" name="name" placeholder="Your Name" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="phone">Phone</label>
-                                    <input type="phone" id="phone" name="phone" placeholder="Your Phone" required>
-                                </div>
-                                <div class="form-group">
-                                    <label for="message">Message</label>
-                                    <textarea id="message" name="message" placeholder="Your Message" required></textarea>
-                                </div>
-                                <button type="submit" class="cta-button">Send Message</button>
-                                </form>
-             </div>
+
+            <div class="form-group">
+
+            </div>
+            <div class="contact-form">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone</label>
+                        <input type="phone" id="phone" name="phone" placeholder="Your Phone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button">Send Message</button>
+                </form>
+            </div>
         </div>
     </section>
-    <section id="contact" class="company-info"data-aos="fade-up">
+    <section id="contact" class="company-info" data-aos="fade-up">
         <p>For more information about me:</p>
         <a href="tel:01091602558" class="call-btn" onclick="callNumber()">Call Now</a>
 
         <ul class="social-icons">
-            <li><a href="https://www.linkedin.com/in/3bdelrahman-ibrahim" target="_blank"><img src="images/ll.png" alt="LinkedIn"></a></li>
-            <li><a href="https://github.com/3bdelrahman-ibrahim" target="_blank"><img src="images/z2.png" alt="GitHub"></a></li>
-            <li><a href="mailto:3bdelrahman.ibrahim@gmail.com" target="_blank"><img src="images/z1.png" alt="Gmail"></a></li>
+            <li><a href="https://www.linkedin.com/in/3bdelrahman-ibrahim" target="_blank"><img src="images/ll.png"
+                        alt="LinkedIn"></a></li>
+            <li><a href="https://github.com/3bdelrahman-ibrahim" target="_blank"><img src="images/z2.png"
+                        alt="GitHub"></a></li>
+            <li><a href="mailto:3bdelrahman.ibrahim@gmail.com" target="_blank"><img src="images/z1.png" alt="Gmail"></a>
+            </li>
             <li><a href="https://wa.me/+201091602558" target="_blank"><img src="images/ww.png" alt="WhatsApp"></a></li>
-            <li><a href="https://www.tiktok.com/@abdelrahman.ibrahim.1" target="_blank"><img src="images/tt.png" alt="TikTok"></a></li>
-            <li><a href="https://twitter.com/3bdelrahman_ib" target="_blank"><img src="images/xx.png" alt="Twitter / X"></a></li>
-            <li><a href="https://www.facebook.com/3bdelrahman.ibrahim" target="_blank"><img src="images/ff.png" alt="Facebook"></a></li>
-                                        
+            <li><a href="https://www.tiktok.com/@abdelrahman.ibrahim.1" target="_blank"><img src="images/tt.png"
+                        alt="TikTok"></a></li>
+            <li><a href="https://twitter.com/3bdelrahman_ib" target="_blank"><img src="images/xx.png"
+                        alt="Twitter / X"></a></li>
+            <li><a href="https://www.facebook.com/3bdelrahman.ibrahim" target="_blank"><img src="images/ff.png"
+                        alt="Facebook"></a></li>
+
         </ul>
     </section>
     <footer>
@@ -847,7 +884,7 @@ aspect-ratio: 7712/5141;
         // Import Firebase SDK
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
         import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
-        
+
         // Firebase configuration
         const firebaseConfig = {
             apiKey: "AIzaSyA5I1AlqhGACpPecU8Ly6137txxXvdcrac",
@@ -871,7 +908,7 @@ aspect-ratio: 7712/5141;
         const messageInput = document.getElementById("message");
 
         // Handle form submission
-        contactForm.addEventListener("submit", function(event) {
+        contactForm.addEventListener("submit", function (event) {
             event.preventDefault(); // Prevent the default form submission
 
             // Get form values
@@ -886,28 +923,29 @@ aspect-ratio: 7712/5141;
                 message: message,
                 timestamp: serverTimestamp()
             })
-            .then(() => {
-                alert("Message sent successfully!");
-                // Reset form fields
-                contactForm.reset();
-            })
-            .catch((error) => {
-                console.error("Error sending message: ", error);
-                alert("Error sending message. Please try again.");
+                .then(() => {
+                    alert("Message sent successfully!");
+                    // Reset form fields
+                    contactForm.reset();
+                })
+                .catch((error) => {
+                    console.error("Error sending message: ", error);
+                    alert("Error sending message. Please try again.");
+                });
+        });
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            AOS.init({
+                duration: 1000, // Animation duration (ms)
+                once: true,     // Whether animation should happen only once
             });
         });
     </script>
-    
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-          AOS.init({
-            duration: 1000, // Animation duration (ms)
-            once: true,     // Whether animation should happen only once
-          });
-        });
-      </script>
-      
+
 </body>
+
 </html>
 
 <!--  
