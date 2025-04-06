@@ -30,6 +30,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
     <style>
         :root {
@@ -852,23 +853,61 @@
     </section>
     <section id="contact" class="company-info" data-aos="fade-up">
         <p>For more information about me:</p>
-        <a href="tel:01091602558" class="call-btn" onclick="callNumber()">Call Now</a>
 
+    <!-- زر الاتصال -->
+<a href="tel:+201091602558"
+class="call-btn"
+style="
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: background 0.3s ease;
+">
+<i class="fas fa-phone-alt" style="transform: scaleX(-1);"></i> Call Now
+</a>
+
+<!-- زر تحميل السيرة الذاتية -->
+<a href="assets/cv.pdf"
+download
+target="_blank"
+class="cv-btn"
+style="
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 15px;
+  background: #28a745;
+  color: white;
+  text-decoration: none;
+  border-radius: 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin-left: 10px;
+  transition: background 0.3s ease;
+">
+<i class="fas fa-download"></i> Download CV
+</a>
+
+        
         <ul class="social-icons">
-            <li><a href="https://www.linkedin.com/in/3bdelrahman-ibrahim" target="_blank"><img src="images/ll.png"
-                        alt="LinkedIn"></a></li>
-            <li><a href="https://github.com/3bdelrahman-ibrahim" target="_blank"><img src="images/z2.png"
-                        alt="GitHub"></a></li>
-            <li><a href="mailto:3bdelrahman.ibrahim@gmail.com" target="_blank"><img src="images/z1.png" alt="Gmail"></a>
-            </li>
+            <li><a href="mailto:3bdelrahman.ibrahim@gmail.com" target="_blank"><img src="images/z1.png" alt="Gmail"></a></li>
+                <li><a href="https://github.com/3bdelrahman-ibrahim" target="_blank"><img src="images/z2.png" alt="GitHub"></a></li>
             <li><a href="https://wa.me/+201091602558" target="_blank"><img src="images/ww.png" alt="WhatsApp"></a></li>
-            <li><a href="https://www.tiktok.com/@abdelrahman.ibrahim.1" target="_blank"><img src="images/tt.png"
-                        alt="TikTok"></a></li>
-            <li><a href="https://twitter.com/3bdelrahman_ib" target="_blank"><img src="images/xx.png"
-                        alt="Twitter / X"></a></li>
-            <li><a href="https://www.facebook.com/3bdelrahman.ibrahim" target="_blank"><img src="images/ff.png"
-                        alt="Facebook"></a></li>
 
+            <li><a href="https://www.linkedin.com/in/3bdelrahman-ibrahim" target="_blank"><img src="images/ll.png" alt="LinkedIn"></a></li>
+                        <li><a href="https://www.tiktok.com/@abdelrahman.ibrahim.1" target="_blank"><img src="images/tt.png" alt="TikTok"></a></li>
+
+                       
+            <li><a href="https://twitter.com/3bdelrahman_ib" target="_blank"><img src="images/xx.png"
+                                alt="Twitter / X"></a></li>
+            <li><a href="https://www.facebook.com/3bdelrahman.ibrahim" target="_blank"><img src="images/ff.png"
+                                alt="Facebook"></a></li>
+        
         </ul>
     </section>
     <footer>
