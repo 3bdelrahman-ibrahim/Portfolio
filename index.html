@@ -642,7 +642,28 @@
             width: 100px;
             height: 35px;
             border-radius: 7px;
+        } 
+        .show-link {
+            width: 70%;
+            height: 40px;
+            border-radius: 7px;
+            background: #000;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            display: flex;
+            gap: 10px;
+            padding: 20px 5px;
+            justify-content: space-around;
+            align-items: center;
+            justify-content: center;
+            margin: 20px auto;
+            text-decoration: none;
+            color: #fff;
+            transition: 0.3s ease;
+             font-weight: 700;
         }
+         
     </style>
 </head>
 
@@ -701,21 +722,13 @@
                     <h3>Supabase & Firebase</h3>
                     <p>Integrating cloud backends to manage auth, database, and real-time data effectively.</p>
                 </div>
-                <div class="skill-card" data-aos="zoom-in">
-                    <i class="fas fa-code"></i>
-                    <h3>State Management</h3>
-                    <p>Using Riverpod, Bloc, and Provider for clean and reactive state management in Flutter apps.</p>
-                </div>
+              
                 <div class="skill-card" data-aos="zoom-in">
                     <i class="fas fa-robot"></i>
                     <h3>IoT & Arduino</h3>
                     <p>Building smart connected systems using Flutter for UI and Arduino for hardware control.</p>
                 </div>
-                <div class="skill-card" data-aos="zoom-in">
-                    <i class="fas fa-chart-line"></i>
-                    <h3>Analytics & Performance</h3>
-                    <p>Using Firebase Analytics & performance tools to monitor and improve app usage and speed.</p>
-                </div>
+            
                 <div class="skill-card" data-aos="zoom-in">
                     <i class="fas fa-tools"></i>
                     <h3>Deployment</h3>
@@ -734,20 +747,23 @@
             </div>
 
             <div class="projects-grid">
+
                 <div class="project-card" data-aos="zoom-in">
                     <img src="images/22.png" alt="Smart Home System" class="project-image">
                     <div class="project-info">
                         <h3>Smart Home System</h3>
                         <ul>
-                            <li>Developed with React Native.</li>
-                            <li>Integrated with Arduino for control.</li>
+                            <li>Initially developed fully using React Native before switching to Flutter.</li>
+                            <li>Controlled with Arduino and sensors.</li>
                             <li>Designed in SolidWorks and 3D printed.</li>
-                            <li>Used PCB for circuit fabrication.</li>
-                            <li>Learned mobile basics and hardware.</li>
-                            <li>Funding issues delayed publishing.</li>
-                            <li>Enhanced hardware/software integration knowledge.</li>
+                            <li>Used custom PCB for circuit integration.</li>
+                            <li>Funding and support issues delayed final launch.</li>
+                            <li>Improved skills in hardware/software integration.</li>
                         </ul>
-                        <p class="not-published">App not published yet.</p>
+                        <a href="video.mov" target="_blank" class="show-link">
+                            <i class="fas fa-video" style="transform: scaleX(-1); margin-right: 8px;"></i>
+                            Show video 
+                        </a>
                         <div class="project-tags">
                             <span class="project-tag">React Native</span>
                             <span class="project-tag">SolidWorks</span>
@@ -756,23 +772,21 @@
                         </div>
                     </div>
                 </div>
-
+            
                 <div class="project-card" data-aos="zoom-in">
                     <img src="images/23.png" alt="Salam Space" class="project-image">
                     <div class="project-info">
                         <h3>Salam Space</h3>
                         <ul>
-                            <li>My first app built using Flutter.</li>
-                            <li>Learned UI design basics.</li>
-                            <li>Published on Google Play and App Store for the first time.</li>
-                            <li>Implemented bilingual support (Arabic/English).</li>
-                            <li>Added prayer times and Qibla direction features.</li>
-                            <li>Handled cross-platform compatibility between Android and iOS.</li>
-                            <li>Received positive user feedback.</li>
+                            <li>My first app built with Flutter.</li>
+                            <li>Introduced me to UI/UX design basics.</li>
+                            <li>Published on Google Play and App Store.</li>
+                            <li>Includes Arabic and English support.</li>
+                            <li>Features prayer times and Qibla direction.</li>
+                            <li>Works seamlessly on both Android and iOS.</li>
                         </ul>
                         <div class="download-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.arab.salamspace" target="_blank"
-                                class="download-link">
+                            <a href="https://play.google.com/store/apps/details?id=com.arab.salamspace" target="_blank" class="download-link">
                                 <img src="images/gp.png" alt="Android Download" class="download-icon">
                             </a>
                             <a href="https://apps.apple.com/app/id6740785701" target="_blank" class="download-link">
@@ -783,28 +797,25 @@
                             <span class="project-tag">Flutter</span>
                             <span class="project-tag">Dart</span>
                             <span class="project-tag">State Management</span>
-
                             <span class="project-tag">Islamic</span>
                         </div>
                     </div>
                 </div>
-
+            
                 <div class="project-card" data-aos="zoom-in">
                     <img src="images/24.png" alt="Delivery App" class="project-image">
                     <div class="project-info">
                         <h3>Delivery App</h3>
                         <ul>
-                            <li>Built two apps: one for customers and one for the restaurant.</li>
-                            <li>Implemented real-time order tracking.</li>
-                            <li>Used Firebase and Supabase for the backend.</li>
-                            <li>Designed the database with Supabase.</li>
-                            <li>Integrated Firebase for user authentication.</li>
-                            <li>Improved my skills in writing clean code.</li>
-                            <li>Enhanced UI design for a modern, user-friendly experience.</li>
+                            <li>Built two apps: for users and restaurants.</li>
+                            <li>Real-time tracking of orders and delivery.</li>
+                            <li>Used Supabase and Firebase for backend.</li>
+                            <li>Firebase authentication for secure login.</li>
+                            <li>Designed a clean and responsive UI.</li>
+                            <li>Enhanced my backend and UI skills together.</li>
                         </ul>
                         <div class="download-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.restauranttest.egypt"
-                                target="_blank" class="download-link">
+                            <a href="https://play.google.com/store/apps/details?id=com.restauranttest.egypt" target="_blank" class="download-link">
                                 <img src="images/gp.png" alt="Android Download" class="download-icon">
                             </a>
                             <a class="download-link" onclick="alert('Coming soon on iOS Store')">
@@ -814,13 +825,14 @@
                         <div class="project-tags">
                             <span class="project-tag">Flutter</span>
                             <span class="project-tag">Mobile App</span>
-
                             <span class="project-tag">Delivery System</span>
                             <span class="project-tag">Supabase</span>
                         </div>
                     </div>
                 </div>
+            
             </div>
+            
 
         </div>
     </section>
@@ -866,7 +878,6 @@
     <i class="fas fa-download" style="margin-right: 8px;"></i>
     Download CV
 </a>
-
 
 
 
