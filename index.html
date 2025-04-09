@@ -65,8 +65,8 @@
 
         .container {
             max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1rem;
+            margin: 10px auto;
+            padding: 10px 1rem;
         }
 
         /* Navigation */
@@ -633,6 +633,7 @@
 
         .download-links {
             display: flex;
+            flex-wrap: wrap;
             gap: 10px;
             padding: 20px 5px;
             justify-content: space-around;
@@ -663,7 +664,13 @@
             color: #fff;
             transition: 0.3s ease;
             font-weight: 700;
+            font-size: 14px;
         }
+        @media  (max-width: 393px) {
+            .show-link {
+                font-size: 10px;
+        }
+    }
     </style>
 </head>
 
@@ -747,56 +754,6 @@
             </div>
 
             <div class="projects-grid">
-
-                <div class="project-card" data-aos="zoom-in">
-                    <img src="images/22.png" alt="Smart Home System" class="project-image">
-                    <div class="project-info">
-                        <h3>Smart Home System</h3>
-                        <ul>
-                            <li>Initially developed fully using React Native before switching to Flutter.</li>
-                            <li>Controlled with Arduino and sensors.</li>
-                            <li>Designed in SolidWorks and 3D printed.</li>
-                            <li>Used custom PCB for circuit integration.</li>
-                            <li>Funding and support issues delayed final launch.</li>
-                            <li>Improved skills in hardware/software integration.</li>
-                        </ul>
-                        <a href="video.mov" target="_blank" class="show-link">
-                            <i class="fas fa-video" style="transform: scaleX(-1); margin-right: 8px;"></i>
-                            Show video
-                        </a>
-                        <div class="project-tags">
-                            <span class="project-tag">React Native</span>
-                            <span class="project-tag">SolidWorks</span>
-                            <span class="project-tag">Arduino</span>
-                            <span class="project-tag">IoT</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card" data-aos="zoom-in">
-                    <img src="images/food-delivery.png" alt="Multi-Restaurant Food Delivery" class="project-image">
-                    <div class="project-info">
-                        <h3>Multi-Restaurant Delivery</h3>
-                        <ul>
-                            <li>Three apps in one: for the worker, restaurant, and customer.</li>
-                            <li>Employee app for tracking and delivering orders.</li>
-                            <li>Restaurant app for managing orders, menus, and sales statistics.</li>
-                            <li>Customer app for browsing menus, ordering, and tracking deliveries.</li>
-                            <li>Real-time updates for all parties involved.</li>
-                            <li>Enhances the overall delivery and ordering experience.</li>
-                        </ul>
-                        <a href="video_2.mp4" target="_blank" class="show-link">
-                            <i class="fas fa-video" style="transform: scaleX(-1); margin-right: 8px;"></i>
-                            Show video
-                        </a>
-                        <div class="project-tags">
-                            <span class="project-tag">Real-time</span>
-                            <span class="project-tag">Food Delivery</span>
-                            <span class="project-tag">Multi-Platform</span>
-                            <span class="project-tag">Management System</span>
-                        </div>
-                    </div>
-                </div>
-                
                 <div class="project-card" data-aos="zoom-in">
                     <img src="images/23.png" alt="Salam Space" class="project-image">
                     <div class="project-info">
@@ -830,7 +787,7 @@
                         </div>
                     </div>
                 </div>
-
+                
                 <div class="project-card" data-aos="zoom-in">
                     <img src="images/24.png" alt="Delivery App" class="project-image">
                     <div class="project-info">
@@ -860,6 +817,57 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="project-card" data-aos="zoom-in">
+                    <img src="images/22.png" alt="Smart Home System" class="project-image">
+                    <div class="project-info">
+                        <h3>Smart Home System</h3>
+                        <ul>
+                            <li>Initially developed fully using React Native before switching to Flutter.</li>
+                            <li>Controlled with Arduino and sensors.</li>
+                            <li>Designed in SolidWorks and 3D printed.</li>
+                            <li>Used custom PCB for circuit integration.</li>
+                            <li>Funding and support issues delayed final launch.</li>
+                            <li>Improved skills in hardware/software integration.</li>
+                        </ul>
+                        <a href="video.mov" target="_blank" class="show-link">
+                            <i class="fas fa-video" style="transform: scaleX(-1); margin-right: 8px;"></i>
+                            Show video
+                        </a>
+                        <div class="project-tags">
+                            <span class="project-tag">React Native</span>
+                            <span class="project-tag">SolidWorks</span>
+                            <span class="project-tag">Arduino</span>
+                            <span class="project-tag">IoT</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card" data-aos="zoom-in">
+                    <img src="images/25.png" alt="Multi-Restaurant Food Delivery" class="project-image">
+                    <div class="project-info">
+                        <h3>Multi-Restaurant Delivery</h3>
+                        <ul>
+                            <li>Three apps in one: for the worker, restaurant, and customer.</li>
+                            <li>Employee app for tracking and delivering orders.</li>
+                            <li>Restaurant app for managing orders, menus, and sales statistics.</li>
+                            <li>Customer app for browsing menus, ordering, and tracking deliveries.</li>
+                            <li>Real-time updates for all parties involved.</li>
+                            <li>Enhances the overall delivery and ordering experience.</li>
+                        </ul>
+                        <a href="video_2.mp4" target="_blank" class="show-link">
+                            <i class="fas fa-video" style="transform: scaleX(-1); margin-right: 8px;"></i>
+                            Show video
+                        </a>
+                        <div class="project-tags">
+                            <span class="project-tag">Real-time</span>
+                            <span class="project-tag">Food Delivery</span>
+                            <span class="project-tag">Multi-Platform</span>
+                            <span class="project-tag">Management System</span>
+                        </div>
+                    </div>
+                </div>
+                
+             
 
             </div>
 
