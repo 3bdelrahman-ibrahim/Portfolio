@@ -642,7 +642,8 @@
             width: 100px;
             height: 35px;
             border-radius: 7px;
-        } 
+        }
+
         .show-link {
             width: 70%;
             height: 40px;
@@ -661,9 +662,8 @@
             text-decoration: none;
             color: #fff;
             transition: 0.3s ease;
-             font-weight: 700;
+            font-weight: 700;
         }
-         
     </style>
 </head>
 
@@ -722,13 +722,13 @@
                     <h3>Supabase & Firebase</h3>
                     <p>Integrating cloud backends to manage auth, database, and real-time data effectively.</p>
                 </div>
-              
+
                 <div class="skill-card" data-aos="zoom-in">
                     <i class="fas fa-robot"></i>
                     <h3>IoT & Arduino</h3>
                     <p>Building smart connected systems using Flutter for UI and Arduino for hardware control.</p>
                 </div>
-            
+
                 <div class="skill-card" data-aos="zoom-in">
                     <i class="fas fa-tools"></i>
                     <h3>Deployment</h3>
@@ -762,7 +762,7 @@
                         </ul>
                         <a href="video.mov" target="_blank" class="show-link">
                             <i class="fas fa-video" style="transform: scaleX(-1); margin-right: 8px;"></i>
-                            Show video 
+                            Show video
                         </a>
                         <div class="project-tags">
                             <span class="project-tag">React Native</span>
@@ -772,7 +772,7 @@
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="project-card" data-aos="zoom-in">
                     <img src="images/23.png" alt="Salam Space" class="project-image">
                     <div class="project-info">
@@ -786,7 +786,8 @@
                             <li>Works seamlessly on both Android and iOS.</li>
                         </ul>
                         <div class="download-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.arab.salamspace" target="_blank" class="download-link">
+                            <a href="https://play.google.com/store/apps/details?id=com.arab.salamspace" target="_blank"
+                                class="download-link">
                                 <img src="images/gp.png" alt="Android Download" class="download-icon">
                             </a>
                             <a href="https://apps.apple.com/app/id6740785701" target="_blank" class="download-link">
@@ -801,7 +802,7 @@
                         </div>
                     </div>
                 </div>
-            
+
                 <div class="project-card" data-aos="zoom-in">
                     <img src="images/24.png" alt="Delivery App" class="project-image">
                     <div class="project-info">
@@ -815,7 +816,8 @@
                             <li>Enhanced my backend and UI skills together.</li>
                         </ul>
                         <div class="download-links">
-                            <a href="https://play.google.com/store/apps/details?id=com.restauranttest.egypt" target="_blank" class="download-link">
+                            <a href="https://play.google.com/store/apps/details?id=com.restauranttest.egypt"
+                                target="_blank" class="download-link">
                                 <img src="images/gp.png" alt="Android Download" class="download-icon">
                             </a>
                             <a class="download-link" onclick="alert('Coming soon on iOS Store')">
@@ -830,9 +832,9 @@
                         </div>
                     </div>
                 </div>
-            
+
             </div>
-            
+
 
         </div>
     </section>
@@ -867,17 +869,17 @@
         <p>For more information about me:</p>
 
 
- <!-- زر الاتصال -->
-<a href="tel:+201091602558" class="call-btn" style="margin-right: 10px; font-size: 12px;">
-    <i class="fas fa-phone-alt" style="transform: scaleX(-1); margin-right: 8px;"></i>
-    Call Now
-</a>
+        <!-- زر الاتصال -->
+        <a href="tel:+201091602558" class="call-btn" style="margin-right: 10px; font-size: 12px;">
+            <i class="fas fa-phone-alt" style="transform: scaleX(-1); margin-right: 8px;"></i>
+            Call Now
+        </a>
 
-<!-- زر تحميل السيرة الذاتية -->
-<a href="cv.pdf" download target="_blank" class="call-btn" style="font-size: 12px;">
-    <i class="fas fa-download" style="margin-right: 8px;"></i>
-    Download CV
-</a>
+        <!-- زر تحميل السيرة الذاتية -->
+        <a href="cv.pdf" download target="_blank" class="call-btn" style="font-size: 12px;">
+            <i class="fas fa-download" style="margin-right: 8px;"></i>
+            Download CV
+        </a>
 
 
 
@@ -969,8 +971,8 @@
     <script>
         document.addEventListener("DOMContentLoaded", function () {
             AOS.init({
-                duration: 1000, // Animation duration (ms)
-                once: true,     // Whether animation should happen only once
+                duration: 1000, 
+                once: true,    
             });
         });
     </script>
@@ -979,71 +981,4 @@
 
 </html>
 
-<!--  
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Send Message to Firebase</title>
-  
-  <script type="module">
-    // Import Firebase SDK
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-    import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
-
-    // Firebase configuration
-    const firebaseConfig = {
-        apiKey: "AIzaSyA5I1AlqhGACpPecU8Ly6137txxXvdcrac",
-            authDomain: "abdelrahman-ibrahim-info.firebaseapp.com",
-            databaseURL: "https://abdelrahman-ibrahim-info-default-rtdb.firebaseio.com",
-            projectId: "abdelrahman-ibrahim-info",
-            storageBucket: "abdelrahman-ibrahim-info.firebasestorage.app",
-            messagingSenderId: "326830243477",
-            appId: "1:326830243477:web:1f7d646f95d9cc3839a59c",
-            measurementId: "G-GBSD7BNLV9"
-    };
-
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-
-    // Get the form and message input
-    const form = document.getElementById('messageForm');
-    const messageInput = document.getElementById('message');
-
-    // Handle form submission
-    form.addEventListener('submit', async (event) => {
-      event.preventDefault();
-
-      const message = messageInput.value.trim();
-
-      if (message) {
-        try {
-          // Add the message to Firestore
-          await addDoc(collection(db, 'messages'), {
-            text: message,
-            timestamp: serverTimestamp()
-          });
-
-          // Clear the input field after submission
-          messageInput.value = '';
-          alert('Message sent successfully!');
-        } catch (error) {
-          console.error("Error sending message: ", error);
-        }
-      } else {
-        alert('Please enter a message!');
-      }
-    });
-  </script>
-</head>
-<body>
-  <h1>Send Message</h1>
-  <form id="messageForm">
-    <label for="message">Message:</label>
-    <textarea id="message" required></textarea><br>
-    <button type="submit">Send</button>
-  </form>
-</body>
-</html> -->
+ 
