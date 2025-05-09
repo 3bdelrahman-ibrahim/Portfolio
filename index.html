@@ -523,6 +523,18 @@
             .navbar-nav .nav-link {
                 margin: 0.5rem 0;
             }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                right: 0;
+                width: 100%;
+                height: 150%;
+                background: radial-gradient(circle, var(--primary-light) 0%, rgba(99, 102, 241, 0) 70%);
+                opacity: 0.3;
+                z-index: -1;
+            }
         }
 
         @media (max-width: 768px) {
