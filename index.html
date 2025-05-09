@@ -8,7 +8,7 @@
     <link rel="icon" href="web_icon/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="web_icon/apple-touch-icon.png">
     <meta name="google-site-verification" content="XVud6-PKmwSqxKBFSzk9TYPXhGc-bAXyASk9xFbzPkA" />
-    
+
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Abdelrahman Ibrahim">
     <meta property="og:description" content="Flutter Developer & UI/UX Designer">
@@ -28,20 +28,24 @@
     <!-- Preload critical resources -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" as="style">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" as="style">
-    
+    <link rel="preload"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+        as="style">
+
     <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    
+
     <!-- AOS Animation Library -->
     <link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet">
-    
+
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
             --primary: #6366f1;
@@ -58,7 +62,7 @@
             --glass-border: rgba(255, 255, 255, 0.2);
             --bs-body-bg: #f8fafc;
         }
-        
+
         body {
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
@@ -66,7 +70,7 @@
             color: var(--dark);
             transition: all 0.4s ease;
         }
-        
+
         .dark-mode {
             --bs-body-bg: #020617;
             --bs-body-color: #e2e8f0;
@@ -74,56 +78,63 @@
             background-color: var(--darker);
             color: var(--light);
         }
-        
+
         .dark-mode .bg-light {
             background-color: rgba(2, 6, 23, 0.95) !important;
         }
-        
+
         .dark-mode .text-dark {
             color: var(--light) !important;
         }
- 
-        .dark-mode .navbar-nav .nav-link{
+
+        .dark-mode .navbar-nav .nav-link {
             color: var(--light) !important;
-        } 
+        }
+
         /* toggler icon color  span  */
         .dark-mode .navbar-toggler-icon {
             filter: invert(1);
         }
-        
-      
-             
-        
+
+
+
+
         .dark-mode .bg-dark {
             background-color: rgba(2, 6, 23, 0.95) !important;
         }
+
         .dark-mode .navbar {
             background-color: rgba(2, 6, 23, 0.95) !important;
         }
-            
+
         .dark-mode .card {
             background-color: var(--card-bg-dark);
             border-color: rgba(99, 102, 241, 0.2);
             backdrop-filter: blur(10px);
         }
-        
-        h1, h2, h3, h4, h5, h6 {
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
         }
-        
+
         .navbar {
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
             background-color: rgba(248, 250, 252, 0.95);
             padding: 1rem 0;
         }
-        
+
         .navbar-scrolled {
-            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
             padding: 0.5rem 0;
         }
-        
+
         .hero {
             min-height: 100vh;
             display: flex;
@@ -131,7 +142,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .hero::before {
             content: '';
             position: absolute;
@@ -143,11 +154,11 @@
             opacity: 0.3;
             z-index: -1;
         }
-        
+
         .dark-mode .hero::before {
             opacity: 0.1;
         }
-        
+
         .hero h1 {
             font-size: clamp(2.5rem, 8vw, 4.5rem);
             line-height: 1.1;
@@ -157,14 +168,14 @@
             background-clip: text;
             color: transparent;
         }
-        
+
         .hero h2 {
             color: var(--secondary);
             font-size: clamp(1.25rem, 4vw, 1.8rem);
             font-weight: 500;
             margin-bottom: 2rem;
         }
-        
+
         .hero-image-container {
             position: relative;
             width: 100%;
@@ -181,7 +192,7 @@
         .floating-icon {
             position: absolute;
             width: 20%;
-            
+
             aspect-ratio: 1;
             border-radius: 50%;
             /* box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
@@ -209,38 +220,62 @@
         }
 
         @keyframes float-1 {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(-15px, -15px) rotate(10deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(-15px, -15px) rotate(10deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
         }
 
         @keyframes float-2 {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(15px, -10px) rotate(-5deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(15px, -10px) rotate(-5deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
         }
 
         @keyframes float-3 {
-            0% { transform: translate(0, 0) rotate(0deg); }
-            50% { transform: translate(10px, 15px) rotate(7deg); }
-            100% { transform: translate(0, 0) rotate(0deg); }
+            0% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            50% {
+                transform: translate(10px, 15px) rotate(7deg);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
         }
-        
+
         .hero-image:hover {
             transform: none;
         }
-        
+
         .section-title {
             margin-bottom: 4rem;
             position: relative;
         }
-        
+
         .section-title h2 {
             position: relative;
             display: inline-block;
             font-size: clamp(1.75rem, 5vw, 2.5rem);
         }
-        
+
         .section-title h2::after {
             content: '';
             position: absolute;
@@ -251,7 +286,7 @@
             background: linear-gradient(90deg, var(--primary), var(--primary-dark));
             border-radius: 2px;
         }
-        
+
         .card {
             border-radius: 16px;
             overflow: hidden;
@@ -262,25 +297,26 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
         }
-        
+
         .card:hover {
             transform: translateY(-10px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
             border-color: rgba(99, 102, 241, 0.3);
         }
-        
+
         .card-img-top {
             width: 100%;
             aspect-ratio: 16/9;
             object-fit: cover;
             transition: transform 0.5s ease;
-            height: auto; /* Remove fixed height */
+            height: auto;
+            /* Remove fixed height */
         }
-        
+
         .card:hover .card-img-top {
             transform: scale(1.05);
         }
-        
+
         .skill-icon {
             font-size: 2.5rem;
             color: var(--primary);
@@ -293,7 +329,7 @@
             justify-content: center;
             border-radius: 20px;
         }
-        
+
         .btn-primary {
             background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
             border: none;
@@ -303,12 +339,12 @@
             transition: all 0.3s ease;
             box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2);
         }
-        
+
         .btn-primary:hover {
             transform: translateY(-2px);
             box-shadow: 0 10px 15px rgba(99, 102, 241, 0.3);
         }
-        
+
         .project-tag {
             background-color: rgba(99, 102, 241, 0.1);
             color: var(--primary);
@@ -320,9 +356,9 @@
             display: inline-block;
             font-weight: 500;
         }
-        
+
         .social-icon {
-           width: 40px;
+            width: 40px;
             height: 40px;
             aspect-ratio: 1/1;
             border-radius: 12px;
@@ -336,29 +372,29 @@
             box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2);
             text-decoration: none;
         }
-        
+
         .social-icon:hover {
             transform: translateY(-5px);
             box-shadow: 0 10px 15px rgba(99, 102, 241, 0.3);
         }
-        
+
         .download-link img {
             height: 40px;
             border-radius: 12px;
             transition: all 0.3s ease;
-             
+
             border-radius: 12px;
-           
+
             transition: all 0.3s ease;
             font-weight: 600;
             box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2);
 
         }
-        
+
         .download-link:hover img {
             transform: translateY(-5px);
-         }
-        
+        }
+
         .show-link {
             text-decoration: none;
             background: linear-gradient(135deg, var(--darker) 0%, var(--darker) 100%);
@@ -374,20 +410,20 @@
             font-weight: 600;
             box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2);
         }
-        
+
         .show-link:hover {
             transform: translateY(-3px);
             box-shadow: 0 10px 15px rgba(99, 102, 241, 0.3);
             color: var(--white);
         }
-        
+
         footer {
             background-color: var(--darker);
             color: var(--light);
             position: relative;
             overflow: hidden;
         }
-        
+
         footer::before {
             content: '';
             position: absolute;
@@ -398,7 +434,7 @@
             background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
             z-index: 0;
         }
-        
+
         #theme-toggle {
             cursor: pointer;
             width: 40px;
@@ -410,60 +446,60 @@
             justify-content: center;
             background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(99, 102, 241, 0.2) 100%);
         }
-        
+
         #theme-toggle:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2);
         }
-        
+
         .glass-card {
             background: var(--glass-bg);
             backdrop-filter: blur(10px);
             -webkit-backdrop-filter: blur(10px);
             border: 1px solid var(--glass-border);
         }
-        
+
         /* Custom scrollbar */
         ::-webkit-scrollbar {
             width: 8px;
         }
-        
+
         ::-webkit-scrollbar-track {
             background: var(--light);
-            transition: all  3s ease;
+            transition: all 3s ease;
         }
-        
+
         ::-webkit-scrollbar-thumb {
             background: var(--primary);
             border-radius: 4px;
         }
-        
+
         .dark-mode::-webkit-scrollbar-track {
             background: var(--darker);
         }
-        
+
         ::-webkit-scrollbar-thumb {
             background: var(--primary);
             border-radius: 4px;
         }
-        
+
         .dark-mode ::-webkit-scrollbar-track {
             background: var(--darker);
         }
-        
+
         .dark-mode ::-webkit-scrollbar-thumb {
             background: var(--primary-dark);
         }
-        
+
         /* Responsive adjustments */
         @media (max-width: 768px) {
             .hero {
                 text-align: center;
                 padding-top: 5rem;
             }
-            
-         
-            
+
+
+
             .section-title h2::after {
                 left: 50%;
                 transform: translateX(-50%);
@@ -475,15 +511,15 @@
             .hero h1 {
                 font-size: clamp(2rem, 6vw, 3.5rem);
             }
-            
+
             .hero h2 {
                 font-size: clamp(1rem, 3vw, 1.5rem);
             }
-            
+
             .card {
                 margin-bottom: 1.5rem;
             }
-            
+
             .navbar-nav .nav-link {
                 margin: 0.5rem 0;
             }
@@ -494,34 +530,34 @@
                 padding-top: 6rem;
                 text-align: center;
             }
-            
+
             .hero-image {
-                 max-width: 80%;
+                max-width: 80%;
                 margin-left: auto;
                 margin-right: auto;
             }
-            
+
             .d-flex.gap-3 {
                 justify-content: center;
             }
-            
+
             .section-title {
                 text-align: center;
             }
-            
+
             .section-title h2::after {
                 left: 50%;
                 transform: translateX(-50%);
             }
-            
+
             .navbar-nav {
                 padding: 1rem 0;
             }
-            
+
             #theme-toggle {
                 margin: 0.5rem auto;
             }
-            
+
             .download-link img {
                 max-width: 140px;
             }
@@ -531,27 +567,27 @@
             .hero {
                 padding-top: 5rem;
             }
-            
+
             .hero-image {
                 max-width: 90%;
             }
-            
+
             .btn {
                 padding: 0.5rem 1rem;
                 font-size: 0.9rem;
             }
-            
+
             .card-body {
                 padding: 1.25rem;
             }
-            
+
             .project-tag {
                 font-size: 0.75rem;
                 padding: 0.3rem 0.7rem;
                 margin-right: 0.3rem;
                 margin-bottom: 0.3rem;
             }
-            
+
             .social-icon {
                 width: 35px;
                 height: 35px;
@@ -560,12 +596,12 @@
 
         /* Fix for laptops (medium screens) */
         @media (min-width: 992px) and (max-width: 1199px) {
-            
-            
+
+
             .hero-image {
                 max-width: 90%;
             }
-            
+
             .card-img-top {
                 height: 180px;
             }
@@ -580,7 +616,7 @@
                 margin-top: 0.5rem;
                 box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
             }
-            
+
             .dark-mode .navbar-collapse {
                 background-color: var(--darker);
             }
@@ -592,23 +628,24 @@
                 display: inline-block;
                 text-align: center;
             }
-            
+
             .d-flex.flex-wrap.align-items-center.justify-content-center {
                 flex-direction: column;
             }
-            
+
             .d-flex.flex-wrap {
                 justify-content: center;
             }
-            
+
             /* Improve readability on mobile */
             .card-body ul li {
                 margin-bottom: 0.5rem;
             }
-            
+
             /* Fix for contact form on mobile */
             .form-control {
-                font-size: 16px; /* Prevents iOS zoom on focus */
+                font-size: 16px;
+                /* Prevents iOS zoom on focus */
             }
         }
 
@@ -618,7 +655,7 @@
                 min-height: auto;
                 padding: 8rem 0 4rem;
             }
-            
+
             .hero-image {
                 transform: perspective(800px) rotateY(-3deg);
             }
@@ -636,12 +673,42 @@
                 padding-bottom: 5rem !important;
             }
         }
-        .download-links{
+
+        .download-links {
             display: flex;
             flex-wrap: wrap;
             gap: 1rem;
             justify-content: center;
             margin: 0 auto;
+        }
+
+        /* Form placeholder styling for both light and dark modes */
+        ::placeholder {
+            color: rgba(15, 23, 42, 0.5);
+            opacity: 1;
+        }
+
+        .dark-mode ::placeholder {
+            color: rgba(241, 245, 249, 0.5);
+            opacity: 1;
+        }
+
+        /* Improve form input visibility */
+        .form-control {
+            color: var(--dark);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+
+        .dark-mode .form-control {
+            color: var(--light);
+            background-color: rgba(15, 23, 42, 0.8);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+
+        .dark-mode .form-control:focus {
+            background-color: rgba(15, 23, 42, 0.9);
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
         }
     </style>
 </head>
@@ -651,53 +718,52 @@
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top glass-effect">
         <div class="container">
             <!-- Logo -->
-            <a class="navbar-brand fw-bold" href="#" 
-               style="background: linear-gradient(90deg, var(--primary), var(--primary-dark)); 
+            <a class="navbar-brand fw-bold" href="#" style="background: linear-gradient(90deg, var(--primary), var(--primary-dark)); 
                       -webkit-background-clip: text; 
                       background-clip: text; 
                       color: transparent;">
-              Portfolio
+                Portfolio
             </a>
-        
+
             <!-- Toggle button (mobile) -->
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <span class="navbar-toggler-icon"></span>
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-        
+
             <!-- Navigation Links + Theme Toggle -->
             <div class="collapse navbar-collapse" id="navbarNav">
-              <ul class="navbar-nav ms-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="#about">About</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#skills">Skills</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#projects">Projects</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#contact">Contact</a>
-                </li>
-        
-                 <li class="nav-item d-flex justify-content-center">
-                  <div id="theme-toggle" class="d-flex align-items-center" style="cursor: pointer;">
-                    <i class="fas fa-moon"></i>
-                  </div>
-                </li>
-              </ul>
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+
+                    <li class="nav-item d-flex justify-content-center">
+                        <div id="theme-toggle" class="d-flex align-items-center" style="cursor: pointer;">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
     </nav>
-      
+
 
     <!-- Hero Section -->
     <section class="hero py-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 order-lg-1 order-1 py-5">
-                     <h1 class="mb-3 py-3">Abdelrahman Ibrahim</h1>
+                    <h1 class="mb-3 py-3">Abdelrahman Ibrahim</h1>
                     <h2 class="mb-4">Flutter Developer & UI/UX Designer</h2>
                     <p class="">Crafting seamless digital experiences with innovative solutions and elegant design.</p>
                 </div>
@@ -718,7 +784,9 @@
         <div class="container" data-aos="fade-up">
             <div class="section-title text-center">
                 <h2>About Me</h2>
-                <p class="lead mx-auto" style="max-width: 700px;">I'm a passionate Flutter developer dedicated to creating efficient, user-friendly mobile applications that deliver exceptional experiences. My focus is on crafting solutions that blend technical excellence with intuitive design.</p>
+                <p class="lead mx-auto" style="max-width: 700px;">I'm a passionate Flutter developer dedicated to
+                    creating efficient, user-friendly mobile applications that deliver exceptional experiences. My focus
+                    is on crafting solutions that blend technical excellence with intuitive design.</p>
             </div>
         </div>
     </section>
@@ -736,7 +804,8 @@
                         <div class="card-body">
                             <i class="fas fa-mobile-alt skill-icon"></i>
                             <h3 class="card-title">Flutter Development</h3>
-                            <p class="card-text">Building cross-platform apps with clean architecture, state management, and responsive UIs that work seamlessly on all devices.</p>
+                            <p class="card-text">Building cross-platform apps with clean architecture, state management,
+                                and responsive UIs that work seamlessly on all devices.</p>
                         </div>
                     </div>
                 </div>
@@ -745,7 +814,8 @@
                         <div class="card-body">
                             <i class="fas fa-paint-brush skill-icon"></i>
                             <h3 class="card-title">UI/UX Design</h3>
-                            <p class="card-text">Creating intuitive, visually appealing interfaces focused on user experience, accessibility, and modern design principles.</p>
+                            <p class="card-text">Creating intuitive, visually appealing interfaces focused on user
+                                experience, accessibility, and modern design principles.</p>
                         </div>
                     </div>
                 </div>
@@ -754,7 +824,8 @@
                         <div class="card-body">
                             <i class="fas fa-cloud skill-icon"></i>
                             <h3 class="card-title">Backend Integration</h3>
-                            <p class="card-text">Connecting apps to powerful backends using Supabase, Firebase, and custom APIs for robust functionality.</p>
+                            <p class="card-text">Connecting apps to powerful backends using Supabase, Firebase, and
+                                custom APIs for robust functionality.</p>
                         </div>
                     </div>
                 </div>
@@ -763,7 +834,8 @@
                         <div class="card-body">
                             <i class="fas fa-robot skill-icon"></i>
                             <h3 class="card-title">IoT Development</h3>
-                            <p class="card-text">Building smart connected systems that bridge mobile apps with hardware using Bluetooth, WiFi, and custom protocols.</p>
+                            <p class="card-text">Building smart connected systems that bridge mobile apps with hardware
+                                using Bluetooth, WiFi, and custom protocols.</p>
                         </div>
                     </div>
                 </div>
@@ -772,7 +844,8 @@
                         <div class="card-body">
                             <i class="fas fa-rocket skill-icon"></i>
                             <h3 class="card-title">App Deployment</h3>
-                            <p class="card-text">Publishing apps to Google Play and App Store with proper configuration, store optimization, and update management.</p>
+                            <p class="card-text">Publishing apps to Google Play and App Store with proper configuration,
+                                store optimization, and update management.</p>
                         </div>
                     </div>
                 </div>
@@ -801,14 +874,17 @@
                                 <li>Optimized for both Android and iOS platforms</li>
                                 <li>Integrated with Google Play and App Store publishing workflows</li>
                             </ul>
-                            <div class="d-flex   align-items-center    justify-content-center gap-3     mt-3 mb-3  download-links    ">
-                                <a href="https://play.google.com/store/apps/details?id=com.arab.salamspace" target="_blank" class="download-link ">
+                            <div
+                                class="d-flex   align-items-center    justify-content-center gap-3     mt-3 mb-3  download-links    ">
+                                <a href="https://play.google.com/store/apps/details?id=com.arab.salamspace"
+                                    target="_blank" class="download-link ">
                                     <img src="images/gp.png" alt="Android Download">
                                 </a>
-                                <a href="https://apps.apple.com/app/id6740785701" target="_blank" class="download-link  ">
+                                <a href="https://apps.apple.com/app/id6740785701" target="_blank"
+                                    class="download-link  ">
                                     <img src="images/ios.png" alt="iOS Download">
                                 </a>
-                             </div>
+                            </div>
                             <div class="d-flex flex-wrap">
                                 <span class="project-tag">Flutter</span>
                                 <span class="project-tag">Dart</span>
@@ -819,7 +895,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Project 2 -->
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="card h-100">
@@ -833,8 +909,10 @@
                                 <li>Custom admin dashboard for restaurant analytics</li>
                                 <li>Firebase authentication and Supabase for data management</li>
                             </ul>
-                            <div class="d-flex flex-wrap   align-items-center    justify-content-center gap-3  mt-3 mb-3 download-links ">
-                                <a href="https://play.google.com/store/apps/details?id=com.restauranttest.egypt" target="_blank" class="download-link  ">
+                            <div
+                                class="d-flex   align-items-center    justify-content-center gap-3  mt-3 mb-3 download-links ">
+                                <a href="https://play.google.com/store/apps/details?id=com.restauranttest.egypt"
+                                    target="_blank" class="download-link  ">
                                     <img src="images/gp.png" alt="Android Download">
                                 </a>
                                 <a class="download-link  " onclick="alert('Coming soon on iOS Store')">
@@ -851,7 +929,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Project 3 -->
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="card h-100">
@@ -865,12 +943,13 @@
                                 <li>Sales analytics and reporting dashboard</li>
                                 <li>Customer loyalty and promotion system</li>
                             </ul>
-                            <div class="d-flex flex-wrap   align-items-center    justify-content-center gap-3  mt-3 mb-2">
+                            <div
+                                class="d-flex flex-wrap   align-items-center    justify-content-center gap-3  mt-3 mb-2">
 
-                            <a href="video_2.mov" target="_blank" class="show-link">
-                                <i class="fas fa-video me-2" style="transform: scaleX(-1);"></i>
-                                View Demo
-                            </a>
+                                <a href="video_2.mov" target="_blank" class="show-link">
+                                    <i class="fas fa-video me-2" style="transform: scaleX(-1);"></i>
+                                    View Demo
+                                </a>
                             </div>
                             <div class="d-flex flex-wrap mt-3">
                                 <span class="project-tag">Real-time</span>
@@ -882,7 +961,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <!-- Project 4 -->
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
                     <div class="card h-100">
@@ -896,12 +975,13 @@
                                 <li>Bluetooth and WiFi connectivity options</li>
                                 <li>Energy monitoring and smart scheduling</li>
                             </ul>
-                            <div class="d-flex flex-wrap   align-items-center    justify-content-center gap-3  mt-3 mb-2">
+                            <div
+                                class="d-flex flex-wrap   align-items-center    justify-content-center gap-3  mt-3 mb-2">
 
-                            <a href="video.mov" target="_blank" class="show-link">
-                                <i class="fas fa-video me-2" style="transform: scaleX(-1);"></i>
-                                View Demo
-                            </a>
+                                <a href="video.mov" target="_blank" class="show-link">
+                                    <i class="fas fa-video me-2" style="transform: scaleX(-1);"></i>
+                                    View Demo
+                                </a>
                             </div>
                             <div class="d-flex flex-wrap mt-3">
                                 <span class="project-tag">IoT</span>
@@ -931,15 +1011,18 @@
                             <form id="contactForm">
                                 <div class="mb-4">
                                     <label for="name" class="form-label">Your Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" placeholder="Enter your name" required>
+                                    <input type="text" class="form-control" id="name" name="name"
+                                        placeholder="Enter your name" required>
                                 </div>
                                 <div class="mb-4">
                                     <label for="phone" class="form-label">Phone Number</label>
-                                    <input type="tel" class="form-control" id="phone" name="phone" placeholder="Enter your phone number" required>
+                                    <input type="tel" class="form-control" id="phone" name="phone"
+                                        placeholder="Enter your phone number" required>
                                 </div>
                                 <div class="mb-4">
                                     <label for="message" class="form-label">Your Message</label>
-                                    <textarea class="form-control" id="message" rows="5" name="message" placeholder="Tell me about your project" required></textarea>
+                                    <textarea class="form-control" id="message" rows="5" name="message"
+                                        placeholder="Tell me about your project" required></textarea>
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary px-5 py-3">Send Message</button>
@@ -949,7 +1032,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="text-center mt-5" data-aos="fade-up">
                 <p class="mb-4">Prefer to connect directly?</p>
                 <div class="d-flex justify-content-center flex-wrap gap-3 mb-4">
@@ -965,8 +1048,8 @@
                         <i class="fas fa-download me-2"></i>
                         Download CV
                     </a>
-                 </div>
-                
+                </div>
+
                 <div class="d-flex justify-content-center flex-wrap gap-1  my-4">
                     <a href="https://github.com/3bdelrahman-ibrahim" target="_blank" class="social-icon">
                         <i class="fab fa-github"></i>
@@ -995,7 +1078,9 @@
     <footer class="py-5">
         <div class="container text-center position-relative">
             <div class="mb-4">
-                <a href="#" class="navbar-brand fw-bold" style="background: linear-gradient(90deg, var(--primary), var(--primary-dark)); -webkit-background-clip: text; background-clip: text; color: transparent;">Abdelrahman Ibrahim</a>
+                <a href="#" class="navbar-brand fw-bold"
+                    style="background: linear-gradient(90deg, var(--primary), var(--primary-dark)); -webkit-background-clip: text; background-clip: text; color: transparent;">Abdelrahman
+                    Ibrahim</a>
             </div>
             <p class="mb-4">Flutter Developer & UI/UX Designer</p>
             <p class="mb-0">&copy; <span id="current-year"></span> All rights reserved.</p>
@@ -1004,7 +1089,7 @@
 
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Firebase Scripts -->
     <script type="module">
         // Import Firebase SDK
@@ -1059,10 +1144,10 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     `;
                     document.body.appendChild(successAlert);
-                    
+
                     // Reset form fields
                     contactForm.reset();
-                    
+
                     // Auto-dismiss after 5 seconds
                     setTimeout(() => {
                         const bsAlert = new bootstrap.Alert(successAlert);
@@ -1079,182 +1164,184 @@
                         <strong>Error!</strong> There was an error sending your message.
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     `;
-                    
- document.body.appendChild(errorAlert);
 
-                // Auto-dismiss after 5 seconds
-                setTimeout(() => {
-                    const bsAlert = new bootstrap.Alert(errorAlert);
-                    bsAlert.close();
-                }, 5000);
+                    document.body.appendChild(errorAlert);
+
+                    // Auto-dismiss after 5 seconds
+                    setTimeout(() => {
+                        const bsAlert = new bootstrap.Alert(errorAlert);
+                        bsAlert.close();
+                    }, 5000);
+                });
+        });
+    </script>
+
+    <!-- AOS Animation Script -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- Add GSAP for smoother animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Custom Scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Initialize AOS with enhanced settings
+            AOS.init({
+                duration: 800,
+                easing: 'ease-out-cubic',
+                once: false,
+                mirror: true,
+                offset: 50
             });
-    });
-</script>
 
-<!-- AOS Animation Script -->
-<script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+            // Initialize GSAP ScrollTrigger
+            gsap.registerPlugin(ScrollTrigger);
 
-<!-- Add GSAP for smoother animations -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+            // Animate hero section elements
+            gsap.from('.hero h1', {
+                duration: 1,
+                y: 50,
+                opacity: 0,
+                ease: 'power3.out',
+                delay: 0.2
+            });
 
-<!-- Custom Scripts -->
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-        // Initialize AOS with enhanced settings
-        AOS.init({
-            duration: 800,
-            easing: 'ease-out-cubic',
-            once: false,
-            mirror: true,
-            offset: 50
-        });
-        
-        // Initialize GSAP ScrollTrigger
-        gsap.registerPlugin(ScrollTrigger);
-        
-        // Animate hero section elements
-        gsap.from('.hero h1', {
-            duration: 1,
-            y: 50,
-            opacity: 0,
-            ease: 'power3.out',
-            delay: 0.2
-        });
+            gsap.from('.hero h2', {
+                duration: 1,
+                y: 30,
+                opacity: 0,
+                ease: 'power3.out',
+                delay: 0.4
+            });
 
-        gsap.from('.hero h2', {
-            duration: 1,
-            y: 30,
-            opacity: 0,
-            ease: 'power3.out',
-            delay: 0.4
-        });
+            gsap.from('.hero p', {
+                duration: 1,
+                y: 30,
+                opacity: 0,
+                ease: 'power3.out',
+                delay: 0.6
+            });
 
-        gsap.from('.hero p', {
-            duration: 1,
-            y: 30,
-            opacity: 0,
-            ease: 'power3.out',
-            delay: 0.6
-        });
+            gsap.from('.hero .btn', {
+                duration: 1,
+                y: 30,
+                opacity: 0,
+                ease: 'power3.out',
+                delay: 0.8
+            });
 
-        gsap.from('.hero .btn', {
-            duration: 1,
-            y: 30,
-            opacity: 0,
-            ease: 'power3.out',
-            delay: 0.8
-        });
+            gsap.from('.hero-image', {
+                duration: 1.2,
+                x: 50,
+                opacity: 0,
+                ease: 'power3.out',
+                delay: 0
+            });
 
-        gsap.from('.hero-image', {
-            duration: 1.2,
-            x: 50,
-            opacity: 0,
-            ease: 'power3.out',
-            delay: 0
-        });
-        
-        // Set current year in footer
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-        
-        // Navbar scroll behavior
-        const navbar = document.querySelector('.navbar');
-        window.addEventListener('scroll', function() {
-            if (window.scrollY > 50) {
-                navbar.classList.add('navbar-scrolled');
-            } else {
-                navbar.classList.remove('navbar-scrolled');
-            }
-        });
-        
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                
-                const targetId = this.getAttribute('href');
-                if (targetId === '#') return;
-                
-                const targetElement = document.querySelector(targetId);
-                if (targetElement) {
-                    window.scrollTo({
-                        top: targetElement.offsetTop - 80,
-                        behavior: 'smooth'
-                    });
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+
+            // Navbar scroll behavior
+            const navbar = document.querySelector('.navbar');
+            window.addEventListener('scroll', function () {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
                 }
             });
-        });
-        
-        // Dark mode toggle
-        const themeToggle = document.getElementById('theme-toggle');
-        const themeIcon = themeToggle.querySelector('i');
-        
-        // Check for saved theme preference or respect OS preference
-        const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-        
-        if (localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && prefersDarkScheme.matches)) {
-            document.body.classList.add("dark-mode");
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-        }
-        
-        themeToggle.addEventListener('click', function() {
-            document.body.classList.toggle('dark-mode');
-            
-            if (document.body.classList.contains('dark-mode')) {
-                localStorage.setItem("theme", "dark");
+
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Dark mode toggle
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+
+            // Check for saved theme preference or respect OS preference
+            const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+            if (localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && prefersDarkScheme.matches)) {
+                document.body.classList.add("dark-mode");
                 themeIcon.classList.remove('fa-moon');
                 themeIcon.classList.add('fa-sun');
-            } else {
-                localStorage.setItem("theme", "light");
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
             }
-        });
-        
-        // Listen for system theme changes
-        prefersDarkScheme.addEventListener('change', e => {
-            if (localStorage.getItem("theme") === null) {
-                if (e.matches) {
-                    document.body.classList.add("dark-mode");
+
+            themeToggle.addEventListener('click', function () {
+                document.body.classList.toggle('dark-mode');
+
+                if (document.body.classList.contains('dark-mode')) {
+                    localStorage.setItem("theme", "dark");
                     themeIcon.classList.remove('fa-moon');
                     themeIcon.classList.add('fa-sun');
                 } else {
-                    document.body.classList.remove("dark-mode");
+                    localStorage.setItem("theme", "light");
                     themeIcon.classList.remove('fa-sun');
                     themeIcon.classList.add('fa-moon');
                 }
-            }
-        });
-        
-        // Fix for mobile menu closing after click
-        const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-        const navbarCollapse = document.querySelector('.navbar-collapse');
+            });
 
-        navLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                if (window.innerWidth < 992) {
-                    const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                    if (bsCollapse) bsCollapse.hide();
+            // Listen for system theme changes
+            prefersDarkScheme.addEventListener('change', e => {
+                if (localStorage.getItem("theme") === null) {
+                    if (e.matches) {
+                        document.body.classList.add("dark-mode");
+                        themeIcon.classList.remove('fa-moon');
+                        themeIcon.classList.add('fa-sun');
+                    } else {
+                        document.body.classList.remove("dark-mode");
+                        themeIcon.classList.remove('fa-sun');
+                        themeIcon.classList.add('fa-moon');
+                    }
                 }
             });
-        });
-        
-        // Adjust animations for mobile
-        if (window.innerWidth < 768) {
-            // Simpler animations for mobile to improve performance
-            document.querySelectorAll('[data-aos]').forEach(el => {
-                el.setAttribute('data-aos-once', 'true');
-                el.setAttribute('data-aos-duration', '600');
+
+            // Fix for mobile menu closing after click
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (window.innerWidth < 992) {
+                        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
+                        if (bsCollapse) bsCollapse.hide();
+                    }
+                });
             });
-        }
-        
-        // Responsive image loading
-        const heroImage = document.querySelector('.hero-image');
-        if (window.innerWidth < 768) {
-            // You can optionally load a smaller image for mobile if available
-            // heroImage.src = 'images/mobile-hero.png';
-        }
-    });
-</script>
-</body> </html>  
+
+            // Adjust animations for mobile
+            if (window.innerWidth < 768) {
+                // Simpler animations for mobile to improve performance
+                document.querySelectorAll('[data-aos]').forEach(el => {
+                    el.setAttribute('data-aos-once', 'true');
+                    el.setAttribute('data-aos-duration', '600');
+                });
+            }
+
+            // Responsive image loading
+            const heroImage = document.querySelector('.hero-image');
+            if (window.innerWidth < 768) {
+                // You can optionally load a smaller image for mobile if available
+                // heroImage.src = 'images/mobile-hero.png';
+            }
+        });
+    </script>
+</body>
+
+</html>
