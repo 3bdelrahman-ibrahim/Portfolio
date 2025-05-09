@@ -346,18 +346,25 @@
             height: 40px;
             border-radius: 12px;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+             
+            border-radius: 12px;
+           
+            transition: all 0.3s ease;
+            font-weight: 600;
+            box-shadow: 0 4px 6px rgba(99, 102, 241, 0.2);
+
         }
         
         .download-link:hover img {
             transform: translateY(-5px);
-            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.2);
-        }
+         }
         
         .show-link {
             text-decoration: none;
             background: linear-gradient(135deg, var(--darker) 0%, var(--darker) 100%);
             /* background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); */
+            height: 40px;
+
             color: var(--white);
             padding: 12px 24px;
             border-radius: 12px;
@@ -629,6 +636,13 @@
                 padding-bottom: 5rem !important;
             }
         }
+        .download-links{
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin: 0 auto;
+        }
     </style>
 </head>
 
@@ -716,9 +730,9 @@
                 <h2>My Expertise</h2>
                 <p class="lead">Technologies and skills I've mastered to deliver outstanding results</p>
             </div>
-            <div class="row g-4">
+            <div class="row g-4 justify-content-center p-4">
                 <div class="col-md-4" data-aos="zoom-in">
-                    <div class="card text-center h-100 p-4">
+                    <div class="card text-center h-100 p-4 ">
                         <div class="card-body">
                             <i class="fas fa-mobile-alt skill-icon"></i>
                             <h3 class="card-title">Flutter Development</h3>
@@ -773,7 +787,7 @@
                 <h2>Featured Projects</h2>
                 <p class="lead">A showcase of my work and technical capabilities</p>
             </div>
-            <div class="row g-4">
+            <div class="row g-4 justify-content-center p-4">
                 <!-- Project 1 -->
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="card h-100">
@@ -787,7 +801,7 @@
                                 <li>Optimized for both Android and iOS platforms</li>
                                 <li>Integrated with Google Play and App Store publishing workflows</li>
                             </ul>
-                            <div class="d-flex flex-wrap   align-items-center    justify-content-center gap-3     mt-3 mb-3 ">
+                            <div class="d-flex   align-items-center    justify-content-center gap-3     mt-3 mb-3  download-links    ">
                                 <a href="https://play.google.com/store/apps/details?id=com.arab.salamspace" target="_blank" class="download-link ">
                                     <img src="images/gp.png" alt="Android Download">
                                 </a>
@@ -819,7 +833,7 @@
                                 <li>Custom admin dashboard for restaurant analytics</li>
                                 <li>Firebase authentication and Supabase for data management</li>
                             </ul>
-                            <div class="d-flex flex-wrap   align-items-center    justify-content-center gap-3  mt-3 mb-3 ">
+                            <div class="d-flex flex-wrap   align-items-center    justify-content-center gap-3  mt-3 mb-3 download-links ">
                                 <a href="https://play.google.com/store/apps/details?id=com.restauranttest.egypt" target="_blank" class="download-link  ">
                                     <img src="images/gp.png" alt="Android Download">
                                 </a>
