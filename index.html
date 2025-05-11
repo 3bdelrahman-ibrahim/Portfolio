@@ -2,6 +2,19 @@
 <html lang="en">
 
 <head>
+    <!-- Add this script right after your meta tags and before any other content -->
+    <script>
+        // Immediately set theme before page renders
+        (function() {
+            const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+            const savedTheme = localStorage.getItem("theme");
+            
+            if (savedTheme === "dark" || (!savedTheme && prefersDarkScheme.matches)) {
+                document.documentElement.classList.add("dark-mode");
+            }
+        })();
+    </script>
+    
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abdelrahman Ibrahim</title>
@@ -971,7 +984,7 @@
                 <h2>My Expertise</h2>
                 <p class="lead">Technologies and skills I've mastered to deliver outstanding results</p>
             </div>
-            <div class="row g-4 justify-content-center p-4">
+            <div class="row g-4 justify-content-center  ">
                 <div class="col-md-4" data-aos="zoom-in">
                     <div class="card text-center h-100 p-4 ">
                         <div class="card-body">
@@ -1033,7 +1046,7 @@
                 <h2>Featured Projects</h2>
                 <p class="lead">A showcase of my work and technical capabilities</p>
             </div>
-            <div class="row g-4 justify-content-center p-4">
+            <div class="row g-4 justify-content-center  ">
                 <!-- Project 1 -->
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="card h-100">
@@ -1163,6 +1176,93 @@
                                 <span class="project-tag">Hardware</span>
                                 <span class="project-tag">Automation</span>
                             </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section id="reviews" class="py-5">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title text-center">
+                <h2>Customer Reviews</h2>
+                <p class="lead">What my clients say about their experience working with me</p>
+            </div>
+            
+            <div class="row g-4 justify-content-center">
+                <!-- Review 1 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <h6 class="mb-0">Ahmed Khalid</h6>
+                                    <small class="text-muted">CEO, Shifrat Alsharq</small>
+                                </div>
+                                <div class="d-flex flex-column align-items-end">
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="fw-bold small">5.0</span>
+                                </div>
+                            </div>
+                            <p class="card-text">"Working with Abdelrahman on our Shifrat Alsharq app was a great experience. His technical skills and attention to detail resulted in an excellent product."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 2 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <h6 class="mb-0">Mohamed Saleh</h6>
+                                    <small class="text-muted">Director, TranaQar</small>
+                                </div>
+                                <div class="d-flex flex-column align-items-end">
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star-half-alt"></i>
+                                    </div>
+                                    <span class="fw-bold small ">4.5</span>
+                                </div>
+                            </div>
+                            <p class="card-text">"Abdelrahman developed an exceptional app for TranaQar. His expertise in Flutter and UI/UX design helped us create a seamless user experience for our customers."</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Review 3 -->
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-3">
+                                <div>
+                                    <h6 class="mb-0">Khaled Ibrahim</h6>
+                                    <small class="text-muted">Owner, Drive Now</small>
+                                </div>
+                                <div class="d-flex flex-column align-items-end">
+                                    <div class="text-warning">
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <span class="fw-bold small">5.0</span>
+                                </div>
+                            </div>
+                            <p class="card-text">"Drive Now app exceeded our expectations thanks to Abdelrahman's innovative approach and technical expertise. The app has significantly improved our business operations."</p>
                         </div>
                     </div>
                 </div>
@@ -1443,47 +1543,7 @@
                 });
             });
 
-            // Dark mode toggle
-            const themeToggle = document.getElementById('theme-toggle');
-            const themeIcon = themeToggle.querySelector('i');
-
-            // Check for saved theme preference or respect OS preference
-            const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
-            if (localStorage.getItem("theme") === "dark" || (!localStorage.getItem("theme") && prefersDarkScheme.matches)) {
-                document.body.classList.add("dark-mode");
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            }
-
-            themeToggle.addEventListener('click', function () {
-                document.body.classList.toggle('dark-mode');
-
-                if (document.body.classList.contains('dark-mode')) {
-                    localStorage.setItem("theme", "dark");
-                    themeIcon.classList.remove('fa-moon');
-                    themeIcon.classList.add('fa-sun');
-                } else {
-                    localStorage.setItem("theme", "light");
-                    themeIcon.classList.remove('fa-sun');
-                    themeIcon.classList.add('fa-moon');
-                }
-            });
-
-            // Listen for system theme changes
-            prefersDarkScheme.addEventListener('change', e => {
-                if (localStorage.getItem("theme") === null) {
-                    if (e.matches) {
-                        document.body.classList.add("dark-mode");
-                        themeIcon.classList.remove('fa-moon');
-                        themeIcon.classList.add('fa-sun');
-                    } else {
-                        document.body.classList.remove("dark-mode");
-                        themeIcon.classList.remove('fa-sun');
-                        themeIcon.classList.add('fa-moon');
-                    }
-                }
-            });
+           
 
             // Fix for mobile menu closing after click
             const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
@@ -1545,6 +1605,38 @@
             }
         });
     </script>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const darkClass = 'dark-mode';
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    
+        const applyTheme = (isDark) => {
+            document.documentElement.classList.toggle(darkClass, isDark);
+            document.body.classList.toggle(darkClass, isDark);
+            themeIcon.className = isDark ? 'fa fa-sun' : 'fa fa-moon';
+        };
+    
+        // Initial load: detect saved theme or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark.matches);
+        applyTheme(isDark);
+    
+        // Toggle on click
+        themeToggle.addEventListener('click', () => {
+            const newIsDark = !document.documentElement.classList.contains(darkClass);
+            localStorage.setItem('theme', newIsDark ? 'dark' : 'light');
+            applyTheme(newIsDark);
+        });
+    
+        // Watch for system preference changes
+        prefersDark.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                applyTheme(e.matches);
+            }
+        });
+    </script>
+    
 </body>
 
 </html>
