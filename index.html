@@ -722,6 +722,135 @@
             border-color: var(--primary);
             box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
         }
+
+        /* Logo Carousel Animation */
+        .logo-carousel-container {
+            overflow: hidden;
+            padding: 20px 0;
+            background-color: transparent;
+            position: relative;
+        }
+
+        .logo-carousel {
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .logo-slide {
+            display: inline-block;
+            animation: slide 20s linear infinite;
+        }
+
+        .company-logo {
+            height: 60px;
+            margin: 0 40px;
+            vertical-align: middle;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .company-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+            transform: scale(1.1);
+        }
+
+        .logo-carousel a {
+            display: inline-block;
+            text-decoration: none;
+            position: relative;
+        }
+
+        .logo-carousel a::after {
+            content: attr(title);
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            opacity: 0;
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: opacity 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .logo-carousel a:hover::after {
+            opacity: 1;
+        }
+
+        @keyframes slide {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        .dark-mode .logo-carousel-container {
+            background-color: transparent;
+        }
+
+        .dark-mode .company-logo {
+            filter: grayscale(100%) brightness(0.8) invert(0.8);
+        }
+
+        .dark-mode .company-logo:hover {
+            filter: grayscale(0%) brightness(1) invert(0.8);
+        }
+
+
+        /* Light mode */
+        .alert-success {
+            color: #0f5132;
+            /* نص أخضر غامق */
+            background-color: #bff2db;
+            /* خلفية خضراء فاتحة */
+            border-color: #7ae8b6;
+            /* حدود أفتح */
+        }
+
+        .btn-close {
+            color: #0f5132;
+            opacity: 1;
+        }
+
+        /* Dark mode */
+        .dark-mode .alert-success {
+            color: #bff2db;
+            /* نص أخضر فاتح */
+            background-color: #0f1e1a;
+            /* خلفية داكنة مناسبة */
+            border-color: #267f63;
+            /* حدود خضراء أغمق */
+        }
+
+        .dark-mode .btn-close {
+            color: #bff2db;
+            opacity: 1;
+        }
+
+        /* Close button styling for light and dark modes */
+        .btn-close {
+            opacity: 0.8;
+        }
+
+        .dark-mode .btn-close {
+            filter: invert(1);
+            opacity: 0.8;
+        }
+
+        /* Hover states for close button */
+        .btn-close:hover {
+            opacity: 1;
+        }
+
+        .dark-mode .btn-close:hover {
+            opacity: 1;
+        }
     </style>
 </head>
 
@@ -730,7 +859,7 @@
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top glass-effect">
         <div class="container">
             <!-- Logo -->
-            <a class="navbar-brand fw-bold" href="#" style="background: linear-gradient(90deg, var(--primary), var(--primary-dark)); 
+            <a class="navbar-brand fw-bold" href="#hero" style="background: linear-gradient(90deg, var(--primary), var(--primary-dark)); 
                       -webkit-background-clip: text; 
                       background-clip: text; 
                       color: transparent;">
@@ -771,7 +900,7 @@
 
 
     <!-- Hero Section -->
-    <section class="hero py-5">
+    <section id="hero" class="hero py-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 order-lg-1 order-1 py-5">
@@ -799,6 +928,38 @@
                 <p class="lead mx-auto" style="max-width: 700px;">I'm a passionate Flutter developer dedicated to
                     creating efficient, user-friendly mobile applications that deliver exceptional experiences. My focus
                     is on crafting solutions that blend technical excellence with intuitive design.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Companies I've Worked With -->
+    <section id="companies" class="py-5 bg-light">
+        <div class="container" data-aos="fade-up">
+            <div class="section-title text-center">
+                <h2>Companies I've Worked With</h2>
+                <p class="lead">Proud to have collaborated with these amazing organizations</p>
+            </div>
+
+            <div class="logo-carousel-container">
+                <div class="logo-carousel">
+                    <div class="logo-slide" id="logoSlide">
+                        <a href="https://play.google.com/store/apps/details?id=com.arab.salamspace" target="_blank" title="Salam Space">
+                            <img src="images/10.png" alt="Salam Space" class="company-logo">
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.restauranttest.egypt" target="_blank" title="Food Delivery">
+                            <img src="images/11.png" alt="Food Delivery" class="company-logo">
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.drivenow.app" target="_blank" title="TranaQar">
+                            <img src="images/12.png" alt="TranaQar" class="company-logo">
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.tranaqar.app" target="_blank" title="Drive Now">
+                            <img src="images/13.png" alt="Drive Now" class="company-logo">
+                        </a>
+                        <a href="https://play.google.com/store/apps/details?id=com.shifratalsharq.app" target="_blank" title="Shifrat Alsharq">
+                            <img src="images/14.png" alt="Shifrat Alsharq" class="company-logo">
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -1022,19 +1183,19 @@
                         <div class="card-body p-4 p-md-5">
                             <form id="contactForm">
                                 <div class="mb-4">
-                                    <label for="name" class="form-label">Your Name</label>
+                                    <label for="name" class="form-label">Name (Optional)</label>
                                     <input type="text" class="form-control" id="name" name="name"
-                                        placeholder="Enter your name" required>
+                                        placeholder="Enter your name">
                                 </div>
                                 <div class="mb-4">
-                                    <label for="phone" class="form-label">Phone Number</label>
+                                    <label for="phone" class="form-label">Phone (Optional)</label>
                                     <input type="tel" class="form-control" id="phone" name="phone"
-                                        placeholder="Enter your phone number" required>
+                                        placeholder="Enter your phone number">
                                 </div>
                                 <div class="mb-4">
                                     <label for="message" class="form-label">Your Message</label>
                                     <textarea class="form-control" id="message" rows="5" name="message"
-                                        placeholder="Tell me about your project" required></textarea>
+                                        placeholder="What’s on your mind?" required></textarea>
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary px-5 py-3">Send Message</button>
@@ -1090,7 +1251,7 @@
     <footer class="py-5">
         <div class="container text-center position-relative">
             <div class="mb-4">
-                <a href="#" class="navbar-brand fw-bold"
+                <a href="#contact" class="navbar-brand fw-bold"
                     style="background: linear-gradient(90deg, var(--primary), var(--primary-dark)); -webkit-background-clip: text; background-clip: text; color: transparent;">Abdelrahman
                     Ibrahim</a>
             </div>
@@ -1149,7 +1310,7 @@
                 .then(() => {
                     // Show success message
                     const successAlert = document.createElement('div');
-                    successAlert.className = 'alert alert-success alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3';
+                    successAlert.className = 'alert alert-success alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3 w-75 mx-auto';
                     successAlert.style.zIndex = '9999';
                     successAlert.innerHTML = `
                         <strong>Success!</strong> Your message has been sent.
@@ -1170,7 +1331,7 @@
                     console.error("Error sending message: ", error);
                     // Show error message
                     const errorAlert = document.createElement('div');
-                    errorAlert.className = 'alert alert-danger alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3';
+                    errorAlert.className = 'alert alert-danger alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3 w-75 mx-auto';
                     errorAlert.style.zIndex = '9999';
                     errorAlert.innerHTML = `
                         <strong>Error!</strong> There was an error sending your message.
@@ -1351,6 +1512,36 @@
             if (window.innerWidth < 768) {
                 // You can optionally load a smaller image for mobile if available
                 // heroImage.src = 'images/mobile-hero.png';
+            }
+        });
+        // Logo carousel infinite smooth scrolling
+        document.addEventListener("DOMContentLoaded", function () {
+            const logoSlide = document.getElementById('logoSlide');
+            if (logoSlide) {
+                // Clone the logos to ensure seamless looping
+                const logos = logoSlide.innerHTML;
+                logoSlide.innerHTML = logos.repeat(300);
+
+                // Adjust animation based on content width
+                const logoWidth = logoSlide.scrollWidth / 2;
+
+                // Create dynamic animation style
+                const style = document.createElement('style');
+                style.textContent = `
+            @keyframes smoothScroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-${logoWidth}px); }
+            }
+            
+            #logoSlide {
+                animation: smoothScroll ${logoWidth / 50}s linear infinite;
+            }
+            
+            #logoSlide:hover {
+                animation-play-state: paused;
+            }
+        `;
+                document.head.appendChild(style);
             }
         });
     </script>
