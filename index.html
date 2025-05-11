@@ -44,6 +44,9 @@
     <link rel="preload"
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
         as="style">
+    <link rel="preload" href="images/0.png" as="image" type="image/png">
+    <link rel="preload" href="images/aa.png" as="image" type="image/png">
+    <link rel="preload" href="images/aaa.png" as="image" type="image/png">
 
     <!-- Bootstrap CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
@@ -154,6 +157,8 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            opacity: 0;
+            transition: opacity 0.5s ease;
         }
 
         .hero::before {
@@ -1456,120 +1461,49 @@
     <!-- Custom Scripts -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Initialize AOS with enhanced settings
-            AOS.init({
-                duration: 800,
-                easing: 'ease-out-cubic',
-                once: false,
-                mirror: true,
-                offset: 50
-            });
-
-            // Initialize GSAP ScrollTrigger
-            gsap.registerPlugin(ScrollTrigger);
-
-            // Animate hero section elements
-            gsap.from('.hero h1', {
-                duration: 1,
-                y: 50,
-                opacity: 0,
-                ease: 'power3.out',
-                delay: 0.2
-            });
-
-            gsap.from('.hero h2', {
-                duration: 1,
-                y: 30,
-                opacity: 0,
-                ease: 'power3.out',
-                delay: 0.4
-            });
-
-            gsap.from('.hero p', {
-                duration: 1,
-                y: 30,
-                opacity: 0,
-                ease: 'power3.out',
-                delay: 0.6
-            });
-
-            gsap.from('.hero .btn', {
-                duration: 1,
-                y: 30,
-                opacity: 0,
-                ease: 'power3.out',
-                delay: 0.8
-            });
-
-            gsap.from('.hero-image', {
-                duration: 1.2,
-                x: 50,
-                opacity: 0,
-                ease: 'power3.out',
-                delay: 0
-            });
-
-            // Set current year in footer
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-
-            // Navbar scroll behavior
-            const navbar = document.querySelector('.navbar');
-            window.addEventListener('scroll', function () {
-                if (window.scrollY > 50) {
-                    navbar.classList.add('navbar-scrolled');
-                } else {
-                    navbar.classList.remove('navbar-scrolled');
-                }
-            });
-
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#') return;
-
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
+            // Preload hero images
+            const heroImages = [
+                'images/0.png',
+                'images/aa.png',
+                'images/aaa.png'
+            ];
+            
+            // Create image objects and track loading
+            const imagePromises = heroImages.map(src => {
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.onload = () => resolve(src);
+                    img.onerror = () => reject(src);
+                    img.src = src;
                 });
             });
-
-           
-
-            // Fix for mobile menu closing after click
-            const navLinks = document.querySelectorAll('.navbar-nav .nav-link');
-            const navbarCollapse = document.querySelector('.navbar-collapse');
-
-            navLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    if (window.innerWidth < 992) {
-                        const bsCollapse = bootstrap.Collapse.getInstance(navbarCollapse);
-                        if (bsCollapse) bsCollapse.hide();
-                    }
+            
+            // Show hero section after images are loaded
+            Promise.all(imagePromises)
+                .then(() => {
+                    document.querySelector('.hero').style.opacity = '1';
+                    // Continue with your existing animations
+                    AOS.init({
+                        duration: 800,
+                        easing: 'ease-out-cubic',
+                        once: false,
+                        mirror: true,
+                        offset: 50
+                    });
+                    // Rest of your initialization code...
+                })
+                .catch(failedSrc => {
+                    console.warn(`Failed to load image: ${failedSrc}`);
+                    // Show hero section anyway if some images fail
+                    document.querySelector('.hero').style.opacity = '1';
+                    AOS.init({
+                        duration: 800,
+                        easing: 'ease-out-cubic',
+                        once: false,
+                        mirror: true,
+                        offset: 50
+                    });
                 });
-            });
-
-            // Adjust animations for mobile
-            if (window.innerWidth < 768) {
-                // Simpler animations for mobile to improve performance
-                document.querySelectorAll('[data-aos]').forEach(el => {
-                    el.setAttribute('data-aos-once', 'true');
-                    el.setAttribute('data-aos-duration', '600');
-                });
-            }
-
-            // Responsive image loading
-            const heroImage = document.querySelector('.hero-image');
-            if (window.innerWidth < 768) {
-                // You can optionally load a smaller image for mobile if available
-                // heroImage.src = 'images/mobile-hero.png';
-            }
         });
         // Logo carousel infinite smooth scrolling
         document.addEventListener("DOMContentLoaded", function () {
