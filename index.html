@@ -1302,7 +1302,10 @@
                                         placeholder="What’s on your mind?" required></textarea>
                                 </div>
                                 <div class="text-center">
-                                    <button type="submit" class="btn btn-primary px-5 py-3">Send Message</button>
+                                    <button type="submit" class="btn btn-primary px-5 py-3" id="submitBtn">
+                                        <span id="submitText">Send Message</span>
+                                        <span id="loadingSpinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
+                                    </button>
                                 </div>
                             </form>
                         </div>
@@ -1403,6 +1406,17 @@
             const name = nameInput.value;
             const phone = phoneInput.value;
             const message = messageInput.value;
+            
+            // Get button elements
+            const submitBtn = document.getElementById("submitBtn");
+            const submitText = document.getElementById("submitText");
+            const loadingSpinner = document.getElementById("loadingSpinner");
+            
+            // Set loading state
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.7";
+            submitText.textContent = "Sending...";
+            loadingSpinner.classList.remove("d-none");
 
             // Save data to Firestore
             addDoc(collection(db, "portfolio-messages"), {
@@ -1412,6 +1426,12 @@
                 timestamp: serverTimestamp()
             })
                 .then(() => {
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = "1";
+                    submitText.textContent = "Send Message";
+                    loadingSpinner.classList.add("d-none");
+                    
                     // Show success message
                     const successAlert = document.createElement('div');
                     successAlert.className = 'alert alert-success alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3 w-75 mx-auto';
@@ -1432,6 +1452,12 @@
                     }, 5000);
                 })
                 .catch((error) => {
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = "1";
+                    submitText.textContent = "Send Message";
+                    loadingSpinner.classList.add("d-none");
+                    
                     console.error("Error sending message: ", error);
                     // Show error message
                     const errorAlert = document.createElement('div');
