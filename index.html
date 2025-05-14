@@ -84,7 +84,7 @@
             overflow-x: hidden;
             background-color: var(--bs-body-bg);
             color: var(--dark);
-            transition: all 0.4s ease;
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .dark-mode {
@@ -93,6 +93,7 @@
             --card-bg: var(--card-bg-dark);
             background-color: var(--darker);
             color: var(--light);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .dark-mode .bg-light {
@@ -112,8 +113,21 @@
             filter: invert(1);
         }
 
+        /* Add consistent transitions to all elements that change with theme */
+        .navbar, .card, .bg-light, .text-dark, .navbar-nav .nav-link, 
+        .form-control, .btn, .section-title, .hero, .company-logo, 
+        .project-tag, .social-icon, .footer, .navbar-toggler-icon {
+            transition: all 0.3s ease !important;
+        }
 
+        /* Ensure scrollbar transitions smoothly too */
+        ::-webkit-scrollbar-track {
+            transition: background-color 0.3s ease;
+        }
 
+        ::-webkit-scrollbar-thumb {
+            transition: background-color 0.3s ease;
+        }
 
         .dark-mode .bg-dark {
             background-color: rgba(2, 6, 23, 0.95) !important;
@@ -871,6 +885,17 @@
         .dark-mode .btn-close:hover {
             opacity: 1;
         }
+
+        /* Add a class for transition state */
+        .theme-transitioning {
+            transition: background-color 0.3s ease, color 0.3s ease !important;
+        }
+
+        .theme-transitioning * {
+            transition: background-color 0.3s ease, color 0.3s ease, 
+                        border-color 0.3s ease, box-shadow 0.3s ease, 
+                        filter 0.3s ease, opacity 0.3s ease !important;
+        }
     </style>
 </head>
 
@@ -1063,7 +1088,6 @@
                             <ul class="mb-3">
                                 <li>My first production app built with Flutter, published on multiple platforms</li>
                                 <li>Implemented prayer times calculation and Qibla direction features</li>
-                                <li>Developed with localization for Arabic and English support</li>
                                 <li>Optimized for both Android and iOS platforms</li>
                                 <li>Integrated with Google Play and App Store publishing workflows</li>
                             </ul>
@@ -1081,15 +1105,47 @@
                             <div class="d-flex flex-wrap">
                                 <span class="project-tag">Flutter</span>
                                 <span class="project-tag">Dart</span>
-                                <span class="project-tag">Localization</span>
                                 <span class="project-tag">Islamic Tech</span>
                                 <span class="project-tag">Cross-platform</span>
                             </div>
                         </div>
                     </div>
                 </div>
-
                 <!-- Project 2 -->
+                <!-- <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100">
+                        <img src="images/drive-now.png" class="card-img-top" alt="Drive Now Lebanon App">
+                        <div class="card-body">
+                            <h3 class="card-title">Drive Now</h3>
+                            <ul class="mb-3">
+                                <li>Ride-hailing app built with Flutter for Lebanese market</li>
+                                <li>Supports car and motorbike booking options</li>
+                                <li>Integrated real-time location tracking and Google Maps services</li>
+                                <li>Firebase used for authentication, payments, and ride history</li>
+                                <li>Published on Google Play for Android users</li>
+                            </ul>
+                            <div
+                                class="d-flex align-items-center justify-content-center gap-3 mt-3 mb-3 download-links">
+                                <a href="https://play.google.com/store/apps/details?id=com.drive.now.lebanon"
+                                    target="_blank" class="download-link">
+                                    <img src="images/gp.png" alt="Android Download">
+                                </a>
+                                 <a href="#" class="download-link disabled" style="opacity: 0.5; pointer-events: none;">
+                                    <img src="images/ios.png" alt="Coming Soon on iOS">
+                                </a>
+                            </div>
+                            <div class="d-flex flex-wrap">
+                                <span class="project-tag">Flutter</span>
+                                <span class="project-tag">Supabase</span>
+                                <span class="project-tag">Firebase</span>
+                                <span class="project-tag">Ride-sharing</span>
+                                <span class="project-tag">Lebanon</span>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                
+                <!-- Project 3 -->
                 <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
                     <div class="card h-100">
                         <img src="images/24.png" class="card-img-top" alt="Food Delivery App">
@@ -1199,13 +1255,13 @@
             
             <div class="row g-4 justify-content-center">
                
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
                     <div class="card h-100">
                         <div class="card-body p-4">
                             <div class="d-flex justify-content-between align-items-start mb-3">
                                 <div>
-                                    <h6 class="mb-0">Ahmed Khalid</h6>
-                                    <small class="text-muted">CEO, Shifrat Alsharq</small>
+                                    <h6 class="mb-0">Hassan Almasri</h6>
+                                    <small class="text-muted">CEO, Drive Now</small>
                                 </div>
                                 <div class="d-flex flex-column align-items-end">
                                     <div class="text-warning">
@@ -1218,9 +1274,10 @@
                                     <span class="fw-bold small">5.0</span>
                                 </div>
                             </div>
-                            <p class="card-text">"Working with Abdelrahman on our Shifrat Alsharq app was a great experience. His technical skills and attention to detail resulted in an excellent product."</p>
+                            <p class="card-text">"Drive Now app exceeded our expectations thanks to Abdelrahman's innovative approach and technical expertise. The app has significantly improved our business operations."</p>
                         </div>
                     </div>
+          
                 </div>
                 
                  <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
@@ -1228,7 +1285,7 @@
                         <div class="card-body p-4">
                             <div class="d-flex justify-content-between align-items-start mb-3">
                                 <div>
-                                    <h6 class="mb-0">Mohamed Saleh</h6>
+                                    <h6 class="mb-0">Mashaal Eletapy</h6>
                                     <small class="text-muted">Director, TranaQar</small>
                                 </div>
                                 <div class="d-flex flex-column align-items-end">
@@ -1247,13 +1304,14 @@
                     </div>
                 </div>
                 
-                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+              
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="card h-100">
                         <div class="card-body p-4">
                             <div class="d-flex justify-content-between align-items-start mb-3">
                                 <div>
-                                    <h6 class="mb-0">Khaled Ibrahim</h6>
-                                    <small class="text-muted">Owner, Drive Now</small>
+                                    <h6 class="mb-0">abdelrahman hassan</h6>
+                                    <small class="text-muted">Owner, Shifrat Alsharq</small>
                                 </div>
                                 <div class="d-flex flex-column align-items-end">
                                     <div class="text-warning">
@@ -1266,7 +1324,7 @@
                                     <span class="fw-bold small">5.0</span>
                                 </div>
                             </div>
-                            <p class="card-text">"Drive Now app exceeded our expectations thanks to Abdelrahman's innovative approach and technical expertise. The app has significantly improved our business operations."</p>
+                            <p class="card-text">"Working with Abdelrahman on our Shifrat Alsharq app was a great experience. His technical skills and attention to detail resulted in an excellent product."</p>
                         </div>
                     </div>
                 </div>
@@ -1569,31 +1627,43 @@
         const themeIcon = themeToggle.querySelector('i');
         const darkClass = 'dark-mode';
         const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-    
+
         const applyTheme = (isDark) => {
-            document.documentElement.classList.toggle(darkClass, isDark);
-            document.body.classList.toggle(darkClass, isDark);
-            themeIcon.className = isDark ? 'fa fa-sun' : 'fa fa-moon';
+            // Apply transition class before changing theme
+            document.documentElement.classList.add('theme-transitioning');
+            
+            // Apply theme after a tiny delay to ensure transition class is applied
+            setTimeout(() => {
+                document.documentElement.classList.toggle(darkClass, isDark);
+                document.body.classList.toggle(darkClass, isDark);
+                themeIcon.className = isDark ? 'fa fa-sun' : 'fa fa-moon';
+                
+                // Remove transition class after transition completes
+                setTimeout(() => {
+                    document.documentElement.classList.remove('theme-transitioning');
+                }, 300);
+            }, 10);
         };
-    
+
         // Initial load: detect saved theme or system preference
         const savedTheme = localStorage.getItem('theme');
         const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark.matches);
         applyTheme(isDark);
-    
+
         // Toggle on click
         themeToggle.addEventListener('click', () => {
             const newIsDark = !document.documentElement.classList.contains(darkClass);
             localStorage.setItem('theme', newIsDark ? 'dark' : 'light');
             applyTheme(newIsDark);
         });
-    
+
         // Watch for system preference changes
         prefersDark.addEventListener('change', (e) => {
             if (!localStorage.getItem('theme')) {
                 applyTheme(e.matches);
             }
         });
+        
     </script>
     
 </body>
