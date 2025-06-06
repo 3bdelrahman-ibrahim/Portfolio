@@ -383,10 +383,21 @@
             padding: 0.4rem 1rem;
             border-radius: 20px;
             font-size: 0.85rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
+            margin: 0.25rem;
             display: inline-block;
             font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .project-tag:hover {
+            background-color: rgba(99, 102, 241, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .d-flex.flex-wrap {
+            margin: 0 -0.25rem;
+            padding: 0.5rem 0;
+            justify-content: center;
         }
 
         .social-icon {
@@ -896,6 +907,55 @@
                         border-color 0.3s ease, box-shadow 0.3s ease, 
                         filter 0.3s ease, opacity 0.3s ease !important;
         }
+
+        /* Alert styling for both themes */
+        .custom-alert {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            min-width: 300px;
+            max-width: 90%;
+            padding: 1.5rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border);
+            background: var(--card-bg);
+            color: var(--dark);
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode .custom-alert {
+            background: var(--card-bg-dark);
+            color: var(--light);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+
+        .custom-alert .alert-heading {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .custom-alert .btn-close {
+            position: absolute;
+            top: 0.75rem;
+            right: 0.75rem;
+            padding: 0.5rem;
+            opacity: 0.7;
+            transition: all 0.3s ease;
+        }
+
+        .custom-alert .btn-close:hover {
+            opacity: 1;
+        }
+
+        .dark-mode .custom-alert .btn-close {
+            filter: invert(1);
+        }
     </style>
 </head>
 
@@ -1090,7 +1150,7 @@
                                 <li>Free to use with no advertisements</li>
                                 <li>Complete set of Islamic tools and features</li>
                                 <li>Prayer times, Qibla direction, and Quran features</li>
-                                <li>Available on both Android and iOS platforms</li>
+                                <li>Available on both App Store and Google Play</li>
                             </ul>
                             <div class="d-flex align-items-center justify-content-center gap-3 mt-3 mb-3 download-links">
                                 <a href="https://play.google.com/store/apps/details?id=com.arab.salamspace" target="_blank" class="download-link">
@@ -1101,10 +1161,11 @@
                                 </a>
                             </div>
                             <div class="d-flex flex-wrap">
-                                <span class="project-tag">Flutter</span>
                                 <span class="project-tag">Islamic Tech</span>
                                 <span class="project-tag">Cross-platform</span>
-                                <span class="project-tag">Free App</span>
+                                <span class="project-tag">Qiblah</span>
+                                <span class="project-tag">Mobile App</span>
+                                <span class="project-tag">Prayer Times</span>
                             </div>
                         </div>
                     </div>
@@ -1121,22 +1182,22 @@
                                 <li>Real-time ride tracking and booking</li>
                                 <li>Driver and passenger matching system</li>
                                 <li>Secure payment integration</li>
-                                <li>Available on Google Play Store</li>
+                                <li>Available on both App Store and Google Play</li>
                             </ul>
                             <div class="d-flex align-items-center justify-content-center gap-3 mt-3 mb-3 download-links">
                                 <a href="https://play.google.com/store/apps/details?id=com.drivenow.app" target="_blank" class="download-link">
                                     <img src="images/gp.png" alt="Android Download">
                                 </a>
                                 <a href="https://apps.apple.com/app/id6746598010" target="_blank" class="download-link">
-
                                     <img src="images/ios.png" alt="iOS Download">
                                 </a>
                             </div>
                             <div class="d-flex flex-wrap">
-                                <span class="project-tag">Flutter</span>
                                 <span class="project-tag">Ride-sharing</span>
                                 <span class="project-tag">Real-time</span>
                                 <span class="project-tag">Lebanon</span>
+                                <span class="project-tag">Location</span>
+                                <span class="project-tag">Taxi</span>
                             </div>
                         </div>
                     </div>
@@ -1153,21 +1214,22 @@
                                 <li>Property listing and management system</li>
                                 <li>Rent and sale functionality for buildings</li>
                                 <li>Advanced search and filtering options</li>
-                                <li>Available on Google Play Store</li>
+                                <li>Custom admin dashboard for property management</li>
                             </ul>
                             <div class="d-flex align-items-center justify-content-center gap-3 mt-3 mb-3 download-links">
                                 <a href="https://play.google.com/store/apps/details?id=com.tranaqar.app" target="_blank" class="download-link">
                                     <img src="images/gp.png" alt="Android Download">
                                 </a>
-                                <a class="download-link" onclick="alert('Coming soon on iOS Store')">
+                                <a class="download-link" onclick="showCustomAlert('iOS Version', 'The iOS version is currently in development and will be available soon on the App Store.')">
                                     <img src="images/ios.png" alt="iOS Download">
                                 </a>
                             </div>
                             <div class="d-flex flex-wrap">
-                                <span class="project-tag">Flutter</span>
-                                <span class="project-tag">Real Estate</span>
                                 <span class="project-tag">Saudi Arabia</span>
+                                <span class="project-tag">Real Estate</span>
                                 <span class="project-tag">E-commerce</span>
+                                <span class="project-tag">Property</span>
+                                <span class="project-tag">Rental</span>
                             </div>
                         </div>
                     </div>
@@ -1184,21 +1246,22 @@
                                 <li>Menu management and order tracking</li>
                                 <li>Real-time delivery status updates</li>
                                 <li>Customer loyalty system</li>
-                                <li>Available on Google Play Store</li>
+                                <li>Integrated payment and order management system</li>
                             </ul>
                             <div class="d-flex align-items-center justify-content-center gap-3 mt-3 mb-3 download-links">
                                 <a href="https://play.google.com/store/apps/details?id=com.restauranttest.egypt" target="_blank" class="download-link">
                                     <img src="images/gp.png" alt="Android Download">
                                 </a>
-                                <a class="download-link" onclick="alert('Coming soon on iOS Store')">
+                                <a class="download-link" onclick="showCustomAlert('iOS Version', 'The iOS version is currently in development and will be available soon on the App Store.')">
                                     <img src="images/ios.png" alt="iOS Download">
                                 </a>
                             </div>
                             <div class="d-flex flex-wrap">
-                                <span class="project-tag">Flutter</span>
                                 <span class="project-tag">Food Delivery</span>
                                 <span class="project-tag">Restaurant</span>
                                 <span class="project-tag">E-commerce</span>
+                                <span class="project-tag">Ordering</span>
+                                <span class="project-tag">Delivery</span>
                             </div>
                         </div>
                     </div>
@@ -1224,10 +1287,11 @@
                                 </a>
                             </div>
                             <div class="d-flex flex-wrap mt-3">
-                                <span class="project-tag">Flutter</span>
                                 <span class="project-tag">Multi-Restaurant</span>
                                 <span class="project-tag">Management</span>
                                 <span class="project-tag">Analytics</span>
+                                <span class="project-tag">Dashboard</span>
+                                <span class="project-tag">Platform</span>
                             </div>
                         </div>
                     </div>
@@ -1253,10 +1317,11 @@
                                 </a>
                             </div>
                             <div class="d-flex flex-wrap mt-3">
-                                <span class="project-tag">IoT</span>
                                 <span class="project-tag">Arduino</span>
                                 <span class="project-tag">PCB Design</span>
                                 <span class="project-tag">Automation</span>
+                                <span class="project-tag">Hardware</span>
+                                <span class="project-tag">Smart Home</span>
                             </div>
                         </div>
                     </div>
@@ -1511,10 +1576,10 @@
                     
                     // Show success message
                     const successAlert = document.createElement('div');
-                    successAlert.className = 'alert alert-success alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3 w-75 mx-auto';
-                    successAlert.style.zIndex = '9999';
+                    successAlert.className = 'custom-alert';
                     successAlert.innerHTML = `
-                        <strong>Success!</strong> Your message has been sent.
+                        <h5 class="alert-heading">Message Sent</h5>
+                        <p class="mb-0">Thank you for contacting me!</p>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     `;
                     document.body.appendChild(successAlert);
@@ -1522,11 +1587,11 @@
                     // Reset form fields
                     contactForm.reset();
 
-                    // Auto-dismiss after 5 seconds
+                    // Auto-dismiss after 3 seconds
                     setTimeout(() => {
                         const bsAlert = new bootstrap.Alert(successAlert);
                         bsAlert.close();
-                    }, 5000);
+                    }, 3000);
                 })
                 .catch((error) => {
                     // Reset button state
@@ -1538,20 +1603,20 @@
                     console.error("Error sending message: ", error);
                     // Show error message
                     const errorAlert = document.createElement('div');
-                    errorAlert.className = 'alert alert-danger alert-dismissible fade show position-fixed top-0 start-50 translate-middle-x mt-3 w-75 mx-auto';
-                    errorAlert.style.zIndex = '9999';
+                    errorAlert.className = 'custom-alert';
                     errorAlert.innerHTML = `
-                        <strong>Error!</strong> There was an error sending your message.
+                        <h5 class="alert-heading">Error</h5>
+                        <p class="mb-0">There was an error sending your message. Please try again later.</p>
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     `;
 
                     document.body.appendChild(errorAlert);
 
-                    // Auto-dismiss after 5 seconds
+                    // Auto-dismiss after 3 seconds
                     setTimeout(() => {
                         const bsAlert = new bootstrap.Alert(errorAlert);
                         bsAlert.close();
-                    }, 5000);
+                    }, 3000);
                 });
         });
     </script>
@@ -1685,6 +1750,32 @@
         
     </script>
     
+    <!-- Update custom alert function -->
+    <script>
+        function showCustomAlert(title, message) {
+            const alertDiv = document.createElement('div');
+            alertDiv.className = 'custom-alert';
+            alertDiv.innerHTML = `
+                <h5 class="alert-heading">${title}</h5>
+                <p class="mb-0">${message}</p>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            `;
+            document.body.appendChild(alertDiv);
+
+            // Add fade-in animation
+            setTimeout(() => {
+                alertDiv.style.opacity = '1';
+            }, 10);
+
+            // Auto-dismiss after 3 seconds
+            setTimeout(() => {
+                alertDiv.style.opacity = '0';
+                setTimeout(() => {
+                    alertDiv.remove();
+                }, 300);
+            }, 3000);
+        }
+    </script>
 </body>
 
 </html>
