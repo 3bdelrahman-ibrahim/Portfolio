@@ -908,7 +908,21 @@
                         filter 0.3s ease, opacity 0.3s ease !important;
         }
 
-        /* Alert styling for both themes */
+        /* Alert overlay and styling */
+        .alert-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(3px);
+            -webkit-backdrop-filter: blur(3px);
+            z-index: 9998;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
         .custom-alert {
             position: fixed;
             top: 50%;
@@ -926,12 +940,14 @@
             background: var(--card-bg);
             color: var(--dark);
             transition: all 0.3s ease;
+            opacity: 0;
         }
 
         .dark-mode .custom-alert {
             background: var(--card-bg-dark);
             color: var(--light);
             border-color: rgba(99, 102, 241, 0.2);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
         }
 
         .custom-alert .alert-heading {
@@ -940,21 +956,41 @@
             margin-bottom: 0.5rem;
         }
 
-        .custom-alert .btn-close {
+        .custom-alert .close-icon {
             position: absolute;
             top: 0.75rem;
             right: 0.75rem;
-            padding: 0.5rem;
-            opacity: 0.7;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 50%;
+            background: rgba(99, 102, 241, 0.1);
+            color: var(--primary);
             transition: all 0.3s ease;
+            border: none;
+            padding: 0;
         }
 
-        .custom-alert .btn-close:hover {
-            opacity: 1;
+        .custom-alert .close-icon:hover {
+            background: rgba(99, 102, 241, 0.2);
+            transform: rotate(90deg);
         }
 
-        .dark-mode .custom-alert .btn-close {
-            filter: invert(1);
+        .dark-mode .custom-alert .close-icon {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--light);
+        }
+
+        .dark-mode .custom-alert .close-icon:hover {
+            background: rgba(99, 102, 241, 0.3);
+        }
+
+        /* Show alert and overlay */
+        .alert-visible {
+            opacity: 1 !important;
         }
     </style>
 </head>
@@ -1575,23 +1611,8 @@
                     loadingSpinner.classList.add("d-none");
                     
                     // Show success message
-                    const successAlert = document.createElement('div');
-                    successAlert.className = 'custom-alert';
-                    successAlert.innerHTML = `
-                        <h5 class="alert-heading">Message Sent</h5>
-                        <p class="mb-0">Thank you for contacting me!</p>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    `;
-                    document.body.appendChild(successAlert);
-
-                    // Reset form fields
+                    showCustomAlert('Message Sent', 'Thank you for contacting me!');
                     contactForm.reset();
-
-                    // Auto-dismiss after 3 seconds
-                    setTimeout(() => {
-                        const bsAlert = new bootstrap.Alert(successAlert);
-                        bsAlert.close();
-                    }, 3000);
                 })
                 .catch((error) => {
                     // Reset button state
@@ -1602,21 +1623,7 @@
                     
                     console.error("Error sending message: ", error);
                     // Show error message
-                    const errorAlert = document.createElement('div');
-                    errorAlert.className = 'custom-alert';
-                    errorAlert.innerHTML = `
-                        <h5 class="alert-heading">Error</h5>
-                        <p class="mb-0">There was an error sending your message. Please try again later.</p>
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    `;
-
-                    document.body.appendChild(errorAlert);
-
-                    // Auto-dismiss after 3 seconds
-                    setTimeout(() => {
-                        const bsAlert = new bootstrap.Alert(errorAlert);
-                        bsAlert.close();
-                    }, 3000);
+                    showCustomAlert('Error', 'There was an error sending your message. Please try again later.');
                 });
         });
     </script>
@@ -1753,27 +1760,43 @@
     <!-- Update custom alert function -->
     <script>
         function showCustomAlert(title, message) {
+            // Create overlay
+            const overlay = document.createElement('div');
+            overlay.className = 'alert-overlay';
+            document.body.appendChild(overlay);
+
+            // Create alert
             const alertDiv = document.createElement('div');
             alertDiv.className = 'custom-alert';
             alertDiv.innerHTML = `
                 <h5 class="alert-heading">${title}</h5>
                 <p class="mb-0">${message}</p>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                <button type="button" class="close-icon" onclick="closeAlert(this)">
+                    <i class="fas fa-times"></i>
+                </button>
             `;
             document.body.appendChild(alertDiv);
 
-            // Add fade-in animation
+            // Show overlay and alert with animation
             setTimeout(() => {
-                alertDiv.style.opacity = '1';
+                overlay.classList.add('alert-visible');
+                alertDiv.classList.add('alert-visible');
             }, 10);
+        }
 
-            // Auto-dismiss after 3 seconds
+        function closeAlert(button) {
+            const alert = button.parentElement;
+            const overlay = document.querySelector('.alert-overlay');
+            
+            // Remove visible class for fade out
+            alert.classList.remove('alert-visible');
+            overlay.classList.remove('alert-visible');
+            
+            // Remove elements after animation
             setTimeout(() => {
-                alertDiv.style.opacity = '0';
-                setTimeout(() => {
-                    alertDiv.remove();
-                }, 300);
-            }, 3000);
+                alert.remove();
+                overlay.remove();
+            }, 300);
         }
     </script>
 </body>
