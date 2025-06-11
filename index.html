@@ -992,10 +992,104 @@
         .alert-visible {
             opacity: 1 !important;
         }
+
+        /* Add loader styles right after the existing styles */
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--bs-body-bg);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease-out;
+        }
+
+        .page-loader.fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .loader {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-width: 6rem;
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .loader:before,
+        .loader:after {
+            content: "";
+            position: absolute;
+            border-radius: 50%;
+            animation: pulsOut 1.8s ease-in-out infinite;
+            filter: drop-shadow(0 0 1rem rgba(99, 102, 241, 0.75));
+        }
+
+        .loader:before {
+            width: 100%;
+            padding-bottom: 100%;
+            box-shadow: inset 0 0 0 1rem var(--primary);
+            animation-name: pulsIn;
+        }
+
+        .loader:after {
+            width: calc(100% - 2rem);
+            padding-bottom: calc(100% - 2rem);
+            box-shadow: 0 0 0 0 var(--primary);
+        }
+
+        @keyframes pulsIn {
+            0% {
+                box-shadow: inset 0 0 0 1rem var(--primary);
+                opacity: 1;
+            }
+            50%, 100% {
+                box-shadow: inset 0 0 0 0 var(--primary);
+                opacity: 0;
+            }
+        }
+
+        @keyframes pulsOut {
+            0%, 50% {
+                box-shadow: 0 0 0 0 var(--primary);
+                opacity: 0;
+            }
+            100% {
+                box-shadow: 0 0 0 1rem var(--primary);
+                opacity: 1;
+            }
+        }
+
+        .dark-mode .loader:before,
+        .dark-mode .loader:after {
+            filter: drop-shadow(0 0 1rem rgba(165, 180, 252, 0.75));
+        }
+
+        .hero {
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .hero.loaded {
+            opacity: 1;
+        }
     </style>
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar">
+    <!-- Add page loader -->
+    <div class="page-loader">
+        <div class="loader"></div>
+    </div>
+
     <!-- Navigation -->
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top glass-effect">
         <div class="container">
@@ -1638,11 +1732,23 @@
     <!-- Custom Scripts -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            // Hide page loader when everything is loaded
+            window.addEventListener('load', function() {
+                const pageLoader = document.querySelector('.page-loader');
+                if (pageLoader) {
+                    pageLoader.classList.add('fade-out');
+                    setTimeout(() => {
+                        pageLoader.remove();
+                    }, 500);
+                }
+            });
+
             // Preload hero images
             const heroImages = [
                 'images/0.png',
                 'images/aa.png',
-                'images/aaa.png'
+                'images/aaa.png',
+                'images/a.png'
             ];
             
             // Create image objects and track loading
@@ -1658,8 +1764,11 @@
             // Show hero section after images are loaded
             Promise.all(imagePromises)
                 .then(() => {
-                    document.querySelector('.hero').style.opacity = '1';
-                    // Continue with your existing animations
+                    const hero = document.querySelector('.hero');
+                    if (hero) {
+                        hero.classList.add('loaded');
+                    }
+                    // Initialize AOS after hero is loaded
                     AOS.init({
                         duration: 800,
                         easing: 'ease-out-cubic',
@@ -1667,12 +1776,14 @@
                         mirror: true,
                         offset: 50
                     });
-                    // Rest of your initialization code...
                 })
                 .catch(failedSrc => {
                     console.warn(`Failed to load image: ${failedSrc}`);
                     // Show hero section anyway if some images fail
-                    document.querySelector('.hero').style.opacity = '1';
+                    const hero = document.querySelector('.hero');
+                    if (hero) {
+                        hero.classList.add('loaded');
+                    }
                     AOS.init({
                         duration: 800,
                         easing: 'ease-out-cubic',
