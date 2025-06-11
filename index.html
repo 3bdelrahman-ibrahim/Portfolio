@@ -1098,6 +1098,23 @@
         .hero.loaded {
             opacity: 1;
         }
+
+        .hero.loaded .hero-loader {
+            display: none;
+        }
+
+        /* Restore original card image styles */
+        .card-img-top {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            height: auto;
+        }
+
+        .card:hover .card-img-top {
+            transform: scale(1.05);
+        }
     </style>
 </head>
 
@@ -1791,18 +1808,7 @@
     <!-- Custom Scripts -->
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            // Hide page loader when everything is loaded
-            window.addEventListener('load', function() {
-                const pageLoader = document.querySelector('.page-loader');
-                if (pageLoader) {
-                    pageLoader.classList.add('fade-out');
-                    setTimeout(() => {
-                        pageLoader.remove();
-                    }, 500);
-                }
-            });
-
-            // Preload hero images
+            // Simplified hero loading logic
             const heroImages = [
                 'images/0.png',
                 'images/aa.png',
