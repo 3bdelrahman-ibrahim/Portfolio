@@ -1072,6 +1072,66 @@
         .card:hover .card-img-top {
             transform: scale(1.05);
         }
+
+        /* Image loading states */
+        .card-img-wrapper {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: var(--card-bg);
+            overflow: hidden;
+        }
+
+        .card-img-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                var(--card-bg) 0%, 
+                var(--primary-light) 20%, 
+                var(--card-bg) 40%, 
+                var(--card-bg) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 1.5s infinite;
+            z-index: 1;
+        }
+
+        .dark-mode .card-img-wrapper::before {
+            background: linear-gradient(90deg, 
+                var(--card-bg-dark) 0%, 
+                rgba(99, 102, 241, 0.2) 20%, 
+                var(--card-bg-dark) 40%, 
+                var(--card-bg-dark) 100%);
+        }
+
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+
+        .card-img-wrapper img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .card-img-wrapper img.loaded {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        /* Optimize image loading priority */
+        .project-card:nth-child(-n+2) .card-img-wrapper img {
+            fetchpriority: high;
+        }
     </style>
 </head>
 
@@ -1130,7 +1190,7 @@
                     <h2 class="mb-4">Flutter Developer & UI/UX Designer</h2>
                     <p class="">Crafting seamless digital experiences with innovative solutions and elegant design.</p>
                 </div>
-                <div class="col-lg-6 order-lg-2 order-2 text-center mt-4" data-aos="fade-left" data-aos-delay="200">
+                <div class="col-lg-6 order-lg-2 order-2 text-center mt-4" data-aos="fade-left" data-aos-delay="150">
                     <div class="hero-image-container">
                         <img src="images/0.png" alt="Abdelrahman Ibrahim" class="hero-image img-fluid">
                         <img src="images/aa.png" alt="icon" class="floating-icon icon-1">
@@ -1204,7 +1264,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="150">
                     <div class="card text-center h-100 p-4">
                         <div class="card-body">
                             <i class="fas fa-paint-brush skill-icon"></i>
@@ -1214,7 +1274,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+                <div class="col-md-4" data-aos="zoom-in" data-aos-delay="150">
                     <div class="card text-center h-100 p-4">
                         <div class="card-body">
                             <i class="fas fa-cloud skill-icon"></i>
@@ -1224,7 +1284,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6" data-aos="zoom-in" data-aos-delay="300">
+                <div class="col-md-6" data-aos="zoom-in" data-aos-delay="150">
                     <div class="card text-center h-100 p-4">
                         <div class="card-body">
                             <i class="fas fa-robot skill-icon"></i>
@@ -1234,7 +1294,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6" data-aos="zoom-in" data-aos-delay="400">
+                <div class="col-md-6" data-aos="zoom-in" data-aos-delay="150">
                     <div class="card text-center h-100 p-4">
                         <div class="card-body">
                             <i class="fas fa-rocket skill-icon"></i>
@@ -1257,15 +1317,19 @@
             </div>
             <div class="row g-4 justify-content-center  ">
                 <!-- Project 1 -->
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+                <div class="col-lg-6 project-card" data-aos="fade-up" data-aos-delay="150">
                     <div class="card h-100">
                         <div class="card-img-wrapper">
-                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" 
-                                 data-src="images/61.png" 
-                                 class="card-img-top" 
-                                 alt="Islamic App"
-                                 loading="lazy"
-                                 onload="this.classList.add('loaded')">
+                            <img 
+                                src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" 
+                                data-src="images/61.png" 
+                                class="card-img-top" 
+                                alt="Islamic App"
+                                loading="lazy"
+                                decoding="async"
+                                onload="this.classList.add('loaded')"
+                                width="800"
+                                height="450">
                         </div>
                         <div class="card-body">
                             <h3 class="card-title">Islamic App</h3>
@@ -1296,7 +1360,7 @@
                 </div>
 
                 <!-- Project 2 -->
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="200">
+                <div class="col-lg-6 project-card" data-aos="fade-up" data-aos-delay="150">
                     <div class="card h-100">
                         <div class="card-img-wrapper">
                             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" 
@@ -1335,7 +1399,7 @@
                 </div>
 
                 <!-- Project 3 -->
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-lg-6 project-card" data-aos="fade-up" data-aos-delay="150">
                     <div class="card h-100">
                         <div class="card-img-wrapper">
                             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" 
@@ -1374,7 +1438,7 @@
                 </div>
 
                 <!-- Project 4 -->
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="400">
+                <div class="col-lg-6 project-card" data-aos="fade-up" data-aos-delay="150">
                     <div class="card h-100">
                         <div class="card-img-wrapper">
                             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" 
@@ -1413,7 +1477,7 @@
                 </div>
 
                 <!-- Project 5 -->
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="500">
+                <div class="col-lg-6 project-card" data-aos="fade-up" data-aos-delay="150">
                     <div class="card h-100">
                         <div class="card-img-wrapper">
                             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" 
@@ -1450,7 +1514,7 @@
                 </div>
 
                 <!-- Project 6 -->
-                <div class="col-lg-6" data-aos="fade-up" data-aos-delay="600">
+                <div class="col-lg-6 project-card" data-aos="fade-up" data-aos-delay="150">
                     <div class="card h-100">
                         <div class="card-img-wrapper">
                             <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'/%3E" 
@@ -1498,7 +1562,7 @@
             
             <div class="row g-4 justify-content-center">
                
-                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
                     <div class="card h-100">
                         <div class="card-body p-4">
                             <div class="d-flex justify-content-between align-items-start mb-3">
@@ -1523,7 +1587,7 @@
           
                 </div>
                 
-                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
                     <div class="card h-100">
                         <div class="card-body p-4">
                             <div class="d-flex justify-content-between align-items-start mb-3">
@@ -1966,6 +2030,52 @@
                     img.src = img.dataset.src;
                 });
             }
+        });
+    </script>
+
+    <!-- Optimized image loading -->
+    <script>
+        // Optimized image loading
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create intersection observer for lazy loading
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        const src = img.dataset.src;
+                        
+                        // Create a new image to preload
+                        const preloadImg = new Image();
+                        preloadImg.onload = function() {
+                            img.src = src;
+                            img.classList.add('loaded');
+                        };
+                        preloadImg.src = src;
+                        
+                        // Stop observing this image
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.1
+            });
+
+            // Observe all project images
+            document.querySelectorAll('.card-img-wrapper img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+
+            // Preload first two project images immediately
+            const firstTwoImages = document.querySelectorAll('.project-card:nth-child(-n+2) .card-img-wrapper img[data-src]');
+            firstTwoImages.forEach(img => {
+                const preloadImg = new Image();
+                preloadImg.onload = function() {
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                };
+                preloadImg.src = img.dataset.src;
+            });
         });
     </script>
 </body>
