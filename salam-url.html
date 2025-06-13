@@ -43,17 +43,11 @@
     window.onload = function() {
       var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-      // Check if it's iOS
-      if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
-        // Replace this with your iOS App Store link
-        window.location.href = "https://apps.apple.com/app/id6740785701";
+      // Check if it's macOS or iOS
+      if (/Macintosh/.test(userAgent) || (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream)) {
+        // App Store link for both macOS and iOS
+        window.location.href = "https://apps.apple.com/app/id6746654497";
       }
-      // Check if it's Android
-      else if (/android/i.test(userAgent)) {
-        // Replace this with your Google Play link
-        window.location.href = "https://play.google.com/store/apps/details?id=com.arab.salamspace";
-      }
-      // For others (fallback)
       else {
         // Optional fallback page
         window.location.href = "https://play.google.com/store/apps/details?id=com.arab.salamspace";
