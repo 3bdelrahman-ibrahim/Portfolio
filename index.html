@@ -14,7 +14,25 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
+      <!-- Critical CSS -->
+      <style>
+        /* Add critical CSS here to prevent FOUC */
+        body { opacity: 0; }
+        .hero { opacity: 0; }
+        .loaded { opacity: 1 !important; transition: opacity 0.3s ease; }
+    </style>
+
+    <!-- Theme Script (Keep this early) -->
+    <script>
+        // Immediately set theme before page renders
+        (function() {
+            const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark" || (!savedTheme && prefersDarkScheme.matches)) {
+                document.documentElement.classList.add("dark-mode");
+            }
+        })();
+    </script>
     <!-- Critical CSS inline -->
     <style>
         /* Critical CSS for initial render */
@@ -119,15 +137,7 @@
     <!-- Author metadata -->
     <meta name="author" content="Abdelrahman Ibrahim">
 
-    <script>
-        (function() {
-            const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-            const savedTheme = localStorage.getItem("theme");
-            if (savedTheme === "dark" || (!savedTheme && prefersDarkScheme.matches)) {
-                document.documentElement.classList.add("dark-mode");
-            }
-        })();
-    </script>
+    
 
     <style>
         :root {
