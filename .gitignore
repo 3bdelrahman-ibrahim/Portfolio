@@ -55,4 +55,27 @@ out/
 # Optional: Backup files
 *.bak
 *.backup
-*.[Bb]ak 
+*.[Bb]ak
+
+# Project specific
+firebase-debug.log
+*.log
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Large media files (uncomment if needed)
+# *.mov
+# *.mp4
+# *.avi
+# *.wmv
+# *.flv
+# *.mkv
+
+# Firebase
+.firebase/
+firebase-debug.log
+firebase-debug.*.log 
