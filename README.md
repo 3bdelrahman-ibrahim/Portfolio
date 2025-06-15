@@ -1,2 +1,2 @@
 https://3bdelrahman-ibrahim.github.io/Portfolio
-https://3bdelrahman-ibrahim.github.io/Portfolio/salam-url.html
+https://3bdelrahman-ibrahim.github.io/Portfolio/redirect/salam-url.html
