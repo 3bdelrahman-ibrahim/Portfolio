@@ -2,102 +2,47 @@
 <html lang="en">
 
 <head>
-    <!-- Preload critical assets -->
-    <link rel="preload" href="assets/images/0.png" as="image" fetchpriority="high">
-    <link rel="preload" href="assets/images/aa.png" as="image">
-    <link rel="preload" href="assets/images/aaa.png" as="image">
-    <link rel="preload" href="assets/images/a.png" as="image">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" as="style">
-    
-    <!-- Preconnect to external domains -->
+    <!-- Resource Hints -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.gstatic.com">
     
-    <!-- Critical CSS inline -->
+    <!-- Critical CSS -->
     <style>
-        /* Critical CSS for initial render */
-        :root {
-            --primary: #6366f1;
-            --primary-dark: #4f46e5;
-            --primary-light: #a5b4fc;
-            --secondary: #94a3b8;
-            --dark: #0f172a;
-            --darker: #020617;
-            --light: #f1f5f9;
-            --white: #ffffff;
-            --card-bg: rgba(255, 255, 255, 0.8);
-            --card-bg-dark: rgba(15, 23, 42, 0.8);
-            --glass-bg: rgba(255, 255, 255, 0.1);
-            --glass-border: rgba(255, 255, 255, 0.2);
-            --bs-body-bg: #f8fafc;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            overflow-x: hidden;
-            background-color: var(--bs-body-bg);
-            color: var(--dark);
-            transition: background-color 0.3s ease, color 0.3s ease;
-            opacity: 0;
-        }
-        
-        body.loaded {
-            opacity: 1;
-        }
-        
-        .dark-mode {
-            --bs-body-bg: #020617;
-            --bs-body-color: #e2e8f0;
-            --card-bg: var(--card-bg-dark);
-            background-color: var(--darker);
-            color: var(--light);
-        }
-        
-        /* Critical hero styles */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-        
-        .hero.loaded {
-            opacity: 1;
-        }
-        
-        /* Critical navbar styles */
-        .navbar {
-            transition: all 0.3s ease;
-            backdrop-filter: blur(10px);
-            background-color: rgba(248, 250, 252, 0.95);
-            padding: 1rem 0;
-        }
+        /* Add critical CSS here to prevent FOUC */
+        body { opacity: 0; }
+        .hero { opacity: 0; }
+        .loaded { opacity: 1 !important; transition: opacity 0.3s ease; }
     </style>
 
-    <!-- Defer non-critical CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" media="print" onload="this.media='all'">
+    <!-- Theme Script (Keep this early) -->
+    <script>
+        // Immediately set theme before page renders
+        (function() {
+            const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+            const savedTheme = localStorage.getItem("theme");
+            if (savedTheme === "dark" || (!savedTheme && prefersDarkScheme.matches)) {
+                document.documentElement.classList.add("dark-mode");
+            }
+        })();
+    </script>
     
-    <!-- Fallback for browsers that don't support onload -->
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap">
-    </noscript>
-
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abdelrahman Ibrahim</title>
     
-     <link rel="icon" href="web_icon/favicon.ico" sizes="any">
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" as="style">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" as="style">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" as="style">
+    <link rel="preload" href="assets/images/0.png" as="image" type="image/png" fetchpriority="high">
+    <link rel="preload" href="assets/images/aa.png" as="image" type="image/png">
+    <link rel="preload" href="assets/images/aaa.png" as="image" type="image/png">
+    <link rel="preload" href="assets/images/a.png" as="image" type="image/png">
+    
+    <!-- Favicon -->
+    <link rel="icon" href="web_icon/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="web_icon/apple-touch-icon.png">
     
     <!-- Meta Tags -->
@@ -119,15 +64,19 @@
     <!-- Author metadata -->
     <meta name="author" content="Abdelrahman Ibrahim">
 
-    <script>
-        (function() {
-            const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-            const savedTheme = localStorage.getItem("theme");
-            if (savedTheme === "dark" || (!savedTheme && prefersDarkScheme.matches)) {
-                document.documentElement.classList.add("dark-mode");
-            }
-        })();
-    </script>
+    <!-- Defer Non-Critical CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" media="print" onload="this.media='all'">
+    
+    <!-- Fallback for browsers that don't support onload -->
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap">
+    </noscript>
 
     <style>
         :root {
@@ -1810,58 +1759,9 @@
 
     <!-- Critical Scripts -->
     <script>
-        // Immediately executed script for initial theme
-        (function() {
-            const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-            const savedTheme = localStorage.getItem("theme");
-            if (savedTheme === "dark" || (!savedTheme && prefersDarkScheme.matches)) {
-                document.documentElement.classList.add("dark-mode");
-            }
-        })();
-
         // Show content when loaded
         document.addEventListener('DOMContentLoaded', function() {
             document.body.classList.add('loaded');
-            
-            // Initialize lazy loading immediately
-            if ('IntersectionObserver' in window) {
-                const imageObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            const src = img.dataset.src;
-                            if (src) {
-                                img.src = src;
-                                img.classList.add('loaded');
-                            }
-                            observer.unobserve(img);
-                        }
-                    });
-                }, {
-                    rootMargin: '50px 0px',
-                    threshold: 0.1
-                });
-
-                // Observe all lazy images
-                document.querySelectorAll('img[data-src]').forEach(img => {
-                    imageObserver.observe(img);
-                });
-            }
-
-            // Preload hero images
-            const heroImages = ['assets/images/0.png', 'assets/images/aa.png', 'assets/images/aaa.png', 'assets/images/a.png'];
-            Promise.all(heroImages.map(src => {
-                return new Promise((resolve, reject) => {
-                    const img = new Image();
-                    img.onload = resolve;
-                    img.onerror = reject;
-                    img.src = src;
-                });
-            })).then(() => {
-                document.querySelector('.hero')?.classList.add('loaded');
-            }).catch(() => {
-                document.querySelector('.hero')?.classList.add('loaded');
-            });
         });
     </script>
 
@@ -1871,176 +1771,337 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <!-- Initialize AOS after page load -->
-    <script defer>
-        window.addEventListener('load', function() {
-            AOS.init({
-                duration: 800,
-                easing: 'ease-out-cubic',
-                once: true,
-                mirror: false,
-                offset: 50
-            });
-        });
-    </script>
-
-    <!-- Theme toggle script -->
-    <script defer>
-        window.addEventListener('load', function() {
-            const themeToggle = document.getElementById('theme-toggle');
-            const themeIcon = themeToggle.querySelector('i');
-            const darkClass = 'dark-mode';
-            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
-
-            const applyTheme = (isDark) => {
-                document.documentElement.classList.add('theme-transitioning');
-                setTimeout(() => {
-                    document.documentElement.classList.toggle(darkClass, isDark);
-                    document.body.classList.toggle(darkClass, isDark);
-                    themeIcon.className = isDark ? 'fa fa-sun' : 'fa fa-moon';
-                    setTimeout(() => {
-                        document.documentElement.classList.remove('theme-transitioning');
-                    }, 300);
-                }, 10);
-            };
-
-            themeToggle.addEventListener('click', () => {
-                const newIsDark = !document.documentElement.classList.contains(darkClass);
-                localStorage.setItem('theme', newIsDark ? 'dark' : 'light');
-                applyTheme(newIsDark);
-            });
-
-            prefersDark.addEventListener('change', (e) => {
-                if (!localStorage.getItem('theme')) {
-                    applyTheme(e.matches);
-                }
-            });
-        });
-    </script>
-
-    <!-- Logo carousel script -->
-    <script defer>
-        window.addEventListener('load', function() {
-            const logoSlide = document.getElementById('logoSlide');
-            if (logoSlide) {
-                const logos = logoSlide.innerHTML;
-                logoSlide.innerHTML = logos.repeat(2);
-                
-                const style = document.createElement('style');
-                style.textContent = `
-                    @keyframes smoothScroll {
-                        0% { transform: translateX(0); }
-                        100% { transform: translateX(-50%); }
-                    }
-                    #logoSlide {
-                        animation: smoothScroll 30s linear infinite;
-                    }
-                    #logoSlide:hover {
-                        animation-play-state: paused;
-                    }
-                `;
-                document.head.appendChild(style);
-            }
-        });
-    </script>
-
     <!-- Firebase Scripts -->
     <script type="module" defer>
         // Import Firebase SDK
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
         import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
 
-        // Initialize Firebase after page load
-        window.addEventListener('load', function() {
-            const firebaseConfig = {
-                apiKey: "AIzaSyA5I1AlqhGACpPecU8Ly6137txxXvdcrac",
-                authDomain: "abdelrahman-ibrahim-info.firebaseapp.com",
-                databaseURL: "https://abdelrahman-ibrahim-info-default-rtdb.firebaseio.com",
-                projectId: "abdelrahman-ibrahim-info",
-                storageBucket: "abdelrahman-ibrahim-info.firebasestorage.app",
-                messagingSenderId: "326830243477",
-                appId: "1:326830243477:web:1f7d646f95d9cc3839a59c",
-                measurementId: "G-GBSD7BNLV9"
-            };
+        // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyA5I1AlqhGACpPecU8Ly6137txxXvdcrac",
+            authDomain: "abdelrahman-ibrahim-info.firebaseapp.com",
+            databaseURL: "https://abdelrahman-ibrahim-info-default-rtdb.firebaseio.com",
+            projectId: "abdelrahman-ibrahim-info",
+            storageBucket: "abdelrahman-ibrahim-info.firebasestorage.app",
+            messagingSenderId: "326830243477",
+            appId: "1:326830243477:web:1f7d646f95d9cc3839a59c",
+            measurementId: "G-GBSD7BNLV9"
+        };
 
-            const app = initializeApp(firebaseConfig);
-            const db = getFirestore(app);
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const db = getFirestore(app);
 
-            // Handle form submission
-            const contactForm = document.getElementById("contactForm");
-            if (contactForm) {
-                contactForm.addEventListener("submit", async function(event) {
-                    event.preventDefault();
+        // Get the form and message input
+        const contactForm = document.getElementById("contactForm");
+        const nameInput = document.getElementById("name");
+        const phoneInput = document.getElementById("phone");
+        const messageInput = document.getElementById("message");
+
+        // Handle form submission
+        contactForm.addEventListener("submit", function (event) {
+            event.preventDefault(); // Prevent the default form submissio n
+
+            // Get form values
+            const name = nameInput.value;
+            const phone = phoneInput.value;
+            const message = messageInput.value;
+            
+            // Get button elements
+            const submitBtn = document.getElementById("submitBtn");
+            const submitText = document.getElementById("submitText");
+            const loadingSpinner = document.getElementById("loadingSpinner");
+            
+            // Set loading state
+            submitBtn.disabled = true;
+            submitBtn.style.opacity = "0.7";
+            submitText.textContent = "Sending...";
+            loadingSpinner.classList.remove("d-none");
+
+            // Save data to Firestore
+            addDoc(collection(db, "portfolio-messages"), {
+                name: name,
+                phone: phone,
+                message: message,
+                timestamp: serverTimestamp()
+            })
+                .then(() => {
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = "1";
+                    submitText.textContent = "Send Message";
+                    loadingSpinner.classList.add("d-none");
                     
-                    const submitBtn = document.getElementById("submitBtn");
-                    const submitText = document.getElementById("submitText");
-                    const loadingSpinner = document.getElementById("loadingSpinner");
+                    // Show success message
+                    showCustomAlert('Message Sent', 'Thank you for contacting me!');
+                    contactForm.reset();
+                })
+                .catch((error) => {
+                    // Reset button state
+                    submitBtn.disabled = false;
+                    submitBtn.style.opacity = "1";
+                    submitText.textContent = "Send Message";
+                    loadingSpinner.classList.add("d-none");
                     
-                    try {
-                        submitBtn.disabled = true;
-                        submitBtn.style.opacity = "0.7";
-                        submitText.textContent = "Sending...";
-                        loadingSpinner.classList.remove("d-none");
-
-                        await addDoc(collection(db, "portfolio-messages"), {
-                            name: document.getElementById("name").value,
-                            phone: document.getElementById("phone").value,
-                            message: document.getElementById("message").value,
-                            timestamp: serverTimestamp()
-                        });
-
-                        showCustomAlert('Message Sent', 'Thank you for contacting me!');
-                        contactForm.reset();
-                    } catch (error) {
-                        console.error("Error sending message: ", error);
-                        showCustomAlert('Error', 'There was an error sending your message. Please try again later.');
-                    } finally {
-                        submitBtn.disabled = false;
-                        submitBtn.style.opacity = "1";
-                        submitText.textContent = "Send Message";
-                        loadingSpinner.classList.add("d-none");
-                    }
+                    console.error("Error sending message: ", error);
+                    // Show error message
+                    showCustomAlert('Error', 'There was an error sending your message. Please try again later.');
                 });
-            }
         });
     </script>
 
-    <!-- Custom alert script -->
+    <!-- Custom Scripts -->
     <script defer>
-        window.showCustomAlert = function(title, message) {
+        document.addEventListener("DOMContentLoaded", function () {
+            // Simplified hero loading logic
+            const heroImages = [
+                'assets/images/0.png',
+                'assets/images/aa.png',
+                'assets/images/aaa.png',
+                'assets/images/a.png'
+            ];
+            
+            // Create image objects and track loading
+            const imagePromises = heroImages.map(src => {
+                return new Promise((resolve, reject) => {
+                    const img = new Image();
+                    img.onload = () => resolve(src);
+                    img.onerror = () => reject(src);
+                    img.src = src;
+                });
+            });
+            
+            // Show hero section after images are loaded
+            Promise.all(imagePromises)
+                .then(() => {
+                    const hero = document.querySelector('.hero');
+                    if (hero) {
+                        hero.classList.add('loaded');
+                    }
+                    // Initialize AOS after hero is loaded
+                    AOS.init({
+                        duration: 800,
+                        easing: 'ease-out-cubic',
+                        once: false,
+                        mirror: true,
+                        offset: 50
+                    });
+                })
+                .catch(failedSrc => {
+                    console.warn(`Failed to load image: ${failedSrc}`);
+                    // Show hero section anyway if some images fail
+                    const hero = document.querySelector('.hero');
+                    if (hero) {
+                        hero.classList.add('loaded');
+                    }
+                    AOS.init({
+                        duration: 800,
+                        easing: 'ease-out-cubic',
+                        once: false,
+                        mirror: true,
+                        offset: 50
+                    });
+                });
+        });
+        // Logo carousel infinite smooth scrolling
+        document.addEventListener("DOMContentLoaded", function () {
+            const logoSlide = document.getElementById('logoSlide');
+            if (logoSlide) {
+                // Clone the logos to ensure seamless looping
+                const logos = logoSlide.innerHTML;
+                logoSlide.innerHTML = logos.repeat(300);
+
+                // Adjust animation based on content width
+                const logoWidth = logoSlide.scrollWidth / 2;
+
+                // Create dynamic animation style
+                const style = document.createElement('style');
+                style.textContent = `
+            @keyframes smoothScroll {
+                0% { transform: translateX(0); }
+                100% { transform: translateX(-${logoWidth}px); }
+            }
+            
+            #logoSlide {
+                animation: smoothScroll ${logoWidth / 50}s linear infinite;
+            }
+            
+            #logoSlide:hover {
+                animation-play-state: paused;
+            }
+        `;
+                document.head.appendChild(style);
+            }
+        });
+    </script>
+    <script>
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const darkClass = 'dark-mode';
+        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+
+        const applyTheme = (isDark) => {
+            // Apply transition class before changing theme
+            document.documentElement.classList.add('theme-transitioning');
+            
+            // Apply theme after a tiny delay to ensure transition class is applied
+            setTimeout(() => {
+                document.documentElement.classList.toggle(darkClass, isDark);
+                document.body.classList.toggle(darkClass, isDark);
+                themeIcon.className = isDark ? 'fa fa-sun' : 'fa fa-moon';
+                
+                // Remove transition class after transition completes
+                setTimeout(() => {
+                    document.documentElement.classList.remove('theme-transitioning');
+                }, 300);
+            }, 10);
+        };
+
+        // Initial load: detect saved theme or system preference
+        const savedTheme = localStorage.getItem('theme');
+        const isDark = savedTheme === 'dark' || (!savedTheme && prefersDark.matches);
+        applyTheme(isDark);
+
+        // Toggle on click
+        themeToggle.addEventListener('click', () => {
+            const newIsDark = !document.documentElement.classList.contains(darkClass);
+            localStorage.setItem('theme', newIsDark ? 'dark' : 'light');
+            applyTheme(newIsDark);
+        });
+
+        // Watch for system preference changes
+        prefersDark.addEventListener('change', (e) => {
+            if (!localStorage.getItem('theme')) {
+                applyTheme(e.matches);
+            }
+        });
+        
+    </script>
+    
+    <!-- Update custom alert function -->
+    <script>
+        function showCustomAlert(title, message) {
+            // Create overlay
             const overlay = document.createElement('div');
             overlay.className = 'alert-overlay';
             document.body.appendChild(overlay);
 
+            // Create alert
             const alertDiv = document.createElement('div');
             alertDiv.className = 'custom-alert';
             alertDiv.innerHTML = `
                 <h5 class="alert-heading">${title}</h5>
                 <p class="mb-0">${message}</p>
-                <button type="button" class="close-icon" onclick="window.closeAlert(this)">
+                <button type="button" class="close-icon" onclick="closeAlert(this)">
                     <i class="fas fa-times"></i>
                 </button>
             `;
             document.body.appendChild(alertDiv);
 
-            requestAnimationFrame(() => {
+            // Show overlay and alert with animation
+            setTimeout(() => {
                 overlay.classList.add('alert-visible');
                 alertDiv.classList.add('alert-visible');
-            });
-        };
+            }, 10);
+        }
 
-        window.closeAlert = function(button) {
+        function closeAlert(button) {
             const alert = button.parentElement;
             const overlay = document.querySelector('.alert-overlay');
             
+            // Remove visible class for fade out
             alert.classList.remove('alert-visible');
             overlay.classList.remove('alert-visible');
             
+            // Remove elements after animation
             setTimeout(() => {
                 alert.remove();
                 overlay.remove();
             }, 300);
-        };
+        }
+    </script>
+
+    <!-- Add this to your existing scripts -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            // Function to load lazy images
+            function loadLazyImages() {
+                const lazyImages = document.querySelectorAll('img[data-src]');
+                
+                const imageObserver = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            const img = entry.target;
+                            img.src = img.dataset.src;
+                            observer.unobserve(img);
+                        }
+                    });
+                }, {
+                    rootMargin: '50px 0px',
+                    threshold: 0.01
+                });
+
+                lazyImages.forEach(img => imageObserver.observe(img));
+            }
+
+            // Initialize lazy loading
+            if ('IntersectionObserver' in window) {
+                loadLazyImages();
+            } else {
+                // Fallback for browsers that don't support IntersectionObserver
+                const lazyImages = document.querySelectorAll('img[data-src]');
+                lazyImages.forEach(img => {
+                    img.src = img.dataset.src;
+                });
+            }
+        });
+    </script>
+
+    <!-- Optimized image loading -->
+    <script>
+        // Optimized image loading
+        document.addEventListener('DOMContentLoaded', function() {
+            // Create intersection observer for lazy loading
+            const imageObserver = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const img = entry.target;
+                        const src = img.dataset.src;
+                        
+                        // Create a new image to preload
+                        const preloadImg = new Image();
+                        preloadImg.onload = function() {
+                            img.src = src;
+                            img.classList.add('loaded');
+                        };
+                        preloadImg.src = src;
+                        
+                        // Stop observing this image
+                        observer.unobserve(img);
+                    }
+                });
+            }, {
+                rootMargin: '50px 0px',
+                threshold: 0.1
+            });
+
+            // Observe all project images
+            document.querySelectorAll('.card-img-wrapper img[data-src]').forEach(img => {
+                imageObserver.observe(img);
+            });
+
+            // Preload first two project images immediately
+            const firstTwoImages = document.querySelectorAll('.project-card:nth-child(-n+2) .card-img-wrapper img[data-src]');
+            firstTwoImages.forEach(img => {
+                const preloadImg = new Image();
+                preloadImg.onload = function() {
+                    img.src = img.dataset.src;
+                    img.classList.add('loaded');
+                };
+                preloadImg.src = img.dataset.src;
+            });
+        });
     </script>
 </body>
 
