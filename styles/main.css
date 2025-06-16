@@ -788,32 +788,39 @@ footer::before {
     padding: 20px 0;
     background-color: transparent;
     position: relative;
+    will-change: transform;
 }
 
 .logo-carousel {
     white-space: nowrap;
     overflow: hidden;
+    will-change: transform;
 }
 
 .logo-slide {
     display: inline-block;
-    animation: slide 20s linear infinite;
+    animation: smoothScroll 75s linear infinite;
+    will-change: transform;
+    backface-visibility: hidden;
+    transform: translateZ(0);
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .company-logo {
     height: 60px;
     margin: 0 40px;
     vertical-align: middle;
-    
-    filter: invert(0.7) brightness(0.6) !important; /* Darkens the image */
+    filter: invert(0.7) brightness(0.6) !important;
     opacity: 0.8;
     transition: all 0.3s ease;
-
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
 }
 
 .company-logo:hover {
-     opacity: 1;
-    transform: scale(1.1);
+    opacity: 1;
+    transform: scale(1.1) translateZ(0);
 }
 
 .logo-carousel a {
@@ -840,13 +847,32 @@ footer::before {
     opacity: 1;
 }
 
-@keyframes slide {
-    0% {
-        transform: translateX(0);
-    }
+@keyframes smoothScroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-5.555%); }
+}
 
-    100% {
-        transform: translateX(-50%);
+/* Optimize logo carousel for reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .logo-slide {
+        animation: none;
+    }
+    
+    .logo-carousel-container {
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none; /* Firefox */
+        -ms-overflow-style: none; /* IE and Edge */
+    }
+    
+    .logo-carousel-container::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, Opera */
+    }
+    
+    .logo-slide {
+        display: flex;
+        gap: 40px;
+        padding: 0 20px;
     }
 }
 
