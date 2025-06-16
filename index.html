@@ -14,25 +14,7 @@
     <link rel="preconnect" href="https://cdn.jsdelivr.net">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <!-- Critical CSS -->
-      <style>
-        /* Add critical CSS here to prevent FOUC */
-        body { opacity: 0; }
-        .hero { opacity: 0; }
-        .loaded { opacity: 1 !important; transition: opacity 0.3s ease; }
-    </style>
-
-    <!-- Theme Script (Keep this early) -->
-    <script>
-        // Immediately set theme before page renders
-        (function() {
-            const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-            const savedTheme = localStorage.getItem("theme");
-            if (savedTheme === "dark" || (!savedTheme && prefersDarkScheme.matches)) {
-                document.documentElement.classList.add("dark-mode");
-            }
-        })();
-    </script>
+    
     <!-- Critical CSS inline -->
     <style>
         /* Critical CSS for initial render */
@@ -71,6 +53,7 @@
             --card-bg: var(--card-bg-dark);
             background-color: var(--darker);
             color: var(--light);
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
         
         /* Critical hero styles */
@@ -171,6 +154,57 @@
             background-color: var(--darker);
             color: var(--light);
             transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        /* Add text color fixes for dark mode */
+        .dark-mode .text-dark,
+        .dark-mode .card-text,
+        .dark-mode .lead,
+        .dark-mode p,
+        .dark-mode small,
+        .dark-mode .form-label,
+        .dark-mode .navbar-brand,
+        .dark-mode .nav-link,
+        .dark-mode .card-title,
+        .dark-mode .card-subtitle,
+        .dark-mode .alert-heading,
+        .dark-mode .custom-alert p {
+            color: var(--light) !important;
+        }
+
+        /* Fix form control text in dark mode */
+        .dark-mode .form-control {
+            color: var(--light);
+            background-color: rgba(15, 23, 42, 0.8);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+
+        .dark-mode .form-control::placeholder {
+            color: rgba(241, 245, 249, 0.5);
+        }
+
+        /* Fix card body text in dark mode */
+        .dark-mode .card-body {
+            color: var(--light);
+        }
+
+        /* Fix navbar text in dark mode */
+        .dark-mode .navbar {
+            background-color: rgba(2, 6, 23, 0.95) !important;
+        }
+
+        .dark-mode .navbar-nav .nav-link {
+            color: var(--light) !important;
+        }
+
+        /* Fix footer text in dark mode */
+        .dark-mode footer {
+            color: var(--light);
+        }
+
+        /* Fix company logo hover text in dark mode */
+        .dark-mode .logo-carousel a::after {
+            color: var(--primary-light);
         }
 
         .dark-mode .bg-light {
