@@ -419,14 +419,14 @@
         // Show content when loaded
         document.addEventListener('DOMContentLoaded', function() {
             const loadingModal = document.getElementById('loadingModal');
-            let imagesLoaded = 0;
-            const totalImages = 4; // Total number of hero images
+            let heroImagesLoaded = 0;
+            const totalHeroImages = 4; // Total number of hero images
             
-            // Function to check if all images are loaded
-            const checkAllImagesLoaded = () => {
-                imagesLoaded++;
-                if (imagesLoaded >= totalImages) {
-                    // All images loaded, hide modal and show content
+            // Function to check if all hero images are loaded
+            const checkHeroImagesLoaded = () => {
+                heroImagesLoaded++;
+                if (heroImagesLoaded >= totalHeroImages) {
+                    // All hero images loaded, hide modal and show content
                     setTimeout(() => {
                         loadingModal.classList.remove('visible');
                         document.body.classList.add('loaded');
@@ -438,7 +438,7 @@
             // Show loading modal
             loadingModal.classList.add('visible');
             
-            // Initialize lazy loading immediately
+            // Initialize lazy loading for all images
             if ('IntersectionObserver' in window) {
                 const imageObserver = new IntersectionObserver((entries, observer) => {
                     entries.forEach(entry => {
@@ -449,23 +449,52 @@
                                 img.src = src;
                                 img.onload = () => {
                                     img.classList.add('loaded');
-                                    checkAllImagesLoaded();
+                                    // Only count hero images for the loading modal
+                                    if (img.closest('.hero')) {
+                                        checkHeroImagesLoaded();
+                                    }
                                 };
                                 img.onerror = () => {
-                                    checkAllImagesLoaded(); // Count even if image fails to load
+                                    // Only count hero images for the loading modal
+                                    if (img.closest('.hero')) {
+                                        checkHeroImagesLoaded();
+                                    }
+                                    console.error('Failed to load image:', src);
                                 };
                             }
                             observer.unobserve(img);
                         }
                     });
                 }, {
-                    rootMargin: '50px 0px',
+                    rootMargin: '100px 0px',
                     threshold: 0.1
                 });
 
-                // Observe all lazy images
-                document.querySelectorAll('img[data-src]').forEach(img => {
-                    imageObserver.observe(img);
+                // Function to observe images
+                const observeImages = () => {
+                    document.querySelectorAll('img[data-src]').forEach(img => {
+                        if (!img.classList.contains('observed')) {
+                            imageObserver.observe(img);
+                            img.classList.add('observed');
+                        }
+                    });
+                };
+
+                // Initial observation
+                observeImages();
+
+                // Observe images after components are loaded
+                const observer = new MutationObserver((mutations) => {
+                    mutations.forEach((mutation) => {
+                        if (mutation.addedNodes.length) {
+                            observeImages();
+                        }
+                    });
+                });
+
+                observer.observe(document.body, {
+                    childList: true,
+                    subtree: true
                 });
             }
 
@@ -473,14 +502,14 @@
             const heroImages = ['assets/images/0.png', 'assets/images/aa.png', 'assets/images/aaa.png', 'assets/images/a.png'];
             heroImages.forEach(src => {
                 const img = new Image();
-                img.onload = checkAllImagesLoaded;
-                img.onerror = checkAllImagesLoaded; // Count even if image fails to load
+                img.onload = checkHeroImagesLoaded;
+                img.onerror = checkHeroImagesLoaded;
                 img.src = src;
             });
 
-            // Fallback in case some images don't load
+            // Fallback in case some hero images don't load
             setTimeout(() => {
-                if (imagesLoaded < totalImages) {
+                if (heroImagesLoaded < totalHeroImages) {
                     loadingModal.classList.remove('visible');
                     document.body.classList.add('loaded');
                     document.querySelector('.hero')?.classList.add('loaded');
@@ -531,10 +560,10 @@
                 style.textContent = `
                     @keyframes smoothScroll {
                         0% { transform: translateX(0); }
-                        100% { transform: translateX(-6.666%); }
+                        100% { transform: translateX(-5.555%); }
                     }
                     #logoSlide {
-                        animation: smoothScroll 60s linear infinite;
+                        animation: smoothScroll 75s linear infinite;
                     }
                     #logoSlide:hover {
                         animation-play-state: paused;
