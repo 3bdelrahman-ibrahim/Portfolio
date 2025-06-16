@@ -1222,6 +1222,94 @@
             opacity: 1;
             z-index: 2;
         }
+
+        /* Dark mode text and icon fixes */
+        .dark-mode .text-warning {
+            color: #fbbf24 !important; /* Brighter yellow for stars in dark mode */
+        }
+
+        .dark-mode .card-text,
+        .dark-mode small,
+        .dark-mode .form-label,
+        .dark-mode .navbar-brand,
+        .dark-mode .nav-link,
+        .dark-mode .card-title,
+        .dark-mode .card-subtitle,
+        .dark-mode .alert-heading,
+        .dark-mode .custom-alert p,
+        .dark-mode .lead,
+        .dark-mode p,
+        .dark-mode .social-icon,
+        .dark-mode .btn-close,
+        .dark-mode .close-icon,
+        .dark-mode .navbar-toggler-icon,
+        .dark-mode .custom-alert .close-icon i,
+        .dark-mode .btn-primary i,
+        .dark-mode .show-link i {
+            color: var(--light) !important;
+        }
+
+        /* Fix social icons in dark mode */
+        .dark-mode .social-icon {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+            color: var(--white) !important;
+        }
+
+        /* Fix button icons in dark mode */
+        .dark-mode .btn-primary i,
+        .dark-mode .show-link i {
+            color: var(--white) !important;
+        }
+
+        /* Fix close icon in dark mode */
+        .dark-mode .close-icon {
+            background: rgba(99, 102, 241, 0.2);
+            color: var(--light) !important;
+        }
+
+        .dark-mode .close-icon i {
+            color: var(--light) !important;
+        }
+
+        /* Fix navbar toggler in dark mode */
+        .dark-mode .navbar-toggler-icon {
+            filter: invert(1) brightness(1);
+        }
+
+        /* Fix form control text in dark mode */
+        .dark-mode .form-control {
+            color: var(--light);
+            background-color: rgba(15, 23, 42, 0.8);
+            border-color: rgba(99, 102, 241, 0.2);
+        }
+
+        .dark-mode .form-control::placeholder {
+            color: rgba(241, 245, 249, 0.5);
+        }
+
+        /* Fix alert text in dark mode */
+        .dark-mode .custom-alert {
+            color: var(--light);
+        }
+
+        .dark-mode .custom-alert .alert-heading {
+            color: var(--primary-light);
+        }
+
+        /* Fix company logo hover text in dark mode */
+        .dark-mode .logo-carousel a::after {
+            color: var(--primary-light);
+        }
+
+        /* Fix review stars in dark mode */
+        .dark-mode .text-warning i {
+            color: #fbbf24 !important;
+        }
+
+        /* Fix review rating text in dark mode */
+        .dark-mode .fw-bold.small {
+            color: var(--light) !important;
+        }
     </style>
 </head>
 
