@@ -616,6 +616,98 @@
                 overlay.remove();
             }, 300);
         };
+
+        // Navbar scroll and close functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to setup navigation after components are loaded
+            function setupNavigation() {
+                // Get all nav links
+                const navLinks = document.querySelectorAll('.navbar-nav .nav-link[href^="#"]');
+                const navbarBrand = document.querySelector('.navbar-brand[href^="#"]');
+                const navbarCollapse = document.querySelector('.navbar-collapse');
+                const navbarToggler = document.querySelector('.navbar-toggler');
+                
+                // Add click event listener to navbar brand
+                if (navbarBrand) {
+                    navbarBrand.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        const targetSection = document.querySelector(targetId);
+                        
+                        if (targetSection) {
+                            targetSection.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                            
+                            // Close navbar on mobile
+                            setTimeout(() => {
+                                if (window.innerWidth < 992) {
+                                    const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                                        hide: true
+                                    });
+                                    
+                                    if (navbarToggler) {
+                                        navbarToggler.setAttribute('aria-expanded', 'false');
+                                    }
+                                }
+                            }, 300);
+                        }
+                    });
+                }
+                
+                // Add click event listeners to all nav links
+                navLinks.forEach(link => {
+                    link.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        
+                        const targetId = this.getAttribute('href');
+                        const targetSection = document.querySelector(targetId);
+                        
+                        if (targetSection) {
+                            // Smooth scroll to target section
+                            targetSection.scrollIntoView({
+                                behavior: 'smooth',
+                                block: 'start'
+                            });
+                            
+                            // Close navbar on mobile after a short delay
+                            setTimeout(() => {
+                                if (window.innerWidth < 992) { // Bootstrap lg breakpoint
+                                    const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                                        hide: true
+                                    });
+                                    
+                                    // Update aria-expanded attribute
+                                    if (navbarToggler) {
+                                        navbarToggler.setAttribute('aria-expanded', 'false');
+                                    }
+                                }
+                            }, 300); // Small delay to allow smooth scroll to start
+                        }
+                    });
+                });
+            }
+            
+            // Setup navigation immediately for existing sections
+            setupNavigation();
+            
+            // Setup navigation again after components are loaded
+            setTimeout(() => {
+                setupNavigation();
+            }, 1000); // Wait for components to load
+            
+            // Add scroll event listener for navbar background
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.classList.add('navbar-scrolled');
+                } else {
+                    navbar.classList.remove('navbar-scrolled');
+                }
+            });
+        });
     </script>
 
     <!-- Firebase Scripts -->
