@@ -38,8 +38,7 @@ body {
 .dark-mode p,
 .dark-mode small,
 .dark-mode .form-label,
-.dark-mode .navbar-brand,
-.dark-mode .nav-link,
+ .dark-mode .nav-link,
 .dark-mode .card-title,
 .dark-mode .card-subtitle,
 .dark-mode .alert-heading,
@@ -181,7 +180,7 @@ h6 {
     font-size: clamp(2.5rem, 8vw, 4.5rem);
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -314,7 +313,7 @@ h6 {
     left: 0;
     width: 50px;
     height: 4px;
-    background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
     border-radius: 2px;
 }
 
@@ -1145,8 +1144,7 @@ footer::before {
 .dark-mode .card-text,
 .dark-mode small,
 .dark-mode .form-label,
-.dark-mode .navbar-brand,
-.dark-mode .nav-link,
+ .dark-mode .nav-link,
 .dark-mode .card-title,
 .dark-mode .card-subtitle,
 .dark-mode .alert-heading,

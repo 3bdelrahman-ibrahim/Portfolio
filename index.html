@@ -79,7 +79,7 @@
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top glass-effect">
         <div class="container">
             <!-- Logo -->
-            <a class="navbar-brand fw-bold" href="#hero" style="background: linear-gradient(90deg, var(--primary), var(--primary-dark)); 
+            <a class="navbar-brand fw-bold" href="#hero" style="background: linear-gradient(135deg, var(--primary-light), var(--primary-dark)); 
                       -webkit-background-clip: text; 
                       background-clip: text; 
                       color: transparent;">
@@ -360,7 +360,7 @@
         <div class="container text-center position-relative">
             <div class="mb-4">
                 <a href="#contact" class="navbar-brand fw-bold"
-                    style="background: linear-gradient(90deg, var(--primary), var(--primary-dark)); -webkit-background-clip: text; background-clip: text; color: transparent;">Abdelrahman
+                    style="background: linear-gradient(135deg, var(--primary-light), var(--primary-dark)); -webkit-background-clip: text; background-clip: text; color: transparent;">Abdelrahman
                     Ibrahim</a>
             </div>
             <p class="mb-4">Flutter Developer & UI/UX Designer</p>
@@ -619,84 +619,73 @@
 
         // Navbar scroll and close functionality
         document.addEventListener('DOMContentLoaded', function() {
-            // Function to setup navigation after components are loaded
-            function setupNavigation() {
-                // Get all nav links
-                const navLinks = document.querySelectorAll('.navbar-nav .nav-link[href^="#"]');
-                const navbarBrand = document.querySelector('.navbar-brand[href^="#"]');
-                const navbarCollapse = document.querySelector('.navbar-collapse');
-                const navbarToggler = document.querySelector('.navbar-toggler');
-                
-                // Add click event listener to navbar brand
-                if (navbarBrand) {
-                    navbarBrand.addEventListener('click', function(e) {
-                        e.preventDefault();
+            // Get all nav links
+            const navLinks = document.querySelectorAll('.navbar-nav .nav-link[href^="#"]');
+            const navbarBrand = document.querySelector('.navbar-brand[href^="#"]');
+            const navbarCollapse = document.querySelector('.navbar-collapse');
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            
+            // Add click event listener to navbar brand
+            if (navbarBrand) {
+                navbarBrand.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
                         
-                        const targetId = this.getAttribute('href');
-                        const targetSection = document.querySelector(targetId);
-                        
-                        if (targetSection) {
-                            targetSection.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                            
-                            // Close navbar on mobile
-                            setTimeout(() => {
-                                if (window.innerWidth < 992) {
-                                    const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
-                                        hide: true
-                                    });
-                                    
-                                    if (navbarToggler) {
-                                        navbarToggler.setAttribute('aria-expanded', 'false');
-                                    }
+                        // Close navbar on mobile
+                        setTimeout(() => {
+                            if (window.innerWidth < 992) {
+                                const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                                    hide: true
+                                });
+                                
+                                if (navbarToggler) {
+                                    navbarToggler.setAttribute('aria-expanded', 'false');
                                 }
-                            }, 300);
-                        }
-                    });
-                }
-                
-                // Add click event listeners to all nav links
-                navLinks.forEach(link => {
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        
-                        const targetId = this.getAttribute('href');
-                        const targetSection = document.querySelector(targetId);
-                        
-                        if (targetSection) {
-                            // Smooth scroll to target section
-                            targetSection.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                            
-                            // Close navbar on mobile after a short delay
-                            setTimeout(() => {
-                                if (window.innerWidth < 992) { // Bootstrap lg breakpoint
-                                    const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
-                                        hide: true
-                                    });
-                                    
-                                    // Update aria-expanded attribute
-                                    if (navbarToggler) {
-                                        navbarToggler.setAttribute('aria-expanded', 'false');
-                                    }
-                                }
-                            }, 300); // Small delay to allow smooth scroll to start
-                        }
-                    });
+                            }
+                        }, 300);
+                    }
                 });
             }
             
-            // Setup navigation immediately for existing sections
-            setupNavigation();
-            
-            // Setup navigation again after components are loaded
-            setTimeout(() => {
-                setupNavigation();
-            }, 1000); // Wait for components to load
+            // Add click event listeners to all nav links
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetSection = document.querySelector(targetId);
+                    
+                    if (targetSection) {
+                        // Smooth scroll to target section
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                        
+                        // Close navbar on mobile after a short delay
+                        setTimeout(() => {
+                            if (window.innerWidth < 992) { // Bootstrap lg breakpoint
+                                const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
+                                    hide: true
+                                });
+                                
+                                // Update aria-expanded attribute
+                                if (navbarToggler) {
+                                    navbarToggler.setAttribute('aria-expanded', 'false');
+                                }
+                            }
+                        }, 300); // Small delay to allow smooth scroll to start
+                    }
+                });
+            });
             
             // Add scroll event listener for navbar background
             window.addEventListener('scroll', function() {
