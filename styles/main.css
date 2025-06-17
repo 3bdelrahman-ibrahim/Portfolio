@@ -353,6 +353,88 @@ h6 {
     padding-top: 56.25%; /* 16:9 Aspect Ratio */
     background-color: var(--card-bg);
     overflow: hidden;
+    border-radius: 12px 12px 0 0;
+}
+
+.card-img-wrapper::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+        var(--card-bg) 0%, 
+        var(--primary-light) 25%, 
+        var(--card-bg) 50%, 
+        var(--primary-light) 75%, 
+        var(--card-bg) 100%);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+    z-index: 1;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.card-img-wrapper::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 3px solid transparent;
+    border-top: 3px solid var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    z-index: 2;
+    transition: opacity 0.3s ease;
+}
+
+.dark-mode .card-img-wrapper::before {
+    background: linear-gradient(90deg, 
+        var(--card-bg-dark) 0%, 
+        rgba(99, 102, 241, 0.3) 25%, 
+        var(--card-bg-dark) 50%, 
+        rgba(99, 102, 241, 0.3) 75%, 
+        var(--card-bg-dark) 100%);
+}
+
+.dark-mode .card-img-wrapper::after {
+    border-top-color: var(--primary-light);
+}
+
+/* Loading state - show animations */
+.card-img-wrapper.loading::before,
+.card-img-wrapper.loading::after {
+    opacity: 1;
+}
+
+/* Loaded state - hide animations */
+.card-img-wrapper.loaded::before,
+.card-img-wrapper.loaded::after {
+    opacity: 0;
+    pointer-events: none;
+}
+
+@keyframes shimmer {
+    0% { 
+        background-position: -200% 0; 
+        opacity: 0.6;
+    }
+    50% {
+        opacity: 0.8;
+    }
+    100% { 
+        background-position: 200% 0; 
+        opacity: 0.6;
+    }
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg); }
+    100% { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
 .card-img-wrapper img {
@@ -362,6 +444,26 @@ h6 {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    z-index: 0;
+}
+
+.card-img-wrapper img.loaded {
+    opacity: 1;
+    z-index: 3;
+}
+
+/* Hide loading animation when image is loaded */
+.card-img-wrapper img.loaded + .card-img-wrapper::before,
+.card-img-wrapper img.loaded + .card-img-wrapper::after {
+    display: none;
+}
+
+/* Alternative approach: hide loading elements when image is loaded */
+.card-img-wrapper:has(img.loaded)::before,
+.card-img-wrapper:has(img.loaded)::after {
+    display: none;
 }
 
 .skill-icon {
@@ -1081,61 +1183,6 @@ footer::before {
     transform: scale(1.05);
 }
 
-/* Image loading states */
-.card-img-wrapper {
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
-    background-color: var(--card-bg);
-    overflow: hidden;
-}
-
-.card-img-wrapper::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, 
-        var(--card-bg) 0%, 
-        var(--primary-light) 20%, 
-        var(--card-bg) 40%, 
-        var(--card-bg) 100%);
-    background-size: 200% 100%;
-    animation: shimmer 1.5s infinite;
-    z-index: 1;
-}
-
-.dark-mode .card-img-wrapper::before {
-    background: linear-gradient(90deg, 
-        var(--card-bg-dark) 0%, 
-        rgba(99, 102, 241, 0.2) 20%, 
-        var(--card-bg-dark) 40%, 
-        var(--card-bg-dark) 100%);
-}
-
-@keyframes shimmer {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-}
-
-.card-img-wrapper img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.card-img-wrapper img.loaded {
-    opacity: 1;
-    z-index: 2;
-}
-
 /* Dark mode text and icon fixes */
 .dark-mode .text-warning {
     color: #fbbf24 !important; /* Brighter yellow for stars in dark mode */
@@ -1347,5 +1394,39 @@ footer::before {
 
 .dark-mode .text-warning i {
     color: #fcd34d !important;
+}
+
+/* Error placeholder styles */
+.error-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--card-bg);
+    color: var(--text-muted);
+    z-index: 3;
+    border-radius: 12px 12px 0 0;
+}
+
+.dark-mode .error-placeholder {
+    background-color: var(--card-bg-dark);
+    color: var(--light);
+}
+
+.error-placeholder .error-icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    opacity: 0.6;
+}
+
+.error-placeholder p {
+    margin: 0;
+    font-size: 0.9rem;
+    opacity: 0.8;
 }
  
