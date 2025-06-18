@@ -14,12 +14,18 @@
     --bs-body-bg: #f8fafc;
 }
 
+html, body {
+    background: var(--bs-body-bg, #f8fafc);
+    min-height: 100vh;
+    height: 100%;
+}
 body {
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
     background-color: var(--bs-body-bg);
     color: var(--dark);
     transition: background-color 0.3s ease, color 0.3s ease;
+    background-attachment: fixed;
 }
 
 .dark-mode {
