@@ -11,30 +11,55 @@
     --card-bg-dark: rgba(15, 23, 42, 0.8);
     --glass-bg: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.2);
-    --bs-body-bg: #f8fafc; /* Light mode background */
+    --bs-body-bg: var(--primary); /* Set body background to primary */
 }
 
 html, body {
-    background: var(--bs-body-bg, #f8fafc);
+    background: var(--primary);
     min-height: 100vh;
     height: 100%;
 }
 body {
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
-    background-color: var(--bs-body-bg);
+    background-color: var(--primary);
     color: var(--dark);
     transition: background-color 0.3s ease, color 0.3s ease;
     background-attachment: fixed;
 }
 
+.navbar {
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    background-color: var(--primary) !important;
+    padding: 1rem 0;
+}
+
+.navbar-scrolled {
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+    padding: 0.5rem 0;
+    background-color: var(--primary-dark) !important;
+}
+
 .dark-mode {
-    --bs-body-bg: #020617; /* Dark mode background */
+    --bs-body-bg: var(--primary-dark); /* Set dark mode body background to primary-dark */
     --bs-body-color: #e2e8f0;
     --card-bg: var(--card-bg-dark);
-    background-color: var(--darker);
+    background-color: var(--primary-dark);
     color: var(--light);
     transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode html, .dark-mode body {
+    background: var(--primary-dark);
+}
+
+.dark-mode .navbar {
+    background-color: var(--primary-dark) !important;
+}
+
+.dark-mode .navbar-scrolled {
+    background-color: var(--primary) !important;
 }
 
 /* Add text color fixes for dark mode */
@@ -99,11 +124,7 @@ body {
     color: var(--light) !important;
 }
 
-/* toggler icon color  span  */
-.dark-mode .navbar-toggler-icon {
-    /* Remove the conflicting filter property */
-}
-
+ 
 /* Add consistent transitions to all elements that change with theme */
 .navbar, .card, .bg-light, .text-dark, .navbar-nav .nav-link, 
 .form-control, .btn, .section-title, .hero, .company-logo, 
@@ -142,18 +163,6 @@ h5,
 h6 {
     font-family: 'Space Grotesk', sans-serif;
     font-weight: 700;
-}
-
-.navbar {
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    background-color: rgba(248, 250, 252, 0.95);
-    padding: 1rem 0;
-}
-
-.navbar-scrolled {
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-    padding: 0.5rem 0;
 }
 
 .hero {
@@ -1236,11 +1245,7 @@ footer::before {
     color: var(--light) !important;
 }
 
-/* Fix navbar toggler in dark mode */
-.dark-mode .navbar-toggler-icon {
-    /* Remove the conflicting filter property */
-}
-
+ 
 /* Fix form control text in dark mode */
 .dark-mode .form-control {
     color: var(--light);
