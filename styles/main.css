@@ -15,30 +15,44 @@
 }
 
 html, body {
-    background: var(--primary);
     min-height: 100vh;
     height: 100%;
+    background: #f1f5f9;
+    background-color: #f1f5f9;
+    transition: background 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
+
 body {
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
-    background-color: var(--primary);
     color: var(--dark);
-    transition: background-color 0.3s ease, color 0.3s ease;
     background-attachment: fixed;
+}
+
+/* Dark mode background fix */
+.dark-mode html, .dark-mode body {
+    background: #0f172a !important;
+    background-color: #0f172a !important;
+    color: var(--light) !important;
+    transition: background 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .navbar {
     transition: all 0.3s ease;
     backdrop-filter: blur(10px);
-    background-color: var(--primary) !important;
+    background-color: var(--white) !important;
     padding: 1rem 0;
 }
 
 .navbar-scrolled {
     box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
     padding: 0.5rem 0;
-    background-color: var(--primary-dark) !important;
+    background-color: var(--white) !important;
+}
+
+.dark-mode .navbar,
+.dark-mode .navbar-scrolled {
+    background-color: var(--darker) !important;
 }
 
 .dark-mode {
@@ -48,10 +62,6 @@ body {
     background-color: var(--primary-dark);
     color: var(--light);
     transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-.dark-mode html, .dark-mode body {
-    background: var(--primary-dark);
 }
 
 .dark-mode .navbar {
@@ -104,6 +114,7 @@ body {
 
 /* Fix footer text in dark mode */
 .dark-mode footer {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
     color: var(--light);
 }
 
@@ -593,8 +604,8 @@ h6 {
 }
 
 footer {
-    background-color: var(--darker);
-    color: var(--light);
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+    color: var(--dark);
     position: relative;
     overflow: hidden;
 }
@@ -1439,5 +1450,31 @@ footer::before {
     margin: 0;
     font-size: 0.9rem;
     opacity: 0.8;
+}
+
+.bg-light {
+    background-color: var(--white) !important;
+}
+
+.dark-mode .bg-light {
+    background-color: var(--darker) !important;
+}
+
+.bg-dark {
+    background-color: var(--darker) !important;
+    color: var(--light) !important;
+}
+
+.dark-mode .bg-dark {
+    background-color: var(--darker) !important;
+    color: var(--light) !important;
+}
+
+section, .py-5, .section-title, .logo-carousel-container {
+    background: var(--white);
+}
+
+.dark-mode section, .dark-mode .py-5, .dark-mode .section-title, .dark-mode .logo-carousel-container {
+    background: var(--darker);
 }
  
