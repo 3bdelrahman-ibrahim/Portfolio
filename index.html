@@ -130,10 +130,34 @@
                 </div>
                 <div class="col-lg-6 order-lg-2 order-2 text-center mt-4" data-aos="fade-left" data-aos-delay="150">
                     <div class="hero-image-container">
-                        <img src="assets/images/0.png" alt="Abdelrahman Ibrahim" class="hero-image img-fluid">
-                        <img src="assets/images/aa.png" alt="icon" class="floating-icon icon-1">
-                        <img src="assets/images/aaa.png" alt="icon" class="floating-icon icon-2">
-                        <img src="assets/images/a.png" alt="icon" class="floating-icon icon-3">
+                        <img 
+                            src="assets/images/0.png" 
+                            srcset="assets/images/0.png 1x, assets/images/0.webp 1.5x" 
+                            alt="Abdelrahman Ibrahim" 
+                            class="hero-image img-fluid" 
+                            loading="preload"
+                            style="will-change: transform;">
+                        <img 
+                            src="assets/images/aa.png" 
+                            srcset="assets/images/aa.png 1x, assets/images/aa.webp 1.5x" 
+                            alt="icon floating 1" 
+                            class="floating-icon icon-1" 
+                            loading="preload"
+                            style="will-change: transform;">
+                        <img 
+                            src="assets/images/aaa.png" 
+                            srcset="assets/images/aaa.png 1x, assets/images/aaa.webp 1.5x" 
+                            alt="icon floating 2" 
+                            class="floating-icon icon-2" 
+                            loading="preload"
+                            style="will-change: transform;">
+                        <img 
+                            src="assets/images/a.png" 
+                            srcset="assets/images/a.png 1x, assets/images/a.webp 1.5x" 
+                            alt="icon floating 3" 
+                            class="floating-icon icon-3" 
+                            loading="preload"
+                            style="will-change: transform;">
                     </div>
                 </div>
             </div>
@@ -164,19 +188,19 @@
                 <div class="logo-carousel">
                     <div class="logo-slide" id="logoSlide">
                         <a href="https://play.google.com/store/apps/details?id=com.arab.salamspace" target="_blank" title="Salam Space">
-                            <img src="assets/images/10.png" alt="Salam Space" class="company-logo">
+                            <img src="assets/images/10.png" alt="Salam Space" class="company-logo"  loading="preload">
                         </a>
                         <a href="https://play.google.com/store/apps/details?id=com.drivenow.app" target="_blank" title="Drive Now">
-                            <img src="assets/images/11.png" alt="Drive Now" class="company-logo">
+                            <img src="assets/images/11.png" alt="Drive Now" class="company-logo"  loading="preload">
                         </a>
                         <a href="https://play.google.com/store/apps/details?id=com.restauranttest.egypt" target="_blank" title="Food Delivery">
-                            <img src="assets/images/12.png" alt="Food Delivery" class="company-logo">
+                            <img src="assets/images/12.png" alt="Food Delivery" class="company-logo"  loading="preload">
                         </a>
                         <a href="https://play.google.com/store/apps/details?id=com.tranaqar.app" target="_blank" title="TranaQar">
-                            <img src="assets/images/13.png" alt="TranaQar" class="company-logo">
+                            <img src="assets/images/13.png" alt="TranaQar" class="company-logo"  loading="preload">
                         </a>
                         <a href="https://play.google.com/store/apps/details?id=com.shifratalsharq.app" target="_blank" title="Shifrat Alsharq">
-                            <img src="assets/images/14.png" alt="Shifrat Alsharq" class="company-logo">
+                            <img src="assets/images/14.png" alt="Shifrat Alsharq" class="company-logo"  loading="preload">
                         </a>
                     </div>
                 </div> 
@@ -690,10 +714,10 @@
     </script>
 
     <!-- Firebase Scripts -->
-    <script type="module" src="js/firebase-config.js"></script>
+    <script defer type="module" src="js/firebase-config.min.js"></script>
 
     <!-- Image Loader Script -->
-    <script src="js/image-loader.js"></script>
+    <script defer src="js/image-loader.min.js"></script>
 
     <!-- Deferred Scripts -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>

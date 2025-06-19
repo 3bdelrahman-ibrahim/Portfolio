@@ -11,7 +11,7 @@
     --card-bg-dark: rgba(15, 23, 42, 0.8);
     --glass-bg: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.2);
-    --bs-body-bg: var(--primary); /* Set body background to primary */
+    --bs-body-bg: var(--light); /* Set body background to light */
 }
 
 html, body {
@@ -56,10 +56,10 @@ body {
 }
 
 .dark-mode {
-    --bs-body-bg: var(--primary-dark); /* Set dark mode body background to primary-dark */
+    --bs-body-bg: var(--darker); /* Set dark mode body background to darker */
     --bs-body-color: #e2e8f0;
     --card-bg: var(--card-bg-dark);
-    background-color: var(--primary-dark);
+    background-color: var(--darker);
     color: var(--light);
     transition: background-color 0.3s ease, color 0.3s ease;
 }
@@ -808,7 +808,7 @@ footer::before {
 /* Fix for navbar on mobile */
 @media (max-width: 991px) {
     .navbar-collapse {
-        background-color: var(--bs-body-bg);
+        background-color: var(--white);
         padding: 1rem;
         border-radius: 0.5rem;
         margin-top: 0.5rem;
@@ -1397,7 +1397,7 @@ footer::before {
 
 .dark-mode .navbar-toggler:focus {
     box-shadow: 0 0 0 0.25rem rgba(165, 180, 252, 0.25);
-    border-color: var(--primary-light);
+    border-color: var(--light);
 }
 
 /* Alert icon color fix */
