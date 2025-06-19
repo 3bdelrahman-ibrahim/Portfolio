@@ -17,22 +17,22 @@
 html, body {
     min-height: 100vh;
     height: 100%;
-    background: #f1f5f9;
-    background-color: #f1f5f9;
+    background: var(--light);
+    background-color: var(--light);
     transition: background 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 body {
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
-    color: var(--dark);
+    color: var(--darker);
     background-attachment: fixed;
 }
 
 /* Dark mode background fix */
 .dark-mode html, .dark-mode body {
-    background: #0f172a !important;
-    background-color: #0f172a !important;
+    background: var(--darker) !important;
+    background-color: var(--darker) !important;
     color: var(--light) !important;
     transition: background 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
