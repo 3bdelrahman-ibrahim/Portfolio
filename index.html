@@ -512,6 +512,9 @@
                     navbar.classList.remove('navbar-scrolled');
                 }
             });
+
+            // Add this to show hero section after DOMContentLoaded
+            document.querySelector('.hero').classList.add('loaded');
         });
     </script>
 

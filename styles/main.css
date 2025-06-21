@@ -186,6 +186,10 @@ h6 {
     transition: opacity 0.5s ease;
 }
 
+.hero.loaded {
+    opacity: 1;
+}
+
 .hero::before {
     content: '';
     position: absolute;
@@ -364,8 +368,15 @@ h6 {
     width: 100%;
     aspect-ratio: 16/9;
     object-fit: cover;
-    transition: transform 0.5s ease, filter 0.3s ease;
     height: auto;
+    max-height: 350px;
+    background: #f3f3f3;
+}
+
+@supports not (aspect-ratio: 16/9) {
+    .card-img-top {
+        height: 225px;
+    }
 }
 
 .card-img-top.loaded {
@@ -1092,7 +1103,6 @@ footer::before {
     width: 100%;
     aspect-ratio: 16/9;
     object-fit: cover;
-    transition: transform 0.5s ease;
     height: auto;
 }
 
