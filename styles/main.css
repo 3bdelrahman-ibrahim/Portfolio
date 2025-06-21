@@ -1044,7 +1044,7 @@ footer::before {
 
 .custom-alert .close-icon:hover {
     background: rgba(99, 102, 241, 0.2);
-    transform: rotate(90deg);
+    transform: rotate(45deg);
 }
 
 .dark-mode .custom-alert .close-icon {
@@ -1394,18 +1394,15 @@ section, .py-5, .section-title, .logo-carousel-container {
 /* Skeleton loading for project images */
 .card-img-top.skeleton-loading {
   position: relative;
-  background: #e0e0e0 !important;
+  background: var(--skeleton-bg, #e0e0e0) !important;
   overflow: hidden;
-}
-.dark-mode .card-img-top.skeleton-loading {
-  background: #333 !important;
 }
 .card-img-top.skeleton-loading::after {
   content: '';
   display: block;
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.2), transparent);
+  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.25), transparent);
   animation: skeleton-shimmer 1.2s infinite;
   z-index: 2;
 }
