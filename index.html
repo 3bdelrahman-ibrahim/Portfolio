@@ -2,72 +2,39 @@
 <html lang="en">
 
 <head>
-    <!-- Preload hero images -->
-    <link rel="preload" href="assets/images/0.png" as="image" fetchpriority="high">
-    <link rel="preload" href="assets/images/aa.png" as="image">
-    <link rel="preload" href="assets/images/aaa.png" as="image">
-    <link rel="preload" href="assets/images/a.png" as="image">
-    <!-- Preload company logos -->
-    <link rel="preload" href="assets/images/10.png" as="image">
-    <link rel="preload" href="assets/images/11.png" as="image">
-    <link rel="preload" href="assets/images/12.png" as="image">
-    <link rel="preload" href="assets/images/13.png" as="image">
-    <link rel="preload" href="assets/images/14.png" as="image">
-    <link rel="preload" href="assets/images/gp.png" as="image">
-    <link rel="preload" href="assets/images/ios.png" as="image">
-    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" as="style">
-    
-    <!-- Preconnect to external domains -->
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://cdn.jsdelivr.net">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
-   
-
-    <!-- Defer non-critical CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" media="print" onload="this.media='all'">
-    
-    <!-- Fallback for browsers that don't support onload -->
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap">
-    </noscript>
-
+    <!-- Removed all preload, preconnect, and deferred CSS loading for faster initial load -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abdelrahman Ibrahim</title>
-    
-     <link rel="icon" href="web_icon/favicon.ico" sizes="any">
+    <link rel="icon" href="web_icon/favicon.ico" sizes="any">
     <link rel="apple-touch-icon" href="web_icon/apple-touch-icon.png">
-    
     <!-- Meta Tags -->
     <meta name="google-site-verification" content="XVud6-PKmwSqxKBFSzk9TYPXhGc-bAXyASk9xFbzPkA" />
-
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Abdelrahman Ibrahim">
     <meta property="og:description" content="Flutter Developer & UI/UX Designer">
     <meta property="og:image" content="assets/images/33.png">
     <meta property="og:url" content="https://3bdelrahman-ibrahim.github.io/Portfolio">
     <meta property="og:type" content="website">
-
     <!-- Twitter Card Meta Tags -->
     <meta name="twitter:title" content="Abdelrahman Ibrahim">
     <meta name="twitter:description" content="Flutter Developer & UI/UX Designer">
     <meta name="twitter:image" content="assets/images/33.png">
     <meta name="twitter:card" content="summary_large_image">
-
     <!-- Author metadata -->
     <meta name="author" content="Abdelrahman Ibrahim">
-
     <!-- Critical CSS -->
     <link rel="stylesheet" href="styles/main.css">
- 
+
+    <link rel="preload" href="assets/images/0.png" as="image" fetchpriority="high">
+    <link rel="preload" href="assets/images/aa.png" as="image">
+    <link rel="preload" href="assets/images/aaa.png" as="image">
+    <link rel="preload" href="assets/images/a.png" as="image">
+    <link rel="preload" href="assets/images/10.png" as="image">
+    <link rel="preload" href="assets/images/11.png" as="image">
+    <link rel="preload" href="assets/images/12.png" as="image">
+    <link rel="preload" href="assets/images/13.png" as="image">
+    <link rel="preload" href="assets/images/14.png" as="image">
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar">
@@ -177,19 +144,19 @@
                 <div class="logo-carousel">
                     <div class="logo-slide" id="logoSlide">
                         <a href="https://play.google.com/store/apps/details?id=com.arab.salamspace" target="_blank" title="Salam Space">
-                            <img src="assets/images/10.png" alt="Salam Space" class="company-logo"  loading="preload">
+                            <img src="assets/images/10.png" alt="Salam Space" class="company-logo"   >
                         </a>
                         <a href="https://play.google.com/store/apps/details?id=com.drivenow.app" target="_blank" title="Drive Now">
-                            <img src="assets/images/11.png" alt="Drive Now" class="company-logo"  loading="preload">
+                            <img src="assets/images/11.png" alt="Drive Now" class="company-logo"   >
                         </a>
                         <a href="https://play.google.com/store/apps/details?id=com.restauranttest.egypt" target="_blank" title="Food Delivery">
-                            <img src="assets/images/12.png" alt="Food Delivery" class="company-logo"  loading="preload">
+                            <img src="assets/images/12.png" alt="Food Delivery" class="company-logo"   >
                         </a>
                         <a href="https://play.google.com/store/apps/details?id=com.tranaqar.app" target="_blank" title="TranaQar">
-                            <img src="assets/images/13.png" alt="TranaQar" class="company-logo"  loading="preload">
+                            <img src="assets/images/13.png" alt="TranaQar" class="company-logo"   >
                         </a>
                         <a href="https://play.google.com/store/apps/details?id=com.shifratalsharq.app" target="_blank" title="Shifrat Alsharq">
-                            <img src="assets/images/14.png" alt="Shifrat Alsharq" class="company-logo"  loading="preload">
+                            <img src="assets/images/14.png" alt="Shifrat Alsharq" class="company-logo"   >
                         </a>
                     </div>
                 </div> 
@@ -318,7 +285,6 @@
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary px-5 py-3" id="submitBtn">
                                         <span id="submitText">Send Message</span>
-                                        <span id="loadingSpinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
                                     </button>
                                 </div>
                             </form>
@@ -381,53 +347,8 @@
         </div>
     </footer>
 
-    <!-- Add loading modal HTML before closing body tag -->
-    <div class="loading-modal" id="loadingModal">
-        <div class="loading-dots">
-            <div class="loading-dot"></div>
-            <div class="loading-dot"></div>
-            <div class="loading-dot"></div>
-        </div>
-    </div>
-
-    <!-- Component Loader Script -->
+    <!-- Theme toggle script -->
     <script>
-        // Function to load components
-        async function loadComponent(containerId, componentPath) {
-            try {
-                const response = await fetch(componentPath);
-                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-                const html = await response.text();
-                document.getElementById(containerId).innerHTML = html;
-                
-                // Reinitialize AOS for the loaded component
-                if (typeof AOS !== 'undefined') {
-                    AOS.refresh();
-                }
-            } catch (error) {
-                console.error(`Error loading ${componentPath}:`, error);
-                document.getElementById(containerId).innerHTML = `<div class="alert alert-danger">Error loading component. Please refresh the page.</div>`;
-            }
-        }
-
-        // Load components when DOM is ready
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load components
-            loadComponent('skills-container', 'components/skills.html');
-            loadComponent('projects-container', 'components/projects.html');
-
-            // Initialize AOS after components are loaded
-            if (typeof AOS !== 'undefined') {
-                AOS.init({
-                    duration: 800,
-                    easing: 'ease-out-cubic',
-                    once: true,
-                    mirror: false,
-                    offset: 50
-                });
-            }
-        });
-
         // Immediately executed script for initial theme
         (function() {
             const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
@@ -436,107 +357,6 @@
                 document.documentElement.classList.add("dark-mode");
             }
         })();
-
-        // Show content when loaded
-        document.addEventListener('DOMContentLoaded', function() {
-            const loadingModal = document.getElementById('loadingModal');
-            let heroImagesLoaded = 0;
-            const totalHeroImages = 4; // Total number of hero images
-            
-            // Function to check if all hero images are loaded
-            const checkHeroImagesLoaded = () => {
-                heroImagesLoaded++;
-                if (heroImagesLoaded >= totalHeroImages) {
-                    // All hero images loaded, hide modal and show content
-                    setTimeout(() => {
-                        loadingModal.classList.remove('visible');
-                        document.body.classList.add('loaded');
-                        document.querySelector('.hero')?.classList.add('loaded');
-                    }, 500);
-                }
-            };
-
-            // Show loading modal
-            loadingModal.classList.add('visible');
-            
-            // Initialize lazy loading for all images
-            if ('IntersectionObserver' in window) {
-                const imageObserver = new IntersectionObserver((entries, observer) => {
-                    entries.forEach(entry => {
-                        if (entry.isIntersecting) {
-                            const img = entry.target;
-                            const src = img.dataset.src;
-                            if (src) {
-                                img.src = src;
-                                img.onload = () => {
-                                    img.classList.add('loaded');
-                                    // Only count hero images for the loading modal
-                                    if (img.closest('.hero')) {
-                                        checkHeroImagesLoaded();
-                                    }
-                                };
-                                img.onerror = () => {
-                                    // Only count hero images for the loading modal
-                                    if (img.closest('.hero')) {
-                                        checkHeroImagesLoaded();
-                                    }
-                                    console.error('Failed to load image:', src);
-                                };
-                            }
-                            observer.unobserve(img);
-                        }
-                    });
-                }, {
-                    rootMargin: '100px 0px',
-                    threshold: 0.1
-                });
-
-                // Function to observe images
-                const observeImages = () => {
-                    document.querySelectorAll('img[data-src]').forEach(img => {
-                        if (!img.classList.contains('observed')) {
-                            imageObserver.observe(img);
-                            img.classList.add('observed');
-                        }
-                    });
-                };
-
-                // Initial observation
-                observeImages();
-
-                // Observe images after components are loaded
-                const observer = new MutationObserver((mutations) => {
-                    mutations.forEach((mutation) => {
-                        if (mutation.addedNodes.length) {
-                            observeImages();
-                        }
-                    });
-                });
-
-                observer.observe(document.body, {
-                    childList: true,
-                    subtree: true
-                });
-            }
-
-            // Preload hero images
-            const heroImages = ['assets/images/0.png', 'assets/images/aa.png', 'assets/images/aaa.png', 'assets/images/a.png'];
-            heroImages.forEach(src => {
-                const img = new Image();
-                img.onload = checkHeroImagesLoaded;
-                img.onerror = checkHeroImagesLoaded;
-                img.src = src;
-            });
-
-            // Fallback in case some hero images don't load
-            setTimeout(() => {
-                if (heroImagesLoaded < totalHeroImages) {
-                    loadingModal.classList.remove('visible');
-                    document.body.classList.add('loaded');
-                    document.querySelector('.hero')?.classList.add('loaded');
-                }
-            }, 5000); // 5 second fallback
-        });
 
         // Theme toggle script
         window.addEventListener('load', function() {

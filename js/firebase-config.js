@@ -33,7 +33,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitBtn.disabled = true;
                 submitBtn.style.opacity = "0.7";
                 submitText.textContent = "Sending...";
-                loadingSpinner.classList.remove("d-none");
 
                 await addDoc(collection(db, "portfolio-messages"), {
                     name: document.getElementById("name").value,
@@ -51,7 +50,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitBtn.disabled = false;
                 submitBtn.style.opacity = "1";
                 submitText.textContent = "Send Message";
-                loadingSpinner.classList.add("d-none");
             }
         });
     }
