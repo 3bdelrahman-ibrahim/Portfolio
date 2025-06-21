@@ -370,7 +370,7 @@ h6 {
     object-fit: cover;
     height: auto;
     max-height: 350px;
-    background: #f3f3f3;
+    background-color: #f3f3f3;
 }
 
 @supports not (aspect-ratio: 16/9) {
@@ -379,9 +379,6 @@ h6 {
     }
 }
 
-.card-img-top.loaded {
-    /* Removed: filter: blur(0); */
-}
 
 .card-img-wrapper {
     position: relative;
@@ -1377,5 +1374,43 @@ section, .py-5, .section-title, .logo-carousel-container {
 
 .dark-mode section, .dark-mode .py-5, .dark-mode .section-title, .dark-mode .logo-carousel-container {
     background: var(--darker);
+}
+
+/* Project card image fallback for dark mode and error/loading */
+.card-img-top {
+  background-color: #f3f3f3; /* light grey for light mode */
+}
+.dark-mode .card-img-top {
+  background-color: #444 !important; /* dark grey for dark mode */
+}
+.card-img-top.grey-placeholder {
+  background-color: #888 !important;
+  object-fit: contain;
+}
+.dark-mode .card-img-top.grey-placeholder {
+  background-color: #444 !important;
+}
+
+/* Skeleton loading for project images */
+.card-img-top.skeleton-loading {
+  position: relative;
+  background: #e0e0e0 !important;
+  overflow: hidden;
+}
+.dark-mode .card-img-top.skeleton-loading {
+  background: #333 !important;
+}
+.card-img-top.skeleton-loading::after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  animation: skeleton-shimmer 1.2s infinite;
+  z-index: 2;
+}
+@keyframes skeleton-shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
  
