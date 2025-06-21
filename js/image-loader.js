@@ -2,6 +2,28 @@
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize loading states for all card images
     initializeImageLoading();
+
+    // Enhanced skeleton loading for slow connections
+    document.querySelectorAll('.card-img-top').forEach(function(img) {
+        // Remove skeleton immediately, will add if slow
+        img.classList.remove('skeleton-loading');
+        let skeletonTimeout = setTimeout(function() {
+            if (!img.complete) {
+                img.classList.add('skeleton-loading');
+            }
+        }, 300); // 300ms threshold for 'slow' loading
+
+        img.addEventListener('load', function() {
+            clearTimeout(skeletonTimeout);
+            img.classList.remove('skeleton-loading');
+            img.classList.remove('grey-placeholder');
+        });
+        img.addEventListener('error', function() {
+            clearTimeout(skeletonTimeout);
+            img.classList.remove('skeleton-loading');
+            img.classList.add('grey-placeholder');
+        });
+    });
 });
 
 function initializeImageLoading() {
