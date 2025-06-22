@@ -38,38 +38,103 @@ body {
 }
 
 .navbar {
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-    background-color: var(--white) !important;
-    padding: 1rem 0;
+    position: fixed;
+    top: 20px;
+    left: 5%;
+    right: 5%;
+    width: 90%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    padding: 1.2rem 2rem;
+    margin: 0 auto;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        0 1px 2px rgba(255, 255, 255, 0.1) inset;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .navbar-scrolled {
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-    padding: 0.5rem 0;
-    background-color: var(--white) !important;
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.12),
+        0 1px 2px rgba(255, 255, 255, 0.15) inset;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    padding: 0.8rem 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
 }
 
-.dark-mode .navbar,
-.dark-mode .navbar-scrolled {
-    background-color: var(--darker) !important;
-}
 
-.dark-mode {
-    --bs-body-bg: var(--darker); /* Set dark mode body background to darker */
-    --bs-body-color: #e2e8f0;
-    --card-bg: var(--card-bg-dark);
-    background-color: var(--darker);
-    color: var(--light);
-    transition: background-color 0.3s ease, color 0.3s ease;
+
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background:var(--light);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 
+            0 8px 32px rgba(0, 0, 0, 0.08),
+            0 1px 2px rgba(255, 255, 255, 0.1) inset;
+    }
+    .navbar-collapse {
+        background:var(--light);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border-radius: 20px;
+        box-shadow: 
+            0 12px 40px rgba(0, 0, 0, 0.12),
+            0 1px 2px rgba(255, 255, 255, 0.15) inset;
+        padding: 1.5rem 2rem;
+        margin-top: 30px;
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .dark-mode .navbar {
+        background: rgba(15, 23, 42, 0.08);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    
+    .dark-mode .navbar-collapse {
+        background: var(--darker);
+        backdrop-filter: blur(20px) saturate(180%);
+        -webkit-backdrop-filter: blur(20px) saturate(180%);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 
+            0 12px 40px rgba(0, 0, 0, 0.3),
+            0 1px 2px rgba(255, 255, 255, 0.05) inset;
+    }
 }
 
 .dark-mode .navbar {
-    background-color: var(--primary-dark) !important;
+    background: rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        0 1px 2px rgba(255, 255, 255, 0.05) inset;
 }
 
 .dark-mode .navbar-scrolled {
-    background-color: var(--primary) !important;
+    background: rgba(15, 23, 42, 0.12);
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: 
+        0 12px 40px rgba(0, 0, 0, 0.3),
+        0 1px 2px rgba(255, 255, 255, 0.08) inset;
 }
 
 /* Add text color fixes for dark mode */
@@ -79,7 +144,7 @@ body {
 .dark-mode p,
 .dark-mode small,
 .dark-mode .form-label,
- .dark-mode .nav-link,
+.dark-mode .nav-link,
 .dark-mode .card-title,
 .dark-mode .card-subtitle,
 .dark-mode .alert-heading,
@@ -98,13 +163,26 @@ body {
     color: rgba(241, 245, 249, 0.5);
 }
 
+.dark-mode .form-control:focus {
+    background-color: rgba(15, 23, 42, 0.9);
+    border-color: var(--primary);
+    box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
+}
+
 /* Fix card body text in dark mode */
 .dark-mode .card-body {
     color: var(--light);
 }
 
-/* Fix navbar text in dark mode */
+/* Fix navbar styling in dark mode */
 .dark-mode .navbar {
+    background: rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        0 1px 2px rgba(255, 255, 255, 0.05) inset;
     background-color: rgba(2, 6, 23, 0.95) !important;
 }
 
@@ -123,19 +201,23 @@ body {
     color: var(--primary-light);
 }
 
+/* Fix background colors in dark mode */
 .dark-mode .bg-light {
-    background-color: rgba(2, 6, 23, 0.95) !important;
+    background-color: var(--darker) !important;
 }
 
-.dark-mode .text-dark {
+.dark-mode .bg-dark {
+    background-color: var(--darker) !important;
     color: var(--light) !important;
 }
 
-.dark-mode .navbar-nav .nav-link {
-    color: var(--light) !important;
+/* Fix card styling in dark mode */
+.dark-mode .card {
+    background-color: var(--card-bg-dark);
+    border-color: rgba(99, 102, 241, 0.2);
+    backdrop-filter: blur(10px);
 }
 
- 
 /* Add consistent transitions to all elements that change with theme */
 .navbar, .card, .bg-light, .text-dark, .navbar-nav .nav-link, 
 .form-control, .btn, .section-title, .hero, .company-logo, 
@@ -150,20 +232,6 @@ body {
 
 ::-webkit-scrollbar-thumb {
     transition: background-color 0.3s ease;
-}
-
-.dark-mode .bg-dark {
-    background-color: rgba(2, 6, 23, 0.95) !important;
-}
-
-.dark-mode .navbar {
-    background-color: rgba(2, 6, 23, 0.95) !important;
-}
-
-.dark-mode .card {
-    background-color: var(--card-bg-dark);
-    border-color: rgba(99, 102, 241, 0.2);
-    backdrop-filter: blur(10px);
 }
 
 h1,
@@ -442,6 +510,7 @@ h6 {
     justify-content: center;
 }
 
+/* Social icons specific fixes */
 .social-icon {
     width: 40px;
     height: 40px;
@@ -461,6 +530,12 @@ h6 {
 .social-icon:hover {
     transform: translateY(-5px);
     box-shadow: 0 10px 15px rgba(99, 102, 241, 0.3);
+}
+
+/* Social icons specific fixes */
+.dark-mode .social-icon {
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
+    color: var(--white) !important;
 }
 
 .download-link img {
@@ -483,9 +558,7 @@ h6 {
 .show-link {
     text-decoration: none;
     background: linear-gradient(135deg, var(--darker) 0%, var(--darker) 100%);
-    /* background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%); */
     height: 40px;
-
     color: var(--white);
     padding: 12px 24px;
     border-radius: 12px;
@@ -607,6 +680,7 @@ footer::before {
 
     .navbar-nav .nav-link {
         margin: 0.5rem 0;
+        
     }
 
     .hero::before {
@@ -647,9 +721,7 @@ footer::before {
         transform: translateX(-50%);
     }
 
-    .navbar-nav {
-        padding: 1rem 0;
-    }
+   
 
     #theme-toggle {
         margin: 0.5rem auto;
@@ -706,16 +778,14 @@ footer::before {
 
 /* Fix for navbar on mobile */
 @media (max-width: 991px) {
-    .navbar-collapse {
-        background-color: var(--white);
-        padding: 1rem;
-        border-radius: 0.5rem;
-        margin-top: 0.5rem;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-    }
-
+ 
+   
     .dark-mode .navbar-collapse {
-        background-color: var(--darker);
+        background: var(--darker);
+        backdrop-filter: blur(15px);
+        -webkit-backdrop-filter: blur(15px);
+        border: 2px solid #444a;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.2);
     }
 }
 
@@ -743,6 +813,58 @@ footer::before {
     .form-control {
         font-size: 16px;
         /* Prevents iOS zoom on focus */
+    }
+    
+    /* Enhanced mobile navbar styling */
+    .navbar {
+        top: 15px;
+        left: 3%;
+        width: 94%;
+        padding: 1rem 1.5rem;
+        border-radius: 20px;
+        height: 70px;
+    }
+    
+    .navbar-scrolled {
+        padding: 0.7rem 1.5rem;
+        border-radius: 18px;
+    }
+    
+    .navbar-brand {
+        font-size: 1.3rem;
+    }
+    
+    .navbar-nav .nav-link {
+        padding: 1rem 1.5rem;
+        margin: 0.3rem 0;
+        font-size: 1rem;
+        text-align: center;
+        border-radius: 16px;
+    }
+    
+    .navbar-collapse {
+        margin-top: 1.5rem;
+        padding: 1.5rem;
+        border-radius: 20px;
+        backdrop-filter: blur(25px) saturate(200%);
+        -webkit-backdrop-filter: blur(25px) saturate(200%);
+        box-shadow: 
+            0 20px 60px rgba(0, 0, 0, 0.15),
+            0 1px 3px rgba(255, 255, 255, 0.2) inset;
+    }
+    
+    #theme-toggle {
+        padding: 0.8rem;
+        margin: 0.5rem auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+    }
+    
+    .navbar-toggler {
+        padding: 0.6rem 0.8rem;
+        border-radius: 14px;
     }
 }
 
@@ -794,18 +916,6 @@ footer::before {
 .form-control {
     color: var(--dark);
     background-color: rgba(255, 255, 255, 0.8);
-}
-
-.dark-mode .form-control {
-    color: var(--light);
-    background-color: rgba(15, 23, 42, 0.8);
-    border-color: rgba(99, 102, 241, 0.2);
-}
-
-.dark-mode .form-control:focus {
-    background-color: rgba(15, 23, 42, 0.9);
-    border-color: var(--primary);
-    box-shadow: 0 0 0 0.25rem rgba(99, 102, 241, 0.25);
 }
 
 /* Logo Carousel Animation */
@@ -1115,7 +1225,7 @@ footer::before {
 .dark-mode .card-text,
 .dark-mode small,
 .dark-mode .form-label,
- .dark-mode .nav-link,
+.dark-mode .nav-link,
 .dark-mode .card-title,
 .dark-mode .card-subtitle,
 .dark-mode .alert-heading,
@@ -1152,18 +1262,6 @@ footer::before {
 
 .dark-mode .close-icon i {
     color: var(--light) !important;
-}
-
- 
-/* Fix form control text in dark mode */
-.dark-mode .form-control {
-    color: var(--light);
-    background-color: rgba(15, 23, 42, 0.8);
-    border-color: rgba(99, 102, 241, 0.2);
-}
-
-.dark-mode .form-control::placeholder {
-    color: rgba(241, 245, 249, 0.5);
 }
 
 /* Fix alert text in dark mode */
@@ -1225,17 +1323,6 @@ footer::before {
     color: var(--primary-light);
 }
 
-/* Social icons specific fixes */
-.social-icon {
-    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
-    color: var(--white) !important;
-}
-
-.dark-mode .social-icon {
-    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary) 100%);
-    color: var(--white) !important;
-}
-
 /* Button hover states */
 .btn-primary:hover i,
 .btn-primary:hover .fab,
@@ -1293,10 +1380,6 @@ footer::before {
     border-color: rgba(165, 180, 252, 0.3);
 }
 
-.dark-mode .navbar-toggler:focus {
-    box-shadow: 0 0 0 0.25rem rgba(165, 180, 252, 0.25);
-    border-color: var(--light);
-}
 
 /* Alert icon color fix */
 .custom-alert .close-icon {
@@ -1310,10 +1393,6 @@ footer::before {
 /* Star rating color fix */
 .text-warning i {
     color: #fbbf24 !important;
-}
-
-.dark-mode .text-warning i {
-    color: #fcd34d !important;
 }
 
 /* Error placeholder styles */
@@ -1354,16 +1433,7 @@ footer::before {
     background-color: var(--white) !important;
 }
 
-.dark-mode .bg-light {
-    background-color: var(--darker) !important;
-}
-
 .bg-dark {
-    background-color: var(--darker) !important;
-    color: var(--light) !important;
-}
-
-.dark-mode .bg-dark {
     background-color: var(--darker) !important;
     color: var(--light) !important;
 }
@@ -1410,4 +1480,54 @@ section, .py-5, .section-title, .logo-carousel-container {
   0% { transform: translateX(-100%); }
   100% { transform: translateX(100%); }
 }
+
+.dropdown-menu {
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-radius: 16px;
+    border: #77777746 1.5px solid;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+}
+
+.dark-mode .dropdown-menu {
+    background: rgba(15, 23, 42, 0.5) !important;
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: #444a 1.5px solid;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+}
+
+/* Enhanced Navbar Brand Styling */
+.navbar-brand {
+    font-weight: 700;
+    font-size: 1.5rem;
+    letter-spacing: -0.02em;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+}
+
+.navbar-brand:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.show-link .fas {
+    color: var(--white) !important;
+}
+
+/* Theme toggle icon colors */
+#theme-toggle i {
+    color: var(--primary);
+    transition: color 0.3s ease;
+}
+
+.dark-mode #theme-toggle i {
+    color: var(--primary-light);
+}
+
  
