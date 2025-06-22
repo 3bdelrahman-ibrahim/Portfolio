@@ -40,6 +40,7 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     <link rel="stylesheet" href="styles/main.css">
 
 </head>
@@ -551,14 +552,100 @@
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const html = await response.text();
             document.getElementById(containerId).innerHTML = html;
+            
+            // Refresh AOS after component is loaded
+            if (window.AOS && typeof AOS.refresh === 'function') {
+                AOS.refresh();
+            }
         } catch (error) {
+            console.error('Error loading component:', error);
             document.getElementById(containerId).innerHTML = `<div class="alert alert-danger">Error loading component. Please refresh the page.</div>`;
         }
     }
-    document.addEventListener('DOMContentLoaded', function() {
-        loadComponent('skills-container', 'components/skills.html');
-        loadComponent('projects-container', 'components/projects.html');
-        AOS.init();
+    
+    // Function to initialize AOS with retry mechanism
+    function initializeAOS() {
+        if (window.AOS) {
+            try {
+                AOS.init({
+                    duration: 800,
+                    easing: 'ease-in-out',
+                    once: true,
+                    mirror: false,
+                    offset: 100,
+                    delay: 0,
+                    anchorPlacement: 'top-bottom'
+                });
+                console.log('AOS initialized successfully');
+                
+                // Force refresh after a short delay to ensure all elements are processed
+                setTimeout(() => {
+                    if (window.AOS && typeof AOS.refresh === 'function') {
+                        AOS.refresh();
+                        console.log('AOS refreshed');
+                    }
+                }, 500);
+            } catch (error) {
+                console.error('Error initializing AOS:', error);
+            }
+        } else {
+            console.warn('AOS not loaded yet, retrying in 100ms...');
+            setTimeout(initializeAOS, 100);
+        }
+    }
+    
+    // Function to check if all required scripts are loaded
+    function checkScriptsLoaded() {
+        const requiredScripts = [
+            'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js',
+            'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js'
+        ];
+        
+        let allLoaded = true;
+        requiredScripts.forEach(script => {
+            if (!document.querySelector(`script[src="${script}"]`)) {
+                allLoaded = false;
+            }
+        });
+        
+        return allLoaded;
+    }
+    
+    // Flag to prevent multiple initializations
+    let aosInitialized = false;
+    
+    function tryInitializeAOS() {
+        if (aosInitialized) return;
+        
+        if (window.AOS) {
+            aosInitialized = true;
+            initializeAOS();
+        } else {
+            setTimeout(tryInitializeAOS, 100);
+        }
+    }
+    
+    document.addEventListener('DOMContentLoaded', async function() {
+        console.log('DOM Content Loaded');
+        
+        // Load components first
+        await Promise.all([
+            loadComponent('skills-container', 'components/skills.html'),
+            loadComponent('projects-container', 'components/projects.html')
+        ]);
+        
+        console.log('Components loaded');
+        
+        // Try to initialize AOS
+        tryInitializeAOS();
+    });
+    
+    // Backup initialization on window load
+    window.addEventListener('load', function() {
+        console.log('Window loaded');
+        if (!aosInitialized) {
+            tryInitializeAOS();
+        }
     });
     </script>
 </body>
