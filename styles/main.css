@@ -11,109 +11,291 @@
     --card-bg-dark: rgba(15, 23, 42, 0.8);
     --glass-bg: rgba(255, 255, 255, 0.1);
     --glass-border: rgba(255, 255, 255, 0.2);
-    --bs-body-bg: var(--light); /* Set body background to light */
-}
+ }
 
-html, body {
+body {
     min-height: 100vh;
     height: 100%;
-    background: var(--light);
-    background-color: var(--light);
+    background: #ffffff;
+    background-color: #ffffff;
+    color: #000000;
     transition: background 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.dark-mode body {
+    background: #0f172a !important;
+    background-color: #0f172a !important;
+    color: #ffffff !important;
 }
 
 body {
     font-family: 'Inter', sans-serif;
     overflow-x: hidden;
-    color: var(--darker);
-    background-attachment: fixed;
+ }
+
+/* RTL Support */
+html[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
 }
 
-/* Dark mode background fix */
-.dark-mode html, .dark-mode body {
-    background: var(--darker) !important;
-    background-color: var(--darker) !important;
-    color: var(--light) !important;
-    transition: background 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+html[dir="rtl"] body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.navbar {
-    position: fixed;
-    top: 20px;
-    left: 5%;
-    right: 5%;
-    width: 90%;
-    z-index: 1000;
-    background: rgba(255, 255, 255, 0.08);
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-    padding: 1.2rem 2rem;
-    margin: 0 auto;
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80px;
-    box-shadow: 
-        0 8px 32px rgba(0, 0, 0, 0.08),
-        0 1px 2px rgba(255, 255, 255, 0.1) inset;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+/* RTL Navigation adjustments */
+html[dir="rtl"] .navbar-nav {
+    padding-right: 0;
+    direction: ltr !important;
+    text-align: left !important;
 }
 
-.navbar-scrolled {
-    box-shadow: 
-        0 12px 40px rgba(0, 0, 0, 0.12),
-        0 1px 2px rgba(255, 255, 255, 0.15) inset;
-    background: rgba(255, 255, 255, 0.12);
-    backdrop-filter: blur(25px) saturate(200%);
-    -webkit-backdrop-filter: blur(25px) saturate(200%);
-    padding: 0.8rem 2rem;
-    border-radius: 20px;
-    border: 1px solid rgba(255, 255, 255, 0.25);
+html[dir="rtl"] .navbar-nav .nav-link {
+    padding-right: 0;
+    padding-left: 1rem;
+    direction: ltr !important;
+    text-align: left !important;
 }
 
+html[dir="rtl"] .me-3 {
+    margin-right: 0 !important;
+    margin-left: 1rem !important;
+}
 
+html[dir="rtl"] .ms-auto {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
+
+/* RTL Bootstrap grid adjustments */
+html[dir="rtl"] .row {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .col-lg-6:first-child {
+    order: 2;
+}
+
+html[dir="rtl"] .col-lg-6:last-child {
+    order: 1;
+}
+
+/* RTL Button and icon adjustments */
+html[dir="rtl"] .btn i {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+html[dir="rtl"] .btn i.me-2 {
+    margin-right: 0 !important;
+    margin-left: 0.5rem !important;
+}
+
+html[dir="rtl"] .show-link .fas {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+/* RTL Card adjustments */
+html[dir="rtl"] .card-title-wrapper .d-flex {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .card-subtitle span {
+    margin-right: 0;
+    margin-left: 8px;
+}
+
+/* RTL Social icons */
+html[dir="rtl"] .social-icon {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+/* RTL Form adjustments */
+html[dir="rtl"] .form-label {
+    text-align: right;
+}
+
+html[dir="rtl"] .form-control {
+    text-align: right;
+}
+
+/* RTL List adjustments */
+html[dir="rtl"] ul {
+    padding-right: 1.5rem;
+    padding-left: 0;
+}
+
+html[dir="rtl"] ul li {
+    text-align: right;
+}
+
+/* RTL Project tags */
+html[dir="rtl"] .project-tag {
+    margin-right: 0;
+    margin-left: 0.5rem;
+}
+
+/* RTL Download links */
+html[dir="rtl"] .download-links {
+    flex-direction: row-reverse;
+}
+
+/* RTL Reviews section */
+html[dir="rtl"] .d-flex.justify-content-between {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .d-flex.flex-column.align-items-end {
+    align-items: flex-start !important;
+}
+
+/* RTL Contact section */
+html[dir="rtl"] .d-flex.justify-content-center.flex-wrap {
+    flex-direction: row-reverse;
+}
+
+/* RTL Hero section adjustments */
+html[dir="rtl"] .hero .row {
+    flex-direction: row-reverse;
+}
+
+html[dir="rtl"] .hero .col-lg-6:first-child {
+    order: 2;
+}
+
+html[dir="rtl"] .hero .col-lg-6:last-child {
+    order: 1;
+}
+
+/* RTL Company logos */
+html[dir="rtl"] .logo-carousel {
+    direction: rtl;
+}
+
+/* RTL Floating icons */
+html[dir="rtl"] .floating-icon {
+    animation-direction: reverse;
+}
+
+/* RTL Section title adjustments */
+html[dir="rtl"] .section-title h2::after {
+    left: auto;
+    right: 50%;
+    transform: translateX(50%);
+}
+
+/* RTL Skill cards */
+html[dir="rtl"] .skill-icon {
+    margin-left: 0;
+    margin-right: 1rem;
+}
+
+/* RTL Alert adjustments */
+html[dir="rtl"] .custom-alert .close-icon {
+    left: 1rem;
+    right: auto;
+}
+
+/* RTL Mobile adjustments */
+@media (max-width: 768px) {
+    html[dir="rtl"] .hero .row {
+        flex-direction: column;
+    }
+
+    html[dir="rtl"] .hero .col-lg-6:first-child,
+    html[dir="rtl"] .hero .col-lg-6:last-child {
+        order: unset;
+    }
+
+    html[dir="rtl"] .row {
+        flex-direction: column;
+    }
+
+    html[dir="rtl"] .col-lg-6:first-child,
+    html[dir="rtl"] .col-lg-6:last-child {
+        order: unset;
+    }
+}
+
+/* RTL specific toggle adjustments */
+html[dir="rtl"] #lang-toggle {
+    margin-left: 0;
+    margin-right: 0.5rem;
+}
 
 @media (max-width: 991px) {
     .navbar-collapse {
-        background:var(--light);
+        background: var(--light);
         backdrop-filter: blur(20px) saturate(180%);
         -webkit-backdrop-filter: blur(20px) saturate(180%);
         border: 1px solid rgba(255, 255, 255, 0.18);
-        box-shadow: 
+        box-shadow:
             0 8px 32px rgba(0, 0, 0, 0.08),
             0 1px 2px rgba(255, 255, 255, 0.1) inset;
     }
+
     .navbar-collapse {
-        background:var(--light);
+        background: var(--light);
         backdrop-filter: blur(20px) saturate(180%);
         -webkit-backdrop-filter: blur(20px) saturate(180%);
         border-radius: 20px;
-        box-shadow: 
+        box-shadow:
             0 12px 40px rgba(0, 0, 0, 0.12),
             0 1px 2px rgba(255, 255, 255, 0.15) inset;
         padding: 1.5rem 2rem;
         margin-top: 30px;
-        border: 1px solid rgba(255, 255, 255, 0.18);
+        border: 1px solid rgba(255, 255, 255, 0.25);
         transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    
+
     .dark-mode .navbar {
         background: rgba(15, 23, 42, 0.08);
         backdrop-filter: blur(20px) saturate(180%);
         -webkit-backdrop-filter: blur(20px) saturate(180%);
         border: 1px solid rgba(255, 255, 255, 0.1);
     }
-    
+
     .dark-mode .navbar-collapse {
         background: var(--darker);
         backdrop-filter: blur(20px) saturate(180%);
         -webkit-backdrop-filter: blur(20px) saturate(180%);
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow: 
+        border: 1px solid rgba(255, 255, 255, 0.15);
+        box-shadow:
             0 12px 40px rgba(0, 0, 0, 0.3),
             0 1px 2px rgba(255, 255, 255, 0.05) inset;
+    }
+
+    /* Center collapsed menu items on mobile */
+    .navbar-collapse .navbar-nav {
+        text-align: center !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .navbar-collapse .nav-item {
+        text-align: center !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+    .navbar-collapse .nav-link {
+        text-align: center !important;
+        justify-content: center !important;
+        align-items: center !important;
+        padding: 0.75rem 1rem !important;
+    }
+
+    .navbar-collapse .toggle-container {
+        justify-content: center !important;
+        align-items: center !important;
+        margin-top: 1rem !important;
+    }
+
+    .navbar-collapse .toggle-container .btn-link {
+        margin: 0 0.5rem !important;
     }
 }
 
@@ -122,7 +304,7 @@ body {
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 
+    box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.2),
         0 1px 2px rgba(255, 255, 255, 0.05) inset;
 }
@@ -132,7 +314,7 @@ body {
     backdrop-filter: blur(25px) saturate(200%);
     -webkit-backdrop-filter: blur(25px) saturate(200%);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    box-shadow: 
+    box-shadow:
         0 12px 40px rgba(0, 0, 0, 0.3),
         0 1px 2px rgba(255, 255, 255, 0.08) inset;
 }
@@ -180,7 +362,7 @@ body {
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 
+    box-shadow:
         0 8px 32px rgba(0, 0, 0, 0.2),
         0 1px 2px rgba(255, 255, 255, 0.05) inset;
     background-color: rgba(2, 6, 23, 0.95) !important;
@@ -219,9 +401,20 @@ body {
 }
 
 /* Add consistent transitions to all elements that change with theme */
-.navbar, .card, .bg-light, .text-dark, .navbar-nav .nav-link, 
-.form-control, .btn, .section-title, .hero, .company-logo, 
-.project-tag, .social-icon, .footer, .navbar-toggler-icon {
+.navbar,
+.card,
+.bg-light,
+.text-dark,
+.navbar-nav .nav-link,
+.form-control,
+.btn,
+.section-title,
+.hero,
+.company-logo,
+.project-tag,
+.social-icon,
+.footer,
+.navbar-toggler-icon {
     transition: all 0.3s ease !important;
 }
 
@@ -265,7 +458,7 @@ h6 {
     right: -20%;
     width: 100%;
     height: 200%;
-     opacity: 0.3;
+    opacity: 0.3;
     z-index: -1;
 }
 
@@ -277,7 +470,7 @@ h6 {
     font-size: clamp(2.5rem, 8vw, 4.5rem);
     line-height: 1.1;
     margin-bottom: 1.5rem;
-    background: linear-gradient(135deg, var(--primary-light), var(--primary-dark));
+    background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-light) 100%);
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
@@ -450,7 +643,8 @@ h6 {
 .card-img-wrapper {
     position: relative;
     width: 100%;
-    padding-top: 56.25%; /* 16:9 Aspect Ratio */
+    padding-top: 56.25%;
+    /* 16:9 Aspect Ratio */
     background-color: var(--card-bg);
     overflow: hidden;
     border-radius: 12px 12px 0 0;
@@ -666,7 +860,7 @@ footer::before {
 /* Enhanced responsive styling */
 @media (max-width: 992px) {
     .hero h1 {
-        font-size: clamp(2rem, 6vw, 3.5rem); 
+        font-size: clamp(2rem, 6vw, 3.5rem);
     }
 
     .hero h2 {
@@ -679,7 +873,7 @@ footer::before {
 
     .navbar-nav .nav-link {
         margin: 0.5rem 0;
-        
+
     }
 
     .hero::before {
@@ -689,7 +883,6 @@ footer::before {
         right: 0;
         width: 100%;
         height: 150%;
-        background: radial-gradient(circle, var(--primary-light) 0%, rgba(99, 102, 241, 0) 70%);
         opacity: 0.3;
         z-index: -1;
     }
@@ -720,7 +913,7 @@ footer::before {
         transform: translateX(-50%);
     }
 
-   
+
 
     #theme-toggle {
         margin: 0.5rem auto;
@@ -777,14 +970,13 @@ footer::before {
 
 /* Fix for navbar on mobile */
 @media (max-width: 991px) {
- 
-   
+
+
     .dark-mode .navbar-collapse {
         background: var(--darker);
         backdrop-filter: blur(15px);
         -webkit-backdrop-filter: blur(15px);
-        border: 2px solid #444a;
-        box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+        box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
     }
 }
 
@@ -813,7 +1005,7 @@ footer::before {
         font-size: 16px;
         /* Prevents iOS zoom on focus */
     }
-    
+
     /* Enhanced mobile navbar styling */
     .navbar {
         top: 15px;
@@ -823,16 +1015,16 @@ footer::before {
         border-radius: 20px;
         height: 70px;
     }
-    
+
     .navbar-scrolled {
         padding: 0.7rem 1.5rem;
         border-radius: 18px;
     }
-    
+
     .navbar-brand {
         font-size: 1.3rem;
     }
-    
+
     .navbar-nav .nav-link {
         padding: 1rem 1.5rem;
         margin: 0.3rem 0;
@@ -840,18 +1032,20 @@ footer::before {
         text-align: center;
         border-radius: 16px;
     }
-    
+
     .navbar-collapse {
         margin-top: 1.5rem;
         padding: 1.5rem;
         border-radius: 20px;
+        background: var(--white);
+
         backdrop-filter: blur(25px) saturate(200%);
         -webkit-backdrop-filter: blur(25px) saturate(200%);
-        box-shadow: 
+        box-shadow:
             0 20px 60px rgba(0, 0, 0, 0.15),
             0 1px 3px rgba(255, 255, 255, 0.2) inset;
     }
-    
+
     #theme-toggle {
         padding: 0.8rem;
         margin: 0.5rem auto;
@@ -860,7 +1054,7 @@ footer::before {
         justify-content: center;
         width: fit-content;
     }
-    
+
     .navbar-toggler {
         padding: 0.6rem 0.8rem;
         border-radius: 14px;
@@ -983,8 +1177,13 @@ footer::before {
 }
 
 @keyframes smoothScroll {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-5.555%); }
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-5.555%);
+    }
 }
 
 /* Optimize logo carousel for reduced motion */
@@ -992,18 +1191,21 @@ footer::before {
     .logo-slide {
         animation: none;
     }
-    
+
     .logo-carousel-container {
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
-        scrollbar-width: none; /* Firefox */
-        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none;
+        /* Firefox */
+        -ms-overflow-style: none;
+        /* IE and Edge */
     }
-    
+
     .logo-carousel-container::-webkit-scrollbar {
-        display: none; /* Chrome, Safari, Opera */
+        display: none;
+        /* Chrome, Safari, Opera */
     }
-    
+
     .logo-slide {
         display: flex;
         gap: 40px;
@@ -1016,12 +1218,12 @@ footer::before {
 }
 
 .dark-mode .company-logo {
-    filter: none !important; 
+    filter: none !important;
     opacity: 0.8;
 }
 
 .dark-mode .company-logo:hover {
-    opacity :0.9;
+    opacity: 0.9;
 }
 
 
@@ -1080,9 +1282,9 @@ footer::before {
 }
 
 .theme-transitioning * {
-    transition: background-color 0.3s ease, color 0.3s ease, 
-                border-color 0.3s ease, box-shadow 0.3s ease, 
-                filter 0.3s ease, opacity 0.3s ease !important;
+    transition: background-color 0.3s ease, color 0.3s ease,
+        border-color 0.3s ease, box-shadow 0.3s ease,
+        filter 0.3s ease, opacity 0.3s ease !important;
 }
 
 /* Alert overlay and styling */
@@ -1175,17 +1377,22 @@ footer::before {
         box-shadow: inset 0 0 0 1rem var(--primary);
         opacity: 1;
     }
-    50%, 100% {
+
+    50%,
+    100% {
         box-shadow: inset 0 0 0 0 var(--primary);
         opacity: 0;
     }
 }
 
 @keyframes pulsOut {
-    0%, 50% {
+
+    0%,
+    50% {
         box-shadow: 0 0 0 0 var(--primary);
         opacity: 0;
     }
+
     100% {
         box-shadow: 0 0 0 1rem var(--primary);
         opacity: 1;
@@ -1218,7 +1425,8 @@ footer::before {
 
 /* Dark mode text and icon fixes */
 .dark-mode .text-warning {
-    color: #fbbf24 !important; /* Brighter yellow for stars in dark mode */
+    color: #fbbf24 !important;
+    /* Brighter yellow for stars in dark mode */
 }
 
 .dark-mode .card-text,
@@ -1437,47 +1645,68 @@ footer::before {
     color: var(--light) !important;
 }
 
-section, .py-5, .section-title, .logo-carousel-container {
+section,
+.py-5,
+.section-title,
+.logo-carousel-container {
     background: var(--white);
 }
 
-.dark-mode section, .dark-mode .py-5, .dark-mode .section-title, .dark-mode .logo-carousel-container {
+.dark-mode section,
+.dark-mode .py-5,
+.dark-mode .section-title,
+.dark-mode .logo-carousel-container {
     background: var(--darker);
 }
 
 /* Project card image fallback for dark mode and error/loading */
 .card-img-top {
-  background-color: #f3f3f3; /* light grey for light mode */
+    background-color: #f3f3f3;
+    /* light grey for light mode */
 }
+
 .dark-mode .card-img-top {
-  background-color: #444 !important; /* dark grey for dark mode */
+    background-color: #444 !important;
+    /* dark grey for dark mode */
 }
+
 .card-img-top.grey-placeholder {
-  background-color: #888 !important;
-  object-fit: contain;
+    background-color: #888 !important;
+    object-fit: contain;
 }
+
 .dark-mode .card-img-top.grey-placeholder {
-  background-color: #444 !important;
+    background-color: #444 !important;
 }
 
 /* Skeleton loading for project images */
 .card-img-top.skeleton-loading {
-  position: relative;
-  background: var(--skeleton-bg, #e0e0e0) !important;
-  overflow: hidden;
+    position: relative;
+    background: var(--skeleton-bg, #e0e0e0) !important;
+    overflow: hidden;
 }
+
 .card-img-top.skeleton-loading::after {
-  content: '';
-  display: block;
-  position: absolute;
-  top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(45deg, transparent, rgba(255,255,255,0.25), transparent);
-  animation: skeleton-shimmer 1.2s infinite;
-  z-index: 2;
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+    animation: skeleton-shimmer 1.2s infinite;
+    z-index: 2;
 }
+
 @keyframes skeleton-shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
+    0% {
+        transform: translateX(-100%);
+    }
+
+    100% {
+        transform: translateX(100%);
+    }
 }
 
 .dropdown-menu {
@@ -1486,7 +1715,7 @@ section, .py-5, .section-title, .logo-carousel-container {
     -webkit-backdrop-filter: blur(15px);
     border-radius: 16px;
     border: #77777746 1.5px solid;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
 }
 
 .dark-mode .dropdown-menu {
@@ -1494,7 +1723,7 @@ section, .py-5, .section-title, .logo-carousel-container {
     backdrop-filter: blur(15px);
     -webkit-backdrop-filter: blur(15px);
     border: #444a 1.5px solid;
-    box-shadow: 0 2px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
 
 /* Enhanced Navbar Brand Styling */
@@ -1508,6 +1737,12 @@ section, .py-5, .section-title, .logo-carousel-container {
     color: transparent;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     text-decoration: none;
+    font-family: 'Inter', sans-serif !important;
+}
+
+/* Ensure navbar-brand font family doesn't change in RTL mode */
+html[dir="rtl"] .navbar-brand {
+    font-family: 'Inter', sans-serif !important;
 }
 
 .navbar-brand:hover {
@@ -1529,4 +1764,331 @@ section, .py-5, .section-title, .logo-carousel-container {
     color: var(--primary-light);
 }
 
- 
+/* Dark mode background fix */
+.dark-mode html,
+.dark-mode body {
+    background:var(--darker) !important;
+    background-color:var(--darker) !important;
+    color: var(--light) !important;
+    transition: background 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+}
+
+.navbar {
+    position: fixed;
+    top: 20px;
+    left: 5%;
+    right: 5%;
+    width: 90%;
+    z-index: 1000;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    padding: 1.2rem 2rem;
+    margin: 0 auto;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 80px;
+    box-shadow:
+        0 8px 32px rgba(0, 0, 0, 0.08),
+        0 1px 2px rgba(255, 255, 255, 0.1) inset;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navbar-scrolled {
+    box-shadow:
+        0 12px 40px rgba(0, 0, 0, 0.12),
+        0 1px 2px rgba(255, 255, 255, 0.15) inset;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(25px) saturate(200%);
+    -webkit-backdrop-filter: blur(25px) saturate(200%);
+    padding: 0.8rem 2rem;
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+}
+
+/* Language and Theme toggle styling */
+#lang-toggle,
+#theme-toggle {
+    padding: 0.5rem;
+    border-radius: 50%;
+    transition: all 0.3s ease;
+    color: var(--darker);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: none;
+}
+
+/* Toggle container styling for centering */
+.nav-item:has(#lang-toggle) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+}
+
+/* Alternative centering for browsers that don't support :has() */
+.nav-item.d-flex.justify-content-center.align-items-center {
+    margin: 0 auto;
+    flex: 1;
+    justify-content: center;
+}
+
+/* Specific toggle container centering */
+.toggle-container {
+    margin: 0 auto !important;
+    flex: 1;
+    justify-content: center !important;
+    align-items: center;
+}
+
+/* Ensure toggle buttons are centered within their container */
+.toggle-container #lang-toggle,
+.toggle-container #theme-toggle {
+    margin: 0;
+}
+
+.toggle-container #lang-toggle {
+    margin-right: 0.5rem;
+}
+
+#lang-toggle:hover,
+#theme-toggle:hover {
+    background: rgba(99, 102, 241, 0.1);
+    transform: scale(1.1);
+    color: var(--primary);
+    text-decoration: none;
+    box-shadow: none;
+}
+
+#lang-toggle:focus,
+#theme-toggle:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.25);
+}
+
+.dark-mode #lang-toggle,
+.dark-mode #theme-toggle {
+    color: var(--light);
+}
+
+.dark-mode #lang-toggle:hover,
+.dark-mode #theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--primary-light);
+}
+
+.dark-mode #lang-toggle:focus,
+.dark-mode #theme-toggle:focus {
+    box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.25);
+}
+
+/* RTL specific toggle adjustments */
+html[dir="rtl"] #lang-toggle {
+    margin-left: 0;
+    margin-right: 0.5rem;
+}
+
+/* Toggle icons styling */
+#lang-toggle i,
+#theme-toggle i {
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    /* Ensure icon stays in place during transitions */
+    transform-origin: center;
+    will-change: auto;
+}
+
+#lang-toggle:hover i,
+#theme-toggle:hover i {
+    transform: rotate(5deg);
+}
+
+/* Prevent icon position changes during language toggle */
+#lang-toggle i {
+    position: relative;
+    display: inline-block;
+    /* Ensure the icon doesn't move when class changes */
+    transform: none !important;
+    transition: color 0.3s ease, opacity 0.3s ease !important;
+    /* Prevent any layout shifts */
+    width: 1em;
+    height: 1em;
+    line-height: 1;
+    text-align: center;
+    vertical-align: middle;
+}
+
+/* Override any transforms that might be applied during language change */
+#lang-toggle:not(:hover) i {
+    transform: none !important;
+}
+
+/* Ensure language toggle button maintains stable positioning */
+#lang-toggle {
+    position: relative;
+    overflow: hidden;
+    /* Prevent any layout shifts */
+    min-width: 40px;
+    min-height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Prevent any layout shifts during icon changes */
+#lang-toggle i.fas {
+    position: relative;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    line-height: 1;
+    /* Ensure icon stays in exact same position */
+    transform: none !important;
+    transition: color 0.3s ease !important;
+}
+
+/* Additional stability for icon during class changes */
+#lang-toggle i.fa-globe {
+    position: relative;
+    display: inline-block;
+    width: 1em;
+    height: 1em;
+    text-align: center;
+    line-height: 1;
+    transform: none !important;
+    transition: color 0.3s ease !important;
+}
+
+/* Mobile responsive adjustments for toggles */
+@media (max-width: 768px) {
+
+    #lang-toggle,
+    #theme-toggle {
+        width: 35px;
+        height: 35px;
+        padding: 0.4rem;
+    }
+
+    #lang-toggle i,
+    #theme-toggle i {
+        font-size: 1rem;
+    }
+
+    html[dir="rtl"] #lang-toggle {
+        margin-right: 0.25rem;
+    }
+
+    .nav-item.d-flex.justify-content-center.align-items-center {
+        margin: 0 auto;
+        justify-content: center;
+    }
+}
+
+/* Navbar always LTR - Override RTL for navbar */
+html[dir="rtl"] .navbar {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+html[dir="rtl"] .navbar-nav {
+    padding-right: 0;
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+html[dir="rtl"] .navbar-nav .nav-link {
+    padding-right: 0;
+    padding-left: 1rem;
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+html[dir="rtl"] .navbar-brand {
+    direction: ltr !important;
+    text-align: left !important;
+    font-family: 'Inter', sans-serif !important;
+}
+
+html[dir="rtl"] .navbar-toggler {
+    direction: ltr !important;
+}
+
+html[dir="rtl"] .navbar-collapse {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+html[dir="rtl"] .toggle-container {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* Ensure navbar container maintains LTR */
+html[dir="rtl"] .navbar .container {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+html[dir="rtl"] .navbar .navbar-nav.ms-auto {
+    margin-left: auto !important;
+    margin-right: 0 !important;
+}
+
+/* Additional navbar LTR overrides for mobile and all states */
+html[dir="rtl"] .navbar .navbar-toggler-icon {
+    direction: ltr !important;
+}
+
+html[dir="rtl"] .navbar .navbar-nav .nav-item {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+html[dir="rtl"] .navbar .d-flex.justify-content-center.align-items-center {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+html[dir="rtl"] .navbar .btn-link {
+    direction: ltr !important;
+    text-align: left !important;
+}
+
+/* Ensure mobile navbar collapse maintains LTR */
+@media (max-width: 991px) {
+    html[dir="rtl"] .navbar-collapse {
+        direction: ltr !important;
+        text-align: left !important;
+    }
+
+    html[dir="rtl"] .navbar-collapse .navbar-nav {
+        direction: ltr !important;
+        text-align: left !important;
+    }
+
+    html[dir="rtl"] .navbar-collapse .nav-item {
+        direction: ltr !important;
+        text-align: left !important;
+    }
+
+    html[dir="rtl"] .navbar-collapse .nav-link {
+        direction: ltr !important;
+        text-align: left !important;
+    }
+
+    html[dir="rtl"] .navbar-collapse .toggle-container {
+        direction: ltr !important;
+        text-align: left !important;
+    }
+}

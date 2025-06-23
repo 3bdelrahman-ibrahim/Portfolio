@@ -54,7 +54,7 @@
             <a class="navbar-brand fw-bold" href="#hero" style="background: linear-gradient(135deg, var(--primary-light), var(--primary-dark)); 
                       -webkit-background-clip: text; 
                       background-clip: text; 
-                      color: transparent;">
+                      color: transparent;" data-translate="nav.portfolio">
                 Portfolio
             </a>
 
@@ -68,22 +68,26 @@
             <div class="collapse navbar-collapse glass-effect" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="#about">About</a>
+                        <a class="nav-link" href="#about" data-translate="nav.about">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#skills">Skills</a>
+                        <a class="nav-link" href="#skills" data-translate="nav.skills">Skills</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#projects">Projects</a>
+                        <a class="nav-link" href="#projects" data-translate="nav.projects">Projects</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#contact">Contact</a>
+                        <a class="nav-link" href="#contact" data-translate="nav.contact">Contact</a>
                     </li>
 
-                    <li class="nav-item d-flex justify-content-center">
-                        <div id="theme-toggle" class="d-flex align-items-center" style="cursor: pointer;">
+                    <!-- Language and Theme Toggles -->
+                    <li class="nav-item d-flex justify-content-center align-items-center toggle-container">
+                        <button id="lang-toggle" class="btn btn-link p-0" type="button" title="Toggle Language" aria-label="Toggle Language">
+                            <i class="fas fa-globe"></i>
+                        </button>
+                        <button id="theme-toggle" class="btn btn-link p-0" type="button" title="Toggle Theme" aria-label="Toggle Theme">
                             <i class="fas fa-moon"></i>
-                        </div>
+                        </button>
                     </li>
                 </ul>
             </div>
@@ -96,9 +100,9 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 order-lg-1 order-1 py-5">
-                    <h1 class="mb-2 py-3">Abdelrahman Ibrahim</h1>
-                    <h2 class="mb-4">Flutter Developer & UI/UX Designer</h2>
-                    <p class="">Crafting seamless digital experiences with innovative solutions and elegant design.</p>
+                    <h1 class="mb-2 py-3" data-translate="hero.title">Abdelrahman Ibrahim</h1>
+                    <h2 class="mb-4" data-translate="hero.subtitle">Flutter Developer & UI/UX Designer</h2>
+                    <p class="" data-translate="hero.description">Crafting seamless digital experiences with innovative solutions and elegant design.</p>
                 </div>
                 <div class="col-lg-6 order-lg-2 order-2 text-center mt-4" data-aos="fade-left" data-aos-delay="150">
                     <div class="hero-image-container">
@@ -132,8 +136,8 @@
     <section id="about" class="py-5">
         <div class="container" data-aos="fade-up" data-aos-delay="150">
             <div class="section-title text-center">
-                <h2>About Me</h2>
-                <p class="lead mx-auto" style="max-width: 700px;">I'm a passionate Flutter developer dedicated to
+                <h2 data-translate="about.title">About Me</h2>
+                <p class="lead mx-auto" style="max-width: 700px;" data-translate="about.description">I'm a passionate Flutter developer dedicated to
                     creating efficient, user-friendly mobile applications that deliver exceptional experiences. My focus
                     is on crafting solutions that blend technical excellence with intuitive design.</p>
             </div>
@@ -144,8 +148,8 @@
     <section id="companies" class="py-5 bg-light">
         <div class="container" data-aos="fade-up" data-aos-delay="150">
             <div class="section-title text-center">
-                <h2>Companies I've Worked With</h2>
-                <p class="lead">Proud to have collaborated with these amazing organizations</p>
+                <h2 data-translate="companies.title">Companies I've Worked With</h2>
+                <p class="lead" data-translate="companies.subtitle">Proud to have collaborated with these amazing organizations</p>
             </div>
 
             <div class="logo-carousel-container">
@@ -180,8 +184,8 @@
     <section id="reviews" class="py-5">
         <div class="container" data-aos="fade-up" data-aos-delay="150">
             <div class="section-title text-center">
-                <h2>Customer Reviews</h2>
-                <p class="lead">What my clients say about their experience working with me</p>
+                <h2 data-translate="reviews.title">Customer Reviews</h2>
+                <p class="lead" data-translate="reviews.subtitle">What my clients say about their experience working with me</p>
             </div>
             
             <div class="row g-4 justify-content-center">
@@ -191,11 +195,12 @@
                         <div class="card-body p-4">
                             <div class="d-flex justify-content-between align-items-start mb-3">
                                 <div>
-                                    <h6 class="mb-0">Hassan Almasri</h6>
-                                    <small class="card-text">CEO, Drive Now</small>
+                                    <h6 class="mb-0" data-translate="reviews.drivenow.name">Hassan Almasri</h6>
+                                    <small class="card-text" data-translate="reviews.drivenow.position">CEO, Drive Now</small>
                                 </div>
                                 <div class="d-flex flex-column align-items-end">
                                     <div class="text-warning">
+                                        <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
                                         <i class="fas fa-star"></i>
@@ -205,7 +210,7 @@
                                     <span class="fw-bold small">5.0</span>
                                 </div>
                             </div>
-                            <p class="card-text">"Drive Now app exceeded our expectations thanks to Abdelrahman's innovative approach and technical expertise. The app has significantly improved our business operations."</p>
+                            <p class="card-text" data-translate="reviews.drivenow.text">"Drive Now app exceeded our expectations thanks to Abdelrahman's innovative approach and technical expertise. The app has significantly improved our business operations."</p>
                         </div>
                     </div>
           
@@ -216,8 +221,8 @@
                         <div class="card-body p-4">
                             <div class="d-flex justify-content-between align-items-start mb-3">
                                 <div>
-                                    <h6 class="mb-0">Mashaal Eletapy</h6>
-                                    <small class="card-text">Director, TranaQar</small>
+                                    <h6 class="mb-0" data-translate="reviews.tranaqar.name">Mashaal Eletapy</h6>
+                                    <small class="card-text" data-translate="reviews.tranaqar.position">Director, TranaQar</small>
                                 </div>
                                 <div class="d-flex flex-column align-items-end">
                                     <div class="text-warning">
@@ -230,7 +235,7 @@
                                     <span class="fw-bold small ">4.5</span>
                                 </div>
                             </div>
-                            <p class="card-text">"Abdelrahman developed an exceptional app for TranaQar. His expertise in Flutter and UI/UX design helped us create a seamless user experience for our customers."</p>
+                            <p class="card-text" data-translate="reviews.tranaqar.text">"Abdelrahman developed an exceptional app for TranaQar. His expertise in Flutter and UI/UX design helped us create a seamless user experience for our customers."</p>
                         </div>
                     </div>
                 </div>
@@ -241,8 +246,8 @@
                         <div class="card-body p-4">
                             <div class="d-flex justify-content-between align-items-start mb-3">
                                 <div>
-                                    <h6 class="mb-0 ">abdelrahman hassan</h6>
-                                    <small class="card-text ">Owner, Shifrat Alsharq</small>
+                                    <h6 class="mb-0 " data-translate="reviews.shifrat.name">abdelrahman hassan</h6>
+                                    <small class="card-text " data-translate="reviews.shifrat.position">Owner, Shifrat Alsharq</small>
                                 </div>
                                 <div class="d-flex flex-column align-items-end">
                                     <div class="text-warning">
@@ -255,7 +260,7 @@
                                     <span class="fw-bold small">5.0</span>
                                 </div>
                             </div>
-                            <p class="card-text">"Working with Abdelrahman on our Shifrat Alsharq app was a great experience. His technical skills and attention to detail resulted in an excellent product."</p>
+                            <p class="card-text" data-translate="reviews.shifrat.text">"Working with Abdelrahman on our Shifrat Alsharq app was a great experience. His technical skills and attention to detail resulted in an excellent product."</p>
                         </div>
                     </div>
                 </div>
@@ -267,8 +272,8 @@
     <section id="contact" class="py-5">
         <div class="container" data-aos="fade-up" data-aos-delay="150">
             <div class="section-title text-center">
-                <h2>Let's Connect</h2>
-                <p class="lead">Have a project in mind or want to discuss opportunities? Get in touch!</p>
+                <h2 data-translate="contact.title">Let's Connect</h2>
+                <p class="lead" data-translate="contact.subtitle">Have a project in mind or want to discuss opportunities? Get in touch!</p>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -276,23 +281,23 @@
                         <div class="card-body p-4 p-md-5"> 
                             <form id="contactForm">
                                 <div class="mb-4">
-                                    <label for="name" class="form-label">Name (Optional)</label>
+                                    <label for="name" class="form-label" data-translate="contact.name.label">Name (Optional)</label>
                                     <input type="text" class="form-control" id="name" name="name"
-                                        placeholder="Enter your name">
+                                        data-translate="contact.name.placeholder" placeholder="Enter your name">
                                 </div>
                                 <div class="mb-4">
-                                    <label for="phone" class="form-label">Phone (Optional)</label>
+                                    <label for="phone" class="form-label" data-translate="contact.phone.label">Phone (Optional)</label>
                                     <input type="tel" class="form-control" id="phone" name="phone" 
-                                        placeholder="Enter your phone number">
+                                        data-translate="contact.phone.placeholder" placeholder="Enter your phone number">
                                 </div>
                                 <div class="mb-4">
-                                    <label for="message" class="form-label">Your Message</label>
+                                    <label for="message" class="form-label" data-translate="contact.message.label">Your Message</label>
                                     <textarea class="form-control" id="message" rows="5" name="message"
-                                        placeholder="What's on your mind?" required></textarea>
+                                        data-translate="contact.message.placeholder" placeholder="What's on your mind?" required></textarea>
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary px-5 py-3" id="submitBtn">
-                                        <span id="submitText">Send Message</span>
+                                        <span id="submitText" data-translate="contact.submit">Send Message</span>
                                     </button>
                                 </div>
                             </form>
@@ -302,19 +307,19 @@
             </div>
 
             <div class="text-center mt-5" data-aos="fade-up" data-aos-delay="150">
-                <p class="mb-4">Prefer to connect directly?</p>
+                <p class="mb-4" data-translate="contact.direct">Prefer to connect directly?</p>
                 <div class="d-flex justify-content-center flex-wrap gap-3 mb-4">
                     <a href="tel:+201091602558" class="btn btn-primary">
                         <i class="fas fa-phone-alt me-2"></i>
-                        Call Now
+                        <span data-translate="contact.call">Call Now</span>
                     </a>
                     <a href="mailto:3bdelrahman.ibrahim@gmail.com" target="_blank" class="btn btn-primary">
                         <i class="fas fa-envelope me-2"></i>
-                        Email Me
+                        <span data-translate="contact.email">Email Me</span>
                     </a>
                     <a href="assets/documents/cv.pdf" download target="_blank" class="btn btn-primary">
                         <i class="fas fa-download me-2"></i>
-                        Download CV
+                        <span data-translate="contact.download">Download CV</span>
                     </a>
                 </div>
 
@@ -350,8 +355,8 @@
                     style="background: linear-gradient(135deg, var(--primary-light), var(--primary-dark)); -webkit-background-clip: text; background-clip: text; color: transparent;">Abdelrahman
                     Ibrahim</a>
             </div>
-            <p class="mb-4">Flutter Developer & UI/UX Designer</p>
-            <p class="mb-0">&copy; <span id="current-year"></span> All rights reserved.</p>
+            <p class="mb-4" data-translate="footer.tagline">Flutter Developer & UI/UX Designer</p>
+            <p class="mb-0">&copy; <span id="current-year"></span> <span data-translate="footer.copyright">All rights reserved.</span></p>
         </div>
     </footer>
 
@@ -539,6 +544,9 @@
     <!-- Image Loader Script -->
     <script defer src="js/image-loader.min.js"></script>
 
+    <!-- Translation Script -->
+    <script defer src="js/translations.min.js"></script>
+
     <!-- Deferred Scripts -->
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
     <script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
@@ -552,6 +560,11 @@
             if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
             const html = await response.text();
             document.getElementById(containerId).innerHTML = html;
+            
+            // Apply translations to newly loaded components
+            if (window.translationManager) {
+                window.translationManager.applyTranslation(window.translationManager.currentLang);
+            }
             
             // Refresh AOS after component is loaded
             if (window.AOS && typeof AOS.refresh === 'function') {
@@ -628,6 +641,21 @@
     document.addEventListener('DOMContentLoaded', async function() {
         console.log('DOM Content Loaded');
         
+        // Initialize translation manager if not already done
+        if (!window.translationManager) {
+            // Wait for translation script to load
+            setTimeout(() => {
+                if (!window.translationManager) {
+                    console.warn('Translation manager not loaded, retrying...');
+                    setTimeout(() => {
+                        if (!window.translationManager) {
+                            console.error('Translation manager failed to load');
+                        }
+                    }, 1000);
+                }
+            }, 100);
+        }
+        
         // Load components first
         await Promise.all([
             loadComponent('skills-container', 'components/skills.html'),
@@ -645,6 +673,11 @@
         console.log('Window loaded');
         if (!aosInitialized) {
             tryInitializeAOS();
+        }
+        
+        // Ensure translation manager is initialized
+        if (window.translationManager) {
+            window.translationManager.applyTranslation(window.translationManager.currentLang);
         }
     });
     </script>
