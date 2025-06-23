@@ -212,7 +212,7 @@ const translations = {
         "projects.viewDemo": "عرض التجريبي",
 
         // Project Details
-        "projects.salamspace.title": "سلام سبيس",
+        "projects.salamspace.title": "Salam Space",
         "projects.salamspace.features": [
             "تطبيق إسلامي شامل مع سمات متعددة",
             "مجاني للاستخدام بدون إعلانات",
@@ -221,7 +221,7 @@ const translations = {
             "متاح على App Store و Google Play"
         ],
 
-        "projects.drivenow.title": "درايف ناو",
+        "projects.drivenow.title": "Drive Now",
         "projects.drivenow.features": [
             "تطبيق خدمة تاكسي شبيه بـ Uber للبنان",
             "تتبع الرحلات والحجز في الوقت الفعلي",
@@ -230,7 +230,7 @@ const translations = {
             "متاح على App Store و Google Play"
         ],
 
-        "projects.tranaqar.title": "تراناقار",
+        "projects.tranaqar.title": "TranaQar",
         "projects.tranaqar.features": [
             "منصة عقارية للمملكة العربية السعودية",
             "نظام إدراج وإدارة العقارات",
@@ -301,14 +301,14 @@ const translations = {
         "reviews.title": "آراء العملاء",
         "reviews.subtitle": "ما يقوله عملائي عن تجربتهم في العمل معي",
         "reviews.drivenow.name": "حسن المصري",
-        "reviews.drivenow.position": "الرئيس التنفيذي، درايف ناو",
-        "reviews.drivenow.text": "\"تطبيق درايف ناو تجاوز توقعاتنا بفضل نهج عبد الرحمن المبتكر وخبرته التقنية. التطبيق حسّن عمليات أعمالنا بشكل كبير.\"",
+        "reviews.drivenow.position": "الرئيس التنفيذي، Drive Now",
+        "reviews.drivenow.text": "\"تطبيق Drive Now تجاوز توقعاتنا بفضل نهج عبد الرحمن المبتكر وخبرته التقنية. التطبيق حسّن عمليات أعمالنا بشكل كبير.\"",
         "reviews.tranaqar.name": "مشعل الطيبي",
-        "reviews.tranaqar.position": "مدير، تراناقار",
-        "reviews.tranaqar.text": "\"عبد الرحمن طور تطبيقاً استثنائياً لتراناقار. خبرته في Flutter وتصميم واجهات المستخدم ساعدتنا في إنشاء تجربة مستخدم سلسة لعملائنا.\"",
+        "reviews.tranaqar.position": "مدير، TranaQar",
+        "reviews.tranaqar.text": "\"عبد الرحمن طور تطبيقاً استثنائياً لـ TranaQar. خبرته في Flutter وتصميم واجهات المستخدم ساعدتنا في إنشاء تجربة مستخدم سلسة لعملائنا.\"",
         "reviews.shifrat.name": "عبد الرحمن حسن",
-        "reviews.shifrat.position": "مالك، شفرات الشرق",
-        "reviews.shifrat.text": "\"العمل مع عبد الرحمن على تطبيق شفرات الشرق كان تجربة رائعة. مهاراته التقنية واهتمامه بالتفاصيل أدت إلى منتج ممتاز.\"",
+        "reviews.shifrat.position": "مالك، Shifrat Alsharq",
+        "reviews.shifrat.text": "\"العمل مع عبد الرحمن على تطبيق Shifrat Alsharq كان تجربة رائعة. مهاراته التقنية واهتمامه بالتفاصيل أدت إلى منتج ممتاز.\"",
 
         // Contact Section
         "contact.title": "دعنا نتواصل",

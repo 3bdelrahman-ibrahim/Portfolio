@@ -1812,20 +1812,21 @@ html[dir="rtl"] .navbar-brand {
 /* Language and Theme toggle styling */
 #lang-toggle,
 #theme-toggle {
-    padding: 0.5rem;
+    padding: 0.5rem !important;
     border-radius: 50%;
     transition: all 0.3s ease;
     color: var(--darker);
     width: 40px;
     height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     background: transparent;
     border: none;
     cursor: pointer;
     text-decoration: none;
     box-shadow: none;
+    margin: 0;
 }
 
 /* Toggle container styling for centering */
@@ -1849,12 +1850,17 @@ html[dir="rtl"] .navbar-brand {
     flex: 1;
     justify-content: center !important;
     align-items: center;
+    transition: all 0.3s ease;
+    display: flex !important;
 }
 
 /* Ensure toggle buttons are centered within their container */
 .toggle-container #lang-toggle,
 .toggle-container #theme-toggle {
     margin: 0;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 .toggle-container #lang-toggle {
@@ -1906,6 +1912,11 @@ html[dir="rtl"] #lang-toggle {
     /* Ensure icon stays in place during transitions */
     transform-origin: center;
     will-change: auto;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+    height: 100%;
 }
 
 #lang-toggle:hover i,
@@ -1916,13 +1927,15 @@ html[dir="rtl"] #lang-toggle {
 /* Prevent icon position changes during language toggle */
 #lang-toggle i {
     position: relative;
-    display: inline-block;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
     /* Ensure the icon doesn't move when class changes */
     transform: none !important;
     transition: color 0.3s ease, opacity 0.3s ease !important;
     /* Prevent any layout shifts */
-    width: 1em;
-    height: 1em;
+    width: 100%;
+    height: 100%;
     line-height: 1;
     text-align: center;
     vertical-align: middle;
@@ -1940,17 +1953,19 @@ html[dir="rtl"] #lang-toggle {
     /* Prevent any layout shifts */
     min-width: 40px;
     min-height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
 }
 
 /* Prevent any layout shifts during icon changes */
 #lang-toggle i.fas {
     position: relative;
-    display: inline-block;
-    width: 1em;
-    height: 1em;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+    height: 100%;
     text-align: center;
     line-height: 1;
     /* Ensure icon stays in exact same position */
@@ -1961,13 +1976,33 @@ html[dir="rtl"] #lang-toggle {
 /* Additional stability for icon during class changes */
 #lang-toggle i.fa-globe {
     position: relative;
-    display: inline-block;
-    width: 1em;
-    height: 1em;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 100%;
+    height: 100%;
     text-align: center;
     line-height: 1;
     transform: none !important;
     transition: color 0.3s ease !important;
+}
+
+/* Override Bootstrap btn-link styles */
+.btn-link#lang-toggle,
+.btn-link#theme-toggle {
+    padding: 0.5rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    border: none !important;
+    background: transparent !important;
+}
+
+/* Override Bootstrap p-0 class */
+.p-0#lang-toggle,
+.p-0#theme-toggle {
+    padding: 0.5rem !important;
 }
 
 /* Mobile responsive adjustments for toggles */
@@ -1977,7 +2012,7 @@ html[dir="rtl"] #lang-toggle {
     #theme-toggle {
         width: 35px;
         height: 35px;
-        padding: 0.4rem;
+        padding: 0.4rem !important;
     }
 
     #lang-toggle i,
