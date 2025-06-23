@@ -227,7 +227,7 @@ html[dir="rtl"] #lang-toggle {
 
 @media (max-width: 991px) {
     .navbar-collapse {
-        background: var(--light);
+        background: var(--white);
         backdrop-filter: blur(20px) saturate(180%);
         -webkit-backdrop-filter: blur(20px) saturate(180%);
         border: 1px solid rgba(255, 255, 255, 0.18);
@@ -237,7 +237,7 @@ html[dir="rtl"] #lang-toggle {
     }
 
     .navbar-collapse {
-        background: var(--light);
+        background: var(--white);
         backdrop-filter: blur(20px) saturate(180%);
         -webkit-backdrop-filter: blur(20px) saturate(180%);
         border-radius: 20px;
