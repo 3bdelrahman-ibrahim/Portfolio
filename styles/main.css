@@ -2160,3 +2160,21 @@ html[dir="rtl"] .navbar .btn-link {
     flex-wrap: wrap;
 }
 
+@keyframes floatIcon {
+  0%   { transform: translateY(0) scale(1);}
+  50%  { transform: translateY(-12px) scale(1.08);}
+  100% { transform: translateY(0) scale(1);}
+}
+
+.skill-icon.animated {
+  animation: floatIcon 2.5s ease-in-out infinite;
+  transition: transform 0.3s cubic-bezier(.4,2,.6,1);
+  will-change: transform;
+}
+
+.card:hover .skill-icon.animated {
+  animation-play-state: paused;
+  transform: scale(1.15) rotate(-6deg);
+  filter: drop-shadow(0 4px 16px rgba(99,102,241,0.15));
+}
+
