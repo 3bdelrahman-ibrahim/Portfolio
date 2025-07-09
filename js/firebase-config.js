@@ -1,22 +1,21 @@
-// Import Firebase SDK
-import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js";
-import { addDoc, collection, getFirestore, serverTimestamp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-firestore.js";
+// Firebase App (the core Firebase SDK) is loaded via CDN in index.html
+// See: https://firebase.google.com/docs/web/setup#add-sdks-initialize
 
-// Firebase configuration
+// Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyA5I1AlqhGACpPecU8Ly6137txxXvdcrac",
-    authDomain: "abdelrahman-ibrahim-info.firebaseapp.com",
-    databaseURL: "https://abdelrahman-ibrahim-info-default-rtdb.firebaseio.com",
-    projectId: "abdelrahman-ibrahim-info",
-    storageBucket: "abdelrahman-ibrahim-info.firebasestorage.app",
-    messagingSenderId: "326830243477",
-    appId: "1:326830243477:web:1f7d646f95d9cc3839a59c",
-    measurementId: "G-GBSD7BNLV9"
+  apiKey: "AIzaSyA5I1AlqhGACpPecU8Ly6137txxXvdcrac",
+  authDomain: "abdelrahman-ibrahim-info.firebaseapp.com",
+  databaseURL: "https://abdelrahman-ibrahim-info-default-rtdb.firebaseio.com",
+  projectId: "abdelrahman-ibrahim-info",
+  storageBucket: "abdelrahman-ibrahim-info.appspot.com", // fixed typo
+  messagingSenderId: "326830243477",
+  appId: "1:326830243477:web:1f7d646f95d9cc3839a59c",
+  measurementId: "G-GBSD7BNLV9"
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const db = getFirestore(app);
+firebase.initializeApp(firebaseConfig);
+firebase.analytics();
 
 // Handle form submission
 document.addEventListener('DOMContentLoaded', function() {
@@ -34,11 +33,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitBtn.style.opacity = "0.7";
                 submitText.textContent = "Sending...";
 
-                await addDoc(collection(db, "Portfolio-Messages"), {
+                await firebase.firestore().collection("Portfolio-Messages").add({
                     name: document.getElementById("name").value,
                     phone: document.getElementById("phone").value,
                     message: document.getElementById("message").value,
-                    timestamp: serverTimestamp()
+                    timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 });
 
                 window.showCustomAlert('Message Sent', 'Thank you for contacting me!');
