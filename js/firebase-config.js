@@ -34,7 +34,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitBtn.style.opacity = "0.7";
                 submitText.textContent = "Sending...";
 
-                await addDoc(collection(db, "portfolio-messages"), {
+                await addDoc(collection(db, "Portfolio-Messages"), {
                     name: document.getElementById("name").value,
                     phone: document.getElementById("phone").value,
                     message: document.getElementById("message").value,
