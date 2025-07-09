@@ -14,25 +14,38 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
+console.log('Initializing Firebase...');
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
+console.log('Firebase initialized successfully');
 
 // Handle form submission
 document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded - Setting up form handler');
     const contactForm = document.getElementById("contactForm");
+    console.log('Contact form found:', contactForm);
+    
     if (contactForm) {
         contactForm.addEventListener("submit", async function(event) {
+            console.log('Form submitted - preventing default');
             event.preventDefault();
             
             const submitBtn = document.getElementById("submitBtn");
             const submitText = document.getElementById("submitText");
             const loadingSpinner = document.getElementById("loadingSpinner");
             
+            console.log('Form data:', {
+                name: document.getElementById("name").value,
+                phone: document.getElementById("phone").value,
+                message: document.getElementById("message").value
+            });
+            
             try {
                 submitBtn.disabled = true;
                 submitBtn.style.opacity = "0.7";
                 submitText.textContent = "Sending...";
 
+                console.log('Sending to Firebase...');
                 await firebase.firestore().collection("Portfolio-Messages").add({
                     name: document.getElementById("name").value,
                     phone: document.getElementById("phone").value,
@@ -40,6 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 });
 
+                console.log('Message sent successfully!');
                 window.showCustomAlert('Message Sent', 'Thank you for contacting me!');
                 contactForm.reset();
             } catch (error) {
@@ -51,5 +65,8 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitText.textContent = "Send Message";
             }
         });
+        console.log('Form event listener added successfully');
+    } else {
+        console.error('Contact form not found!');
     }
 }); 
