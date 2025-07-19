@@ -79,7 +79,7 @@ const translations = {
             "Integrated payment and order management system"
         ],
 
-        "projects.multirestaurant.title": "Fooddash",
+        "projects.multirestaurant.title": "FoodDash",
         "projects.multirestaurant.features": [
             "Complete food delivery ecosystem",
             "Multiple restaurant management system",
