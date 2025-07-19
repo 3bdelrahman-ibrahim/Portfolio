@@ -70,7 +70,7 @@ const translations = {
             "Custom admin dashboard for property management"
         ],
 
-        "projects.restaurant.title": "Single Restaurant App",
+        "projects.restaurant.title": "RaqiFoods",
         "projects.restaurant.features": [
             "Dedicated food delivery app for individual restaurants",
             "Menu management and order tracking",
@@ -79,7 +79,7 @@ const translations = {
             "Integrated payment and order management system"
         ],
 
-        "projects.multirestaurant.title": "Multi Restaurant App",
+        "projects.multirestaurant.title": "Fooddash",
         "projects.multirestaurant.features": [
             "Complete food delivery ecosystem",
             "Multiple restaurant management system",
@@ -88,7 +88,7 @@ const translations = {
             "Customer and delivery management"
         ],
 
-        "projects.smarthome.title": "Smart Home System",
+        "projects.smarthome.title": "MouLink",
         "projects.smarthome.features": [
             "IoT-based home automation solution",
             "Custom PCB design and Arduino integration",

@@ -2178,3 +2178,44 @@ html[dir="rtl"] .navbar .btn-link {
   filter: drop-shadow(0 4px 16px rgba(99,102,241,0.15));
 }
 
+/* Project date label styling */
+.project-date-label {
+  display: inline-block;
+  background: #f1f3f6;
+  color: #555;
+  font-size: 0.92em;
+  font-weight: 500;
+  padding: 12px 12px;
+  border-radius: 999px;
+  margin-bottom: 2px;
+  vertical-align: middle;
+  letter-spacing: 0.01em;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  transition: background 0.2s, color 0.2s;
+}
+
+.dark-mode .project-date-label {
+  background: #23272f;
+  color: #e0e6ef;
+}
+
+.project-image-wrapper {
+  position: relative;
+}
+
+.project-date-absolute {
+  position: absolute;
+  right: 16px;
+  /* bottom: -48px; */
+  bottom: 8px;
+  z-index: 2;
+  padding: 4px 14px;
+  font-size: 0.9em;
+  font-style: italic;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  opacity: 0.9;
+}
+
+ 
+
