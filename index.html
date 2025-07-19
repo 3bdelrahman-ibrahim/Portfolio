@@ -382,11 +382,27 @@
                     document.documentElement.classList.toggle(darkClass, isDark);
                     document.body.classList.toggle(darkClass, isDark);
                     themeIcon.className = isDark ? 'fa fa-sun' : 'fa fa-moon';
+                    
+                    // Update placeholder images for theme change
+                    updatePlaceholderImages(isDark);
+                    
                     setTimeout(() => {
                         document.documentElement.classList.remove('theme-transitioning');
                     }, 300);
                 }, 10);
             };
+
+            // Function to update placeholder images based on theme
+            function updatePlaceholderImages(isDark) {
+                const placeholderImages = document.querySelectorAll('.card-img-top.placeholder-image');
+                placeholderImages.forEach(img => {
+                    if (isDark) {
+                        img.style.backgroundImage = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%232d3748'/%3E%3Cg   cy='112.5' r='30'/%3E%3Cpath d='M170 82.5h60v60h-60z' fill='none' stroke='%234a5568' stroke-width='2'/%3E%3Cpath d='M170 82.5l60 60M230 82.5l-60 60' stroke='%234a5568' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E\")";
+                    } else {
+                        img.style.backgroundImage = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23f8f9fa'/%3E%3Cg   cy='112.5' r='30'/%3E%3Cpath d='M170 82.5h60v60h-60z' fill='none' stroke='%23dee2e6' stroke-width='2'/%3E%3Cpath d='M170 82.5l60 60M230 82.5l-60 60' stroke='%23dee2e6' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E\")";
+                    }
+                });
+            }
 
             themeToggle.addEventListener('click', () => {
                 const newIsDark = !document.documentElement.classList.contains(darkClass);
@@ -399,6 +415,10 @@
                     applyTheme(e.matches);
                 }
             });
+
+            // Initialize placeholder images on page load
+            const isDarkMode = document.documentElement.classList.contains(darkClass);
+            updatePlaceholderImages(isDarkMode);
         });
 
         // Logo carousel script
@@ -569,6 +589,17 @@
             if (window.translationManager) {
                 window.translationManager.applyTranslation(window.translationManager.currentLang);
             }
+            
+            // Initialize placeholder images for newly loaded components
+            const isDarkMode = document.documentElement.classList.contains('dark-mode');
+            const placeholderImages = document.querySelectorAll('.card-img-top.placeholder-image');
+            placeholderImages.forEach(img => {
+                if (isDarkMode) {
+                    img.style.backgroundImage = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%232d3748'/%3E%3Cg   cy='112.5' r='30'/%3E%3Cpath d='M170 82.5h60v60h-60z' fill='none' stroke='%234a5568' stroke-width='2'/%3E%3Cpath d='M170 82.5l60 60M230 82.5l-60 60' stroke='%234a5568' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E\")";
+                } else {
+                    img.style.backgroundImage = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23f8f9fa'/%3E%3Cg   cy='112.5' r='30'/%3E%3Cpath d='M170 82.5h60v60h-60z' fill='none' stroke='%23dee2e6' stroke-width='2'/%3E%3Cpath d='M170 82.5l60 60M230 82.5l-60 60' stroke='%23dee2e6' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E\")";
+                }
+            });
             
             // Refresh AOS after component is loaded
             if (window.AOS && typeof AOS.refresh === 'function') {
