@@ -704,7 +704,9 @@ h6 {
     max-height: 350px;
     background-color: #f3f3f3;
 }
-
+.dark-mode .card-img-top {
+    background-color: #212121;
+}
 @supports not (aspect-ratio: 16/9) {
     .card-img-top {
         height: 225px;
