@@ -4,17 +4,17 @@
 <head>
     <meta charset="UTF-8">
     <script>
-      (function() {
-        try {
-          var theme = localStorage.getItem('theme');
-          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-          if (theme === 'dark' || (!theme && prefersDark)) {
-            document.documentElement.classList.add('dark-mode');
-          } else {
-            document.documentElement.classList.remove('dark-mode');
-          }
-        } catch(e) {}
-      })();
+        (function () {
+            try {
+                var theme = localStorage.getItem('theme');
+                var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                if (theme === 'dark' || (!theme && prefersDark)) {
+                    document.documentElement.classList.add('dark-mode');
+                } else {
+                    document.documentElement.classList.remove('dark-mode');
+                }
+            } catch (e) { }
+        })();
     </script>
     <!-- Removed all preload, preconnect, and deferred CSS loading for faster initial load -->
     <meta charset="UTF-8">
@@ -46,7 +46,7 @@
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar">
-    
+
     <!-- Navigation -->
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top glass-effect">
         <div class="container">
@@ -83,7 +83,8 @@
 
                     <!-- Language and Theme Toggles -->
                     <li class="nav-item d-flex justify-content-center align-items-center toggle-container">
-                         <button id="theme-toggle" class="btn btn-link p-0" type="button" title="Toggle Theme" aria-label="Toggle Theme">
+                        <button id="theme-toggle" class="btn btn-link p-0" type="button" title="Toggle Theme"
+                            aria-label="Toggle Theme">
                             <i class="fas fa-moon"></i>
                         </button>
                     </li>
@@ -100,29 +101,18 @@
                 <div class="col-lg-6 order-lg-1 order-1 py-5">
                     <h1 class="mb-2 py-3" data-translate="hero.title">Abdelrahman Ibrahim</h1>
                     <h2 class="mb-4" data-translate="hero.subtitle">Flutter Developer & UI/UX Designer</h2>
-                    <p class="" data-translate="hero.description">Crafting seamless digital experiences with innovative solutions and elegant design.</p>
+                    <p class="" data-translate="hero.description">Crafting seamless digital experiences with innovative
+                        solutions and elegant design.</p>
                 </div>
                 <div class="col-lg-6 order-lg-2 order-2 text-center mt-4" data-aos="fade-left" data-aos-delay="150">
                     <div class="hero-image-container">
-                        <img 
-                            src="assets/images/0.png" 
-                             alt="Abdelrahman Ibrahim" 
-                            class="hero-image img-fluid" 
+                        <img src="assets/images/0.png" alt="Abdelrahman Ibrahim" class="hero-image img-fluid"
                             style="will-change: transform;">
-                        <img 
-                            src="assets/images/aa.png" 
-                             alt="icon floating 1" 
-                            class="floating-icon icon-1" 
+                        <img src="assets/images/aa.png" alt="icon floating 1" class="floating-icon icon-1"
                             style="will-change: transform;">
-                        <img 
-                            src="assets/images/aaa.png" 
-                             alt="icon floating 2" 
-                            class="floating-icon icon-2" 
+                        <img src="assets/images/aaa.png" alt="icon floating 2" class="floating-icon icon-2"
                             style="will-change: transform;">
-                        <img 
-                            src="assets/images/a.png" 
-                             alt="icon floating 3" 
-                            class="floating-icon icon-3" 
+                        <img src="assets/images/a.png" alt="icon floating 3" class="floating-icon icon-3"
                             style="will-change: transform;">
                     </div>
                 </div>
@@ -135,7 +125,8 @@
         <div class="container" data-aos="fade-up" data-aos-delay="150">
             <div class="section-title text-center">
                 <h2 data-translate="about.title">About Me</h2>
-                <p class="lead mx-auto" style="max-width: 700px;" data-translate="about.description">I'm a passionate Flutter developer dedicated to
+                <p class="lead mx-auto" style="max-width: 700px;" data-translate="about.description">I'm a passionate
+                    Flutter developer dedicated to
                     creating efficient, user-friendly mobile applications that deliver exceptional experiences. My focus
                     is on crafting solutions that blend technical excellence with intuitive design.</p>
             </div>
@@ -147,29 +138,35 @@
         <div class="container" data-aos="fade-up" data-aos-delay="150">
             <div class="section-title text-center">
                 <h2 data-translate="companies.title">Companies I've Worked With</h2>
-                <p class="lead" data-translate="companies.subtitle">Proud to have collaborated with these amazing organizations</p>
+                <p class="lead" data-translate="companies.subtitle">Proud to have collaborated with these amazing
+                    organizations</p>
             </div>
 
             <div class="logo-carousel-container">
                 <div class="logo-carousel">
                     <div class="logo-slide" id="logoSlide">
-                        <a href="https://play.google.com/store/apps/details?id=com.arab.salamspace" target="_blank" title="Salam Space">
-                            <img src="assets/images/10.png" alt="Salam Space" class="company-logo"   >
+                        <a href="https://play.google.com/store/apps/details?id=com.arab.salamspace" target="_blank"
+                            title="Salam Space">
+                            <img src="assets/images/10.png" alt="Salam Space" class="company-logo">
                         </a>
-                        <a href="https://play.google.com/store/apps/details?id=com.drivenow.app" target="_blank" title="Drive Now">
-                            <img src="assets/images/11.png" alt="Drive Now" class="company-logo"   >
+                        <a href="https://play.google.com/store/apps/details?id=com.drivenow.app" target="_blank"
+                            title="Drive Now">
+                            <img src="assets/images/11.png" alt="Drive Now" class="company-logo">
                         </a>
-                        <a href="https://play.google.com/store/apps/details?id=com.restauranttest.egypt" target="_blank" title="Food Delivery">
-                            <img src="assets/images/12.png" alt="Food Delivery" class="company-logo"   >
+                        <a href="https://play.google.com/store/apps/details?id=com.restauranttest.egypt" target="_blank"
+                            title="Food Delivery">
+                            <img src="assets/images/12.png" alt="Food Delivery" class="company-logo">
                         </a>
-                        <a href="https://play.google.com/store/apps/details?id=com.tranaqar.app" target="_blank" title="TranaQar">
-                            <img src="assets/images/13.png" alt="TranaQar" class="company-logo"   >
+                        <a href="https://play.google.com/store/apps/details?id=com.tranaqar.app" target="_blank"
+                            title="TranaQar">
+                            <img src="assets/images/13.png" alt="TranaQar" class="company-logo">
                         </a>
-                        <a href="https://play.google.com/store/apps/details?id=com.shifratalsharq.app" target="_blank" title="Shifrat Alsharq">
-                            <img src="assets/images/14.png" alt="Shifrat Alsharq" class="company-logo"   >
+                        <a href="https://play.google.com/store/apps/details?id=com.shifratalsharq.app" target="_blank"
+                            title="Shifrat Alsharq">
+                            <img src="assets/images/14.png" alt="Shifrat Alsharq" class="company-logo">
                         </a>
                     </div>
-                </div> 
+                </div>
             </div>
         </div>
     </section>
@@ -183,18 +180,20 @@
         <div class="container" data-aos="fade-up" data-aos-delay="150">
             <div class="section-title text-center">
                 <h2 data-translate="reviews.title">Customer Reviews</h2>
-                <p class="lead" data-translate="reviews.subtitle">What my clients say about their experience working with me</p>
+                <p class="lead" data-translate="reviews.subtitle">What my clients say about their experience working
+                    with me</p>
             </div>
-            
+
             <div class="row g-4 justify-content-center">
-               
+
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
                     <div class="card h-100">
                         <div class="card-body p-4">
                             <div class="d-flex justify-content-between align-items-start mb-3">
                                 <div>
                                     <h6 class="mb-0" data-translate="reviews.drivenow.name">Hassan Almasri</h6>
-                                    <small class="card-text" data-translate="reviews.drivenow.position">CEO, Drive Now</small>
+                                    <small class="card-text" data-translate="reviews.drivenow.position">CEO, Drive
+                                        Now</small>
                                 </div>
                                 <div class="d-flex flex-column align-items-end">
                                     <div class="text-warning">
@@ -208,19 +207,22 @@
                                     <span class="fw-bold small">5.0</span>
                                 </div>
                             </div>
-                            <p class="card-text" data-translate="reviews.drivenow.text">"Drive Now app exceeded our expectations thanks to Abdelrahman's innovative approach and technical expertise. The app has significantly improved our business operations."</p>
+                            <p class="card-text" data-translate="reviews.drivenow.text">"Drive Now app exceeded our
+                                expectations thanks to Abdelrahman's innovative approach and technical expertise. The
+                                app has significantly improved our business operations."</p>
                         </div>
                     </div>
-          
+
                 </div>
-                
-                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
+
+                <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="150">
                     <div class="card h-100">
                         <div class="card-body p-4">
                             <div class="d-flex justify-content-between align-items-start mb-3">
                                 <div>
                                     <h6 class="mb-0" data-translate="reviews.tranaqar.name">Mashaal Eletapy</h6>
-                                    <small class="card-text" data-translate="reviews.tranaqar.position">Director, TranaQar</small>
+                                    <small class="card-text" data-translate="reviews.tranaqar.position">Director,
+                                        TranaQar</small>
                                 </div>
                                 <div class="d-flex flex-column align-items-end">
                                     <div class="text-warning">
@@ -233,19 +235,22 @@
                                     <span class="fw-bold small ">4.5</span>
                                 </div>
                             </div>
-                            <p class="card-text" data-translate="reviews.tranaqar.text">"Abdelrahman developed an exceptional app for TranaQar. His expertise in Flutter and UI/UX design helped us create a seamless user experience for our customers."</p>
+                            <p class="card-text" data-translate="reviews.tranaqar.text">"Abdelrahman developed an
+                                exceptional app for TranaQar. His expertise in Flutter and UI/UX design helped us create
+                                a seamless user experience for our customers."</p>
                         </div>
                     </div>
                 </div>
-                
-              
+
+
                 <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
                     <div class="card h-100">
                         <div class="card-body p-4">
                             <div class="d-flex justify-content-between align-items-start mb-3">
                                 <div>
                                     <h6 class="mb-0 " data-translate="reviews.shifrat.name">abdelrahman hassan</h6>
-                                    <small class="card-text " data-translate="reviews.shifrat.position">Owner, Shifrat Alsharq</small>
+                                    <small class="card-text " data-translate="reviews.shifrat.position">Owner, Shifrat
+                                        Alsharq</small>
                                 </div>
                                 <div class="d-flex flex-column align-items-end">
                                     <div class="text-warning">
@@ -258,40 +263,48 @@
                                     <span class="fw-bold small">5.0</span>
                                 </div>
                             </div>
-                            <p class="card-text" data-translate="reviews.shifrat.text">"Working with Abdelrahman on our Shifrat Alsharq app was a great experience. His technical skills and attention to detail resulted in an excellent product."</p>
+                            <p class="card-text" data-translate="reviews.shifrat.text">"Working with Abdelrahman on our
+                                Shifrat Alsharq app was a great experience. His technical skills and attention to detail
+                                resulted in an excellent product."</p>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>  
+    </section>
 
     <!-- Contact Section -->
     <section id="contact" class="py-5">
         <div class="container" data-aos="fade-up" data-aos-delay="150">
             <div class="section-title text-center">
                 <h2 data-translate="contact.title">Let's Connect</h2>
-                <p class="lead" data-translate="contact.subtitle">Have a project in mind or want to discuss opportunities? Get in touch!</p>
+                <p class="lead" data-translate="contact.subtitle">Have a project in mind or want to discuss
+                    opportunities? Get in touch!</p>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="card shadow glass-card">
-                        <div class="card-body p-4 p-md-5"> 
+                        <div class="card-body p-4 p-md-5">
                             <form id="contactForm" action="javascript:void(0);">
                                 <div class="mb-4">
-                                    <label for="name" class="form-label" data-translate="contact.name.label">Name (Optional)</label>
+                                    <label for="name" class="form-label" data-translate="contact.name.label">Name
+                                        (Optional)</label>
                                     <input type="text" class="form-control" id="name" name="name"
                                         data-translate="contact.name.placeholder" placeholder="Enter your name">
                                 </div>
                                 <div class="mb-4">
-                                    <label for="phone" class="form-label" data-translate="contact.phone.label">Phone (Optional)</label>
-                                    <input type="tel" class="form-control" id="phone" name="phone" 
-                                        data-translate="contact.phone.placeholder" placeholder="Enter your phone number">
+                                    <label for="phone" class="form-label" data-translate="contact.phone.label">Phone
+                                        (Optional)</label>
+                                    <input type="tel" class="form-control" id="phone" name="phone"
+                                        data-translate="contact.phone.placeholder"
+                                        placeholder="Enter your phone number">
                                 </div>
                                 <div class="mb-4">
-                                    <label for="message" class="form-label" data-translate="contact.message.label">Your Message</label>
+                                    <label for="message" class="form-label" data-translate="contact.message.label">Your
+                                        Message</label>
                                     <textarea class="form-control" id="message" rows="5" name="message"
-                                        data-translate="contact.message.placeholder" placeholder="What's on your mind?" required></textarea>
+                                        data-translate="contact.message.placeholder" placeholder="What's on your mind?"
+                                        required></textarea>
                                 </div>
                                 <div class="text-center">
                                     <button type="submit" class="btn btn-primary px-5 py-3" id="submitBtn">
@@ -299,7 +312,7 @@
                                     </button>
                                 </div>
                             </form>
-                        </div> 
+                        </div>
                     </div>
                 </div>
             </div>
@@ -321,6 +334,7 @@
                     </a>
                 </div>
 
+
                 <div class="d-flex justify-content-center flex-wrap gap-1  my-4">
                     <a href="https://github.com/3bdelrahman-ibrahim" target="_blank" class="social-icon">
                         <i class="fab fa-github"></i>
@@ -341,8 +355,25 @@
                         <i class="fab fa-facebook-f"></i>
                     </a>
                 </div>
+
+                <!-- Store Links Section -->
+                <div class="store-links">
+                    <a href="https://play.google.com/store/apps/developer?id=Abdelrahman++Ibrahim" target="_blank"
+                        rel="noopener">
+                        <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
+                            alt="Get it on Google Play" style="height:48px;">
+                    </a>
+                    <a href="https://apps.apple.com/us/developer/abdelrahman-ibrahim/id1817224462" target="_blank"
+                        rel="noopener">
+                        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+                            alt="Download on the App Store" style="height:48px;">
+                    </a>
+                </div>
+
             </div>
+
         </div>
+
     </section>
 
     <!-- Footer -->
@@ -354,14 +385,15 @@
                     Ibrahim</a>
             </div>
             <p class="mb-4" data-translate="footer.tagline">Flutter Developer & UI/UX Designer</p>
-            <p class="mb-0">&copy; <span id="current-year"></span> <span data-translate="footer.copyright">All rights reserved.</span></p>
+            <p class="mb-0">&copy; <span id="current-year"></span> <span data-translate="footer.copyright">All rights
+                    reserved.</span></p>
         </div>
     </footer>
 
     <!-- Theme toggle script -->
     <script>
         // Immediately executed script for initial theme
-        (function() {
+        (function () {
             const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
             const savedTheme = localStorage.getItem("theme");
             if (savedTheme === "dark" || (!savedTheme && prefersDarkScheme.matches)) {
@@ -370,7 +402,7 @@
         })();
 
         // Theme toggle script
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             const themeToggle = document.getElementById('theme-toggle');
             const themeIcon = themeToggle.querySelector('i');
             const darkClass = 'dark-mode';
@@ -382,10 +414,10 @@
                     document.documentElement.classList.toggle(darkClass, isDark);
                     document.body.classList.toggle(darkClass, isDark);
                     themeIcon.className = isDark ? 'fa fa-sun' : 'fa fa-moon';
-                    
+
                     // Update placeholder images for theme change
                     updatePlaceholderImages(isDark);
-                    
+
                     setTimeout(() => {
                         document.documentElement.classList.remove('theme-transitioning');
                     }, 300);
@@ -422,12 +454,12 @@
         });
 
         // Logo carousel script
-        window.addEventListener('load', function() {
+        window.addEventListener('load', function () {
             const logoSlide = document.getElementById('logoSlide');
             if (logoSlide) {
                 const logos = logoSlide.innerHTML;
                 logoSlide.innerHTML = logos.repeat(99);
-                
+
                 const style = document.createElement('style');
                 style.textContent = `
                     @keyframes smoothScroll {
@@ -446,7 +478,7 @@
         });
 
         // Custom alert script
-        window.showCustomAlert = function(title, message) {
+        window.showCustomAlert = function (title, message) {
             const overlay = document.createElement('div');
             overlay.className = 'alert-overlay';
             document.body.appendChild(overlay);
@@ -468,13 +500,13 @@
             });
         };
 
-        window.closeAlert = function(button) {
+        window.closeAlert = function (button) {
             const alert = button.parentElement;
             const overlay = document.querySelector('.alert-overlay');
-            
+
             alert.classList.remove('alert-visible');
             overlay.classList.remove('alert-visible');
-            
+
             setTimeout(() => {
                 alert.remove();
                 overlay.remove();
@@ -482,34 +514,34 @@
         };
 
         // Navbar scroll and close functionality
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Get all nav links
             const navLinks = document.querySelectorAll('.navbar-nav .nav-link[href^="#"]');
             const navbarBrand = document.querySelector('.navbar-brand[href^="#"]');
             const navbarCollapse = document.querySelector('.navbar-collapse');
             const navbarToggler = document.querySelector('.navbar-toggler');
-            
+
             // Add click event listener to navbar brand
             if (navbarBrand) {
-                navbarBrand.addEventListener('click', function(e) {
+                navbarBrand.addEventListener('click', function (e) {
                     e.preventDefault();
-                    
+
                     const targetId = this.getAttribute('href');
                     const targetSection = document.querySelector(targetId);
-                    
+
                     if (targetSection) {
                         targetSection.scrollIntoView({
                             behavior: 'smooth',
                             block: 'start'
                         });
-                        
+
                         // Close navbar on mobile
                         setTimeout(() => {
                             if (window.innerWidth < 992) {
                                 const bsCollapse = new bootstrap.Collapse(navbarCollapse, {
                                     hide: true
                                 });
-                                
+
                                 if (navbarToggler) {
                                     navbarToggler.setAttribute('aria-expanded', 'false');
                                 }
@@ -518,20 +550,20 @@
                     }
                 });
             }
-            
+
             // Add click event listeners to all nav links
             navLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
+                link.addEventListener('click', function (e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     const targetSection = document.querySelector(targetId);
                     // Close navbar on mobile immediately
                     if (window.innerWidth < 992) {
                         const bsCollapse = new bootstrap.Collapse(navbarCollapse, { hide: true });
-                                if (navbarToggler) {
-                                    navbarToggler.setAttribute('aria-expanded', 'false');
-                                }
-                            }
+                        if (navbarToggler) {
+                            navbarToggler.setAttribute('aria-expanded', 'false');
+                        }
+                    }
                     // Smooth scroll to target section
                     if (targetSection) {
                         setTimeout(() => {
@@ -540,9 +572,9 @@
                     }
                 });
             });
-            
+
             // Add scroll event listener for navbar background
-            window.addEventListener('scroll', function() {
+            window.addEventListener('scroll', function () {
                 const navbar = document.querySelector('.navbar');
                 if (window.scrollY > 50) {
                     navbar.classList.add('navbar-scrolled');
@@ -578,143 +610,143 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <script>
-    async function loadComponent(containerId, componentPath) {
-        try {
-            const response = await fetch(componentPath);
-            if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-            const html = await response.text();
-            document.getElementById(containerId).innerHTML = html;
-            
-            // Apply translations to newly loaded components
+        async function loadComponent(containerId, componentPath) {
+            try {
+                const response = await fetch(componentPath);
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                const html = await response.text();
+                document.getElementById(containerId).innerHTML = html;
+
+                // Apply translations to newly loaded components
+                if (window.translationManager) {
+                    window.translationManager.applyTranslation(window.translationManager.currentLang);
+                }
+
+                // Initialize placeholder images for newly loaded components
+                const isDarkMode = document.documentElement.classList.contains('dark-mode');
+                const placeholderImages = document.querySelectorAll('.card-img-top.placeholder-image');
+                placeholderImages.forEach(img => {
+                    if (isDarkMode) {
+                        img.style.backgroundImage = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%2323272f'/%3E%3Cg   cy='112.5' r='30'/%3E%3Cpath d='M170 82.5h60v60h-60z' fill='none' stroke='%234a5568' stroke-width='2'/%3E%3Cpath d='M170 82.5l60 60M230 82.5l-60 60' stroke='%234a5568' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E\")";
+                    } else {
+                        img.style.backgroundImage = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23f8f9fa'/%3E%3Cg   cy='112.5' r='30'/%3E%3Cpath d='M170 82.5h60v60h-60z' fill='none' stroke='%23dee2e6' stroke-width='2'/%3E%3Cpath d='M170 82.5l60 60M230 82.5l-60 60' stroke='%23dee2e6' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E\")";
+                    }
+                });
+
+                // Refresh AOS after component is loaded
+                if (window.AOS && typeof AOS.refresh === 'function') {
+                    AOS.refresh();
+                }
+            } catch (error) {
+                console.error('Error loading component:', error);
+                document.getElementById(containerId).innerHTML = `<div class="alert alert-danger">Error loading component. Please refresh the page.</div>`;
+            }
+        }
+
+        // Function to initialize AOS with retry mechanism
+        function initializeAOS() {
+            if (window.AOS) {
+                try {
+                    AOS.init({
+                        duration: 800,
+                        easing: 'ease-in-out',
+                        once: true,
+                        mirror: false,
+                        offset: 100,
+                        delay: 0,
+                        anchorPlacement: 'top-bottom'
+                    });
+                    console.log('AOS initialized successfully');
+
+                    // Force refresh after a short delay to ensure all elements are processed
+                    setTimeout(() => {
+                        if (window.AOS && typeof AOS.refresh === 'function') {
+                            AOS.refresh();
+                            console.log('AOS refreshed');
+                        }
+                    }, 500);
+                } catch (error) {
+                    console.error('Error initializing AOS:', error);
+                }
+            } else {
+                console.warn('AOS not loaded yet, retrying in 100ms...');
+                setTimeout(initializeAOS, 100);
+            }
+        }
+
+        // Function to check if all required scripts are loaded
+        function checkScriptsLoaded() {
+            const requiredScripts = [
+                'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js',
+                'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js'
+            ];
+
+            let allLoaded = true;
+            requiredScripts.forEach(script => {
+                if (!document.querySelector(`script[src="${script}"]`)) {
+                    allLoaded = false;
+                }
+            });
+
+            return allLoaded;
+        }
+
+        // Flag to prevent multiple initializations
+        let aosInitialized = false;
+
+        function tryInitializeAOS() {
+            if (aosInitialized) return;
+
+            if (window.AOS) {
+                aosInitialized = true;
+                initializeAOS();
+            } else {
+                setTimeout(tryInitializeAOS, 100);
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async function () {
+            console.log('DOM Content Loaded');
+
+            // Initialize translation manager if not already done
+            if (!window.translationManager) {
+                // Wait for translation script to load
+                setTimeout(() => {
+                    if (!window.translationManager) {
+                        console.warn('Translation manager not loaded, retrying...');
+                        setTimeout(() => {
+                            if (!window.translationManager) {
+                                console.error('Translation manager failed to load');
+                            }
+                        }, 1000);
+                    }
+                }, 100);
+            }
+
+            // Load components first
+            await Promise.all([
+                loadComponent('skills-container', 'components/skills.html'),
+                loadComponent('projects-container', 'components/projects.html')
+            ]);
+
+            console.log('Components loaded');
+
+            // Try to initialize AOS
+            tryInitializeAOS();
+        });
+
+        // Backup initialization on window load
+        window.addEventListener('load', function () {
+            console.log('Window loaded');
+            if (!aosInitialized) {
+                tryInitializeAOS();
+            }
+
+            // Ensure translation manager is initialized
             if (window.translationManager) {
                 window.translationManager.applyTranslation(window.translationManager.currentLang);
             }
-            
-            // Initialize placeholder images for newly loaded components
-            const isDarkMode = document.documentElement.classList.contains('dark-mode');
-            const placeholderImages = document.querySelectorAll('.card-img-top.placeholder-image');
-            placeholderImages.forEach(img => {
-                if (isDarkMode) {
-                    img.style.backgroundImage = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%2323272f'/%3E%3Cg   cy='112.5' r='30'/%3E%3Cpath d='M170 82.5h60v60h-60z' fill='none' stroke='%234a5568' stroke-width='2'/%3E%3Cpath d='M170 82.5l60 60M230 82.5l-60 60' stroke='%234a5568' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E\")";
-                } else {
-                    img.style.backgroundImage = "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='225' viewBox='0 0 400 225'%3E%3Crect width='400' height='225' fill='%23f8f9fa'/%3E%3Cg   cy='112.5' r='30'/%3E%3Cpath d='M170 82.5h60v60h-60z' fill='none' stroke='%23dee2e6' stroke-width='2'/%3E%3Cpath d='M170 82.5l60 60M230 82.5l-60 60' stroke='%23dee2e6' stroke-width='2'/%3E%3C/g%3E%3C/svg%3E\")";
-                }
-            });
-            
-            // Refresh AOS after component is loaded
-            if (window.AOS && typeof AOS.refresh === 'function') {
-                AOS.refresh();
-            }
-        } catch (error) {
-            console.error('Error loading component:', error);
-            document.getElementById(containerId).innerHTML = `<div class="alert alert-danger">Error loading component. Please refresh the page.</div>`;
-        }
-    }
-    
-    // Function to initialize AOS with retry mechanism
-    function initializeAOS() {
-        if (window.AOS) {
-            try {
-                AOS.init({
-                    duration: 800,
-                    easing: 'ease-in-out',
-                    once: true,
-                    mirror: false,
-                    offset: 100,
-                    delay: 0,
-                    anchorPlacement: 'top-bottom'
-                });
-                console.log('AOS initialized successfully');
-                
-                // Force refresh after a short delay to ensure all elements are processed
-                setTimeout(() => {
-                    if (window.AOS && typeof AOS.refresh === 'function') {
-                        AOS.refresh();
-                        console.log('AOS refreshed');
-                    }
-                }, 500);
-            } catch (error) {
-                console.error('Error initializing AOS:', error);
-            }
-        } else {
-            console.warn('AOS not loaded yet, retrying in 100ms...');
-            setTimeout(initializeAOS, 100);
-        }
-    }
-    
-    // Function to check if all required scripts are loaded
-    function checkScriptsLoaded() {
-        const requiredScripts = [
-            'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js',
-            'https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js'
-        ];
-        
-        let allLoaded = true;
-        requiredScripts.forEach(script => {
-            if (!document.querySelector(`script[src="${script}"]`)) {
-                allLoaded = false;
-            }
         });
-        
-        return allLoaded;
-    }
-    
-    // Flag to prevent multiple initializations
-    let aosInitialized = false;
-    
-    function tryInitializeAOS() {
-        if (aosInitialized) return;
-        
-        if (window.AOS) {
-            aosInitialized = true;
-            initializeAOS();
-        } else {
-            setTimeout(tryInitializeAOS, 100);
-        }
-    }
-    
-    document.addEventListener('DOMContentLoaded', async function() {
-        console.log('DOM Content Loaded');
-        
-        // Initialize translation manager if not already done
-        if (!window.translationManager) {
-            // Wait for translation script to load
-            setTimeout(() => {
-                if (!window.translationManager) {
-                    console.warn('Translation manager not loaded, retrying...');
-                    setTimeout(() => {
-                        if (!window.translationManager) {
-                            console.error('Translation manager failed to load');
-                        }
-                    }, 1000);
-                }
-            }, 100);
-        }
-        
-        // Load components first
-        await Promise.all([
-            loadComponent('skills-container', 'components/skills.html'),
-            loadComponent('projects-container', 'components/projects.html')
-        ]);
-        
-        console.log('Components loaded');
-        
-        // Try to initialize AOS
-        tryInitializeAOS();
-    });
-    
-    // Backup initialization on window load
-    window.addEventListener('load', function() {
-        console.log('Window loaded');
-        if (!aosInitialized) {
-            tryInitializeAOS();
-        }
-        
-        // Ensure translation manager is initialized
-        if (window.translationManager) {
-            window.translationManager.applyTranslation(window.translationManager.currentLang);
-        }
-    });
     </script>
 </body>
 

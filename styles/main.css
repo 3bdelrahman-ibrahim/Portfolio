@@ -2241,5 +2241,26 @@ html[dir="rtl"] .navbar .btn-link {
   opacity: 0.9;
 }
 
+.store-links {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  margin: 32px 0 16px 0;
+}
+
+.store-links a img {
+  height: 48px;
+  transition: transform 0.2s;
+}
+
+.store-links a:hover img {
+  transform: scale(1.08);
+}
+
+.dark-mode .store-links {
+  background: none;
+}
+
  
 
