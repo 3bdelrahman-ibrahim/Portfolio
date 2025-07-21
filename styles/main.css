@@ -691,9 +691,9 @@ h6 {
 }
 
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    border-color: rgba(99, 102, 241, 0.3);
+    /* transform: translateY(-10px); */
+    /* box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04); */
+    /* border-color: rgba(99, 102, 241, 0.3); */
 }
 
 .card-img-top {
@@ -1422,9 +1422,7 @@ footer::before {
     height: auto;
 }
 
-.card:hover .card-img-top {
-    transform: scale(1.05);
-}
+ 
 
 /* Dark mode text and icon fixes */
 .dark-mode .text-warning {
