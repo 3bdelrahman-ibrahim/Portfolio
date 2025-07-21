@@ -122,7 +122,7 @@
     <textarea id="message" name="message" required></textarea>
   
     <!-- Submit Button -->
-    <button type="submit">Send Message</button>
+    <button type="submit" id="submitBtn">Send Message</button>
   </form>
   
 <!-- Success Dialog -->
@@ -137,8 +137,13 @@
 <script>
   const form = document.querySelector('form');
   const dialog = document.getElementById('successDialog');
+  const submitBtn = document.getElementById('submitBtn');
+  const originalBtnText = submitBtn.textContent;
+
   form.addEventListener('submit', async function(e) {
     e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending...';
     const formData = new FormData(form);
     try {
       const response = await fetch(form.action, {
@@ -149,9 +154,7 @@
         }
       });
       if (response.ok) {
-        // Show dialog
         dialog.style.display = 'flex';
-        // Clear inputs
         form.reset();
       } else {
         alert('There was an error sending your message. Please try again.');
@@ -159,6 +162,8 @@
     } catch (err) {
       alert('There was an error sending your message. Please try again.');
     }
+    submitBtn.disabled = false;
+    submitBtn.textContent = originalBtnText;
   });
 </script>
   
