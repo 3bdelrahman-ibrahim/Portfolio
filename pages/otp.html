@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>نموذج رمز التحقق (OTP)</title>
+  <style>
+    body {
+      background: #f6f8fa;
+      font-family: 'Tahoma', Arial, sans-serif;
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    #otpForm {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+      padding: 32px 24px 24px 24px;
+      max-width: 350px;
+      width: 100%;
+      margin: 40px auto;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+    #otpForm label {
+      font-size: 1.1em;
+      margin-bottom: 6px;
+      color: #222;
+    }
+    #otpForm input[type="email"] {
+      padding: 10px 12px;
+      border: 1px solid #d1d5db;
+      border-radius: 8px;
+      font-size: 1em;
+      outline: none;
+      transition: border 0.2s;
+      background: #f9fafb;
+    }
+    #otpForm input[type="email"]:focus {
+      border-color: #4f8cff;
+      background: #fff;
+    }
+    #otpForm button {
+      background: #4f8cff;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 12px 0;
+      font-size: 1.1em;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 8px;
+      position: relative;
+    }
+    #otpForm button:disabled {
+      background: #b3c7f7;
+      cursor: not-allowed;
+    }
+  </style>
+  <!-- تحميل مكتبة EmailJS (الإصدار الجديد) -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <script>
+    // ملاحظة: استبدل YOUR_USER_ID بالمعرّف الخاص بك من EmailJS
+    (function () {
+      emailjs.init("uBVt31fuVsHlaqR18"); // ← استبدلها بـ User ID من حسابك
+    })();
+  </script>
+</head>
+<body>
+
+<!-- نموذج البريد -->
+<form id="otpForm" dir="rtl" style="text-align:right; max-width:350px; margin:auto;">
+  <label for="email">اكتب بريدك الإلكتروني:</label>
+  <input type="email" id="email" name="email" required style="direction:rtl;" />
+
+  <button type="submit" id="submitBtn">استلم رمز التحقق</button>
+</form>
+
+<script>
+  document.getElementById("otpForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    const userEmail = document.getElementById("email").value;
+    const submitBtn = document.getElementById("submitBtn");
+    const originalText = "استلم رمز التحقق";
+    const loadingText = "جار الإرسال...";
+
+    // Show loading state
+    submitBtn.textContent = loadingText;
+    submitBtn.disabled = true;
+
+    // إنشاء رمز تحقق (OTP) عشوائي
+    const otp = Math.floor(100000 + Math.random() * 900000); // مثال: 6 أرقام
+
+    // ملاحظة: استبدل service_te3qir9 و template_scwtg3h بالقيم الصحيحة من حسابك في EmailJS
+    emailjs.send("service_te3qir9", "template_scwtg3h", {
+      email: userEmail,       // ← لازم تكون نفس اسم المتغير في القالب: {{email}}
+      otp: otp                // ← لازم تضيف {{otp}} في قالب الرسالة
+    })
+    .then(function (response) {
+      alert("تم الإرسال بنجاح ✅");
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    }, function (error) {
+      alert("حدث خطأ أثناء إرسال رمز التحقق. التفاصيل: " + error.text + " ❌");
+      submitBtn.textContent = originalText;
+      submitBtn.disabled = false;
+    });
+  });
+</script>
+
+</body>
+</html>
