@@ -58,17 +58,19 @@
   </style>
   <script>
     window.onload = function() {
-      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+      setTimeout(function() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-      // Check if it's macOS or iOS
-      if (/Macintosh/.test(userAgent) || (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream)) {
-        // App Store link for both macOS and iOS
-        window.location.href = "https://apps.apple.com/app/id6746654497";
-      }
-      else {
-        // Optional fallback page
-        window.location.href = "https://play.google.com/store/apps/details?id=com.arab.salamspace";
-      }
+        // Check if it's macOS or iOS
+        if (/Macintosh/.test(userAgent) || (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream)) {
+          // App Store link for both macOS and iOS
+          window.location.href = "https://apps.apple.com/app/id6746654497";
+        }
+        else {
+          // Optional fallback page
+          window.location.href = "https://play.google.com/store/apps/details?id=com.arab.salamspace";
+        }
+      }, 1000); // 3 second delay
     };
   </script>
 </head>
