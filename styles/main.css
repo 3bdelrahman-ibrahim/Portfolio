@@ -2262,5 +2262,10 @@ html[dir="rtl"] .navbar .btn-link {
   background: none;
 }
 
+/* Remove underline from store badge links */
+.store-links a {
+    text-decoration: none !important;
+}
+
  
 
