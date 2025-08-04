@@ -27,6 +27,13 @@
     will-change: transform;
     contain: layout style paint;
     pointer-events: none;
+    /* Mobile-specific fixes */
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    -webkit-perspective: 1000;
+    perspective: 1000;
 }
 
 .dark-mode .background-canvas {
@@ -127,6 +134,10 @@
         -webkit-transform: translateZ(0);
         backface-visibility: hidden;
         -webkit-backface-visibility: hidden;
+        /* Mobile-specific rendering fixes */
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        -webkit-overflow-scrolling: touch;
     }
     
     .dark-mode .background-canvas {
