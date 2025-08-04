@@ -123,10 +123,33 @@
 @media (max-width: 768px) {
     .background-canvas {
         opacity: 0.4;
+        transform: translateZ(0); /* Force hardware acceleration */
+        -webkit-transform: translateZ(0);
+        backface-visibility: hidden;
+        -webkit-backface-visibility: hidden;
     }
     
     .dark-mode .background-canvas {
         opacity: 0.3;
+    }
+}
+
+/* Further reduce opacity for very small screens */
+@media (max-width: 480px) {
+    .background-canvas {
+        opacity: 0.3;
+    }
+    
+    .dark-mode .background-canvas {
+        opacity: 0.2;
+    }
+}
+
+/* Disable animations for users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+    .background-canvas {
+        animation: none !important;
+        transition: none !important;
     }
 }
 

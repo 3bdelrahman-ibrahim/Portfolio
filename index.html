@@ -819,11 +819,22 @@
         class InteractiveBackground {
             constructor() {
                 this.canvas = document.getElementById('backgroundCanvas');
+                
+                // Check if canvas and context are available
+                if (!this.canvas) {
+                    throw new Error('Canvas element not found');
+                }
+                
                 this.ctx = this.canvas.getContext('2d');
+                if (!this.ctx) {
+                    throw new Error('Canvas 2D context not supported');
+                }
+                
                 this.particles = [];
                 this.mouse = { x: 0, y: 0 };
                 this.isDarkMode = document.documentElement.classList.contains('dark-mode');
                 this.time = 0;
+                this.isRunning = true;
                 
                 this.init();
                 this.bindEvents();
@@ -838,48 +849,109 @@
             }
             
             resize() {
-                this.canvas.width = window.innerWidth;
-                this.canvas.height = window.innerHeight;
-                console.log('Canvas resized to:', this.canvas.width, 'x', this.canvas.height);
+                // Get the actual device pixel ratio for crisp rendering on high-DPI displays
+                const devicePixelRatio = window.devicePixelRatio || 1;
+                const rect = this.canvas.getBoundingClientRect();
                 
-                // Test if canvas is working by drawing a simple test pattern
-                this.ctx.fillStyle = 'rgba(99, 102, 241, 0.1)';
-                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+                // Set the canvas size in memory (scaled up for high-DPI displays)
+                this.canvas.width = rect.width * devicePixelRatio;
+                this.canvas.height = rect.height * devicePixelRatio;
+                
+                // Scale the drawing context so everything draws at the correct size
+                this.ctx.scale(devicePixelRatio, devicePixelRatio);
+                
+                // Set the canvas CSS size
+                this.canvas.style.width = rect.width + 'px';
+                this.canvas.style.height = rect.height + 'px';
+                
+                console.log('Canvas resized to:', this.canvas.width, 'x', this.canvas.height, 'with DPR:', devicePixelRatio);
+                
+                // Clear the canvas
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
             }
             
             createParticles() {
                 this.particles = [];
-                // Optimize particle count for better visibility
-                const isMobile = window.innerWidth <= 768;
-                const baseParticleCount = isMobile ? 60 : 100;
-                const particleCount = Math.min(baseParticleCount, Math.floor((window.innerWidth * window.innerHeight) / 12000));
                 
-                console.log(`Creating ${particleCount} particles for ${window.innerWidth}x${window.innerHeight} canvas`);
+                // Get canvas dimensions for particle positioning
+                const canvasWidth = this.canvas.width / (window.devicePixelRatio || 1);
+                const canvasHeight = this.canvas.height / (window.devicePixelRatio || 1);
+                
+                // Optimize particle count based on device capabilities
+                const isMobile = window.innerWidth <= 768;
+                const isLowEndDevice = navigator.hardwareConcurrency <= 4 || window.innerWidth <= 480;
+                
+                let baseParticleCount;
+                if (isLowEndDevice) {
+                    baseParticleCount = 30;
+                } else if (isMobile) {
+                    baseParticleCount = 50;
+                } else {
+                    baseParticleCount = 80;
+                }
+                
+                const particleCount = Math.min(baseParticleCount, Math.floor((canvasWidth * canvasHeight) / 15000));
+                
+                console.log(`Creating ${particleCount} particles for ${canvasWidth}x${canvasHeight} canvas (mobile: ${isMobile}, low-end: ${isLowEndDevice})`);
                 
                 for (let i = 0; i < particleCount; i++) {
                     this.particles.push({
-                        x: Math.random() * this.canvas.width,
-                        y: Math.random() * this.canvas.height,
-                        vx: (Math.random() - 0.5) * (isMobile ? 0.3 : 0.4),
-                        vy: (Math.random() - 0.5) * (isMobile ? 0.3 : 0.4),
-                        size: Math.random() * (isMobile ? 4 : 5) + 2,
-                        opacity: Math.random() * 0.7 + 0.3,
+                        x: Math.random() * canvasWidth,
+                        y: Math.random() * canvasHeight,
+                        vx: (Math.random() - 0.5) * (isMobile ? 0.2 : 0.3),
+                        vy: (Math.random() - 0.5) * (isMobile ? 0.2 : 0.3),
+                        size: Math.random() * (isMobile ? 3 : 4) + 1.5,
+                        opacity: Math.random() * 0.6 + 0.2,
                         color: this.isDarkMode ? '#a5b4fc' : '#6366f1',
                         pulse: Math.random() * Math.PI * 2,
-                        pulseSpeed: Math.random() * 0.03 + 0.015
+                        pulseSpeed: Math.random() * 0.02 + 0.01
                     });
                 }
             }
             
             bindEvents() {
+                // Handle window resize with debouncing for better performance
+                let resizeTimeout;
                 window.addEventListener('resize', () => {
-                    this.resize();
-                    this.createParticles();
+                    clearTimeout(resizeTimeout);
+                    resizeTimeout = setTimeout(() => {
+                        this.resize();
+                        this.createParticles();
+                    }, 250);
                 });
                 
+                // Handle orientation change on mobile
+                window.addEventListener('orientationchange', () => {
+                    setTimeout(() => {
+                        this.resize();
+                        this.createParticles();
+                    }, 500);
+                });
+                
+                // Mouse events for desktop
                 document.addEventListener('mousemove', (e) => {
                     this.mouse.x = e.clientX;
                     this.mouse.y = e.clientY;
+                });
+                
+                // Touch events for mobile
+                document.addEventListener('touchstart', (e) => {
+                    e.preventDefault();
+                    const touch = e.touches[0];
+                    this.mouse.x = touch.clientX;
+                    this.mouse.y = touch.clientY;
+                }, { passive: false });
+                
+                document.addEventListener('touchmove', (e) => {
+                    e.preventDefault();
+                    const touch = e.touches[0];
+                    this.mouse.x = touch.clientX;
+                    this.mouse.y = touch.clientY;
+                }, { passive: false });
+                
+                document.addEventListener('touchend', () => {
+                    this.mouse.x = 0;
+                    this.mouse.y = 0;
                 });
                 
                 // Listen for theme changes
@@ -904,48 +976,50 @@
             }
             
             animate() {
+                // Get canvas dimensions for boundary checking
+                const canvasWidth = this.canvas.width / (window.devicePixelRatio || 1);
+                const canvasHeight = this.canvas.height / (window.devicePixelRatio || 1);
+                
                 this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
                 this.time += 0.01;
                 
-                // Check if mobile for performance optimization
+                // Check device capabilities for performance optimization
                 const isMobile = window.innerWidth <= 768;
+                const isLowEndDevice = navigator.hardwareConcurrency <= 4 || window.innerWidth <= 480;
                 
                 // Update and draw particles
                 this.particles.forEach(particle => {
                     // Update pulse
                     particle.pulse += particle.pulseSpeed;
                     
-                    // Move particles with subtle wave motion
-                    particle.x += particle.vx + Math.sin(this.time + particle.pulse) * 0.2;
-                    particle.y += particle.vy + Math.cos(this.time + particle.pulse) * 0.2;
+                    // Move particles with subtle wave motion (reduced on mobile)
+                    const waveIntensity = isMobile ? 0.1 : 0.2;
+                    particle.x += particle.vx + Math.sin(this.time + particle.pulse) * waveIntensity;
+                    particle.y += particle.vy + Math.cos(this.time + particle.pulse) * waveIntensity;
                     
                     // Bounce off edges with damping
-                    if (particle.x < 0 || particle.x > this.canvas.width) {
+                    if (particle.x < 0 || particle.x > canvasWidth) {
                         particle.vx *= -0.8;
-                        particle.x = Math.max(0, Math.min(this.canvas.width, particle.x));
+                        particle.x = Math.max(0, Math.min(canvasWidth, particle.x));
                     }
-                    if (particle.y < 0 || particle.y > this.canvas.height) {
+                    if (particle.y < 0 || particle.y > canvasHeight) {
                         particle.vy *= -0.8;
-                        particle.y = Math.max(0, Math.min(this.canvas.height, particle.y));
+                        particle.y = Math.max(0, Math.min(canvasHeight, particle.y));
                     }
                     
-                    // Draw particle with enhanced glow effect
-                    const pulseSize = particle.size + Math.sin(particle.pulse) * 1.5;
+                    // Draw particle with optimized glow effect for mobile
+                    const pulseSize = particle.size + Math.sin(particle.pulse) * (isMobile ? 1 : 1.5);
                     const pulseOpacity = particle.opacity + Math.sin(particle.pulse) * 0.3;
                     
-                    // Outer glow effect
-                    this.ctx.beginPath();
-                    this.ctx.arc(particle.x, particle.y, pulseSize * 3, 0, Math.PI * 2);
-                    this.ctx.fillStyle = particle.color;
-                    this.ctx.globalAlpha = pulseOpacity * 0.2;
-                    this.ctx.fill();
-                    
-                    // Middle glow effect
-                    this.ctx.beginPath();
-                    this.ctx.arc(particle.x, particle.y, pulseSize * 2, 0, Math.PI * 2);
-                    this.ctx.fillStyle = particle.color;
-                    this.ctx.globalAlpha = pulseOpacity * 0.4;
-                    this.ctx.fill();
+                    // Simplified glow effect for mobile devices
+                    if (!isLowEndDevice) {
+                        // Outer glow effect (skip on low-end devices)
+                        this.ctx.beginPath();
+                        this.ctx.arc(particle.x, particle.y, pulseSize * 2.5, 0, Math.PI * 2);
+                        this.ctx.fillStyle = particle.color;
+                        this.ctx.globalAlpha = pulseOpacity * 0.15;
+                        this.ctx.fill();
+                    }
                     
                     // Main particle
                     this.ctx.beginPath();
@@ -954,69 +1028,92 @@
                     this.ctx.globalAlpha = pulseOpacity;
                     this.ctx.fill();
                     
-                    // Draw connections with improved algorithm
-                    const connectionDistance = isMobile ? 80 : 120;
-                    const maxConnections = isMobile ? 3 : 5;
+                    // Draw connections with optimized algorithm
+                    const connectionDistance = isMobile ? 60 : 100;
+                    const maxConnections = isLowEndDevice ? 2 : (isMobile ? 3 : 4);
                     let connectionCount = 0;
                     
-                    this.particles.forEach(otherParticle => {
-                        if (connectionCount >= maxConnections) return;
-                        
-                        const distance = Math.sqrt(
-                            Math.pow(particle.x - otherParticle.x, 2) + 
-                            Math.pow(particle.y - otherParticle.y, 2)
-                        );
-                        
-                        if (distance < connectionDistance && distance > 0) {
-                            const opacity = (connectionDistance - distance) / connectionDistance * 0.4;
-                            this.ctx.beginPath();
-                            this.ctx.moveTo(particle.x, particle.y);
-                            this.ctx.lineTo(otherParticle.x, otherParticle.y);
-                            this.ctx.strokeStyle = particle.color;
-                            this.ctx.globalAlpha = opacity;
-                            this.ctx.lineWidth = isMobile ? 1 : 1.5;
-                            this.ctx.stroke();
-                            connectionCount++;
-                        }
-                    });
+                    // Only draw connections for every other particle on mobile for better performance
+                    if (!isMobile || (this.particles.indexOf(particle) % 2 === 0)) {
+                        this.particles.forEach(otherParticle => {
+                            if (connectionCount >= maxConnections) return;
+                            
+                            const distance = Math.sqrt(
+                                Math.pow(particle.x - otherParticle.x, 2) + 
+                                Math.pow(particle.y - otherParticle.y, 2)
+                            );
+                            
+                            if (distance < connectionDistance && distance > 0) {
+                                const opacity = (connectionDistance - distance) / connectionDistance * 0.3;
+                                this.ctx.beginPath();
+                                this.ctx.moveTo(particle.x, particle.y);
+                                this.ctx.lineTo(otherParticle.x, otherParticle.y);
+                                this.ctx.strokeStyle = particle.color;
+                                this.ctx.globalAlpha = opacity;
+                                this.ctx.lineWidth = isMobile ? 0.8 : 1.2;
+                                this.ctx.stroke();
+                                connectionCount++;
+                            }
+                        });
+                    }
                 });
                 
-                // Enhanced mouse interaction (disabled on mobile for better performance)
-                if (!isMobile && this.mouse.x > 0 && this.mouse.y > 0) {
+                // Enhanced mouse/touch interaction with mobile optimization
+                if (this.mouse.x > 0 && this.mouse.y > 0) {
+                    const interactionDistance = isMobile ? 150 : 200;
+                    const interactionForce = isMobile ? 0.02 : 0.03;
+                    
                     this.particles.forEach(particle => {
                         const distance = Math.sqrt(
                             Math.pow(particle.x - this.mouse.x, 2) + 
                             Math.pow(particle.y - this.mouse.y, 2)
                         );
                         
-                        if (distance < 200) {
-                            const force = (200 - distance) / 200;
+                        if (distance < interactionDistance) {
+                            const force = (interactionDistance - distance) / interactionDistance;
                             const angle = Math.atan2(particle.y - this.mouse.y, particle.x - this.mouse.x);
-                            particle.vx += Math.cos(angle) * force * 0.03;
-                            particle.vy += Math.sin(angle) * force * 0.03;
                             
-                            // Add repulsion effect
-                            particle.vx += Math.cos(angle) * force * 0.01;
-                            particle.vy += Math.sin(angle) * force * 0.01;
+                            // Repulsion effect
+                            particle.vx += Math.cos(angle) * force * interactionForce;
+                            particle.vy += Math.sin(angle) * force * interactionForce;
                         }
                     });
                 }
                 
-                // Add subtle wave effect across the canvas (reduced on mobile)
-                if (!isMobile) {
+                // Add subtle wave effect across the canvas (optimized for mobile)
+                if (!isLowEndDevice) {
                     this.ctx.save();
-                    this.ctx.globalAlpha = 0.1;
+                    this.ctx.globalAlpha = isMobile ? 0.05 : 0.1;
                     this.ctx.fillStyle = this.isDarkMode ? '#a5b4fc' : '#6366f1';
-                    for (let i = 0; i < this.canvas.width; i += 50) {
-                        const waveHeight = Math.sin(this.time + i * 0.01) * 20;
+                    
+                    const waveSpacing = isMobile ? 80 : 50;
+                    const waveAmplitude = isMobile ? 10 : 20;
+                    
+                    for (let i = 0; i < canvasWidth; i += waveSpacing) {
+                        const waveHeight = Math.sin(this.time + i * 0.01) * waveAmplitude;
                         this.ctx.beginPath();
-                        this.ctx.arc(i, this.canvas.height + waveHeight, 2, 0, Math.PI * 2);
+                        this.ctx.arc(i, canvasHeight + waveHeight, 1.5, 0, Math.PI * 2);
                         this.ctx.fill();
                     }
                     this.ctx.restore();
                 }
                 
-                requestAnimationFrame(() => this.animate());
+                if (this.isRunning) {
+                    requestAnimationFrame(() => this.animate());
+                }
+            }
+            
+            // Method to stop animation (useful for cleanup)
+            stop() {
+                this.isRunning = false;
+            }
+            
+            // Method to resume animation
+            resume() {
+                if (!this.isRunning) {
+                    this.isRunning = true;
+                    this.animate();
+                }
             }
         }
         
@@ -1026,14 +1123,37 @@
         document.addEventListener('DOMContentLoaded', () => {
             console.log('Initializing background animation...');
             
-            // Always try to initialize the animated background
+            // Check if device can handle canvas animation
+            const isLowEndDevice = navigator.hardwareConcurrency <= 2 || 
+                                 window.innerWidth <= 480 || 
+                                 /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            
+            // Check if canvas is supported
+            const canvas = document.getElementById('backgroundCanvas');
+            if (!canvas || !canvas.getContext) {
+                console.warn('Canvas not supported, using fallback background');
+                if (canvas) {
+                    canvas.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                    canvas.style.opacity = '0.4';
+                }
+                return;
+            }
+            
+            // For very low-end devices, use static background
+            if (isLowEndDevice && window.innerWidth <= 480) {
+                console.log('Low-end device detected, using static background');
+                canvas.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                canvas.style.opacity = '0.3';
+                return;
+            }
+            
+            // Try to initialize the animated background
             try {
                 new InteractiveBackground();
                 console.log('Interactive background initialized successfully');
             } catch (error) {
                 console.warn('Failed to initialize interactive background:', error);
                 // Fallback to gradient background
-                const canvas = document.getElementById('backgroundCanvas');
                 if (canvas) {
                     canvas.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
                     canvas.style.opacity = '0.4';
