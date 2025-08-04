@@ -109,60 +109,14 @@
     }
     </script>
 
-    <!-- Preload critical resources -->
-    <link rel="preload" href="styles/main.css" as="style">
-    <link rel="preload" href="assets/images/0.png" as="image">
-    
-    <!-- Critical CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
     <link rel="stylesheet" href="styles/main.css">
-    
-    <!-- Critical CSS for above-the-fold content -->
-    <style>
-        /* Critical styles for hero section */
-        /* .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .hero h1 {
-            font-size: clamp(2.5rem, 8vw, 4.5rem);
-            line-height: 1.1;
-            margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, #4f46e5 0%, #a5b4fc 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .hero h2 {
-            color: #94a3b8;
-            font-size: clamp(1.24rem, 4vw, 1.8rem);
-            font-weight: 500;
-            margin-bottom: 2rem;
-        }
-         */
-       
-    </style>
-    
-    <!-- Fallback for browsers that don't support onload -->
-    <noscript>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
-    </noscript>
 
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar">
-
-    <!-- Interactive Background Canvas -->
-    <canvas id="backgroundCanvas" class="background-canvas"></canvas>
 
     <!-- Navigation -->
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top glass-effect">
@@ -227,13 +181,13 @@
                     <div class="col-lg-6 order-lg-2 order-2 text-center mt-4" data-aos="fade-left" data-aos-delay="100">
                         <div class="hero-image-container">
                             <img src="assets/images/0.png" alt="Abdelrahman Ibrahim - Flutter Developer" class="hero-image img-fluid"
-                                style="will-change: transform;" loading="eager">
+                                style="will-change: transform;">
                             <img src="assets/images/aa.png" alt="Flutter development icon" class="floating-icon icon-1"
-                                style="will-change: transform;" loading="lazy">
+                                style="will-change: transform;">
                             <img src="assets/images/aaa.png" alt="Mobile app development icon" class="floating-icon icon-2"
-                                style="will-change: transform;" loading="lazy">
+                                style="will-change: transform;">
                             <img src="assets/images/a.png" alt="UI/UX design icon" class="floating-icon icon-3"
-                                style="will-change: transform;" loading="lazy">
+                                style="will-change: transform;">
                         </div>
                     </div>
                 </div>
@@ -633,47 +587,13 @@
             }, 300);
         };
 
-        // Enhanced scroll functionality with smooth scrolling and active section highlighting
+        // Navbar scroll and close functionality
         document.addEventListener('DOMContentLoaded', function () {
             // Get all nav links
             const navLinks = document.querySelectorAll('.navbar-nav .nav-link[href^="#"]');
             const navbarBrand = document.querySelector('.navbar-brand[href^="#"]');
             const navbarCollapse = document.querySelector('.navbar-collapse');
             const navbarToggler = document.querySelector('.navbar-toggler');
-            const sections = document.querySelectorAll('section[id]');
-
-            // Smooth scroll function with offset for fixed navbar
-            function smoothScrollTo(targetElement) {
-                const navbarHeight = document.querySelector('.navbar').offsetHeight;
-                const targetPosition = targetElement.offsetTop - navbarHeight - 20;
-                
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
-
-            // Update active nav link based on scroll position
-            function updateActiveNavLink() {
-                const scrollPosition = window.scrollY + 100;
-                
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.offsetHeight;
-                    const sectionId = section.getAttribute('id');
-                    const correspondingNavLink = document.querySelector(`.navbar-nav .nav-link[href="#${sectionId}"]`);
-                    
-                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                        // Remove active class from all nav links
-                        navLinks.forEach(link => link.classList.remove('active'));
-                        
-                        // Add active class to current section's nav link
-                        if (correspondingNavLink) {
-                            correspondingNavLink.classList.add('active');
-                        }
-                    }
-                });
-            }
 
             // Add click event listener to navbar brand
             if (navbarBrand) {
@@ -684,7 +604,10 @@
                     const targetSection = document.querySelector(targetId);
 
                     if (targetSection) {
-                        smoothScrollTo(targetSection);
+                        targetSection.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
 
                         // Close navbar on mobile
                         setTimeout(() => {
@@ -708,7 +631,6 @@
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     const targetSection = document.querySelector(targetId);
-                    
                     // Close navbar on mobile immediately
                     if (window.innerWidth < 992) {
                         const bsCollapse = new bootstrap.Collapse(navbarCollapse, { hide: true });
@@ -716,522 +638,50 @@
                             navbarToggler.setAttribute('aria-expanded', 'false');
                         }
                     }
-                    
                     // Smooth scroll to target section
                     if (targetSection) {
                         setTimeout(() => {
-                            smoothScrollTo(targetSection);
+                            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }, 10);
                     }
                 });
             });
 
-            // Add scroll event listeners
+            // Add scroll event listener for navbar background
             window.addEventListener('scroll', function () {
                 const navbar = document.querySelector('.navbar');
-                
-                // Update navbar background
                 if (window.scrollY > 50) {
                     navbar.classList.add('navbar-scrolled');
                 } else {
                     navbar.classList.remove('navbar-scrolled');
                 }
-                
-                // Update active nav link
-                updateActiveNavLink();
             });
 
             // Add this to show hero section after DOMContentLoaded
             document.querySelector('.hero').classList.add('loaded');
-            
-            // Initialize active nav link on page load
-            updateActiveNavLink();
         });
     </script>
 
-    <!-- Performance Monitoring -->
-    <script>
-        // Performance monitoring
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                const perfData = performance.getEntriesByType('navigation')[0];
-                console.log('Page Load Time:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
-                console.log('DOM Content Loaded:', perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart, 'ms');
-                
-                // Report slow loading
-                if (perfData.loadEventEnd - perfData.loadEventStart > 3000) {
-                    console.warn('Page is loading slowly. Consider optimizing resources.');
-                }
-            }, 0);
-        });
-    </script>
-    
-    <!-- Critical Scripts - Load immediately -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    
-    <!-- Non-critical Scripts - Load after page load -->
-    <script>
-        // Load non-critical scripts after page load
-        window.addEventListener('load', function() {
-            // Load Firebase for contact form functionality
-            const firebaseScripts = [
-                'https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js',
-                'https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js',
-                'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js'
-            ];
-            
-            // Load Firebase scripts sequentially to ensure proper initialization
-            let loadedScripts = 0;
-            firebaseScripts.forEach((src, index) => {
-                const script = document.createElement('script');
-                script.src = src;
-                script.onload = () => {
-                    loadedScripts++;
-                    console.log(`Firebase script ${index + 1} loaded`);
-                    
-                    // Load Firebase config after all scripts are loaded
-                    if (loadedScripts === firebaseScripts.length) {
-                        setTimeout(() => {
-                            const firebaseConfig = document.createElement('script');
-                            firebaseConfig.src = 'js/firebase-config.min.js?v=4';
-                            firebaseConfig.onerror = () => {
-                                console.error('Failed to load Firebase config');
-                            };
-                            document.head.appendChild(firebaseConfig);
-                        }, 500);
-                    }
-                };
-                script.onerror = () => {
-                    console.error(`Failed to load Firebase script: ${src}`);
-                };
-                document.head.appendChild(script);
-            });
-            
-            // Load other non-critical scripts if they exist
-            // Note: image-loader.min.js and translations.min.js are not currently available
-            // They can be added back when those files are created
-        });
-    </script>
+    <!-- Firebase App (the core Firebase SDK) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <!-- Firebase Analytics -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
+    <!-- Firebase Firestore (if you use it) -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+    <!-- Your Firebase config and usage -->
+    <script defer src="js/firebase-config.min.js?v=2"></script>
 
-    <!-- Interactive Background and Cursor Effects -->
-    <script>
-        // Interactive Background Canvas
-        class InteractiveBackground {
-            constructor() {
-                this.canvas = document.getElementById('backgroundCanvas');
-                
-                // Check if canvas and context are available
-                if (!this.canvas) {
-                    throw new Error('Canvas element not found');
-                }
-                
-                this.ctx = this.canvas.getContext('2d', {
-                    alpha: true,
-                    desynchronized: false,
-                    willReadFrequently: false
-                });
-                if (!this.ctx) {
-                    throw new Error('Canvas 2D context not supported');
-                }
-                
-                // Set canvas context properties for better mobile performance
-                this.ctx.imageSmoothingEnabled = true;
-                this.ctx.imageSmoothingQuality = 'high';
-                
-                this.particles = [];
-                this.mouse = { x: 0, y: 0 };
-                this.isDarkMode = document.documentElement.classList.contains('dark-mode');
-                this.time = 0;
-                this.isRunning = true;
-                
-                this.init();
-                this.bindEvents();
-                this.animate();
-            }
-            
-            init() {
-                console.log('Initializing canvas with dimensions:', window.innerWidth, 'x', window.innerHeight);
-                
-                // Ensure canvas is properly positioned and sized
-                this.canvas.style.position = 'fixed';
-                this.canvas.style.top = '0';
-                this.canvas.style.left = '0';
-                this.canvas.style.width = '100vw';
-                this.canvas.style.height = '100vh';
-                this.canvas.style.zIndex = '-1';
-                
-                // Force a layout recalculation
-                this.canvas.offsetHeight;
-                
-                this.resize();
-                this.createParticles();
-                console.log('Canvas initialization complete');
-            }
-            
-            resize() {
-                // Get the actual device pixel ratio for crisp rendering on high-DPI displays
-                const devicePixelRatio = window.devicePixelRatio || 1;
-                const rect = this.canvas.getBoundingClientRect();
-                
-                // Store the current canvas size to check if we need to resize
-                const currentWidth = this.canvas.width;
-                const currentHeight = this.canvas.height;
-                const newWidth = rect.width * devicePixelRatio;
-                const newHeight = rect.height * devicePixelRatio;
-                
-                // Only resize if the dimensions actually changed
-                if (currentWidth !== newWidth || currentHeight !== newHeight) {
-                    // Set the canvas size in memory (scaled up for high-DPI displays)
-                    this.canvas.width = newWidth;
-                    this.canvas.height = newHeight;
-                    
-                    // Reset the context transform to avoid cumulative scaling issues
-                    this.ctx.setTransform(1, 0, 0, 1, 0, 0);
-                    
-                    // Scale the drawing context so everything draws at the correct size
-                    this.ctx.scale(devicePixelRatio, devicePixelRatio);
-                    
-                    // Set the canvas CSS size
-                    this.canvas.style.width = rect.width + 'px';
-                    this.canvas.style.height = rect.height + 'px';
-                    
-                    console.log('Canvas resized to:', this.canvas.width, 'x', this.canvas.height, 'with DPR:', devicePixelRatio);
-                }
-                
-                // Clear the canvas using the scaled dimensions
-                this.ctx.clearRect(0, 0, rect.width, rect.height);
-            }
-            
-            createParticles() {
-                this.particles = [];
-                
-                // Get canvas dimensions for particle positioning (scaled dimensions)
-                const rect = this.canvas.getBoundingClientRect();
-                const canvasWidth = rect.width;
-                const canvasHeight = rect.height;
-                
-                // Optimize particle count based on device capabilities (less aggressive for mobile)
-                const isMobile = window.innerWidth <= 768;
-                const isLowEndDevice = navigator.hardwareConcurrency <= 2 || window.innerWidth <= 320;
-                
-                let baseParticleCount;
-                if (isLowEndDevice) {
-                    baseParticleCount = 40;
-                } else if (isMobile) {
-                    baseParticleCount = 70; // Increased from 50 to 70 for better mobile experience
-                } else {
-                    baseParticleCount = 100; // Increased from 80 to 100 for better desktop experience
-                }
-                
-                const particleCount = Math.min(baseParticleCount, Math.floor((canvasWidth * canvasHeight) / 15000));
-                
-                console.log(`Creating ${particleCount} particles for ${canvasWidth}x${canvasHeight} canvas (mobile: ${isMobile}, low-end: ${isLowEndDevice})`);
-                
-                for (let i = 0; i < particleCount; i++) {
-                    this.particles.push({
-                        x: Math.random() * canvasWidth,
-                        y: Math.random() * canvasHeight,
-                        vx: (Math.random() - 0.5) * (isMobile ? 0.2 : 0.3),
-                        vy: (Math.random() - 0.5) * (isMobile ? 0.2 : 0.3),
-                        size: Math.random() * (isMobile ? 3 : 4) + 1.5,
-                        opacity: Math.random() * 0.6 + 0.2,
-                        color: this.isDarkMode ? '#a5b4fc' : '#6366f1',
-                        pulse: Math.random() * Math.PI * 2,
-                        pulseSpeed: Math.random() * 0.02 + 0.01
-                    });
-                }
-            }
-            
-            bindEvents() {
-                // Handle window resize with debouncing for better performance
-                let resizeTimeout;
-                window.addEventListener('resize', () => {
-                    clearTimeout(resizeTimeout);
-                    resizeTimeout = setTimeout(() => {
-                        this.resize();
-                        this.createParticles();
-                    }, 250);
-                });
-                
-                // Handle orientation change on mobile
-                window.addEventListener('orientationchange', () => {
-                    setTimeout(() => {
-                        this.resize();
-                        this.createParticles();
-                    }, 500);
-                });
-                
-                // Mouse events for desktop
-                document.addEventListener('mousemove', (e) => {
-                    this.mouse.x = e.clientX;
-                    this.mouse.y = e.clientY;
-                });
-                
-                // Touch events for mobile
-                document.addEventListener('touchstart', (e) => {
-                    // Only prevent default if touching the canvas area
-                    if (e.target === this.canvas) {
-                        e.preventDefault();
-                    }
-                    const touch = e.touches[0];
-                    this.mouse.x = touch.clientX;
-                    this.mouse.y = touch.clientY;
-                }, { passive: false });
-                
-                document.addEventListener('touchmove', (e) => {
-                    // Only prevent default if touching the canvas area
-                    if (e.target === this.canvas) {
-                        e.preventDefault();
-                    }
-                    const touch = e.touches[0];
-                    this.mouse.x = touch.clientX;
-                    this.mouse.y = touch.clientY;
-                }, { passive: false });
-                
-                document.addEventListener('touchend', () => {
-                    this.mouse.x = 0;
-                    this.mouse.y = 0;
-                });
-                
-                // Listen for theme changes
-                const observer = new MutationObserver(() => {
-                    const newIsDarkMode = document.documentElement.classList.contains('dark-mode');
-                    if (newIsDarkMode !== this.isDarkMode) {
-                        this.isDarkMode = newIsDarkMode;
-                        this.updateParticleColors();
-                    }
-                });
-                
-                observer.observe(document.documentElement, {
-                    attributes: true,
-                    attributeFilter: ['class']
-                });
-            }
-            
-            updateParticleColors() {
-                this.particles.forEach(particle => {
-                    particle.color = this.isDarkMode ? '#a5b4fc' : '#6366f1';
-                });
-            }
-            
-            animate() {
-                // Get canvas dimensions for boundary checking (scaled dimensions)
-                const rect = this.canvas.getBoundingClientRect();
-                const canvasWidth = rect.width;
-                const canvasHeight = rect.height;
-                
-                // Clear the canvas using the scaled dimensions
-                this.ctx.clearRect(0, 0, canvasWidth, canvasHeight);
-                this.time += 0.01;
-                
-                // Check device capabilities for performance optimization (less aggressive)
-                const isMobile = window.innerWidth <= 768;
-                const isLowEndDevice = navigator.hardwareConcurrency <= 2 || window.innerWidth <= 320;
-                
-                // Update and draw particles
-                this.particles.forEach(particle => {
-                    // Update pulse
-                    particle.pulse += particle.pulseSpeed;
-                    
-                    // Move particles with subtle wave motion (less reduced on mobile)
-                    const waveIntensity = isMobile ? 0.15 : 0.2;
-                    particle.x += particle.vx + Math.sin(this.time + particle.pulse) * waveIntensity;
-                    particle.y += particle.vy + Math.cos(this.time + particle.pulse) * waveIntensity;
-                    
-                    // Bounce off edges with damping
-                    if (particle.x < 0 || particle.x > canvasWidth) {
-                        particle.vx *= -0.8;
-                        particle.x = Math.max(0, Math.min(canvasWidth, particle.x));
-                    }
-                    if (particle.y < 0 || particle.y > canvasHeight) {
-                        particle.vy *= -0.8;
-                        particle.y = Math.max(0, Math.min(canvasHeight, particle.y));
-                    }
-                    
-                    // Draw particle with optimized glow effect for mobile
-                    const pulseSize = particle.size + Math.sin(particle.pulse) * (isMobile ? 1 : 1.5);
-                    const pulseOpacity = particle.opacity + Math.sin(particle.pulse) * 0.3;
-                    
-                    // Simplified glow effect for mobile devices
-                    if (!isLowEndDevice) {
-                        // Outer glow effect (skip on low-end devices)
-                        this.ctx.beginPath();
-                        this.ctx.arc(particle.x, particle.y, pulseSize * 2.5, 0, Math.PI * 2);
-                        this.ctx.fillStyle = particle.color;
-                        this.ctx.globalAlpha = pulseOpacity * 0.15;
-                        this.ctx.fill();
-                    }
-                    
-                    // Main particle
-                    this.ctx.beginPath();
-                    this.ctx.arc(particle.x, particle.y, pulseSize, 0, Math.PI * 2);
-                    this.ctx.fillStyle = particle.color;
-                    this.ctx.globalAlpha = pulseOpacity;
-                    this.ctx.fill();
-                    
-                    // Draw connections with optimized algorithm (less aggressive)
-                    const connectionDistance = isMobile ? 80 : 100;
-                    const maxConnections = isLowEndDevice ? 3 : (isMobile ? 4 : 5);
-                    let connectionCount = 0;
-                    
-                    // Draw connections for all particles (removed mobile restriction)
-                    this.particles.forEach(otherParticle => {
-                        if (connectionCount >= maxConnections) return;
-                        
-                        const distance = Math.sqrt(
-                            Math.pow(particle.x - otherParticle.x, 2) + 
-                            Math.pow(particle.y - otherParticle.y, 2)
-                        );
-                        
-                        if (distance < connectionDistance && distance > 0) {
-                            const opacity = (connectionDistance - distance) / connectionDistance * 0.3;
-                            this.ctx.beginPath();
-                            this.ctx.moveTo(particle.x, particle.y);
-                            this.ctx.lineTo(otherParticle.x, otherParticle.y);
-                            this.ctx.strokeStyle = particle.color;
-                            this.ctx.globalAlpha = opacity;
-                            this.ctx.lineWidth = isMobile ? 0.8 : 1.2;
-                            this.ctx.stroke();
-                            connectionCount++;
-                        }
-                    });
-                });
-                
-                // Enhanced mouse/touch interaction with mobile optimization
-                if (this.mouse.x > 0 && this.mouse.y > 0) {
-                    const interactionDistance = isMobile ? 150 : 200;
-                    const interactionForce = isMobile ? 0.02 : 0.03;
-                    
-                    this.particles.forEach(particle => {
-                        const distance = Math.sqrt(
-                            Math.pow(particle.x - this.mouse.x, 2) + 
-                            Math.pow(particle.y - this.mouse.y, 2)
-                        );
-                        
-                        if (distance < interactionDistance) {
-                            const force = (interactionDistance - distance) / interactionDistance;
-                            const angle = Math.atan2(particle.y - this.mouse.y, particle.x - this.mouse.x);
-                            
-                            // Repulsion effect
-                            particle.vx += Math.cos(angle) * force * interactionForce;
-                            particle.vy += Math.sin(angle) * force * interactionForce;
-                        }
-                    });
-                }
-                
-                // Add subtle wave effect across the canvas (optimized for mobile)
-                if (!isLowEndDevice) {
-                    this.ctx.save();
-                    this.ctx.globalAlpha = isMobile ? 0.05 : 0.1;
-                    this.ctx.fillStyle = this.isDarkMode ? '#a5b4fc' : '#6366f1';
-                    
-                    const waveSpacing = isMobile ? 80 : 50;
-                    const waveAmplitude = isMobile ? 10 : 20;
-                    
-                    for (let i = 0; i < canvasWidth; i += waveSpacing) {
-                        const waveHeight = Math.sin(this.time + i * 0.01) * waveAmplitude;
-                        this.ctx.beginPath();
-                        this.ctx.arc(i, canvasHeight + waveHeight, 1.5, 0, Math.PI * 2);
-                        this.ctx.fill();
-                    }
-                    this.ctx.restore();
-                }
-                
-                if (this.isRunning) {
-                    requestAnimationFrame(() => this.animate());
-                }
-            }
-            
-            // Method to stop animation (useful for cleanup)
-            stop() {
-                this.isRunning = false;
-            }
-            
-            // Method to resume animation
-            resume() {
-                if (!this.isRunning) {
-                    this.isRunning = true;
-                    this.animate();
-                }
-            }
-        }
-        
+    <!-- Image Loader Script -->
+    <script defer src="js/image-loader.min.js"></script>
 
-        
-        // Initialize effects when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('Initializing background animation...');
-            
-            // Wait a bit for mobile viewport to settle
-            setTimeout(() => {
-                // Check if device can handle canvas animation (less aggressive detection)
-                const isVeryLowEndDevice = navigator.hardwareConcurrency <= 1 || 
-                                          window.innerWidth <= 320;
-                
-                const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-            
-                // Check if canvas is supported
-                const canvas = document.getElementById('backgroundCanvas');
-                if (!canvas || !canvas.getContext) {
-                    console.warn('Canvas not supported, using fallback background');
-                    if (canvas) {
-                        canvas.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-                        canvas.style.opacity = '0.4';
-                    }
-                    return;
-                }
-                
-                // Only use static background for very low-end devices (1 core or very small screen)
-                if (isVeryLowEndDevice) {
-                    console.log('Very low-end device detected, using static background');
-                    canvas.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-                    canvas.style.opacity = '0.3';
-                    return;
-                }
-                
-                // Try to initialize the animated background
-                try {
-                    // Force a repaint before initializing
-                    canvas.style.display = 'none';
-                    canvas.offsetHeight; // Force reflow
-                    canvas.style.display = 'block';
-                    
-                    new InteractiveBackground();
-                    console.log('Interactive background initialized successfully');
-                } catch (error) {
-                    console.warn('Failed to initialize interactive background:', error);
-                    // Fallback to gradient background
-                    if (canvas) {
-                        canvas.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-                        canvas.style.opacity = '0.4';
-                    }
-                }
-            }, 100); // 100ms delay for mobile viewport to settle
-        });
-    </script>
+    <!-- Translation Script -->
+    <script defer src="js/translations.min.js"></script>
 
-    <!-- AOS Animation Library - Load after page load -->
-    <script>
-        // Load AOS only when needed
-        window.addEventListener('load', function() {
-            const aosScript = document.createElement('script');
-            aosScript.src = 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js';
-            aosScript.onload = function() {
-                if (window.AOS) {
-                    AOS.init({
-                        duration: 600,
-                        easing: 'ease-out',
-                        once: true,
-                        mirror: false,
-                        offset: 50,
-                        delay: 0,
-                        anchorPlacement: 'top-bottom'
-                    });
-                }
-            };
-            document.head.appendChild(aosScript);
-        });
-    </script>
+    <!-- Deferred Scripts -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
     <script>
         async function loadComponent(containerId, componentPath) {
@@ -1329,31 +779,44 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', function () {
+        document.addEventListener('DOMContentLoaded', async function () {
             console.log('DOM Content Loaded');
 
-            // Load components with timeout and error handling
-            const loadComponentsWithTimeout = async () => {
-                try {
-                    await Promise.allSettled([
-                        loadComponent('skills-container', 'components/skills.html'),
-                        loadComponent('projects-container', 'components/projects.html')
-                    ]);
-                    console.log('Components loaded');
-                } catch (error) {
-                    console.warn('Some components failed to load:', error);
-                }
-            };
+            // Initialize translation manager if not already done
+            if (!window.translationManager) {
+                // Wait for translation script to load
+                setTimeout(() => {
+                    if (!window.translationManager) {
+                        console.warn('Translation manager not loaded, retrying...');
+                        setTimeout(() => {
+                            if (!window.translationManager) {
+                                console.error('Translation manager failed to load');
+                            }
+                        }, 1000);
+                    }
+                }, 100);
+            }
 
-            // Load components after a short delay to prioritize critical content
-            setTimeout(loadComponentsWithTimeout, 100);
+            // Load components first
+            await Promise.all([
+                loadComponent('skills-container', 'components/skills.html'),
+                loadComponent('projects-container', 'components/projects.html')
+            ]);
+
+            console.log('Components loaded');
+
+            // Try to initialize AOS
+            tryInitializeAOS();
         });
 
         // Backup initialization on window load
         window.addEventListener('load', function () {
             console.log('Window loaded');
-            
-            // Initialize translation manager if available
+            if (!aosInitialized) {
+                tryInitializeAOS();
+            }
+
+            // Ensure translation manager is initialized
             if (window.translationManager) {
                 window.translationManager.applyTranslation(window.translationManager.currentLang);
             }

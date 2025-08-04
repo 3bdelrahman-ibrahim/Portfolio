@@ -13,169 +13,18 @@
     --glass-border: rgba(255, 255, 255, 0.2);
  }
 
-/* Interactive Background Styles */
-.background-canvas {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    z-index: -1;
-    opacity: 0.8;
-    transition: opacity 0.3s ease;
-    filter: blur(0.3px);
-    will-change: transform;
-    contain: layout style paint;
-    pointer-events: none;
-    /* Mobile-specific fixes */
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    -webkit-perspective: 1000;
-    perspective: 1000;
-}
-
-.dark-mode .background-canvas {
-    opacity: 0.6;
-    filter: blur(0.3px) contrast(1.2);
-}
-
-/* Enhanced background gradient overlay */
-.background-canvas::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at 20% 80%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(165, 180, 252, 0.1) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 1;
-}
-
-.dark-mode .background-canvas::after {
-    background: radial-gradient(circle at 20% 80%, rgba(165, 180, 252, 0.15) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.1) 0%, transparent 50%);
-}
-
-/* Enhanced card hover effects */
-.card {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.1), transparent);
-    transition: left 0.5s ease;
-    z-index: 1;
-    pointer-events: none;
-}
-
-.card:hover::before {
-    left: 100%;
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 25px 50px rgba(99, 102, 241, 0.15);
-}
-
-/* Enhanced button effects */
-.btn-primary {
-    position: relative;
-    overflow: hidden;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.btn-primary::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s ease;
-    pointer-events: none;
-}
-
-.btn-primary:hover::before {
-    left: 100%;
-}
-
-/* Floating animation for hero elements */
-.hero-image-container {
-    animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-    0%, 100% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-/* Show background canvas on mobile devices with improved visibility */
-@media (max-width: 768px) {
-    .background-canvas {
-        opacity: 0.6; /* Increased from 0.4 to 0.6 for better visibility */
-        transform: translateZ(0); /* Force hardware acceleration */
-        -webkit-transform: translateZ(0);
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-        /* Mobile-specific rendering fixes */
-        -webkit-transform-style: preserve-3d;
-        transform-style: preserve-3d;
-        -webkit-overflow-scrolling: touch;
-    }
-    
-    .dark-mode .background-canvas {
-        opacity: 0.5; /* Increased from 0.3 to 0.5 for better visibility */
-    }
-}
-
-/* Improved opacity for very small screens */
-@media (max-width: 480px) {
-    .background-canvas {
-        opacity: 0.5; /* Increased from 0.3 to 0.5 for better visibility */
-    }
-    
-    .dark-mode .background-canvas {
-        opacity: 0.4; /* Increased from 0.2 to 0.4 for better visibility */
-    }
-}
-
-/* Disable animations for users who prefer reduced motion */
-@media (prefers-reduced-motion: reduce) {
-    .background-canvas {
-        animation: none !important;
-        transition: none !important;
-    }
-}
-
 body {
     min-height: 100vh;
     height: 100%;
-    background: transparent;
-    background-color: transparent;
+    background: #ffffff;
+    background-color: #ffffff;
     color: #000000;
     transition: background 0.3s ease, background-color 0.3s ease, color 0.3s ease;
 }
 
 .dark-mode body {
-    background: transparent !important;
-    background-color: transparent !important;
+    background: #0f172a !important;
+    background-color: #0f172a !important;
     color: #ffffff !important;
 }
 
@@ -560,9 +409,8 @@ html[dir="rtl"] .custom-alert .close-icon {
 /* Fix form control text in dark mode */
 .dark-mode .form-control {
     color: var(--light);
-    background-color: rgba(15, 23, 42, 0.7);
+    background-color: rgba(15, 23, 42, 0.8);
     border-color: rgba(99, 102, 241, 0.2);
-    backdrop-filter: blur(10px);
 }
 
 .dark-mode .form-control::placeholder {
@@ -582,14 +430,14 @@ html[dir="rtl"] .custom-alert .close-icon {
 
 /* Fix navbar styling in dark mode */
 .dark-mode .navbar {
-    background: rgba(15, 23, 42, 0.15);
-    backdrop-filter: blur(25px) saturate(180%);
-    -webkit-backdrop-filter: blur(25px) saturate(180%);
-    border: 1px solid rgba(255, 255, 255, 0.12);
+    background: rgba(15, 23, 42, 0.08);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.25),
-        0 1px 2px rgba(255, 255, 255, 0.08) inset;
-    background-color: rgba(2, 6, 23, 0.8) !important;
+        0 8px 32px rgba(0, 0, 0, 0.2),
+        0 1px 2px rgba(255, 255, 255, 0.05) inset;
+    background-color: rgba(2, 6, 23, 0.95) !important;
 }
 
 .dark-mode .navbar-nav .nav-link {
@@ -609,19 +457,19 @@ html[dir="rtl"] .custom-alert .close-icon {
 
 /* Fix background colors in dark mode */
 .dark-mode .bg-light {
-    background-color: transparent !important;
+    background-color: var(--darker) !important;
 }
 
 .dark-mode .bg-dark {
-    background-color: transparent !important;
+    background-color: var(--darker) !important;
     color: var(--light) !important;
 }
 
 /* Fix card styling in dark mode */
 .dark-mode .card {
-    background-color: rgba(15, 23, 42, 0.6);
+    background-color: var(--card-bg-dark);
     border-color: rgba(99, 102, 241, 0.2);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(10px);
 }
 
 /* Add consistent transitions to all elements that change with theme */
@@ -837,8 +685,8 @@ h6 {
     transition: all 0.4s ease;
     border: 1px solid rgba(99, 102, 241, 0.1);
     height: 100%;
-    background-color: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(15px);
+    background-color: var(--card-bg);
+    backdrop-filter: blur(10px);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
 }
 
@@ -1035,17 +883,10 @@ footer::before {
 }
 
 .glass-card {
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.dark-mode .glass-card {
-    background: rgba(15, 23, 42, 0.3);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--glass-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
 }
 
 /* Custom scrollbar */
@@ -1212,13 +1053,15 @@ footer::before {
         margin-top: 1.5rem;
         padding: 1.5rem;
         border-radius: 20px;
-        background: rgba(255, 255, 255, 0.15);
+        background: var(--white);
         backdrop-filter: blur(25px) saturate(200%);
         -webkit-backdrop-filter: blur(25px) saturate(200%);
-        border: 1px solid rgba(255, 255, 255, 0.2);
+        box-shadow:
+            0 20px 60px rgba(0, 0, 0, 0.15),
+            0 1px 3px rgba(255, 255, 255, 0.2) inset;
     }
     .dark-mode .navbar-collapse {
-        background: rgba(15, 23, 42, 0.2) !important;
+        background: var(--darker) !important;
         backdrop-filter: blur(25px) saturate(200%);
         -webkit-backdrop-filter: blur(25px) saturate(200%);
         border: 1px solid rgba(255, 255, 255, 0.15);
@@ -1268,9 +1111,7 @@ footer::before {
 /* Improve form input visibility */
 .form-control {
     color: var(--dark);
-    background-color: rgba(255, 255, 255, 0.7);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(99, 102, 241, 0.2);
+    background-color: rgba(255, 255, 255, 0.8);
 }
 
 /* Logo Carousel Animation  */
@@ -1797,11 +1638,11 @@ footer::before {
 }
 
 .bg-light {
-    background-color: transparent !important;
+    background-color: var(--white) !important;
 }
 
 .bg-dark {
-    background-color: transparent !important;
+    background-color: var(--darker) !important;
     color: var(--light) !important;
 }
 
@@ -1809,18 +1650,14 @@ section,
 .py-5,
 .section-title,
 .logo-carousel-container {
-    background: transparent;
-    position: relative;
-    z-index: 1;
+    background: var(--white);
 }
 
 .dark-mode section,
 .dark-mode .py-5,
 .dark-mode .section-title,
 .dark-mode .logo-carousel-container {
-    background: transparent;
-    position: relative;
-    z-index: 1;
+    background: var(--darker);
 }
 
 /* Project card image fallback for dark mode and error/loading */
@@ -1966,22 +1803,21 @@ html[dir="rtl"] .navbar-brand {
     right: 5%;
     width: 90%;
     z-index: 1000;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(20px) saturate(150%);
-    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px) saturate(150%);
+    -webkit-backdrop-filter: blur(10px) saturate(150%);
     padding: 1rem;
     margin: 0 auto;
     border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
     height: 80px;
     box-shadow:
-        0 8px 32px rgba(0, 0, 0, 0.08),
-        0 1px 2px rgba(255, 255, 255, 0.1) inset;
+        0 8px 32px rgba(0, 0, 0, 0.06),
+        0 1px 2px rgba(255, 255, 255, 0.08) inset;
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    
 }
 
 .navbar-scrolled {
@@ -2333,7 +2169,7 @@ html[dir="rtl"] .navbar .btn-link {
     border-radius: 20px !important;
   }
   .dark-mode .navbar-collapse {
-    background: rgba(15, 23, 42, 0.2) !important;
+    background: var(--darker) !important;
      backdrop-filter: blur(25px) saturate(200%);
     -webkit-backdrop-filter: blur(25px) saturate(200%);
     border: 1px solid rgba(255, 255, 255, 0.15);
@@ -2429,67 +2265,5 @@ html[dir="rtl"] .navbar .btn-link {
     text-decoration: none !important;
 }
 
-/* Active navigation link styles */
-.navbar-nav .nav-link.active {
-    color: var(--primary) !important;
-    font-weight: 600;
-}
+ 
 
-.navbar-nav .nav-link.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 20px;
-    height: 2px;
-    background: var(--primary);
-    border-radius: 1px;
-}
-
-/* Mobile active nav link styles */
-@media (max-width: 768px) {
-    .navbar-nav .nav-link.active {
-        background: rgba(99, 102, 241, 0.1);
-        border-radius: 16px;
-    }
-    
-    .navbar-nav .nav-link.active::after {
-        width: 30px;
-    }
-}
-
-/* Dark mode active nav link styles */
-.dark-mode .navbar-nav .nav-link.active {
-    color: var(--primary-light) !important;
-}
-
-.dark-mode .navbar-nav .nav-link.active::after {
-    background: var(--primary-light);
-}
-
-/* Dark mode navbar collapse - solid background for mobile */
-@media (max-width: 768px) {
-    .dark-mode .navbar-collapse {
-        background: #0f172a !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow:
-            0 20px 60px rgba(0, 0, 0, 0.3),
-            0 1px 3px rgba(255, 255, 255, 0.05) inset;
-    }
-}
-
-/* Dark mode navbar collapse - solid background for tablet */
-@media (min-width: 769px) and (max-width: 992px) {
-    .dark-mode .navbar-collapse {
-        background: #0f172a !important;
-        backdrop-filter: none !important;
-        -webkit-backdrop-filter: none !important;
-        border: 1px solid rgba(255, 255, 255, 0.1);
-        box-shadow:
-            0 20px 60px rgba(0, 0, 0, 0.3),
-            0 1px 3px rgba(255, 255, 255, 0.05) inset;
-    }
-}
