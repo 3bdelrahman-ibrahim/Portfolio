@@ -16,28 +16,57 @@ const firebaseConfig = {
 // Initialize Firebase
 console.log('Initializing Firebase...');
 firebase.initializeApp(firebaseConfig);
-firebase.analytics();
+
+// Initialize Analytics if available
+try {
+    if (firebase.analytics) {
+        firebase.analytics();
+        console.log('Firebase Analytics initialized');
+    } else {
+        console.log('Firebase Analytics not available');
+    }
+} catch (error) {
+    console.log('Firebase Analytics initialization failed:', error);
+}
+
 console.log('Firebase initialized successfully');
 
-// Handle form submission
-document.addEventListener('DOMContentLoaded', function() {
-    console.log('DOM Content Loaded - Setting up form handler');
+// Handle form submission with retry mechanism
+function setupContactForm() {
+    console.log('Setting up contact form handler...');
     const contactForm = document.getElementById("contactForm");
     console.log('Contact form found:', contactForm);
     
     if (contactForm) {
-        contactForm.addEventListener("submit", async function(event) {
+        // Remove any existing event listeners
+        const newForm = contactForm.cloneNode(true);
+        contactForm.parentNode.replaceChild(newForm, contactForm);
+        
+        newForm.addEventListener("submit", async function(event) {
             console.log('Form submitted - preventing default');
             event.preventDefault();
             
             const submitBtn = document.getElementById("submitBtn");
             const submitText = document.getElementById("submitText");
-            const loadingSpinner = document.getElementById("loadingSpinner");
+            
+            if (!submitBtn || !submitText) {
+                console.error('Submit button or text not found');
+                return;
+            }
+            
+            const nameInput = document.getElementById("name");
+            const phoneInput = document.getElementById("phone");
+            const messageInput = document.getElementById("message");
+            
+            if (!messageInput || !messageInput.value.trim()) {
+                window.showCustomAlert('Error', 'Please enter a message');
+                return;
+            }
             
             console.log('Form data:', {
-                name: document.getElementById("name").value,
-                phone: document.getElementById("phone").value,
-                message: document.getElementById("message").value
+                name: nameInput ? nameInput.value : '',
+                phone: phoneInput ? phoneInput.value : '',
+                message: messageInput.value
             });
             
             try {
@@ -46,16 +75,22 @@ document.addEventListener('DOMContentLoaded', function() {
                 submitText.textContent = "Sending...";
 
                 console.log('Sending to Firebase...');
+                
+                // Check if Firebase is available
+                if (!firebase || !firebase.firestore) {
+                    throw new Error('Firebase not available');
+                }
+                
                 await firebase.firestore().collection("Portfolio-Messages").add({
-                    name: document.getElementById("name").value,
-                    phone: document.getElementById("phone").value,
-                    message: document.getElementById("message").value,
+                    name: nameInput ? nameInput.value : '',
+                    phone: phoneInput ? phoneInput.value : '',
+                    message: messageInput.value,
                     timestamp: firebase.firestore.FieldValue.serverTimestamp()
                 });
 
                 console.log('Message sent successfully!');
                 window.showCustomAlert('Message Sent', 'Thank you for contacting me!');
-                contactForm.reset();
+                newForm.reset();
             } catch (error) {
                 console.error("Error sending message: ", error);
                 window.showCustomAlert('Error', 'There was an error sending your message. Please try again later.');
@@ -69,4 +104,14 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.error('Contact form not found!');
     }
-}); 
+}
+
+// Try to setup form immediately if DOM is ready
+if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupContactForm);
+} else {
+    setupContactForm();
+}
+
+// Also try after a delay to ensure everything is loaded
+setTimeout(setupContactForm, 1000); 

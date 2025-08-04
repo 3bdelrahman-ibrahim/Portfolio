@@ -109,14 +109,60 @@
     }
     </script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    <!-- Preload critical resources -->
+    <link rel="preload" href="styles/main.css" as="style">
+    <link rel="preload" href="assets/images/0.png" as="image">
+    
+    <!-- Critical CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print" onload="this.media='all'">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" media="print" onload="this.media='all'">
     <link rel="stylesheet" href="styles/main.css">
+    
+    <!-- Critical CSS for above-the-fold content -->
+    <style>
+        /* Critical styles for hero section */
+        /* .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #4f46e5 0%, #a5b4fc 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero h2 {
+            color: #94a3b8;
+            font-size: clamp(1.24rem, 4vw, 1.8rem);
+            font-weight: 500;
+            margin-bottom: 2rem;
+        }
+         */
+       
+    </style>
+    
+    <!-- Fallback for browsers that don't support onload -->
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css">
+    </noscript>
 
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar">
+
+    <!-- Interactive Background Canvas -->
+    <canvas id="backgroundCanvas" class="background-canvas"></canvas>
 
     <!-- Navigation -->
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top glass-effect">
@@ -181,13 +227,13 @@
                     <div class="col-lg-6 order-lg-2 order-2 text-center mt-4" data-aos="fade-left" data-aos-delay="100">
                         <div class="hero-image-container">
                             <img src="assets/images/0.png" alt="Abdelrahman Ibrahim - Flutter Developer" class="hero-image img-fluid"
-                                style="will-change: transform;">
+                                style="will-change: transform;" loading="eager">
                             <img src="assets/images/aa.png" alt="Flutter development icon" class="floating-icon icon-1"
-                                style="will-change: transform;">
+                                style="will-change: transform;" loading="lazy">
                             <img src="assets/images/aaa.png" alt="Mobile app development icon" class="floating-icon icon-2"
-                                style="will-change: transform;">
+                                style="will-change: transform;" loading="lazy">
                             <img src="assets/images/a.png" alt="UI/UX design icon" class="floating-icon icon-3"
-                                style="will-change: transform;">
+                                style="will-change: transform;" loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -587,13 +633,47 @@
             }, 300);
         };
 
-        // Navbar scroll and close functionality
+        // Enhanced scroll functionality with smooth scrolling and active section highlighting
         document.addEventListener('DOMContentLoaded', function () {
             // Get all nav links
             const navLinks = document.querySelectorAll('.navbar-nav .nav-link[href^="#"]');
             const navbarBrand = document.querySelector('.navbar-brand[href^="#"]');
             const navbarCollapse = document.querySelector('.navbar-collapse');
             const navbarToggler = document.querySelector('.navbar-toggler');
+            const sections = document.querySelectorAll('section[id]');
+
+            // Smooth scroll function with offset for fixed navbar
+            function smoothScrollTo(targetElement) {
+                const navbarHeight = document.querySelector('.navbar').offsetHeight;
+                const targetPosition = targetElement.offsetTop - navbarHeight - 20;
+                
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+
+            // Update active nav link based on scroll position
+            function updateActiveNavLink() {
+                const scrollPosition = window.scrollY + 100;
+                
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.offsetHeight;
+                    const sectionId = section.getAttribute('id');
+                    const correspondingNavLink = document.querySelector(`.navbar-nav .nav-link[href="#${sectionId}"]`);
+                    
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        // Remove active class from all nav links
+                        navLinks.forEach(link => link.classList.remove('active'));
+                        
+                        // Add active class to current section's nav link
+                        if (correspondingNavLink) {
+                            correspondingNavLink.classList.add('active');
+                        }
+                    }
+                });
+            }
 
             // Add click event listener to navbar brand
             if (navbarBrand) {
@@ -604,10 +684,7 @@
                     const targetSection = document.querySelector(targetId);
 
                     if (targetSection) {
-                        targetSection.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
+                        smoothScrollTo(targetSection);
 
                         // Close navbar on mobile
                         setTimeout(() => {
@@ -631,6 +708,7 @@
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
                     const targetSection = document.querySelector(targetId);
+                    
                     // Close navbar on mobile immediately
                     if (window.innerWidth < 992) {
                         const bsCollapse = new bootstrap.Collapse(navbarCollapse, { hide: true });
@@ -638,50 +716,354 @@
                             navbarToggler.setAttribute('aria-expanded', 'false');
                         }
                     }
+                    
                     // Smooth scroll to target section
                     if (targetSection) {
                         setTimeout(() => {
-                            targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                            smoothScrollTo(targetSection);
                         }, 10);
                     }
                 });
             });
 
-            // Add scroll event listener for navbar background
+            // Add scroll event listeners
             window.addEventListener('scroll', function () {
                 const navbar = document.querySelector('.navbar');
+                
+                // Update navbar background
                 if (window.scrollY > 50) {
                     navbar.classList.add('navbar-scrolled');
                 } else {
                     navbar.classList.remove('navbar-scrolled');
                 }
+                
+                // Update active nav link
+                updateActiveNavLink();
             });
 
             // Add this to show hero section after DOMContentLoaded
             document.querySelector('.hero').classList.add('loaded');
+            
+            // Initialize active nav link on page load
+            updateActiveNavLink();
         });
     </script>
 
-    <!-- Firebase App (the core Firebase SDK) -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-    <!-- Firebase Analytics -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js"></script>
-    <!-- Firebase Firestore (if you use it) -->
-    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-    <!-- Your Firebase config and usage -->
-    <script defer src="js/firebase-config.min.js?v=2"></script>
+    <!-- Performance Monitoring -->
+    <script>
+        // Performance monitoring
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const perfData = performance.getEntriesByType('navigation')[0];
+                console.log('Page Load Time:', perfData.loadEventEnd - perfData.loadEventStart, 'ms');
+                console.log('DOM Content Loaded:', perfData.domContentLoadedEventEnd - perfData.domContentLoadedEventStart, 'ms');
+                
+                // Report slow loading
+                if (perfData.loadEventEnd - perfData.loadEventStart > 3000) {
+                    console.warn('Page is loading slowly. Consider optimizing resources.');
+                }
+            }, 0);
+        });
+    </script>
+    
+    <!-- Critical Scripts - Load immediately -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Non-critical Scripts - Load after page load -->
+    <script>
+        // Load non-critical scripts after page load
+        window.addEventListener('load', function() {
+            // Load Firebase for contact form functionality
+            const firebaseScripts = [
+                'https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js',
+                'https://www.gstatic.com/firebasejs/9.23.0/firebase-analytics-compat.js',
+                'https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js'
+            ];
+            
+            // Load Firebase scripts sequentially to ensure proper initialization
+            let loadedScripts = 0;
+            firebaseScripts.forEach((src, index) => {
+                const script = document.createElement('script');
+                script.src = src;
+                script.onload = () => {
+                    loadedScripts++;
+                    console.log(`Firebase script ${index + 1} loaded`);
+                    
+                    // Load Firebase config after all scripts are loaded
+                    if (loadedScripts === firebaseScripts.length) {
+                        setTimeout(() => {
+                            const firebaseConfig = document.createElement('script');
+                            firebaseConfig.src = 'js/firebase-config.min.js?v=4';
+                            firebaseConfig.onerror = () => {
+                                console.error('Failed to load Firebase config');
+                            };
+                            document.head.appendChild(firebaseConfig);
+                        }, 500);
+                    }
+                };
+                script.onerror = () => {
+                    console.error(`Failed to load Firebase script: ${src}`);
+                };
+                document.head.appendChild(script);
+            });
+            
+            // Load other non-critical scripts if they exist
+            // Note: image-loader.min.js and translations.min.js are not currently available
+            // They can be added back when those files are created
+        });
+    </script>
 
-    <!-- Image Loader Script -->
-    <script defer src="js/image-loader.min.js"></script>
+    <!-- Interactive Background and Cursor Effects -->
+    <script>
+        // Interactive Background Canvas
+        class InteractiveBackground {
+            constructor() {
+                this.canvas = document.getElementById('backgroundCanvas');
+                this.ctx = this.canvas.getContext('2d');
+                this.particles = [];
+                this.mouse = { x: 0, y: 0 };
+                this.isDarkMode = document.documentElement.classList.contains('dark-mode');
+                this.time = 0;
+                
+                this.init();
+                this.bindEvents();
+                this.animate();
+            }
+            
+            init() {
+                console.log('Initializing canvas with dimensions:', window.innerWidth, 'x', window.innerHeight);
+                this.resize();
+                this.createParticles();
+                console.log('Canvas initialization complete');
+            }
+            
+            resize() {
+                this.canvas.width = window.innerWidth;
+                this.canvas.height = window.innerHeight;
+                console.log('Canvas resized to:', this.canvas.width, 'x', this.canvas.height);
+                
+                // Test if canvas is working by drawing a simple test pattern
+                this.ctx.fillStyle = 'rgba(99, 102, 241, 0.1)';
+                this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+            }
+            
+            createParticles() {
+                this.particles = [];
+                // Optimize particle count for better visibility
+                const isMobile = window.innerWidth <= 768;
+                const baseParticleCount = isMobile ? 60 : 100;
+                const particleCount = Math.min(baseParticleCount, Math.floor((window.innerWidth * window.innerHeight) / 12000));
+                
+                console.log(`Creating ${particleCount} particles for ${window.innerWidth}x${window.innerHeight} canvas`);
+                
+                for (let i = 0; i < particleCount; i++) {
+                    this.particles.push({
+                        x: Math.random() * this.canvas.width,
+                        y: Math.random() * this.canvas.height,
+                        vx: (Math.random() - 0.5) * (isMobile ? 0.3 : 0.4),
+                        vy: (Math.random() - 0.5) * (isMobile ? 0.3 : 0.4),
+                        size: Math.random() * (isMobile ? 4 : 5) + 2,
+                        opacity: Math.random() * 0.7 + 0.3,
+                        color: this.isDarkMode ? '#a5b4fc' : '#6366f1',
+                        pulse: Math.random() * Math.PI * 2,
+                        pulseSpeed: Math.random() * 0.03 + 0.015
+                    });
+                }
+            }
+            
+            bindEvents() {
+                window.addEventListener('resize', () => {
+                    this.resize();
+                    this.createParticles();
+                });
+                
+                document.addEventListener('mousemove', (e) => {
+                    this.mouse.x = e.clientX;
+                    this.mouse.y = e.clientY;
+                });
+                
+                // Listen for theme changes
+                const observer = new MutationObserver(() => {
+                    const newIsDarkMode = document.documentElement.classList.contains('dark-mode');
+                    if (newIsDarkMode !== this.isDarkMode) {
+                        this.isDarkMode = newIsDarkMode;
+                        this.updateParticleColors();
+                    }
+                });
+                
+                observer.observe(document.documentElement, {
+                    attributes: true,
+                    attributeFilter: ['class']
+                });
+            }
+            
+            updateParticleColors() {
+                this.particles.forEach(particle => {
+                    particle.color = this.isDarkMode ? '#a5b4fc' : '#6366f1';
+                });
+            }
+            
+            animate() {
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                this.time += 0.01;
+                
+                // Check if mobile for performance optimization
+                const isMobile = window.innerWidth <= 768;
+                
+                // Update and draw particles
+                this.particles.forEach(particle => {
+                    // Update pulse
+                    particle.pulse += particle.pulseSpeed;
+                    
+                    // Move particles with subtle wave motion
+                    particle.x += particle.vx + Math.sin(this.time + particle.pulse) * 0.2;
+                    particle.y += particle.vy + Math.cos(this.time + particle.pulse) * 0.2;
+                    
+                    // Bounce off edges with damping
+                    if (particle.x < 0 || particle.x > this.canvas.width) {
+                        particle.vx *= -0.8;
+                        particle.x = Math.max(0, Math.min(this.canvas.width, particle.x));
+                    }
+                    if (particle.y < 0 || particle.y > this.canvas.height) {
+                        particle.vy *= -0.8;
+                        particle.y = Math.max(0, Math.min(this.canvas.height, particle.y));
+                    }
+                    
+                    // Draw particle with enhanced glow effect
+                    const pulseSize = particle.size + Math.sin(particle.pulse) * 1.5;
+                    const pulseOpacity = particle.opacity + Math.sin(particle.pulse) * 0.3;
+                    
+                    // Outer glow effect
+                    this.ctx.beginPath();
+                    this.ctx.arc(particle.x, particle.y, pulseSize * 3, 0, Math.PI * 2);
+                    this.ctx.fillStyle = particle.color;
+                    this.ctx.globalAlpha = pulseOpacity * 0.2;
+                    this.ctx.fill();
+                    
+                    // Middle glow effect
+                    this.ctx.beginPath();
+                    this.ctx.arc(particle.x, particle.y, pulseSize * 2, 0, Math.PI * 2);
+                    this.ctx.fillStyle = particle.color;
+                    this.ctx.globalAlpha = pulseOpacity * 0.4;
+                    this.ctx.fill();
+                    
+                    // Main particle
+                    this.ctx.beginPath();
+                    this.ctx.arc(particle.x, particle.y, pulseSize, 0, Math.PI * 2);
+                    this.ctx.fillStyle = particle.color;
+                    this.ctx.globalAlpha = pulseOpacity;
+                    this.ctx.fill();
+                    
+                    // Draw connections with improved algorithm
+                    const connectionDistance = isMobile ? 80 : 120;
+                    const maxConnections = isMobile ? 3 : 5;
+                    let connectionCount = 0;
+                    
+                    this.particles.forEach(otherParticle => {
+                        if (connectionCount >= maxConnections) return;
+                        
+                        const distance = Math.sqrt(
+                            Math.pow(particle.x - otherParticle.x, 2) + 
+                            Math.pow(particle.y - otherParticle.y, 2)
+                        );
+                        
+                        if (distance < connectionDistance && distance > 0) {
+                            const opacity = (connectionDistance - distance) / connectionDistance * 0.4;
+                            this.ctx.beginPath();
+                            this.ctx.moveTo(particle.x, particle.y);
+                            this.ctx.lineTo(otherParticle.x, otherParticle.y);
+                            this.ctx.strokeStyle = particle.color;
+                            this.ctx.globalAlpha = opacity;
+                            this.ctx.lineWidth = isMobile ? 1 : 1.5;
+                            this.ctx.stroke();
+                            connectionCount++;
+                        }
+                    });
+                });
+                
+                // Enhanced mouse interaction (disabled on mobile for better performance)
+                if (!isMobile && this.mouse.x > 0 && this.mouse.y > 0) {
+                    this.particles.forEach(particle => {
+                        const distance = Math.sqrt(
+                            Math.pow(particle.x - this.mouse.x, 2) + 
+                            Math.pow(particle.y - this.mouse.y, 2)
+                        );
+                        
+                        if (distance < 200) {
+                            const force = (200 - distance) / 200;
+                            const angle = Math.atan2(particle.y - this.mouse.y, particle.x - this.mouse.x);
+                            particle.vx += Math.cos(angle) * force * 0.03;
+                            particle.vy += Math.sin(angle) * force * 0.03;
+                            
+                            // Add repulsion effect
+                            particle.vx += Math.cos(angle) * force * 0.01;
+                            particle.vy += Math.sin(angle) * force * 0.01;
+                        }
+                    });
+                }
+                
+                // Add subtle wave effect across the canvas (reduced on mobile)
+                if (!isMobile) {
+                    this.ctx.save();
+                    this.ctx.globalAlpha = 0.1;
+                    this.ctx.fillStyle = this.isDarkMode ? '#a5b4fc' : '#6366f1';
+                    for (let i = 0; i < this.canvas.width; i += 50) {
+                        const waveHeight = Math.sin(this.time + i * 0.01) * 20;
+                        this.ctx.beginPath();
+                        this.ctx.arc(i, this.canvas.height + waveHeight, 2, 0, Math.PI * 2);
+                        this.ctx.fill();
+                    }
+                    this.ctx.restore();
+                }
+                
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+        
 
-    <!-- Translation Script -->
-    <script defer src="js/translations.min.js"></script>
+        
+        // Initialize effects when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('Initializing background animation...');
+            
+            // Always try to initialize the animated background
+            try {
+                new InteractiveBackground();
+                console.log('Interactive background initialized successfully');
+            } catch (error) {
+                console.warn('Failed to initialize interactive background:', error);
+                // Fallback to gradient background
+                const canvas = document.getElementById('backgroundCanvas');
+                if (canvas) {
+                    canvas.style.background = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+                    canvas.style.opacity = '0.4';
+                }
+            }
+        });
+    </script>
 
-    <!-- Deferred Scripts -->
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
-    <script defer src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <!-- AOS Animation Library - Load after page load -->
+    <script>
+        // Load AOS only when needed
+        window.addEventListener('load', function() {
+            const aosScript = document.createElement('script');
+            aosScript.src = 'https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js';
+            aosScript.onload = function() {
+                if (window.AOS) {
+                    AOS.init({
+                        duration: 600,
+                        easing: 'ease-out',
+                        once: true,
+                        mirror: false,
+                        offset: 50,
+                        delay: 0,
+                        anchorPlacement: 'top-bottom'
+                    });
+                }
+            };
+            document.head.appendChild(aosScript);
+        });
+    </script>
 
     <script>
         async function loadComponent(containerId, componentPath) {
@@ -779,44 +1161,31 @@
             }
         }
 
-        document.addEventListener('DOMContentLoaded', async function () {
+        document.addEventListener('DOMContentLoaded', function () {
             console.log('DOM Content Loaded');
 
-            // Initialize translation manager if not already done
-            if (!window.translationManager) {
-                // Wait for translation script to load
-                setTimeout(() => {
-                    if (!window.translationManager) {
-                        console.warn('Translation manager not loaded, retrying...');
-                        setTimeout(() => {
-                            if (!window.translationManager) {
-                                console.error('Translation manager failed to load');
-                            }
-                        }, 1000);
-                    }
-                }, 100);
-            }
+            // Load components with timeout and error handling
+            const loadComponentsWithTimeout = async () => {
+                try {
+                    await Promise.allSettled([
+                        loadComponent('skills-container', 'components/skills.html'),
+                        loadComponent('projects-container', 'components/projects.html')
+                    ]);
+                    console.log('Components loaded');
+                } catch (error) {
+                    console.warn('Some components failed to load:', error);
+                }
+            };
 
-            // Load components first
-            await Promise.all([
-                loadComponent('skills-container', 'components/skills.html'),
-                loadComponent('projects-container', 'components/projects.html')
-            ]);
-
-            console.log('Components loaded');
-
-            // Try to initialize AOS
-            tryInitializeAOS();
+            // Load components after a short delay to prioritize critical content
+            setTimeout(loadComponentsWithTimeout, 100);
         });
 
         // Backup initialization on window load
         window.addEventListener('load', function () {
             console.log('Window loaded');
-            if (!aosInitialized) {
-                tryInitializeAOS();
-            }
-
-            // Ensure translation manager is initialized
+            
+            // Initialize translation manager if available
             if (window.translationManager) {
                 window.translationManager.applyTranslation(window.translationManager.currentLang);
             }
