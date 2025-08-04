@@ -204,6 +204,9 @@ html[dir="rtl"] .custom-alert .close-icon {
         text-align: center;
         padding-top: 5rem;
     }
+    .hero h1 {
+        margin-top: 80px;
+    }
     .section-title h2::after {
         left: 50%;
         transform: translateX(-50%);
