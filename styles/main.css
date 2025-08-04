@@ -666,7 +666,7 @@ h6 {
 
 .dark-mode .section-title .lead {
     color: var(--primary-light);
-}
+} 
 
 .section-title h2::after {
     content: '';
