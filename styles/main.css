@@ -126,10 +126,10 @@
     }
 }
 
-/* Show background canvas on mobile devices with reduced opacity */
+/* Show background canvas on mobile devices with improved visibility */
 @media (max-width: 768px) {
     .background-canvas {
-        opacity: 0.4;
+        opacity: 0.6; /* Increased from 0.4 to 0.6 for better visibility */
         transform: translateZ(0); /* Force hardware acceleration */
         -webkit-transform: translateZ(0);
         backface-visibility: hidden;
@@ -141,18 +141,18 @@
     }
     
     .dark-mode .background-canvas {
-        opacity: 0.3;
+        opacity: 0.5; /* Increased from 0.3 to 0.5 for better visibility */
     }
 }
 
-/* Further reduce opacity for very small screens */
+/* Improved opacity for very small screens */
 @media (max-width: 480px) {
     .background-canvas {
-        opacity: 0.3;
+        opacity: 0.5; /* Increased from 0.3 to 0.5 for better visibility */
     }
     
     .dark-mode .background-canvas {
-        opacity: 0.2;
+        opacity: 0.4; /* Increased from 0.2 to 0.4 for better visibility */
     }
 }
 
