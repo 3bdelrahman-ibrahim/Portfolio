@@ -56,12 +56,39 @@
       gap: 1.5rem;
       width: 100%;
     }
+
+    .download-link {
+      transition: transform 0.3s ease, filter 0.3s ease;
+      display: inline-block;
+    }
+
+    .download-link:hover {
+      transform: scale(1.1);
+      filter: brightness(1.1);
+    }
+
+    .download-link img {
+      height: 60px;
+      width: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 768px) {
+      .download-link img {
+        height: 50px;
+      }
+      
+      .download-links {
+        gap: 1rem;
+      }
+    }
   </style>
   <script>
     window.onload = function () {
       var userAgent = navigator.userAgent || navigator.vendor || window.opera;
       if (/Macintosh/.test(userAgent) || (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream)) {
-        window.location.href = "https://apps.apple.com/app/fahs-elriadah";
+        window.location.href = "https://apps.apple.com/app/id6748784700";
       }
       else {
         window.location.href = "https://play.google.com/store/apps/details?id=com.fahselriadah.app";
@@ -74,10 +101,10 @@
   <p>Redirecting to Fahs Elriadah...</p>
   <div class="download-links">
     <a href="https://play.google.com/store/apps/details?id=com.fahselriadah.app" target="_blank" class="download-link">
-      <img src="../assets/images/gp.png">
+      <img src="../assets/images/gp.png" alt="Download on Google Play">
     </a>
-    <a href="https://apps.apple.com/app/fahs-elriadah" target="_blank" class="download-link">
-      <img src="../assets/images/ios.png">
+    <a href="https://apps.apple.com/app/id6748784700" target="_blank" class="download-link">
+      <img src="../assets/images/ios.png" alt="Download on App Store">
     </a>
   </div>
 </body>

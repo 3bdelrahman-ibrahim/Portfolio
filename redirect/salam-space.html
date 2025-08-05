@@ -56,6 +56,33 @@
       gap: 1.5rem;
       width: 100%;
     }
+
+    .download-link {
+      transition: transform 0.3s ease, filter 0.3s ease;
+      display: inline-block;
+    }
+
+    .download-link:hover {
+      transform: scale(1.1);
+      filter: brightness(1.1);
+    }
+
+    .download-link img {
+      height: 60px;
+      width: auto;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    @media (max-width: 768px) {
+      .download-link img {
+        height: 50px;
+      }
+      
+      .download-links {
+        gap: 1rem;
+      }
+    }
   </style>
   <script>
     window.onload = function () {
