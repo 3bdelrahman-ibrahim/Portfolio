@@ -32,17 +32,47 @@
       overflow: hidden;
     }
 
-    p {
-      font-size: 1.2rem;
-      text-align: center;
-      padding: 20px;
-      transition: color var(--transition-duration);
+    .loading-container {
       position: absolute;
-      top: 40%;
+      top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
+      text-align: center;
       width: 100%;
-      margin: 0;
+    }
+
+    .loading-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(0, 0, 0, 0.1);
+      border-left: 4px solid var(--text-color);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto 20px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      .loading-spinner {
+        border: 4px solid rgba(255, 255, 255, 0.1);
+        border-left: 4px solid var(--text-color);
+      }
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      transition: color var(--transition-duration);
+    }
+
+    .loading-subtext {
+      font-size: 0.9rem;
+      opacity: 0.7;
+      transition: color var(--transition-duration);
     }
 
     .download-links {
@@ -86,19 +116,26 @@
   </style>
   <script>
     window.onload = function () {
-      var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-      if (/Macintosh/.test(userAgent) || (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream)) {
-        window.location.href = "https://apps.apple.com/app/id6748784700";
-      }
-      else {
-        window.location.href = "https://play.google.com/store/apps/details?id=com.fahsElriadah.app";
-      }
+      // Show loading for 2 seconds before redirecting
+      setTimeout(function() {
+        var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        if (/Macintosh/.test(userAgent) || (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream)) {
+          window.location.href = "https://apps.apple.com/app/id6748784700";
+        }
+        else {
+          window.location.href = "https://play.google.com/store/apps/details?id=com.fahsElriadah.app";
+        }
+      }, 2000);
     };
   </script>
 </head>
 
 <body>
-  <p>Redirecting to Fahs Elriadah...</p>
+  <div class="loading-container">
+    <div class="loading-spinner"></div>
+    <div class="loading-text">Redirecting to Fahs Elriadah...</div>
+    <div class="loading-subtext">Please wait while we redirect you to the app store</div>
+  </div>
   <div class="download-links">
     <a href="https://play.google.com/store/apps/details?id=com.fahsElriadah.app" target="_blank" class="download-link">
       <img src="../assets/images/gp.png" alt="Download on Google Play">
