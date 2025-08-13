@@ -1,66 +1,30 @@
-# macOS system files
-.DS_Store
-.AppleDouble
-.LSOverride
-Icon
-._*
--
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-# IDE and editor files
-.idea/
-.vscode/
-*.swp
-*.swo
-*~
-
-# Node modules and logs
+# Dependencies
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 
-# Build and distribution directories
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Build outputs
 dist/
 build/
 out/
 
-# Environment files
-.env
-.env.local
-.env.*.local
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
-# Cache directories
-.cache/
-.temp/
-.tmp/
-
-# Optional: Backup files
-*.bak
-*.backup
-*.[Bb]ak
-
-# Project specific
-firebase-debug.log
-*.log
+# OS generated files
+.DS_Store
 .DS_Store?
 ._*
 .Spotlight-V100
@@ -68,15 +32,42 @@ firebase-debug.log
 ehthumbs.db
 Thumbs.db
 
-# Large media files (uncomment if needed)
-# *.mov
-# *.mp4
-# *.avi
-# *.wmv
-# *.flv
-# *.mkv
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# Temporary folders
+tmp/
+temp/
 
 # Firebase
 .firebase/
 firebase-debug.log
-firebase-debug.*.log 
+firestore-debug.log
+ui-debug.log
+
+# Optional npm cache directory
+.npm
+
+# Optional eslint cache
+.eslintcache
+
+# Optional REPL history
+.node_repl_history
+
+# Output of 'npm pack'
+*.tgz
+
+# Yarn Integrity file
+.yarn-integrity 
+
+text.txt
