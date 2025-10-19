@@ -1124,12 +1124,18 @@ footer::before {
     background-color: transparent;
     position: relative;
     will-change: transform;
+    align-self: center;
 }
 
 .logo-carousel {
     white-space: nowrap;
     overflow: hidden;
     will-change: transform;
+    align-self: center;
+    align-items: center;
+justify-content: center;
+justify-items: center;
+justify-self: center;
 }
 
 .logo-slide {
